@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success, Platform Positioning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --terra: #C56B51;
+    --sage: #8FA68E;
+    --gold: #C9A961;
+    --cream: #F8F5EE;
+    --ink: #1C1C1C;
+    --white: #FFFFFF;
+    --mid: #666;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 56px 24px 96px;
+  }
+
+  .wrap { max-width: 960px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(11, 31, 58, 0.15);
+  }
+
+  .meta-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 22px; flex-wrap: wrap; gap: 12px;
+  }
+
+  .doc-id {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    color: var(--terra); text-transform: uppercase;
+  }
+
+  .doc-version {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    color: var(--mid); text-transform: uppercase;
+  }
+
+  h1 {
+    font-weight: 200; font-size: clamp(42px, 6vw, 64px);
+    letter-spacing: -1.8px; color: var(--navy);
+    line-height: 1; margin-bottom: 18px;
+  }
+  h1 em { font-style: normal; font-weight: 700; color: var(--terra); }
+
+  .deck {
+    font-weight: 300; font-size: 19px;
+    color: #333; max-width: 720px; line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .hero-sub {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12.5px; font-weight: 500; letter-spacing: 2px;
+    color: var(--gold); text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section { margin-bottom: 60px; }
+
+  .section-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .section-num {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300; font-size: 42px;
+    color: var(--gold); line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .section-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    color: var(--terra); text-transform: uppercase;
+  }
+
+  h2 {
+    font-weight: 300; font-size: clamp(28px, 3.2vw, 36px);
+    letter-spacing: -0.6px; color: var(--navy);
+    line-height: 1.15; margin-bottom: 20px;
+  }
+  h2 strong { font-weight: 700; color: var(--terra); }
+
+  .section-deck {
+    font-size: 16px; color: #444;
+    max-width: 760px; margin-bottom: 28px;
+  }
+
+  p.body {
+    font-size: 15.5px; color: #333;
+    max-width: 740px; margin-bottom: 16px;
+  }
+
+  /* PHILOSOPHY callout */
+  .insight {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin: 24px 0 28px;
+  }
+
+  .insight-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .insight p {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300; font-size: 22px;
+    color: var(--white); line-height: 1.4;
+    letter-spacing: -0.3px;
+  }
+
+  .insight p em {
+    font-style: normal; font-weight: 700;
+    color: var(--terra);
+  }
+
+  /* ACUITY TABLE */
+  .acuity-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 16px; margin: 20px 0 24px;
+  }
+  @media (min-width: 760px) {
+    .acuity-grid { grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  }
+
+  .acuity-card {
+    background: var(--white);
+    border-radius: 10px; overflow: hidden;
+    border-top: 4px solid;
+    display: flex; flex-direction: column;
+  }
+
+  .acuity-card.stable { border-top-color: var(--sage); }
+  .acuity-card.urgent { border-top-color: var(--gold); }
+  .acuity-card.critical { border-top-color: var(--terra); }
+
+  .acuity-head {
+    padding: 18px 22px 12px;
+  }
+
+  .acuity-tag {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .acuity-card.stable .acuity-tag { color: var(--sage); }
+  .acuity-card.urgent .acuity-tag { color: var(--gold); }
+  .acuity-card.critical .acuity-tag { color: var(--terra); }
+
+  .acuity-name {
+    font-weight: 700; font-size: 20px;
+    color: var(--navy); letter-spacing: -0.3px;
+  }
+
+  .acuity-body {
+    padding: 14px 22px 20px; flex: 1;
+    font-size: 13.5px; color: #444;
+    line-height: 1.5;
+  }
+
+  .acuity-body strong {
+    display: block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9.5px; font-weight: 700; letter-spacing: 1.8px;
+    text-transform: uppercase; color: var(--mid);
+    margin-top: 10px; margin-bottom: 4px;
+  }
+  .acuity-body strong:first-child { margin-top: 0; }
+
+  /* METHOD STEPS */
+  .method-flow {
+    display: grid; grid-template-columns: 1fr;
+    gap: 18px; margin: 20px 0 24px;
+  }
+  @media (min-width: 720px) {
+    .method-flow { grid-template-columns: 1fr 1fr; gap: 16px; }
+  }
+
+  .method-step {
+    background: var(--white);
+    border: 1px solid rgba(11,31,58,0.08);
+    border-radius: 10px; padding: 22px 24px;
+    position: relative;
+  }
+
+  .method-step-num {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200; font-style: italic;
+    font-size: 38px; color: var(--gold);
+    line-height: 1; margin-bottom: 6px;
+  }
+
+  .method-step h3 {
+    font-weight: 700; font-size: 17px;
+    color: var(--navy); letter-spacing: -0.2px;
+    margin-bottom: 8px;
+  }
+
+  .method-step .verb {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--terra); text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .method-step p {
+    font-size: 13.5px; color: #444;
+    line-height: 1.5;
+  }
+
+  /* ARCHITECTURE diagram */
+  .arch-box {
+    background: var(--white);
+    border-radius: 12px; padding: 30px 34px;
+    margin: 20px 0 28px;
+    border: 1px solid rgba(11,31,58,0.08);
+  }
+
+  .arch-row {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(11,31,58,0.12);
+  }
+  .arch-row:last-child { border-bottom: none; }
+
+  .arch-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 1.8px;
+    color: var(--terra); text-transform: uppercase;
+    min-width: 130px; padding-top: 3px;
+  }
+
+  .arch-content {
+    font-size: 14.5px; color: var(--navy);
+    line-height: 1.55;
+  }
+
+  .arch-content strong { color: var(--navy); font-weight: 700; }
+  .arch-content em { font-style: italic; color: var(--mid); font-weight: 400; }
+
+  /* ROTATIONS LIST */
+  .rotations {
+    display: grid; grid-template-columns: 1fr;
+    gap: 10px; margin-top: 12px;
+  }
+  @media (min-width: 640px) {
+    .rotations { grid-template-columns: 1fr 1fr; }
+  }
+
+  .rot-item {
+    background: rgba(11,31,58,0.04);
+    padding: 12px 16px; border-radius: 6px;
+    font-size: 13.5px;
+    border-left: 3px solid var(--gold);
+  }
+  .rot-item strong { color: var(--navy); }
+  .rot-item em { color: var(--mid); font-style: italic; font-size: 12.5px; display: block; margin-top: 2px; }
+
+  /* STUDENT PROFILE */
+  .profile-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 16px; margin: 20px 0;
+  }
+  @media (min-width: 820px) {
+    .profile-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+
+  .profile-card {
+    background: var(--white);
+    border: 1px solid rgba(11,31,58,0.1);
+    border-radius: 10px; padding: 24px 28px;
+  }
+
+  .profile-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--terra); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .profile-card ul { list-style: none; padding: 0; }
+  .profile-card li {
+    font-size: 14px; color: #333;
+    padding: 5px 0 5px 16px; position: relative;
+    line-height: 1.5;
+  }
+  .profile-card li::before {
+    content: ''; position: absolute; left: 0; top: 13px;
+    width: 7px; height: 1px; background: var(--gold);
+  }
+
+  /* COMPETITIVE */
+  .versus-table {
+    background: var(--white);
+    border: 1px solid rgba(11,31,58,0.1);
+    border-radius: 10px; overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .vs-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(11,31,58,0.08);
+  }
+  .vs-row:last-child { border-bottom: none; }
+  .vs-row.header {
+    background: var(--navy); color: var(--white);
+  }
+
+  .vs-cell {
+    padding: 14px 20px;
+    font-size: 14px; line-height: 1.5;
+  }
+  .vs-cell:first-child {
+    border-right: 1px solid rgba(11,31,58,0.08);
+    color: #666;
+  }
+  .vs-row.header .vs-cell {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+    border-right-color: rgba(255,255,255,0.15);
+  }
+  .vs-cell:nth-child(2) {
+    color: var(--navy); font-weight: 500;
+  }
+  .vs-row.header .vs-cell:nth-child(2) { color: var(--white); }
+
+  /* PRICING */
+  .pricing-note {
+    background: var(--white);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 20px 0;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.55;
+  }
+  .pricing-note strong { color: var(--navy); font-weight: 700; }
+
+  /* TAGLINE */
+  .tagline-block {
+    text-align: center;
+    padding: 56px 20px 10px;
+    margin-top: 40px;
+  }
+  .tagline-block .brand {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .tagline-block .primary {
+    font-weight: 200; font-size: clamp(32px, 4.5vw, 48px);
+    letter-spacing: -1.2px; color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .tagline-block .primary em { font-style: normal; font-weight: 700; color: var(--terra); }
+  .tagline-block .sub {
+    font-size: 17px; color: #555; font-weight: 300;
+    max-width: 600px; margin: 0 auto;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(11,31,58,0.12);
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; color: var(--mid);
+    letter-spacing: 0.5px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section class="hero">
+  <div class="meta-row">
+    <span class="doc-id">STAT Success, Platform Positioning</span>
+    <span class="doc-version">v1.0, April 2026</span>
+  </div>
+
+  <h1>When your grade <em>can't wait.</em></h1>
+  <p class="deck">STAT Success is a clinical method for students in academic emergencies. Built for the student halfway through a semester with a failing grade and no time left for patience. Every component teaches students to triage, stabilize, treat, and monitor their own academic situation the way a clinician would.</p>
+  <div class="hero-sub">Strategic Tools for Academic Transformation, a MedMasters Collaborative service</div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <span class="section-label">Philosophy</span>
+  </div>
+  <h2>Most study tools are built for <strong>stable students</strong>.</h2>
+  <p class="section-deck">But stable students are not the ones seeking help. Students seek help when they are already struggling, already behind, already running out of time. STAT Success was built for the students the rest of the industry ignored.</p>
+
+  <div class="insight">
+    <div class="insight-label">The core insight</div>
+    <p>In clinical medicine, you don't always have time to make the perfect decision. You have time to <em>triage</em>, <em>stabilize</em>, and act on incomplete information before the patient deteriorates. STAT Success teaches students to apply that same logic to their own academic situation.</p>
+  </div>
+
+  <p class="body">The student mid-semester with a 62% on their midterm doesn't need a twelve-week study plan. They need to identify the two or three topics that will appear on their next exam, deploy the right intervention protocol, and measure whether it's working, all in days, not weeks. That's academic triage. It's a different skill than long-term mastery, and almost no one is teaching it.</p>
+
+  <p class="body">STAT Success is that missing thing. It's not a course. It's not a tutor. It's a clinical system for academic emergencies, with the student as the clinician working their own case.</p>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <span class="section-label">The Three Acuities</span>
+  </div>
+  <h2>Not every academic situation is a <strong>crisis</strong>.</h2>
+  <p class="section-deck">The first job of STAT Success is to help a student diagnose the acuity of their own situation. Different acuities call for different strategies. This framework is the organizing principle of the entire platform.</p>
+
+  <div class="acuity-grid">
+    <div class="acuity-card stable">
+      <div class="acuity-head">
+        <div class="acuity-tag">Level 01</div>
+        <div class="acuity-name">Stable</div>
+      </div>
+      <div class="acuity-body">
+        Grade in the B range, more than four weeks until next exam, confidence across most topics.
+        <strong>Strategy</strong>
+        Long-term mastery, deep learning, deliberate practice across topics.
+        <strong>Tools</strong>
+        Standard study resources. STAT Success is not required.
+      </div>
+    </div>
+
+    <div class="acuity-card urgent">
+      <div class="acuity-head">
+        <div class="acuity-tag">Level 02</div>
+        <div class="acuity-name">Urgent</div>
+      </div>
+      <div class="acuity-body">
+        Grade in the C range, two to four weeks until next exam, low confidence in specific topics.
+        <strong>Strategy</strong>
+        Targeted intervention on diagnosed weak areas. Protocol-driven practice.
+        <strong>Tools</strong>
+        Grade Auditor triage, priority protocols, daily Vital Signs tracking.
+      </div>
+    </div>
+
+    <div class="acuity-card critical">
+      <div class="acuity-head">
+        <div class="acuity-tag">Level 03</div>
+        <div class="acuity-name">Critical</div>
+      </div>
+      <div class="acuity-body">
+        Grade at or below passing, less than two weeks until next exam, widespread uncertainty.
+        <strong>Strategy</strong>
+        Stabilize first, treat highest-yield topics only. Accept partial coverage.
+        <strong>Tools</strong>
+        48-hour protocols, cognitive load reduction, Grand Rounds case support.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <span class="section-label">The Method</span>
+  </div>
+  <h2>Four clinical phases, applied to <strong>your own learning</strong>.</h2>
+  <p class="section-deck">Every rotation in STAT Success, regardless of subject, follows the same four phases. Students learn the method once in their first rotation and reuse it in every subsequent course. The framework is portable. The content changes.</p>
+
+  <div class="method-flow">
+    <div class="method-step">
+      <div class="method-step-num">i</div>
+      <div class="verb">Student runs</div>
+      <h3>Triage</h3>
+      <p>Student uses the Grade Auditor to diagnose acuity, identify the two or three topics that are bleeding points, and rank by urgency. Output: a personal acuity score and ranked treatment priorities.</p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">ii</div>
+      <div class="verb">Student applies</div>
+      <h3>Stabilize</h3>
+      <p>Immediate interventions for the highest-priority topics. Active recall protocols, spaced review schedules, stop-the-bleed techniques for the nearest exam. Output: a stabilization plan for the next seven days.</p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">iii</div>
+      <div class="verb">Student practices</div>
+      <h3>Treat</h3>
+      <p>Deep intervention on the diagnosed weak topics using subject-specific tools, teach-back protocols, and, where applicable, Grand Rounds team case work. Output: measurable mastery on the target topics.</p>
+    </div>
+
+    <div class="method-step">
+      <div class="method-step-num">iv</div>
+      <div class="verb">Student tracks</div>
+      <h3>Monitor</h3>
+      <p>Weekly self-assessment, grade trajectory tracking, early warning signs of deterioration, adjustment protocols. Output: sustained improvement into the next exam and beyond.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <span class="section-label">Platform Architecture</span>
+  </div>
+  <h2>One platform, many <strong>rotations</strong>.</h2>
+  <p class="section-deck">STAT Success is not a course; it is a platform. Individual subject courses are called rotations. Every rotation plugs into the same shared infrastructure. Build the methodology once, deploy it across every prerequisite and nursing subject.</p>
+
+  <div class="arch-box">
+    <div class="arch-row">
+      <div class="arch-label">Platform</div>
+      <div class="arch-content">
+        <strong>STAT Success</strong><br>
+        <em>Strategic Tools for Academic Transformation</em>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-label">Rotations</div>
+      <div class="arch-content">
+        Subject-specific courses that share the STAT methodology. Each rotation uses the same four phases with content tuned to its discipline.
+        <div class="rotations">
+          <div class="rot-item"><strong>A&amp;P STAT</strong><em>First rotation, summer 2026 launch</em></div>
+          <div class="rot-item"><strong>Chemistry STAT</strong><em>Planned 2027</em></div>
+          <div class="rot-item"><strong>Microbiology STAT</strong><em>Planned 2027</em></div>
+          <div class="rot-item"><strong>Pathophysiology STAT</strong><em>Planned 2028</em></div>
+          <div class="rot-item"><strong>Pharmacology STAT</strong><em>Planned 2028</em></div>
+          <div class="rot-item"><strong>Nursing STAT</strong><em>Extension into nursing school content</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-label">Team layer</div>
+      <div class="arch-content">
+        <strong>Grand Rounds</strong><br>
+        The team-based learning application layer. Students present their own cases, reason through them with peers, and learn from each other's diagnostic thinking. Grand Rounds cuts across rotations: any STAT student can participate, and nursing-track students encounter content across specialties.
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-label">Shared tools</div>
+      <div class="arch-content">
+        <strong>Grade Auditor</strong> <em>, clinical triage for the student's academic case</em><br>
+        <strong>Protocols Library</strong> <em>, intervention playbook</em><br>
+        <strong>Vital Signs</strong> <em>, monitoring dashboard and early warning system</em><br>
+        <strong>Reflection Journal</strong> <em>, metacognition training</em>
+      </div>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-label">Parent brand</div>
+      <div class="arch-content">
+        MedMasters Collaborative, LLC. STAT Success is the flagship product line of the Collaborative brand and serves as the proof-of-method for MedMasters Method, the Tier III teaching brand.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <span class="section-label">Student Profile</span>
+  </div>
+  <h2>Built for the student <strong>no one else is building for</strong>.</h2>
+  <p class="section-deck">STAT Success has a very specific customer. Everything, from the tagline to the tool design, is engineered for this student. Trying to serve someone outside this profile weakens the product.</p>
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h3>Who STAT Success is for</h3>
+      <ul>
+        <li>A student currently enrolled in a prerequisite science or nursing course</li>
+        <li>Mid-semester, not at the start or end</li>
+        <li>Grade is below their goal, typically C range or lower</li>
+        <li>An exam is coming up in days to weeks, not months</li>
+        <li>Motivated, but running out of time and confidence</li>
+        <li>Willing to do the work, not looking for shortcuts or answers</li>
+        <li>Paying for themselves, or backed by a parent or institution who will</li>
+      </ul>
+    </div>
+    <div class="profile-card">
+      <h3>Who STAT Success is not for</h3>
+      <ul>
+        <li>Students looking for long-term mastery programs</li>
+        <li>Students who want content dumps without structure</li>
+        <li>Students who want someone else to do the thinking for them</li>
+        <li>Students still in the first quarter of a course</li>
+        <li>Students already earning A's who want enrichment</li>
+        <li>Students in high school or early college general education</li>
+        <li>Students looking for answer keys, cheat sheets, or test banks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">06</span>
+    <span class="section-label">Competitive Positioning</span>
+  </div>
+  <h2>Not a gym. An <strong>urgent care</strong>.</h2>
+  <p class="section-deck">STAT Success competes in a different category than most study tools, which changes the economics. Mass-market study tools are priced like gyms: cheap, subscription-based, optimized for general improvement. STAT Success is priced like urgent care: higher upfront cost, specific outcome, time-limited engagement.</p>
+
+  <div class="versus-table">
+    <div class="vs-row header">
+      <div class="vs-cell">Mass-market study tools</div>
+      <div class="vs-cell">STAT Success</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell">Built for stable students seeking general improvement</div>
+      <div class="vs-cell">Built for urgent and critical students facing specific deadlines</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell">Value proposition: marginal improvement over studying alone</div>
+      <div class="vs-cell">Value proposition: save your grade or recover from academic crisis</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell">Cheap monthly subscription ($20 to $40/month)</div>
+      <div class="vs-cell">Focused intervention pricing ($200 to $500 per rotation)</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell">Content-first: videos, flashcards, notes</div>
+      <div class="vs-cell">Method-first: protocols, triage, tools, feedback</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell">Student is a consumer of content</div>
+      <div class="vs-cell">Student is a clinician working their own case</div>
+    </div>
+  </div>
+
+  <p class="body">The pricing reflects the stakes. A nursing student who fails A&P loses a year of progress and tens of thousands in deferred income. A premed student loses GPA competitiveness and possibly their application. Saving those outcomes is not a $20 purchase. STAT Success prices to the value of the rescue, which is substantial.</p>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">07</span>
+    <span class="section-label">Pricing Model</span>
+  </div>
+  <h2>Priced like <strong>intervention</strong>, not subscription.</h2>
+  <p class="section-deck">Each rotation is sold as a time-limited intervention package. Students buy the rotation, follow the protocols, and graduate out of the product within weeks. The goal is not lifetime subscription revenue. The goal is effective rescue.</p>
+
+  <div class="pricing-note">
+    <strong>Anchor pricing, A&amp;P STAT, direct to student:</strong> $297 for the full eight-week rotation access, including Grade Auditor, all protocols and tools, Grand Rounds participation, and a 30-day money-back guarantee tied to effort milestones. Tiered discounts for early enrollment and student hardship cases.
+  </div>
+
+  <div class="pricing-note">
+    <strong>Licensing to institutions:</strong> Per-student license at $75 to $150 per enrolled student per semester, or flat institutional license at $3,000 to $15,000 per term depending on program size. Institution provides access as a supplemental resource to students enrolled in their own prerequisite or nursing courses.
+  </div>
+
+  <div class="pricing-note">
+    <strong>Pilot cohort, summer 2026:</strong> First 20 students at founding pricing ($197) in exchange for detailed feedback and permission to use their testimonials and outcome data in future marketing.
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="section-num">08</span>
+    <span class="section-label">What Gets Built</span>
+  </div>
+  <h2>A platform, built <strong>rotation by rotation</strong>.</h2>
+  <p class="section-deck">STAT Success is a long arc, not a single product launch. Build the platform incrementally by building one rotation at a time, starting with the rotation that has the most existing content and strongest demand.</p>
+
+  <div class="arch-box">
+    <div class="arch-row">
+      <div class="arch-label">Summer 2026</div>
+      <div class="arch-content">
+        <strong>A&amp;P STAT pilot cohort.</strong> Full Triage, Stabilize, Treat, Monitor build. Grade Auditor v1. Grand Rounds live sessions. Kajabi platform setup. Small pilot group (15 to 30 students) with founding pricing.
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label">Fall 2026</div>
+      <div class="arch-content">
+        Refine A&amp;P STAT based on pilot data. Collect testimonials and outcome metrics. Open enrollment to broader audience. Begin building Chemistry STAT and Microbiology STAT using the same framework.
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label">Spring 2027</div>
+      <div class="arch-content">
+        Chemistry STAT and Microbiology STAT launch. A&amp;P STAT running as evergreen. Grade Auditor v2. Begin institutional licensing conversations with community colleges and nursing programs.
+      </div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label">2027 and beyond</div>
+      <div class="arch-content">
+        Pathophysiology STAT, Pharmacology STAT, Nursing STAT sub-rotations. Grand Rounds as cross-rotation community. Coach/tutor licensing track. Feeder into MedMasters Method as the teach-how for faculty who want to build their own rotations.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tagline-block">
+  <div class="brand">STAT Success</div>
+  <div class="primary">When your grade <em>can't wait.</em></div>
+  <div class="sub">Strategic Tools for Academic Transformation, a MedMasters Collaborative service.</div>
+</div>
+
+<footer>
+  <span>STAT Success Platform Positioning, v1.0, April 2026</span>
+  <span>MedMasters Collaborative, LLC</span>
+</footer>
+
+</div>
+</body>
+</html>

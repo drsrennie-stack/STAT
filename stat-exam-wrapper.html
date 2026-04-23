@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Exam Wrapper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-navy-hover: #0D2950;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #D1D5DB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #047857;
+  --cc-success-tint: #ECFDF5;
+  --cc-warning: #B45309;
+  --cc-warning-tint: #FEF3C7;
+  --cc-danger: #B91C1C;
+  --cc-danger-tint: #FEE2E2;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* MASTHEAD */
+.masthead { margin-bottom: 2rem; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 1.5rem;
+}
+
+.how-to {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-gold);
+  margin: 1.5rem 0 2.5rem;
+  background: var(--cc-tint-gold);
+}
+
+.how-to__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.how-to__title::before {
+  content: "i";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.how-to__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+}
+.how-to__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* SECTIONS */
+.section {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 2rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.section__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.section__intro {
+  font-size: 0.9375rem;
+  color: var(--cc-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.section__intro strong { color: var(--cc-navy); }
+
+/* FIELDS */
+.field { margin-bottom: 1.25rem; }
+
+.field__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.field__help {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.5rem;
+  margin-top: -0.125rem;
+  line-height: 1.5;
+}
+
+.field__input,
+.field__select,
+.field__textarea {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-family: var(--cc-font);
+  font-size: 0.9375rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  transition: border-color 0.15s ease;
+}
+
+.field__input:focus,
+.field__select:focus,
+.field__textarea:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+.field__textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+  font-family: var(--cc-font);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field-row--three { grid-template-columns: 1fr 1fr 1fr; }
+
+@media (max-width: 640px) {
+  .field-row, .field-row--three { grid-template-columns: 1fr; }
+}
+
+/* LIKERT SCALES */
+.likert {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.375rem;
+  margin-top: 0.375rem;
+}
+
+@media (max-width: 640px) {
+  .likert { grid-template-columns: 1fr 1fr; }
+}
+
+.likert__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.625rem 0.375rem;
+  background: var(--cc-tint-navy);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  position: relative;
+}
+
+.likert__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.likert__option:hover { border-color: var(--cc-gold); }
+
+.likert__option.selected {
+  background: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+
+.likert__option.selected .likert__value,
+.likert__option.selected .likert__label {
+  color: var(--cc-gold-bright);
+}
+
+.likert__value {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+}
+
+.likert__label {
+  font-size: 0.6875rem;
+  color: var(--cc-text-muted);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ERROR CATEGORIES (breakdown of wrong answers) */
+.error-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.error-row {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.875rem 1rem;
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 0 8px 8px 0;
+}
+
+.error-row__label {
+  font-size: 0.875rem;
+  color: var(--cc-text);
+}
+
+.error-row__label strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+}
+
+.error-row__label span {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+  line-height: 1.5;
+}
+
+.error-row__input {
+  padding: 0.5rem 0.625rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 6px;
+  text-align: center;
+  transition: border-color 0.15s ease;
+}
+
+.error-row__input:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+@media (max-width: 560px) {
+  .error-row { grid-template-columns: 1fr; }
+}
+
+/* SUMMARY CARDS */
+.summary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.summary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.summary__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.75rem;
+}
+
+.summary__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .summary__grid { grid-template-columns: 1fr; }
+}
+
+.summary__metric {
+  padding: 0.75rem 0;
+}
+
+.summary__metric + .summary__metric {
+  border-left: 1px solid rgba(250, 250, 247, 0.15);
+  padding-left: 1rem;
+}
+
+@media (max-width: 640px) {
+  .summary__metric + .summary__metric {
+    border-left: none;
+    border-top: 1px solid rgba(250, 250, 247, 0.15);
+    padding-left: 0;
+    padding-top: 0.75rem;
+  }
+}
+
+.summary__metric-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.25rem;
+}
+
+.summary__metric-value {
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--cc-text-inverse);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.summary__metric-value--muted {
+  font-size: 1rem;
+  color: rgba(250, 250, 247, 0.7);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* PATTERN INSIGHT CARD */
+.insight {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin: 1.25rem 0;
+  border-left: 3px solid;
+}
+
+.insight--primary {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+
+.insight--neutral {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+
+.insight__label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.insight--primary .insight__label { color: var(--cc-gold-deep); }
+.insight--neutral .insight__label { color: var(--cc-navy); }
+
+.insight__label::before {
+  content: "";
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11px;
+}
+
+.insight--primary .insight__label::before {
+  content: "P";
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.insight--neutral .insight__label::before {
+  content: "i";
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+
+.insight__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+}
+
+.insight__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--cc-font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1.5px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+}
+.btn--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+}
+
+.btn--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-border-strong);
+}
+.btn--secondary:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+}
+
+.btn--danger {
+  background: var(--cc-surface);
+  color: var(--cc-danger);
+  border-color: var(--cc-border-strong);
+  margin-left: auto;
+}
+.btn--danger:hover { border-color: var(--cc-danger); }
+
+.btn:focus-visible {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+}
+
+/* SAVE INDICATOR */
+.save-indicator {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--cc-success);
+  color: white;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+}
+
+.save-indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PRINT STYLES */
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .shell { max-width: 100%; padding: 0; }
+  .actions, .save-indicator, .how-to { display: none !important; }
+  .section {
+    box-shadow: none;
+    border: 1px solid #999;
+    page-break-inside: avoid;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .masthead { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #333; }
+  h1 { font-size: 18pt; margin-bottom: 0.5rem; }
+  .lead { font-size: 10pt; margin-bottom: 0.5rem; }
+  .section__title { font-size: 12pt; }
+  .field__input, .field__select, .field__textarea, .error-row__input {
+    border: none;
+    border-bottom: 1px solid #666;
+    border-radius: 0;
+    padding: 0.25rem 0;
+    background: transparent;
+  }
+  .likert__option { border: 1px solid #999; background: white !important; }
+  .likert__option.selected { border: 2px solid #333 !important; }
+  .likert__option.selected .likert__value,
+  .likert__option.selected .likert__label { color: #333 !important; }
+  .summary, .insight {
+    background: white !important;
+    color: black !important;
+    border: 1.5px solid #333;
+  }
+  .summary__metric-label, .summary__metric-value { color: black !important; }
+  h2, h3, .section__header { page-break-after: avoid; }
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 0.9375rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .section { padding: 1.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="masthead">
+    <div class="eyebrow">STAT Success Cohort · Week 4 Optional Tool</div>
+    <h1>Exam wrapper.</h1>
+    <p class="lead">
+      A structured reflection for after you get an exam back. Helps you see not just what you got wrong, but what kind of error it was and what to change. Use this for your midterm, or for any graded exam you want to learn from.
+    </p>
+  </div>
+
+  <div class="how-to">
+    <div class="how-to__title">How to use this tool</div>
+    <p class="how-to__text">
+      Have your graded exam in front of you when you start. Work through the sections in order. <strong>Section 1</strong>, basic exam information. <strong>Section 2</strong>, how you prepared. <strong>Section 3</strong>, a breakdown of your wrong answers by error type. <strong>Section 4</strong>, patterns and what to change. Takes 15 to 20 minutes. Auto-saves as you go.
+    </p>
+  </div>
+
+  <!-- SECTION 1: Exam details -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">01</span>
+      <h2 class="section__title">The exam</h2>
+    </div>
+    <p class="section__intro">Basic information about the exam you are reviewing.</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field__label" for="f_course">Course</label>
+        <input type="text" class="field__input" id="f_course" data-field="course" placeholder="e.g. Anatomy and Physiology 2">
+      </div>
+      <div class="field">
+        <label class="field__label" for="f_exam_name">Exam name</label>
+        <input type="text" class="field__input" id="f_exam_name" data-field="exam_name" placeholder="e.g. Midterm, Exam 3, Lab practical 2">
+      </div>
+    </div>
+
+    <div class="field-row--three" style="display: grid; gap: 1rem;">
+      <div class="field">
+        <label class="field__label" for="f_exam_type">Exam type</label>
+        <select class="field__select" id="f_exam_type" data-field="exam_type">
+          <option value="">Select...</option>
+          <option value="lecture">Lecture exam</option>
+          <option value="lab_practical">Lab practical</option>
+          <option value="cumulative">Cumulative/comprehensive</option>
+          <option value="quiz">Quiz</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="f_points_earned">Points earned</label>
+        <input type="number" class="field__input" id="f_points_earned" data-field="points_earned" placeholder="e.g. 68" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label class="field__label" for="f_points_possible">Points possible</label>
+        <input type="number" class="field__input" id="f_points_possible" data-field="points_possible" placeholder="e.g. 100" min="0" step="0.01">
+      </div>
+    </div>
+
+    <div class="summary" id="scoreSummary" style="display: none;">
+      <div class="summary__label">Score summary</div>
+      <div class="summary__grid">
+        <div class="summary__metric">
+          <div class="summary__metric-label">Score</div>
+          <div class="summary__metric-value" id="scorePercent">—</div>
+        </div>
+        <div class="summary__metric">
+          <div class="summary__metric-label">Letter grade (typical)</div>
+          <div class="summary__metric-value summary__metric-value--muted" id="scoreLetter">—</div>
+        </div>
+        <div class="summary__metric">
+          <div class="summary__metric-label">Points lost</div>
+          <div class="summary__metric-value" id="scoreLost">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: How you prepared -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">02</span>
+      <h2 class="section__title">How you prepared</h2>
+    </div>
+    <p class="section__intro">Be honest. This section is most useful when you describe what you actually did, not what you meant to do.</p>
+
+    <div class="field">
+      <label class="field__label" for="f_hours_studied">Approximately how many hours did you study for this exam?</label>
+      <input type="number" class="field__input" id="f_hours_studied" data-field="hours_studied" placeholder="e.g. 12" min="0" step="0.5">
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="f_days_spread">Across how many days did you spread your studying?</label>
+      <p class="field__help">One day cramming scores very differently from 7 days of spaced work, even at the same hour total.</p>
+      <input type="number" class="field__input" id="f_days_spread" data-field="days_spread" placeholder="e.g. 4" min="0" step="1">
+    </div>
+
+    <div class="field">
+      <label class="field__label">How active was your preparation?</label>
+      <p class="field__help">1 = almost entirely passive (rereading, watching videos). 5 = almost entirely active (retrieval, self-testing, explaining out loud).</p>
+      <div class="likert" data-likert-field="prep_active">
+        <label class="likert__option" data-value="1">
+          <input type="radio" name="prep_active" value="1">
+          <span class="likert__value">1</span>
+          <span class="likert__label">All passive</span>
+        </label>
+        <label class="likert__option" data-value="2">
+          <input type="radio" name="prep_active" value="2">
+          <span class="likert__value">2</span>
+          <span class="likert__label">Mostly passive</span>
+        </label>
+        <label class="likert__option" data-value="3">
+          <input type="radio" name="prep_active" value="3">
+          <span class="likert__value">3</span>
+          <span class="likert__label">Mixed</span>
+        </label>
+        <label class="likert__option" data-value="4">
+          <input type="radio" name="prep_active" value="4">
+          <span class="likert__value">4</span>
+          <span class="likert__label">Mostly active</span>
+        </label>
+        <label class="likert__option" data-value="5">
+          <input type="radio" name="prep_active" value="5">
+          <span class="likert__value">5</span>
+          <span class="likert__label">All active</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field__label">How confident did you feel walking into the exam?</label>
+      <p class="field__help">1 = walking into a disaster. 5 = felt genuinely prepared.</p>
+      <div class="likert" data-likert-field="confidence_before">
+        <label class="likert__option" data-value="1">
+          <input type="radio" name="confidence_before" value="1">
+          <span class="likert__value">1</span>
+          <span class="likert__label">Very low</span>
+        </label>
+        <label class="likert__option" data-value="2">
+          <input type="radio" name="confidence_before" value="2">
+          <span class="likert__value">2</span>
+          <span class="likert__label">Low</span>
+        </label>
+        <label class="likert__option" data-value="3">
+          <input type="radio" name="confidence_before" value="3">
+          <span class="likert__value">3</span>
+          <span class="likert__label">Neutral</span>
+        </label>
+        <label class="likert__option" data-value="4">
+          <input type="radio" name="confidence_before" value="4">
+          <span class="likert__value">4</span>
+          <span class="likert__label">Fairly high</span>
+        </label>
+        <label class="likert__option" data-value="5">
+          <input type="radio" name="confidence_before" value="5">
+          <span class="likert__value">5</span>
+          <span class="likert__label">Very high</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="f_resources_used">Which resources did you use?</label>
+      <p class="field__help">List briefly. Textbook, lecture notes, practice questions, study group, office hours, YouTube, etc.</p>
+      <textarea class="field__textarea" id="f_resources_used" data-field="resources_used" rows="3" placeholder="e.g. Lecture slides, chapter 12 practice questions, watched three Khan Academy videos, one office hours visit..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Error breakdown -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">03</span>
+      <h2 class="section__title">Breakdown of wrong answers</h2>
+    </div>
+    <p class="section__intro">Go through your exam. For each question you got wrong, classify the error type. <strong>The total should equal the number of points you lost.</strong> If a single question is worth multiple points, you can split it across categories.</p>
+
+    <div class="error-grid">
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Did not study this content</strong>
+          <span>The material was in the syllabus, but you did not study it, or studied it superficially.</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="not_studied" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Studied but did not understand</strong>
+          <span>You covered it but it did not click. You could not have explained it to someone else.</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="not_understood" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Understood but could not apply</strong>
+          <span>You knew the concept but could not use it on this question. Application failure, not knowledge failure.</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="not_applied" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Foundational gap</strong>
+          <span>You needed a prerequisite concept you did not have (from A&amp;P 1, chemistry, or earlier in this course).</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="foundation_gap" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Misread the question</strong>
+          <span>You knew the answer but misread what was asked. Reading errors, ambiguous wording, missed a "not" or "except."</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="misread" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Test anxiety / blanking</strong>
+          <span>You knew the material while studying but could not retrieve it during the exam.</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="anxiety" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Time pressure / careless</strong>
+          <span>You rushed and made errors you would not have made with more time. Arithmetic, switched answers, ran out of time.</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="time_careless" placeholder="Points" min="0" step="0.5">
+      </div>
+
+      <div class="error-row">
+        <div class="error-row__label">
+          <strong>Physical or visual recognition failure</strong>
+          <span>Lab practical only. You knew the structure by name and function but could not identify it on the model or slide.</span>
+        </div>
+        <input type="number" class="error-row__input" data-error="recognition" placeholder="Points" min="0" step="0.5">
+      </div>
+    </div>
+
+    <div class="summary" id="errorSummary" style="display: none;">
+      <div class="summary__label">Error breakdown summary</div>
+      <div class="summary__grid">
+        <div class="summary__metric">
+          <div class="summary__metric-label">Total classified</div>
+          <div class="summary__metric-value" id="errorTotal">0</div>
+        </div>
+        <div class="summary__metric">
+          <div class="summary__metric-label">Points lost (expected)</div>
+          <div class="summary__metric-value" id="errorExpected">—</div>
+        </div>
+        <div class="summary__metric">
+          <div class="summary__metric-label">Top error category</div>
+          <div class="summary__metric-value summary__metric-value--muted" id="errorTop">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight" id="errorInsight" style="display: none;">
+      <div class="insight__label">Pattern insight</div>
+      <div class="insight__text" id="errorInsightText"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: What to change -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">04</span>
+      <h2 class="section__title">What to change for next time</h2>
+    </div>
+    <p class="section__intro">Based on the pattern above, commit to specific changes. These feed directly into your decision plan for this week.</p>
+
+    <div class="field">
+      <label class="field__label" for="f_surprised">What surprised you?</label>
+      <p class="field__help">Was there a question you were sure you got right but did not? A whole topic area you did not expect? A mismatch between your confidence and your actual performance?</p>
+      <textarea class="field__textarea" id="f_surprised" data-field="surprised" rows="3"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="f_keep">What worked? (Protect.)</label>
+      <p class="field__help">Which of your prep strategies produced right answers? These are things to keep doing.</p>
+      <textarea class="field__textarea" id="f_keep" data-field="keep" rows="3"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="f_change">What did not work? (Pivot.)</label>
+      <p class="field__help">Which strategies led to wrong answers or did not prepare you for how the exam actually tested the material? These are things to change.</p>
+      <textarea class="field__textarea" id="f_change" data-field="change" rows="3"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="f_add">What was missing? (Add.)</label>
+      <p class="field__help">What was not part of your prep that should have been? Office hours, specific practice, working with a different kind of material, getting help on a specific concept.</p>
+      <textarea class="field__textarea" id="f_add" data-field="add" rows="3"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="f_one_thing">If you only changed one thing before the next exam, what would it be?</label>
+      <p class="field__help">Be specific. Not "study more." Something like "do the first round of practice questions 5 days before the exam, not 2."</p>
+      <textarea class="field__textarea" id="f_one_thing" data-field="one_thing" rows="3"></textarea>
+    </div>
+  </section>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+    <button type="button" class="btn btn--primary" id="printBtn">Print</button>
+    <button type="button" class="btn btn--secondary" id="downloadBtn">Download</button>
+    <button type="button" class="btn btn--danger" id="clearBtn">Clear all</button>
+  </div>
+
+</div>
+
+<div class="save-indicator" id="saveIndicator">Saved</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var STORAGE_KEY = 'stat_exam_wrapper';
+
+  var state = {
+    course: '',
+    exam_name: '',
+    exam_type: '',
+    points_earned: '',
+    points_possible: '',
+    hours_studied: '',
+    days_spread: '',
+    prep_active: '',
+    confidence_before: '',
+    resources_used: '',
+    errors: {
+      not_studied: '',
+      not_understood: '',
+      not_applied: '',
+      foundation_gap: '',
+      misread: '',
+      anxiety: '',
+      time_careless: '',
+      recognition: ''
+    },
+    surprised: '',
+    keep: '',
+    change: '',
+    add: '',
+    one_thing: ''
+  };
+
+  var ERROR_LABELS = {
+    not_studied: 'Did not study this content',
+    not_understood: 'Studied but did not understand',
+    not_applied: 'Understood but could not apply',
+    foundation_gap: 'Foundational gap',
+    misread: 'Misread the question',
+    anxiety: 'Test anxiety / blanking',
+    time_careless: 'Time pressure / careless',
+    recognition: 'Physical / visual recognition'
+  };
+
+  var saveTimer = null;
+  var saveIndicator = document.getElementById('saveIndicator');
+
+  function loadState() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object') {
+          Object.keys(state).forEach(function(key) {
+            if (parsed[key] !== undefined) {
+              if (key === 'errors' && typeof parsed[key] === 'object') {
+                Object.keys(state.errors).forEach(function(ek) {
+                  if (parsed.errors[ek] !== undefined) state.errors[ek] = parsed.errors[ek];
+                });
+              } else {
+                state[key] = parsed[key];
+              }
+            }
+          });
+        }
+      }
+    } catch (e) { console.warn(e); }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      showSaveIndicator();
+    } catch (e) { console.warn(e); }
+  }
+
+  function showSaveIndicator() {
+    saveIndicator.classList.add('visible');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function() { saveIndicator.classList.remove('visible'); }, 1200);
+  }
+
+  var debouncedSave = (function() {
+    var t = null;
+    return function() { clearTimeout(t); t = setTimeout(saveState, 400); };
+  })();
+
+  // Apply saved state to form
+  function applyState() {
+    Object.keys(state).forEach(function(key) {
+      if (key === 'errors') return;
+      var el = document.querySelector('[data-field="' + key + '"]');
+      if (el) el.value = state[key];
+    });
+
+    // Likerts
+    ['prep_active', 'confidence_before'].forEach(function(key) {
+      if (state[key]) {
+        var option = document.querySelector('[data-likert-field="' + key + '"] [data-value="' + state[key] + '"]');
+        if (option) {
+          option.classList.add('selected');
+          var radio = option.querySelector('input');
+          if (radio) radio.checked = true;
+        }
+      }
+    });
+
+    // Errors
+    Object.keys(state.errors).forEach(function(key) {
+      var el = document.querySelector('[data-error="' + key + '"]');
+      if (el) el.value = state.errors[key];
+    });
+  }
+
+  function getScorePercent() {
+    var earned = parseFloat(state.points_earned);
+    var possible = parseFloat(state.points_possible);
+    if (isNaN(earned) || isNaN(possible) || possible <= 0) return null;
+    return (earned / possible) * 100;
+  }
+
+  function getLetterGrade(pct) {
+    if (pct >= 93) return 'A';
+    if (pct >= 90) return 'A-';
+    if (pct >= 87) return 'B+';
+    if (pct >= 83) return 'B';
+    if (pct >= 80) return 'B-';
+    if (pct >= 77) return 'C+';
+    if (pct >= 73) return 'C';
+    if (pct >= 70) return 'C-';
+    if (pct >= 67) return 'D+';
+    if (pct >= 63) return 'D';
+    if (pct >= 60) return 'D-';
+    return 'F';
+  }
+
+  function updateScoreSummary() {
+    var pct = getScorePercent();
+    var box = document.getElementById('scoreSummary');
+    if (pct === null) {
+      box.style.display = 'none';
+      return;
+    }
+    box.style.display = 'block';
+    document.getElementById('scorePercent').textContent = pct.toFixed(1) + '%';
+    document.getElementById('scoreLetter').textContent = getLetterGrade(pct);
+    var lost = parseFloat(state.points_possible) - parseFloat(state.points_earned);
+    document.getElementById('scoreLost').textContent = lost.toFixed(1) + ' pts';
+  }
+
+  function updateErrorSummary() {
+    var total = 0;
+    var max = { category: null, value: 0 };
+    Object.keys(state.errors).forEach(function(key) {
+      var val = parseFloat(state.errors[key]);
+      if (!isNaN(val) && val > 0) {
+        total += val;
+        if (val > max.value) {
+          max.value = val;
+          max.category = key;
+        }
+      }
+    });
+
+    var box = document.getElementById('errorSummary');
+    if (total === 0) {
+      box.style.display = 'none';
+      document.getElementById('errorInsight').style.display = 'none';
+      return;
+    }
+
+    box.style.display = 'block';
+    document.getElementById('errorTotal').textContent = total.toFixed(1) + ' pts';
+
+    var possible = parseFloat(state.points_possible);
+    var earned = parseFloat(state.points_earned);
+    if (!isNaN(possible) && !isNaN(earned)) {
+      var expected = possible - earned;
+      document.getElementById('errorExpected').textContent = expected.toFixed(1) + ' pts';
+    } else {
+      document.getElementById('errorExpected').textContent = '—';
+    }
+
+    document.getElementById('errorTop').textContent = max.category ? ERROR_LABELS[max.category] : '—';
+
+    // Pattern insight
+    updateInsight(max.category, total);
+  }
+
+  function updateInsight(topCategory, total) {
+    var box = document.getElementById('errorInsight');
+    var text = document.getElementById('errorInsightText');
+    if (!topCategory || total === 0) {
+      box.style.display = 'none';
+      return;
+    }
+
+    var insights = {
+      not_studied: 'Your largest error category is <strong>material you did not study</strong>. This is usually a prep coverage problem, not a learning problem. Next time, start with the exam topic list and verify you have covered each one before you go deep on any of them.',
+      not_understood: 'Your largest error category is <strong>content you covered but did not understand</strong>. This often signals passive study methods. Reading, rewriting, and rewatching create a feeling of familiarity that does not translate to exam performance. Try retrieval practice and explaining concepts out loud.',
+      not_applied: 'Your largest error category is <strong>application failure</strong>. You understood the material but could not use it under exam conditions. This typically means you need more practice questions at exam difficulty, especially application and clinical scenarios rather than pure recall.',
+      foundation_gap: 'Your largest error category is <strong>foundational gaps</strong>. Specific prerequisite concepts are blocking current material. Consider using the Foundation gap identifier (Lesson 4.4) to surface which gaps matter most, then schedule targeted repair time.',
+      misread: 'Your largest error category is <strong>misreading the question</strong>. Slow down. When reviewing your exam, look specifically for patterns: are you missing words like "not," "except," "best," "most"? Practice reading every question twice before answering.',
+      anxiety: 'Your largest error category is <strong>test anxiety or blanking</strong>. You knew this material while studying. The issue is retrieval under pressure, not learning. Practice testing under timed, quiet conditions that simulate the exam environment. If this pattern is severe or ongoing, talk to your facilitator about additional support.',
+      time_careless: 'Your largest error category is <strong>time pressure or careless errors</strong>. You may need to change your exam pacing strategy. Try answering easy questions first, flagging hard ones, and leaving 5 minutes at the end to check your work.',
+      recognition: 'Your largest error category is <strong>physical or visual recognition failure</strong>. This is specific to lab practicals. Paper-based study does not build this skill. You need to work with physical models, cadaver prosections, or high-quality images outside of regular lab time. Check your school for open lab hours.'
+    };
+
+    text.innerHTML = insights[topCategory] || 'Review your top error category and plan specific changes for next time.';
+    box.style.display = 'block';
+  }
+
+  function setupListeners() {
+    // Text / number / select fields
+    document.querySelectorAll('[data-field]').forEach(function(el) {
+      el.addEventListener('input', function() {
+        state[el.getAttribute('data-field')] = el.value;
+        updateScoreSummary();
+        updateErrorSummary();
+        debouncedSave();
+      });
+    });
+
+    // Likerts
+    document.querySelectorAll('[data-likert-field]').forEach(function(group) {
+      var fieldName = group.getAttribute('data-likert-field');
+      group.querySelectorAll('.likert__option').forEach(function(option) {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          state[fieldName] = option.getAttribute('data-value');
+          group.querySelectorAll('.likert__option').forEach(function(o) {
+            o.classList.remove('selected');
+            var r = o.querySelector('input');
+            if (r) r.checked = false;
+          });
+          option.classList.add('selected');
+          var radio = option.querySelector('input');
+          if (radio) radio.checked = true;
+          saveState();
+        });
+      });
+    });
+
+    // Error inputs
+    document.querySelectorAll('[data-error]').forEach(function(el) {
+      el.addEventListener('input', function() {
+        state.errors[el.getAttribute('data-error')] = el.value;
+        updateErrorSummary();
+        debouncedSave();
+      });
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function() { window.print(); });
+    document.getElementById('downloadBtn').addEventListener('click', downloadHTML);
+    document.getElementById('clearBtn').addEventListener('click', function() {
+      if (confirm('Clear all data? This cannot be undone.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    });
+  }
+
+  function downloadHTML() {
+    var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Exam Wrapper</title></head><body>' +
+               document.documentElement.outerHTML +
+               '</body></html>';
+    var blob = new Blob([html], { type: 'text/html' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    var courseSlug = (state.course || 'exam').replace(/[^a-z0-9]/gi, '-').toLowerCase();
+    a.download = 'stat-exam-wrapper-' + courseSlug + '-' + new Date().toISOString().slice(0, 10) + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function init() {
+    loadState();
+    applyState();
+    setupListeners();
+    updateScoreSummary();
+    updateErrorSummary();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  var frameId = window.name || 'stat_exam_wrapper';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 200);
+})();
+</script>
+
+</body>
+</html>

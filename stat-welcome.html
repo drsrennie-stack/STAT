@@ -29,7 +29,6 @@
   --cc-text-secondary: #374151;
   --cc-text-muted: #4B5563;
   --cc-text-inverse: #FAFAF7;
-  --cc-warning: #92400E;
 
   --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -119,7 +118,6 @@ h2:first-of-type { margin-top: 2rem; }
   color: var(--cc-text);
 }
 
-/* Callout - tinted editorial block with letter mark */
 .callout {
   padding: 20px 26px;
   border-radius: 0 12px 12px 0;
@@ -144,19 +142,11 @@ h2:first-of-type { margin-top: 2rem; }
 }
 .callout--accent:hover { background: #FFFFFF; }
 
-.callout--warning,
-.callout--alert {
+.callout--warning {
   background: #FEF3C7;
   border-left-color: #B45309;
 }
-.callout--warning:hover,
-.callout--alert:hover { background: #FFFFFF; }
-
-.callout--success {
-  background: #D1FAE5;
-  border-left-color: #047857;
-}
-.callout--success:hover { background: #FFFFFF; }
+.callout--warning:hover { background: #FFFFFF; }
 
 .callout__header {
   display: flex;
@@ -185,18 +175,9 @@ h2:first-of-type { margin-top: 2rem; }
   background: var(--cc-gold);
   color: var(--cc-navy);
 }
-.callout--warning .callout__mark,
-.callout--alert .callout__mark {
+.callout--warning .callout__mark {
   background: #B45309;
   color: #FEF3C7;
-}
-.callout--success .callout__mark {
-  background: #047857;
-  color: #D1FAE5;
-}
-
-.callout__body {
-  padding: 0;
 }
 
 .callout__title {
@@ -207,9 +188,7 @@ h2:first-of-type { margin-top: 2rem; }
   color: var(--cc-navy);
   margin: 0;
 }
-.callout--warning .callout__title,
-.callout--alert .callout__title { color: #7A3A06; }
-.callout--success .callout__title { color: #065F46; }
+.callout--warning .callout__title { color: #7A3A06; }
 
 .callout__text {
   font-size: 0.9375rem;
@@ -257,7 +236,7 @@ h2:first-of-type { margin-top: 2rem; }
 
 .mode-card__row {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 110px 1fr;
   gap: 0.75rem;
   padding: 0.625rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -360,7 +339,7 @@ h2:first-of-type { margin-top: 2rem; }
             <span class="mode-card__row-value">Stable</span>
           </div>
           <div class="mode-card__row">
-            <span class="mode-card__row-label">Decide</span>
+            <span class="mode-card__row-label">Intervention</span>
             <span class="mode-card__row-value">Gentle, gradual</span>
           </div>
           <div class="mode-card__row">
@@ -383,7 +362,7 @@ h2:first-of-type { margin-top: 2rem; }
             <span class="mode-card__row-value">Unstable</span>
           </div>
           <div class="mode-card__row">
-            <span class="mode-card__row-label">Decide</span>
+            <span class="mode-card__row-label">Intervention</span>
             <span class="mode-card__row-value">Direct, immediate</span>
           </div>
           <div class="mode-card__row">
@@ -427,10 +406,13 @@ h2:first-of-type { margin-top: 2rem; }
     </p>
 
     <div class="callout callout--accent">
-      <div class="callout__body">
-        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">You will recognize this pattern</p></div><div class="callout__body"><p class="callout__text">
-          The same principles that govern critical care in a hospital govern what we do here: fast assessment, team-based reasoning, specific action, honest tracking, repeat. You are training to run these protocols on patients. We are asking you to run them on yourself first.
-        </p></div></div>
+      <div class="callout__header">
+        <span class="callout__mark" aria-hidden="true">P</span>
+        <p class="callout__title">You will recognize this pattern</p>
+      </div>
+      <p class="callout__text">
+        The same principles that govern critical care in a hospital govern what we do here: fast assessment, team-based reasoning, specific action, honest tracking, repeat. You are training to run these protocols on patients. We are asking you to run them on yourself first.
+      </p>
     </div>
 
     <h2>What STAT is, and what STAT is not</h2>
@@ -444,10 +426,13 @@ h2:first-of-type { margin-top: 2rem; }
     </p>
 
     <div class="callout callout--info">
-      <div class="callout__body">
-        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">The underlying principle</p></div><div class="callout__body"><p class="callout__text">
-          Most students failing A&amp;P are failing because accountability structures collapsed, not because they lack information. STAT Success Cohort is designed around that reality.
-        </p></div></div>
+      <div class="callout__header">
+        <span class="callout__mark" aria-hidden="true">i</span>
+        <p class="callout__title">The underlying principle</p>
+      </div>
+      <p class="callout__text">
+        Most students failing A&amp;P are failing because accountability structures collapsed, not because they lack information. STAT Success Cohort is designed around that reality.
+      </p>
     </div>
 
     <p>
@@ -463,7 +448,7 @@ h2:first-of-type { margin-top: 2rem; }
     </p>
 
     <div class="signature-block">
-      <div class="signature-block__name">Dr. Sharilyn Rennie, MD</div>
+      <div class="signature-block__name">Dr. Sharilyn Rennie</div>
       <div class="signature-block__title">Founder, STAT Success Cohort</div>
     </div>
 
@@ -473,7 +458,7 @@ h2:first-of-type { margin-top: 2rem; }
 
 <script>
 (function() {
-  var frameId = window.name || 'mmcc_welcome';
+  var frameId = window.name || 'stat_welcome';
   function sendHeight() {
     var height = Math.max(
       document.body.scrollHeight,

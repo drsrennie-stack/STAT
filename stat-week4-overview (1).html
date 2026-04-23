@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 4 Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 4</div>
+  <h1>This week's CODE.</h1>
+  <p class="lead">
+    Week 4 is the midpoint. Most of you just took your course midterm, or will this week. This is the first time the program's work meets the real data. What the data says determines what Week 5 becomes.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 4 theme</div>
+    <div class="theme-card__title">The midterm hinge.</div>
+    <p class="theme-card__body">
+      In clinical work, the midpoint of a patient's treatment course is where you reassess. Is the intervention working? What is improving? What is not? Based on the answer, you continue, escalate, or pivot. Week 4 works the same way. The midterm exam or your current grades are data, not verdict. <strong>Your job this week is to read the data honestly and decide what stays, what changes, and what needs to be added.</strong>
+    </p>
+  </div>
+
+  <h2>Why Week 4 matters</h2>
+
+  <p>
+    You have been in the program for three full weeks. You changed how you study. You identified foundation gaps and did selective repair. You showed up to your team. You made decisions and evaluated them.
+  </p>
+
+  <p>
+    Now the data is coming in. Midterm exam. Current course grade. Your own sense of what is clicking and what is not. <strong>This is the first point in the program where you can actually see whether the work is working.</strong>
+  </p>
+
+  <p>
+    Some of you will see clear improvement. Some will see mixed results. A few may see no improvement, or even a drop. All three outcomes are data worth having. The point of Week 4 is not to celebrate or panic. It is to read the data carefully and decide what comes next.
+  </p>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">C</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Current state</div>
+      <p class="phase-note__text">
+        Your Week 4 Current state audit opens with Evaluate on Week 3 commitments. Then a focused current state section, including your midterm result if you have it. Be honest, not performative. A bad number reported clearly is worth more than a good number with no context.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">O</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Observe</div>
+      <p class="phase-note__text">
+        Your team works through Alex's case together. Alex has been in a STAT-style program for the past three weeks and just took the midterm. The results are mixed. Lecture scores improved significantly. Lab practical did not. What should Alex do now?
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">D</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Decide</div>
+      <p class="phase-note__text">
+        Your Week 4 decision plan looks different from the first three. This week you are deciding what to <strong>protect</strong>, what to <strong>pivot</strong>, and what to <strong>add</strong>. Three commitments still, plus the 24-hour action. But the framing shifts.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">E</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Evaluate</div>
+      <p class="phase-note__text">
+        Two Evaluates running this week. One is Week 3 commitments, in the Current state audit. The other is the bigger Evaluate built into the mid-program reflection at Lesson 5.7: the first half of the program overall. What has changed. What has not. What you now know that you did not know in Week 1.
+      </p>
+    </div>
+  </div>
+
+  <h2>What you will do this week</h2>
+
+  <ul class="checklist">
+    <li>
+      <strong>Read Alex's case (Lesson 5.2).</strong>
+      <span>15 to 20 minutes. Pay attention to mixed results. Most real midterms are mixed.</span>
+    </li>
+    <li>
+      <strong>Complete your Week 4 Current state audit (Lesson 5.3).</strong>
+      <span>About 25 minutes. Include your midterm result honestly. If you do not have the result yet, note what you expect and what you are afraid of.</span>
+    </li>
+    <li>
+      <strong>Use the Exam wrapper tool if you have a midterm back (Lesson 5.4, optional).</strong>
+      <span>15 to 20 minutes. Structured reflection on how you prepared, how it went, and what the exam reveals about your actual understanding.</span>
+    </li>
+    <li>
+      <strong>Show up to your live session on time (Lesson 5.5).</strong>
+      <span>90 minutes on Zoom. Work Alex's case together. Bring your own midterm data into the discussion if you are willing.</span>
+    </li>
+    <li>
+      <strong>Write your Week 4 decision plan (Lesson 5.6).</strong>
+      <span>10 to 15 minutes after the session. Protect, pivot, add. Three commitments, one 24-hour action.</span>
+    </li>
+    <li>
+      <strong>Complete the mid-program reflection (Lesson 5.7).</strong>
+      <span>About 20 minutes. This is separate from your weekly work. It is a structured look back at the first half and forward to the second half. Do it before next week opens.</span>
+    </li>
+  </ul>
+
+  <h2>What to expect from your live session</h2>
+
+  <p>
+    Alex's case has mixed results. Your team's job is to help Alex read the data accurately: what is working, what is not, and what needs to change. Same three-question structure as Morgan and Jordan, but the questions hit differently this week.
+  </p>
+
+  <p>
+    Your facilitator will also open space for team members to share their own midterm data if they choose to. <strong>This is voluntary.</strong> No one is required to share specific numbers. But students who are willing to put their own data in the room often get more out of the session.
+  </p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The work of Week 4 is honest reading</p>
+    </div>
+    <p class="callout__text">
+      Midterm results tempt two reactions. If the numbers are up, the temptation is relief and relaxation: "I've got this now." If the numbers are not up, the temptation is despair and paralysis: "Nothing is working." <strong>Both reactions hide the actual data.</strong> The work of Week 4 is to resist both temptations and ask the harder questions. What specifically is working. What specifically is not. What does the data tell me to do differently.
+    </p>
+  </div>
+
+  <h2>Your focus for the week</h2>
+
+  <p>
+    Read your own data the same way you will read Alex's. Without judgment. Without performance. Without drama. Just: what happened, why, and what do I do now.
+  </p>
+
+  <p>
+    Your decision plan this week has three parts:
+  </p>
+
+  <p>
+    <strong>Protect.</strong> What is working that you are going to keep doing regardless of whether the numbers moved yet. Real change sometimes shows up in the second half, not the first. Do not stop what is working.
+  </p>
+
+  <p>
+    <strong>Pivot.</strong> What is not working and needs to change. If lab practical is still low and lecture exam is improving, you cannot use the same study method for both. Lab requires different work.
+  </p>
+
+  <p>
+    <strong>Add.</strong> What has not been part of your plan that the midterm showed you needed. Office hours. Peer study. A specific resource. One thing, not ten.
+  </p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">If your midterm was bad</p>
+    </div>
+    <p class="callout__text">
+      A bad midterm is not the end of the program or your course. It is a data point. If you are in a position where even a perfect second half will not pass the course, your facilitator will help you think about the realistic options, which may include a strategic withdrawal. <strong>That is a serious conversation, not a shameful one.</strong> Reach out to your facilitator this week if this applies to you.
+    </p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Start here</div>
+    <h3 class="next-step__title">Read Alex's case (Lesson 5.2).</h3>
+    <p class="next-step__body">
+      Then complete your Current state audit. Use the Exam wrapper if you have your midterm back. Save the mid-program reflection for after your live session, when the team's discussion is still fresh.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week4_overview';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

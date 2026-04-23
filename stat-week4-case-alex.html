@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 4 Pre-read — Alex's Case</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 0 0 2.5rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+/* Patient-chart-style data card */
+.chart-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+.chart-card__header {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chart-card__header-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+}
+
+.chart-card__header-id {
+  font-size: 0.75rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  color: rgba(250, 250, 247, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.chart-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.chart-card__field {
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+}
+
+.chart-card__field:nth-child(even) { border-right: none; }
+.chart-card__field:nth-last-child(-n+2) { border-bottom: none; }
+
+.chart-card__field-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.chart-card__field-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  line-height: 1.4;
+}
+
+.chart-card__field-value--alert {
+  color: #B91C1C;
+}
+
+.chart-card__field-value--success {
+  color: #047857;
+}
+
+@media (max-width: 560px) {
+  .chart-card__grid { grid-template-columns: 1fr; }
+  .chart-card__field { border-right: none; }
+  .chart-card__field:nth-last-child(2) { border-bottom: 1px solid var(--cc-border); }
+}
+
+/* Trajectory card - shows progression over time */
+.trajectory {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.75rem 0;
+}
+
+.trajectory__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 1rem;
+}
+
+.trajectory__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.trajectory__row {
+  display: grid;
+  grid-template-columns: 100px 1fr 80px;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.trajectory__row:last-child { border-bottom: none; }
+
+.trajectory__period {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cc-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.trajectory__event {
+  font-size: 0.875rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.4;
+}
+
+.trajectory__score {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  text-align: right;
+}
+
+.trajectory__score--up { color: #047857; }
+.trajectory__score--flat { color: var(--cc-warning, #B45309); }
+
+@media (max-width: 560px) {
+  .trajectory__row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+  }
+  .trajectory__score { text-align: left; }
+}
+
+/* Quote block */
+.quote {
+  background: var(--cc-tint-gold);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  position: relative;
+  border-left: 3px solid var(--cc-gold);
+}
+
+.quote__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+
+.quote__text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-navy);
+  font-style: italic;
+  margin: 0;
+}
+
+.quote__text p {
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+
+.quote__text p:last-child { margin-bottom: 0; }
+
+/* Two-column what worked / did not work */
+.habits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .habits { grid-template-columns: 1fr; }
+}
+
+.habits__col {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.habits__col-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.habits__col--does .habits__col-label { color: #047857; }
+.habits__col--doesnt .habits__col-label { color: #B91C1C; }
+
+.habits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.habits__list li {
+  font-size: 0.875rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  padding: 0.375rem 0;
+  padding-left: 1.125rem;
+  position: relative;
+}
+
+.habits__list li::before {
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-weight: 700;
+}
+
+.habits__col--does .habits__list li::before {
+  content: "+";
+  color: #047857;
+}
+
+.habits__col--doesnt .habits__list li::before {
+  content: "—";
+  color: #B91C1C;
+}
+
+/* Callouts */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Prep checklist */
+.prep-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.prep-list li {
+  position: relative;
+  padding: 0.875rem 1.125rem 0.875rem 2.75rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.prep-list li::before {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  top: 1rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 3px;
+  background: white;
+}
+
+.prep-list li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Next step */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 4 Pre-read</div>
+  <h1>Alex's case.</h1>
+  <p class="lead">
+    Read this before your Week 4 live session. Alex has been doing the work for four weeks and just got midterm results back. The results are not what you might expect. They are also not what Alex expected.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 4 theme</div>
+    <div class="theme-card__title">The midterm hinge.</div>
+    <p class="theme-card__body">
+      Morgan's case was about method. Jordan's case was about foundation. Alex's case is about something both harder and more common: how to read mixed data. Some of what you tried worked. Some did not. The job this week is to see clearly what each means and decide what comes next.
+    </p>
+  </div>
+
+  <h2>Meet Alex</h2>
+
+  <p>
+    Alex is a 21-year-old pre-nursing student at a state university, in their second semester of Anatomy and Physiology. They have been in a STAT-style recovery program for the past four weeks, alongside a small team and a trained facilitator. Alex took the course midterm last Friday.
+  </p>
+
+  <p>
+    Alex was at 52% in A&amp;P 2 when they started the program four weeks ago. That is the grade they are trying to move. The midterm was the first major data point to tell them whether anything they have done is actually working.
+  </p>
+
+  <div class="chart-card">
+    <div class="chart-card__header">
+      <span class="chart-card__header-label">Case file</span>
+      <span class="chart-card__header-id">ID-0156 · Week 4</span>
+    </div>
+    <div class="chart-card__grid">
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Current course</div>
+        <div class="chart-card__field-value">Anatomy and Physiology 2</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Program</div>
+        <div class="chart-card__field-value">Pre-nursing, 2nd semester</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Grade entering STAT (4 weeks ago)</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">52%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Current A&amp;P 2 grade</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">62%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Midterm lecture score</div>
+        <div class="chart-card__field-value chart-card__field-value--success">68%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Midterm lab practical score</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">54%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Homework average</div>
+        <div class="chart-card__field-value">88%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Hours studied per week</div>
+        <div class="chart-card__field-value">20 to 24</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Alex's trajectory over four weeks</h2>
+
+  <p>
+    Here is how Alex's performance has moved since starting the program. Notice where the change is real, and where it is not.
+  </p>
+
+  <div class="trajectory">
+    <div class="trajectory__label">Progression by exam</div>
+    <div class="trajectory__rows">
+      <div class="trajectory__row">
+        <span class="trajectory__period">Pre-STAT</span>
+        <span class="trajectory__event">Lecture exam 1</span>
+        <span class="trajectory__score">48%</span>
+      </div>
+      <div class="trajectory__row">
+        <span class="trajectory__period">Pre-STAT</span>
+        <span class="trajectory__event">Lecture exam 2</span>
+        <span class="trajectory__score">51%</span>
+      </div>
+      <div class="trajectory__row">
+        <span class="trajectory__period">Pre-STAT</span>
+        <span class="trajectory__event">Lab practical 1</span>
+        <span class="trajectory__score">42%</span>
+      </div>
+      <div class="trajectory__row">
+        <span class="trajectory__period">STAT Week 2</span>
+        <span class="trajectory__event">Lecture exam 3 (after method change)</span>
+        <span class="trajectory__score trajectory__score--up">65%</span>
+      </div>
+      <div class="trajectory__row">
+        <span class="trajectory__period">STAT Week 3</span>
+        <span class="trajectory__event">Lab practical 2 (foundation work started)</span>
+        <span class="trajectory__score trajectory__score--flat">48%</span>
+      </div>
+      <div class="trajectory__row">
+        <span class="trajectory__period">STAT Week 4</span>
+        <span class="trajectory__event">Midterm lecture</span>
+        <span class="trajectory__score trajectory__score--up">68%</span>
+      </div>
+      <div class="trajectory__row">
+        <span class="trajectory__period">STAT Week 4</span>
+        <span class="trajectory__event">Midterm lab practical</span>
+        <span class="trajectory__score trajectory__score--flat">54%</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Alex in their own words</h2>
+
+  <p>
+    Alex's facilitator asked them to describe how the midterm felt and what they are thinking now. This is what Alex wrote.
+  </p>
+
+  <div class="quote">
+    <div class="quote__label">Alex, two days after the midterm</div>
+    <div class="quote__text">
+      <p>
+        "Four weeks ago I was failing. I could not explain a single mechanism. I was drowning. Then we did Morgan's case and I finally understood the way I was studying was not working. I changed everything. Practice questions. No rereading. Self-testing out loud. The next exam I took was a 65, which is a C, and I cried in my car because I had not earned a C in A&amp;P in months."
+      </p>
+      <p>
+        "Then we did Jordan's case and I realized I never actually understood what a concentration gradient was. I spent a weekend with Khan Academy and learned it properly. It unlocked a lot of physiology that was confusing before. Action potentials stopped being a list of memorized steps and started making sense."
+      </p>
+      <p>
+        "The midterm lecture portion was 68%. For me right now, that is a win. I went home and felt competent for the first time in a semester."
+      </p>
+      <p>
+        "Then the lab practical came back. 54%. I do not understand what happened. I studied. I used the methods that worked for lecture. But I walked into the practical and stared at a heart model and could not identify the chordae tendineae. I know what chordae tendineae ARE. I can explain their function. Standing there looking at a model I had never touched, I froze."
+      </p>
+      <p>
+        "So now I am stuck. Do I keep studying how I am studying, since lecture is working? Do I study lab totally differently? I do not even know how to study for a lab practical. What does that even look like."
+      </p>
+    </div>
+  </div>
+
+  <h2>What worked for Alex, and what did not</h2>
+
+  <p>
+    The midterm results split cleanly by exam type. Alex's method changes since Week 2 did real work in one domain. They did not transfer to the other.
+  </p>
+
+  <div class="habits">
+    <div class="habits__col habits__col--does">
+      <div class="habits__col-label">Changes that worked (lecture)</div>
+      <ul class="habits__list">
+        <li>Replaced rereading with spaced practice questions</li>
+        <li>Self-testing without notes before each session</li>
+        <li>Active retrieval instead of passive review</li>
+        <li>Filled foundation gap on concentration gradients</li>
+        <li>Explained mechanisms out loud to themselves</li>
+        <li>Attended office hours twice</li>
+        <li>Result: lecture improved from 48-51% to 65-68%</li>
+      </ul>
+    </div>
+    <div class="habits__col habits__col--doesnt">
+      <div class="habits__col-label">Same methods, applied to lab practical</div>
+      <ul class="habits__list">
+        <li>Studied lab guide the same way as lecture material</li>
+        <li>Used practice questions on paper only</li>
+        <li>Never worked with physical models outside of lab time</li>
+        <li>Did not attend open lab hours</li>
+        <li>Did not practice identifying structures in 3D or on cadavers</li>
+        <li>Did not work with a lab partner outside scheduled lab</li>
+        <li>Result: lab practical stayed flat, 42% to 54%</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The teaching point of Alex's case</p>
+    </div>
+    <p class="callout__text">
+      Alex is not failing anymore in one sense. Lecture scores have moved 20 points. That is real. <strong>And Alex is also still failing in another sense.</strong> Lab practicals are not improving. The same methods that fixed lecture cannot fix lab, because lab practicals are not a test of what Alex can retrieve on paper. They are a test of what Alex can recognize on a physical model in a lab setting. That is a different skill, and it requires different practice. Reading the midterm data tells Alex what worked and what did not. The next move is to keep doing what is working for lecture, and add what is missing for lab.
+    </p>
+  </div>
+
+  <h2>Before the live session</h2>
+
+  <p>
+    Same structure as the last two cases. You will not be asked to solve Alex's situation alone. Your team works it out together. Your job is to read the case carefully and come in ready to think.
+  </p>
+
+  <h3>Come to the session with these three things in mind</h3>
+
+  <ul class="prep-list">
+    <li>
+      <strong>Where do you see Alex's progress?</strong> Be specific. Name what actually improved and what that progress took. Alex is in a different place than Morgan or Jordan was. Recognize the win before you look at what is still broken.
+    </li>
+    <li>
+      <strong>Why did good methods work for lecture but not for lab?</strong> Think about what is different about a lab practical as an assessment type. What does it test that a written exam does not. What kind of study does it actually require.
+    </li>
+    <li>
+      <strong>What would you tell Alex about the second half?</strong> Using the Protect, Pivot, Add framework. What should Alex keep doing. What should they change. What should they add that they have not tried yet.
+    </li>
+  </ul>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">What you will do in the session</p>
+    </div>
+    <p class="callout__text">
+      Your team will work through three questions together. What do we think is happening with Alex's mixed results. What should Alex stop, keep, or add. What does Alex's situation tell us about our own midterm data. Your facilitator will also open space for team members to voluntarily share their own midterm data. That part is optional. No pressure. But students who put their own data in the room often get more out of the discussion.
+    </p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Before the session</div>
+    <h3 class="next-step__title">Read once for the story. Read again for your own data.</h3>
+    <p class="next-step__body">
+      15 to 20 minutes. On the second reading, ask which parts of Alex's situation feel familiar. Your own midterm data, if you have it, will matter in the team discussion.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week4_case_alex';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

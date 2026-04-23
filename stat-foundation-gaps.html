@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Foundation Gap Identifier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-navy-hover: #0D2950;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #D1D5DB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #047857;
+  --cc-warning: #B45309;
+  --cc-danger: #B91C1C;
+  --cc-tint-success: #ECFDF5;
+  --cc-tint-warning: #FEF3C7;
+  --cc-tint-danger: #FEE2E2;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ============================================
+   MASTHEAD
+   ============================================ */
+.masthead { margin-bottom: 2rem; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 1.5rem;
+}
+
+.how-to {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-gold);
+  margin: 1.5rem 0 2.5rem;
+  background: var(--cc-tint-gold);
+}
+
+.how-to__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.how-to__title::before {
+  content: "i";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.how-to__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+}
+.how-to__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 2rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.section__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.section__intro {
+  font-size: 0.9375rem;
+  color: var(--cc-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.section__intro strong { color: var(--cc-navy); }
+
+/* ============================================
+   BLOCKERS (Step 1)
+   ============================================ */
+.blockers-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.blocker-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 32px;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.blocker-row__num {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cc-gold-deep);
+  text-align: center;
+}
+
+.blocker-row__input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-family: var(--cc-font);
+  font-size: 0.9375rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  transition: border-color 0.15s ease;
+}
+
+.blocker-row__input:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1.5px solid var(--cc-border);
+  color: var(--cc-text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover:not(:disabled) {
+  border-color: var(--cc-danger);
+  color: var(--cc-danger);
+}
+
+.remove-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.add-btn {
+  background: transparent;
+  border: 1.5px dashed var(--cc-border-strong);
+  color: var(--cc-navy);
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--cc-font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  margin-top: 0.5rem;
+}
+
+.add-btn:hover:not(:disabled) {
+  border-color: var(--cc-gold);
+  color: var(--cc-gold-deep);
+  background: var(--cc-tint-gold);
+}
+
+.add-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   PREREQUISITES LIBRARY (Step 2)
+   ============================================ */
+.empty-note {
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy-soft);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+}
+
+.blocker-group {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.blocker-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.blocker-group__topic {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+
+.blocker-group__topic::before {
+  content: "BLOCKER";
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.6875rem;
+  color: var(--cc-gold-deep);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.blocker-group__help {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+  margin-bottom: 1rem;
+}
+
+.prereq-category {
+  margin-bottom: 1rem;
+}
+
+.prereq-category__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.prereq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.prereq-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 0.8125rem;
+  color: var(--cc-text-secondary);
+  font-weight: 500;
+  user-select: none;
+}
+
+.prereq-chip:hover {
+  border-color: var(--cc-gold);
+  color: var(--cc-gold-deep);
+}
+
+.prereq-chip.checked {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+}
+
+.prereq-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-prereq {
+  margin-top: 1rem;
+}
+
+.custom-prereq__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.375rem;
+  display: block;
+}
+
+.custom-prereq__input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--cc-font);
+  font-size: 0.875rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+}
+
+.custom-prereq__input:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+/* ============================================
+   RATING CARDS (Step 3)
+   ============================================ */
+.rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.rating-card {
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.rating-card__label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+}
+
+.rating-card__options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .rating-card__options { grid-template-columns: 1fr 1fr; }
+}
+
+.rating-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.625rem 0.5rem;
+  background: var(--cc-tint-navy);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.rating-option:hover {
+  border-color: var(--cc-gold);
+}
+
+.rating-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rating-option__letter {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+}
+
+.rating-option__text {
+  font-size: 0.75rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.rating-option.selected--solid {
+  background: var(--cc-tint-success);
+  border-color: var(--cc-success);
+}
+.rating-option.selected--solid .rating-option__letter,
+.rating-option.selected--solid .rating-option__text { color: var(--cc-success); }
+
+.rating-option.selected--understand {
+  background: #F0FDFA;
+  border-color: #0E7490;
+}
+.rating-option.selected--understand .rating-option__letter,
+.rating-option.selected--understand .rating-option__text { color: #0E7490; }
+
+.rating-option.selected--fuzzy {
+  background: var(--cc-tint-warning);
+  border-color: var(--cc-warning);
+}
+.rating-option.selected--fuzzy .rating-option__letter,
+.rating-option.selected--fuzzy .rating-option__text { color: var(--cc-warning); }
+
+.rating-option.selected--missing {
+  background: var(--cc-tint-danger);
+  border-color: var(--cc-danger);
+}
+.rating-option.selected--missing .rating-option__letter,
+.rating-option.selected--missing .rating-option__text { color: var(--cc-danger); }
+
+/* ============================================
+   PRIORITIES (Step 4)
+   ============================================ */
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.priority-card {
+  background: var(--cc-surface);
+  border-left: 4px solid;
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.priority-card--missing { border-left-color: var(--cc-danger); background: var(--cc-tint-danger); }
+.priority-card--fuzzy { border-left-color: var(--cc-warning); background: var(--cc-tint-warning); }
+
+.priority-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.priority-card__label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+}
+
+.priority-card__severity {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.priority-card__severity--missing {
+  background: var(--cc-danger);
+  color: white;
+}
+
+.priority-card__severity--fuzzy {
+  background: var(--cc-warning);
+  color: white;
+}
+
+.priority-card__affects {
+  font-size: 0.8125rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.5;
+}
+
+.priority-card__affects strong { color: var(--cc-navy); font-weight: 700; }
+
+.no-priorities {
+  background: var(--cc-tint-success);
+  border-left: 3px solid var(--cc-success);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.9375rem;
+  color: #065F46;
+  line-height: 1.6;
+}
+
+.no-priorities strong { font-weight: 700; }
+
+/* ============================================
+   REPAIR PLAN (Step 5)
+   ============================================ */
+.repair-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.repair-card {
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.repair-card__label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.repair-card__label::before {
+  content: attr(data-num);
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--cc-gold-deep);
+  background: var(--cc-tint-gold);
+  padding: 0.1875rem 0.5rem;
+  border-radius: 4px;
+}
+
+.repair-fields {
+  display: grid;
+  grid-template-columns: 1fr 160px 120px;
+  gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .repair-fields { grid-template-columns: 1fr; }
+}
+
+.repair-fields input,
+.repair-fields select {
+  padding: 0.5rem 0.75rem;
+  font-family: var(--cc-font);
+  font-size: 0.875rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+}
+
+.repair-fields input:focus,
+.repair-fields select:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--cc-font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1.5px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+}
+.btn--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+}
+
+.btn--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-border-strong);
+}
+.btn--secondary:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+}
+
+.btn--danger {
+  background: var(--cc-surface);
+  color: var(--cc-danger);
+  border-color: var(--cc-border-strong);
+  margin-left: auto;
+}
+.btn--danger:hover {
+  border-color: var(--cc-danger);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SAVE INDICATOR
+   ============================================ */
+.save-indicator {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--cc-success);
+  color: white;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+}
+
+.save-indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .shell { max-width: 100%; padding: 0; }
+  .actions, .save-indicator, .how-to, .add-btn, .remove-btn { display: none !important; }
+  .section {
+    box-shadow: none;
+    border: 1px solid #999;
+    page-break-inside: avoid;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .masthead { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #333; }
+  h1 { font-size: 18pt; margin-bottom: 0.5rem; }
+  .lead { font-size: 10pt; margin-bottom: 0.5rem; }
+  .section__title { font-size: 12pt; }
+  .blocker-row__input, .custom-prereq__input, .repair-fields input, .repair-fields select {
+    border: none;
+    border-bottom: 1px solid #666;
+    border-radius: 0;
+    padding: 0.25rem 0;
+    background: transparent;
+  }
+  .prereq-chip { border: 1px solid #999; }
+  .prereq-chip.checked { background: #333 !important; color: white !important; }
+  .rating-option { border: 1px solid #999; background: white !important; }
+  .rating-option.selected--solid,
+  .rating-option.selected--understand,
+  .rating-option.selected--fuzzy,
+  .rating-option.selected--missing {
+    background: white !important;
+    border: 2px solid #333 !important;
+  }
+  h2, h3, .section__header { page-break-after: avoid; }
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 0.9375rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .section { padding: 1.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="eyebrow">STAT Success Cohort · Week 3 Optional Tool</div>
+    <h1>Foundation gap identifier.</h1>
+    <p class="lead">
+      A self-guided tool to help you surface the foundational concepts that may be blocking your current coursework. Takes 15 to 25 minutes. Your work auto-saves as you go.
+    </p>
+  </div>
+
+  <div class="how-to">
+    <div class="how-to__title">How to use this tool</div>
+    <p class="how-to__text">
+      Work through the sections in order. <strong>Section 1</strong>, list what feels unclear in your current coursework. <strong>Section 2</strong>, check the foundational concepts each unclear topic depends on. <strong>Section 3</strong>, rate your honest confidence in each concept. <strong>Sections 4 and 5</strong>, see your prioritized gaps and build a specific repair plan for this week.
+    </p>
+  </div>
+
+  <!-- SECTION 1: Current blockers -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">01</span>
+      <h2 class="section__title">What is unclear in your current coursework?</h2>
+    </div>
+    <p class="section__intro">
+      List the topics in your current A&amp;P course that feel confusing, that you cannot explain when asked, or that you keep getting wrong on practice questions. Between <strong>one and five</strong> is fine. Be specific. "Muscle" is too broad. "How sarcomeres shorten during contraction" is useful.
+    </p>
+
+    <ul class="blockers-list" id="blockersList"></ul>
+
+    <button type="button" class="add-btn" id="addBlockerBtn">+ Add another unclear topic</button>
+  </section>
+
+  <!-- SECTION 2: Prerequisites for each blocker -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">02</span>
+      <h2 class="section__title">For each topic, what does it depend on?</h2>
+    </div>
+    <p class="section__intro">
+      For each unclear topic you listed, select the foundational concepts that topic depends on. You do not need to be certain. If you think a concept might be relevant, check it. <strong>The goal is to surface what is underneath.</strong>
+    </p>
+
+    <div id="prereqSection"></div>
+  </section>
+
+  <!-- SECTION 3: Rate confidence -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">03</span>
+      <h2 class="section__title">Rate your confidence in each concept</h2>
+    </div>
+    <p class="section__intro">
+      For every concept you checked above, rate your honest confidence. <strong>Be honest, not optimistic.</strong> The rating scale: <strong>can teach</strong> (you could explain it to someone else), <strong>understand</strong> (you get it but cannot explain fluently), <strong>fuzzy</strong> (you recognize the term but cannot use it), <strong>missing</strong> (you do not remember or never learned it).
+    </p>
+
+    <div id="ratingSection">
+      <div class="empty-note">Select foundational concepts in Section 2 first. Concepts will appear here for rating.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Prioritized gaps -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">04</span>
+      <h2 class="section__title">Your prioritized gap list</h2>
+    </div>
+    <p class="section__intro">
+      Based on your ratings, these are the foundation gaps most likely blocking your current coursework. <strong>Missing</strong> concepts are the highest priority. <strong>Fuzzy</strong> concepts come next. Concepts that block more topics outrank ones that block fewer.
+    </p>
+
+    <div id="prioritiesSection">
+      <div class="empty-note">Complete Section 3 to see your prioritized gap list.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Repair plan -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">05</span>
+      <h2 class="section__title">Your repair plan this week</h2>
+    </div>
+    <p class="section__intro">
+      Pick the <strong>top one to two gaps</strong> from your priority list. For each, decide on a specific resource and when you will work on it. Remember the Week 3 theme: <strong>selective repair</strong>. Not all gaps this week. The ones that matter most.
+    </p>
+
+    <div id="repairSection">
+      <div class="empty-note">Your top priorities will appear here once Section 3 is complete.</div>
+    </div>
+  </section>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+    <button type="button" class="btn btn--primary" id="printBtn">Print</button>
+    <button type="button" class="btn btn--secondary" id="downloadBtn">Download</button>
+    <button type="button" class="btn btn--danger" id="clearBtn">Clear all</button>
+  </div>
+
+</div>
+
+<div class="save-indicator" id="saveIndicator">Saved</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============================================
+  // CONSTANTS
+  // ============================================
+  var STORAGE_KEY = 'stat_foundation_gaps';
+  var MAX_BLOCKERS = 5;
+
+  // Foundation concepts library, grouped by category
+  var PREREQ_LIBRARY = [
+    // Chemistry
+    { id: 'ionic_covalent', label: 'Ionic vs covalent bonds', category: 'Chemistry foundations' },
+    { id: 'ph_buffers', label: 'pH, acids, and buffers', category: 'Chemistry foundations' },
+    { id: 'protein_structure', label: 'Protein structure and function', category: 'Chemistry foundations' },
+    { id: 'enzymes', label: 'Enzymes and activation energy', category: 'Chemistry foundations' },
+    { id: 'atp_energy', label: 'ATP and cellular energy', category: 'Chemistry foundations' },
+
+    // Cell biology
+    { id: 'bilayer', label: 'Phospholipid bilayer structure', category: 'Cell biology' },
+    { id: 'passive_transport', label: 'Passive transport and diffusion', category: 'Cell biology' },
+    { id: 'osmosis_tonicity', label: 'Osmosis and tonicity', category: 'Cell biology' },
+    { id: 'concentration_gradient', label: 'Concentration gradient', category: 'Cell biology' },
+    { id: 'active_transport', label: 'Active transport and ATP pumps', category: 'Cell biology' },
+    { id: 'sodium_potassium_pump', label: 'Sodium-potassium pump', category: 'Cell biology' },
+    { id: 'membrane_proteins', label: 'Membrane proteins and channels', category: 'Cell biology' },
+    { id: 'cell_signaling', label: 'Cell signaling basics', category: 'Cell biology' },
+
+    // Physiology
+    { id: 'homeostasis', label: 'Homeostasis and feedback loops', category: 'Physiology basics' },
+    { id: 'resting_potential', label: 'Resting membrane potential', category: 'Physiology basics' },
+    { id: 'action_potential_basics', label: 'Action potential basics', category: 'Physiology basics' },
+    { id: 'hormones_neurotransmitters', label: 'Hormone vs neurotransmitter signaling', category: 'Physiology basics' },
+
+    // Anatomy
+    { id: 'tissue_types', label: 'Four tissue types', category: 'Anatomy basics' },
+    { id: 'anatomical_terminology', label: 'Anatomical terminology and planes', category: 'Anatomy basics' },
+    { id: 'organ_systems', label: 'Organ system interactions', category: 'Anatomy basics' }
+  ];
+
+  // Helper to get label from ID
+  function getPrereqLabel(id) {
+    var item = PREREQ_LIBRARY.find(function(p) { return p.id === id; });
+    if (item) return item.label;
+    // Check if it's a custom entry (id starts with 'custom_')
+    if (state.customPrereqs && state.customPrereqs[id]) return state.customPrereqs[id];
+    return id;
+  }
+
+  // ============================================
+  // STATE
+  // ============================================
+  var state = {
+    blockers: [
+      { id: 'b_1', topic: '' }
+    ],
+    // Map of blocker id -> array of prereq ids checked for that blocker
+    blockerPrereqs: {},
+    // Map of prereq id -> label (for custom user-entered concepts)
+    customPrereqs: {},
+    // Map of prereq id -> rating ('solid' | 'understand' | 'fuzzy' | 'missing')
+    ratings: {},
+    // Repair plan entries: [{ prereqId, resource, day, minutes }]
+    repair: []
+  };
+
+  var saveTimer = null;
+  var saveIndicator = document.getElementById('saveIndicator');
+
+  // ============================================
+  // LOAD / SAVE
+  // ============================================
+  function loadState() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object') {
+          Object.keys(state).forEach(function(key) {
+            if (parsed[key] !== undefined) state[key] = parsed[key];
+          });
+        }
+      }
+    } catch (e) {
+      console.warn('Could not load saved state:', e);
+    }
+    // Ensure blockers always has at least one
+    if (!state.blockers || state.blockers.length === 0) {
+      state.blockers = [{ id: 'b_1', topic: '' }];
+    }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      showSaveIndicator();
+    } catch (e) {
+      console.warn('Could not save:', e);
+    }
+  }
+
+  function showSaveIndicator() {
+    saveIndicator.classList.add('visible');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function() {
+      saveIndicator.classList.remove('visible');
+    }, 1200);
+  }
+
+  var debouncedSave = (function() {
+    var timer = null;
+    return function() {
+      clearTimeout(timer);
+      timer = setTimeout(saveState, 400);
+    };
+  })();
+
+  // ============================================
+  // HELPERS
+  // ============================================
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function genId(prefix) {
+    return prefix + '_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+  }
+
+  // Get unique list of prereq IDs selected across all blockers (only for blockers with non-empty topics)
+  function getUniquePrereqs() {
+    var seen = {};
+    var result = [];
+    state.blockers.forEach(function(blocker) {
+      if (!String(blocker.topic || '').trim()) return;
+      var prereqs = state.blockerPrereqs[blocker.id] || [];
+      prereqs.forEach(function(pid) {
+        if (!seen[pid]) {
+          seen[pid] = true;
+          result.push(pid);
+        }
+      });
+    });
+    return result;
+  }
+
+  // Get list of blockers that reference a given prereq
+  function getBlockersForPrereq(prereqId) {
+    return state.blockers.filter(function(b) {
+      var prereqs = state.blockerPrereqs[b.id] || [];
+      return prereqs.indexOf(prereqId) !== -1 && String(b.topic || '').trim();
+    });
+  }
+
+  // ============================================
+  // RENDER: BLOCKERS (Section 1)
+  // ============================================
+  function renderBlockers() {
+    var container = document.getElementById('blockersList');
+    container.innerHTML = '';
+
+    state.blockers.forEach(function(blocker, idx) {
+      var row = document.createElement('li');
+      row.className = 'blocker-row';
+
+      var canRemove = state.blockers.length > 1;
+
+      row.innerHTML =
+        '<div class="blocker-row__num">' + String(idx + 1).padStart(2, '0') + '</div>' +
+        '<input type="text" class="blocker-row__input" data-blocker-id="' + blocker.id + '" placeholder="e.g. How the sodium-potassium pump establishes resting potential" value="' + escapeHtml(blocker.topic) + '">' +
+        '<button type="button" class="remove-btn" data-remove-blocker="' + blocker.id + '" ' + (canRemove ? '' : 'disabled') + ' aria-label="Remove">×</button>';
+
+      container.appendChild(row);
+    });
+
+    var addBtn = document.getElementById('addBlockerBtn');
+    addBtn.disabled = state.blockers.length >= MAX_BLOCKERS;
+    addBtn.textContent = state.blockers.length >= MAX_BLOCKERS
+      ? 'Maximum ' + MAX_BLOCKERS + ' topics'
+      : '+ Add another unclear topic';
+  }
+
+  function addBlocker() {
+    if (state.blockers.length >= MAX_BLOCKERS) return;
+    state.blockers.push({ id: genId('b'), topic: '' });
+    renderBlockers();
+    renderPrereqs();
+    saveState();
+  }
+
+  function removeBlocker(id) {
+    if (state.blockers.length <= 1) return;
+    state.blockers = state.blockers.filter(function(b) { return b.id !== id; });
+    delete state.blockerPrereqs[id];
+    renderBlockers();
+    renderPrereqs();
+    renderRatings();
+    renderPriorities();
+    renderRepair();
+    saveState();
+  }
+
+  // ============================================
+  // RENDER: PREREQUISITES (Section 2)
+  // ============================================
+  function renderPrereqs() {
+    var container = document.getElementById('prereqSection');
+    container.innerHTML = '';
+
+    var activeBlockers = state.blockers.filter(function(b) {
+      return String(b.topic || '').trim().length > 0;
+    });
+
+    if (activeBlockers.length === 0) {
+      container.innerHTML = '<div class="empty-note">List at least one unclear topic in Section 1 to continue.</div>';
+      return;
+    }
+
+    // Group library by category
+    var categories = {};
+    PREREQ_LIBRARY.forEach(function(p) {
+      if (!categories[p.category]) categories[p.category] = [];
+      categories[p.category].push(p);
+    });
+
+    activeBlockers.forEach(function(blocker) {
+      var group = document.createElement('div');
+      group.className = 'blocker-group';
+
+      var selected = state.blockerPrereqs[blocker.id] || [];
+
+      var topicEl = document.createElement('div');
+      topicEl.className = 'blocker-group__topic';
+      topicEl.appendChild(document.createTextNode(blocker.topic));
+      group.appendChild(topicEl);
+
+      var help = document.createElement('div');
+      help.className = 'blocker-group__help';
+      help.textContent = 'Check every concept this topic depends on. It is fine to check many.';
+      group.appendChild(help);
+
+      // Render each category
+      Object.keys(categories).forEach(function(catName) {
+        var catDiv = document.createElement('div');
+        catDiv.className = 'prereq-category';
+
+        var catLabel = document.createElement('div');
+        catLabel.className = 'prereq-category__label';
+        catLabel.textContent = catName;
+        catDiv.appendChild(catLabel);
+
+        var chips = document.createElement('div');
+        chips.className = 'prereq-chips';
+
+        categories[catName].forEach(function(prereq) {
+          var chip = document.createElement('label');
+          chip.className = 'prereq-chip' + (selected.indexOf(prereq.id) !== -1 ? ' checked' : '');
+          chip.innerHTML =
+            '<input type="checkbox" data-blocker-id="' + blocker.id + '" data-prereq-id="' + prereq.id + '" ' +
+            (selected.indexOf(prereq.id) !== -1 ? 'checked' : '') + '>' +
+            escapeHtml(prereq.label);
+          chips.appendChild(chip);
+        });
+
+        catDiv.appendChild(chips);
+        group.appendChild(catDiv);
+      });
+
+      // Custom prerequisites (already added for this blocker)
+      var customIds = selected.filter(function(id) { return id.indexOf('custom_') === 0; });
+      if (customIds.length > 0) {
+        var customCatDiv = document.createElement('div');
+        customCatDiv.className = 'prereq-category';
+
+        var customLabel = document.createElement('div');
+        customLabel.className = 'prereq-category__label';
+        customLabel.textContent = 'Your custom concepts for this topic';
+        customCatDiv.appendChild(customLabel);
+
+        var customChips = document.createElement('div');
+        customChips.className = 'prereq-chips';
+
+        customIds.forEach(function(cid) {
+          var chip = document.createElement('label');
+          chip.className = 'prereq-chip checked';
+          chip.innerHTML =
+            '<input type="checkbox" data-blocker-id="' + blocker.id + '" data-prereq-id="' + cid + '" checked>' +
+            escapeHtml(getPrereqLabel(cid));
+          customChips.appendChild(chip);
+        });
+
+        customCatDiv.appendChild(customChips);
+        group.appendChild(customCatDiv);
+      }
+
+      // Custom prerequisite input
+      var customDiv = document.createElement('div');
+      customDiv.className = 'custom-prereq';
+      customDiv.innerHTML =
+        '<label class="custom-prereq__label" for="custom_' + blocker.id + '">Add your own (not in the list)</label>' +
+        '<input type="text" class="custom-prereq__input" id="custom_' + blocker.id + '" data-custom-for="' + blocker.id + '" placeholder="Type a concept and press Enter">';
+      group.appendChild(customDiv);
+
+      container.appendChild(group);
+    });
+  }
+
+  function toggleBlockerPrereq(blockerId, prereqId, checked) {
+    if (!state.blockerPrereqs[blockerId]) state.blockerPrereqs[blockerId] = [];
+    var arr = state.blockerPrereqs[blockerId];
+    var idx = arr.indexOf(prereqId);
+    if (checked && idx === -1) arr.push(prereqId);
+    if (!checked && idx !== -1) arr.splice(idx, 1);
+    // If unchecking a custom concept, check if any other blocker still uses it
+    if (!checked && prereqId.indexOf('custom_') === 0) {
+      var stillUsed = Object.keys(state.blockerPrereqs).some(function(bid) {
+        return (state.blockerPrereqs[bid] || []).indexOf(prereqId) !== -1;
+      });
+      if (!stillUsed) delete state.customPrereqs[prereqId];
+    }
+  }
+
+  function addCustomPrereq(blockerId, label) {
+    var trimmed = String(label || '').trim();
+    if (!trimmed) return;
+    var newId = genId('custom');
+    state.customPrereqs[newId] = trimmed;
+    if (!state.blockerPrereqs[blockerId]) state.blockerPrereqs[blockerId] = [];
+    state.blockerPrereqs[blockerId].push(newId);
+    // Re-render everything downstream
+    renderPrereqs();
+    renderRatings();
+    renderPriorities();
+    renderRepair();
+    saveState();
+  }
+
+  // ============================================
+  // RENDER: RATINGS (Section 3)
+  // ============================================
+  var RATING_OPTIONS = [
+    { value: 'solid', letter: 'A', label: 'Can teach' },
+    { value: 'understand', letter: 'B', label: 'Understand' },
+    { value: 'fuzzy', letter: 'C', label: 'Fuzzy' },
+    { value: 'missing', letter: 'D', label: 'Missing' }
+  ];
+
+  function renderRatings() {
+    var container = document.getElementById('ratingSection');
+    container.innerHTML = '';
+
+    var prereqIds = getUniquePrereqs();
+
+    if (prereqIds.length === 0) {
+      container.innerHTML = '<div class="empty-note">Select foundational concepts in Section 2 first. Concepts will appear here for rating.</div>';
+      return;
+    }
+
+    var list = document.createElement('div');
+    list.className = 'rating-list';
+
+    prereqIds.forEach(function(pid) {
+      var card = document.createElement('div');
+      card.className = 'rating-card';
+
+      var label = document.createElement('div');
+      label.className = 'rating-card__label';
+      label.textContent = getPrereqLabel(pid);
+      card.appendChild(label);
+
+      var options = document.createElement('div');
+      options.className = 'rating-card__options';
+
+      var currentRating = state.ratings[pid];
+
+      RATING_OPTIONS.forEach(function(opt) {
+        var isSelected = currentRating === opt.value;
+        var optLabel = document.createElement('label');
+        optLabel.className = 'rating-option' + (isSelected ? ' selected--' + opt.value : '');
+        optLabel.innerHTML =
+          '<input type="radio" name="rate_' + pid + '" value="' + opt.value + '" ' + (isSelected ? 'checked' : '') + ' data-rate-for="' + pid + '">' +
+          '<span class="rating-option__letter">' + opt.letter + '</span>' +
+          '<span class="rating-option__text">' + opt.label + '</span>';
+        options.appendChild(optLabel);
+      });
+
+      card.appendChild(options);
+      list.appendChild(card);
+    });
+
+    container.appendChild(list);
+  }
+
+  // ============================================
+  // RENDER: PRIORITIES (Section 4)
+  // ============================================
+  function renderPriorities() {
+    var container = document.getElementById('prioritiesSection');
+    container.innerHTML = '';
+
+    var prereqIds = getUniquePrereqs();
+    // Only concepts with ratings of 'fuzzy' or 'missing'
+    var priorities = prereqIds
+      .filter(function(pid) {
+        return state.ratings[pid] === 'fuzzy' || state.ratings[pid] === 'missing';
+      })
+      .map(function(pid) {
+        var affectedBlockers = getBlockersForPrereq(pid);
+        return {
+          id: pid,
+          label: getPrereqLabel(pid),
+          rating: state.ratings[pid],
+          affected: affectedBlockers,
+          blockCount: affectedBlockers.length
+        };
+      });
+
+    if (priorities.length === 0) {
+      // Check if anyone has rated anything
+      var hasAnyRating = prereqIds.some(function(pid) { return state.ratings[pid]; });
+      if (!hasAnyRating) {
+        container.innerHTML = '<div class="empty-note">Complete Section 3 to see your prioritized gap list.</div>';
+      } else {
+        container.innerHTML = '<div class="no-priorities"><strong>No fuzzy or missing gaps identified.</strong> Based on your ratings, your foundation is solid for the topics you flagged. If you are still struggling with current coursework, the issue may be method-related (see Week 2 content) or may require specific practice with current material rather than foundation repair.</div>';
+      }
+      return;
+    }
+
+    // Sort: missing first (severity), then fuzzy. Within severity, more-blocking first.
+    priorities.sort(function(a, b) {
+      if (a.rating !== b.rating) {
+        return a.rating === 'missing' ? -1 : 1;
+      }
+      return b.blockCount - a.blockCount;
+    });
+
+    var list = document.createElement('div');
+    list.className = 'priority-list';
+
+    priorities.forEach(function(p) {
+      var card = document.createElement('div');
+      card.className = 'priority-card priority-card--' + p.rating;
+
+      var header = document.createElement('div');
+      header.className = 'priority-card__header';
+      header.innerHTML =
+        '<div class="priority-card__label">' + escapeHtml(p.label) + '</div>' +
+        '<div class="priority-card__severity priority-card__severity--' + p.rating + '">' + (p.rating === 'missing' ? 'Missing' : 'Fuzzy') + '</div>';
+      card.appendChild(header);
+
+      var affects = document.createElement('div');
+      affects.className = 'priority-card__affects';
+      var affectedText = p.affected.map(function(b) { return '<strong>' + escapeHtml(b.topic) + '</strong>'; }).join(', ');
+      affects.innerHTML = 'Blocks: ' + affectedText;
+      card.appendChild(affects);
+
+      list.appendChild(card);
+    });
+
+    container.appendChild(list);
+  }
+
+  // ============================================
+  // RENDER: REPAIR PLAN (Section 5)
+  // ============================================
+  function renderRepair() {
+    var container = document.getElementById('repairSection');
+    container.innerHTML = '';
+
+    // Rebuild priorities list to populate default repair targets
+    var prereqIds = getUniquePrereqs();
+    var priorities = prereqIds
+      .filter(function(pid) {
+        return state.ratings[pid] === 'fuzzy' || state.ratings[pid] === 'missing';
+      })
+      .map(function(pid) {
+        return {
+          id: pid,
+          label: getPrereqLabel(pid),
+          rating: state.ratings[pid],
+          blockCount: getBlockersForPrereq(pid).length
+        };
+      });
+
+    priorities.sort(function(a, b) {
+      if (a.rating !== b.rating) return a.rating === 'missing' ? -1 : 1;
+      return b.blockCount - a.blockCount;
+    });
+
+    if (priorities.length === 0) {
+      container.innerHTML = '<div class="empty-note">Your top priorities will appear here once Section 3 is complete.</div>';
+      return;
+    }
+
+    var top = priorities.slice(0, 2);
+
+    // Sync state.repair to match top priorities (preserve existing entries where possible)
+    top.forEach(function(p, idx) {
+      if (!state.repair[idx] || state.repair[idx].prereqId !== p.id) {
+        var existing = state.repair.find(function(r) { return r.prereqId === p.id; });
+        state.repair[idx] = existing || { prereqId: p.id, resource: '', day: '', minutes: '' };
+      }
+    });
+    // Trim repair array
+    state.repair = state.repair.slice(0, top.length);
+
+    var list = document.createElement('div');
+    list.className = 'repair-list';
+
+    top.forEach(function(p, idx) {
+      var entry = state.repair[idx] || {};
+
+      var card = document.createElement('div');
+      card.className = 'repair-card';
+
+      var label = document.createElement('div');
+      label.className = 'repair-card__label';
+      label.setAttribute('data-num', 'PRIORITY ' + (idx + 1));
+      label.appendChild(document.createTextNode(getPrereqLabel(p.id)));
+      card.appendChild(label);
+
+      var fields = document.createElement('div');
+      fields.className = 'repair-fields';
+      fields.innerHTML =
+        '<input type="text" data-repair-field="resource" data-repair-idx="' + idx + '" placeholder="Resource (video, chapter, office hours, tutor)" value="' + escapeHtml(entry.resource || '') + '">' +
+        '<select data-repair-field="day" data-repair-idx="' + idx + '">' +
+          '<option value="">Day this week</option>' +
+          '<option value="Monday"' + (entry.day === 'Monday' ? ' selected' : '') + '>Monday</option>' +
+          '<option value="Tuesday"' + (entry.day === 'Tuesday' ? ' selected' : '') + '>Tuesday</option>' +
+          '<option value="Wednesday"' + (entry.day === 'Wednesday' ? ' selected' : '') + '>Wednesday</option>' +
+          '<option value="Thursday"' + (entry.day === 'Thursday' ? ' selected' : '') + '>Thursday</option>' +
+          '<option value="Friday"' + (entry.day === 'Friday' ? ' selected' : '') + '>Friday</option>' +
+          '<option value="Saturday"' + (entry.day === 'Saturday' ? ' selected' : '') + '>Saturday</option>' +
+          '<option value="Sunday"' + (entry.day === 'Sunday' ? ' selected' : '') + '>Sunday</option>' +
+        '</select>' +
+        '<input type="text" data-repair-field="minutes" data-repair-idx="' + idx + '" placeholder="Minutes" value="' + escapeHtml(entry.minutes || '') + '">';
+      card.appendChild(fields);
+
+      list.appendChild(card);
+    });
+
+    container.appendChild(list);
+  }
+
+  // ============================================
+  // EVENT LISTENERS
+  // ============================================
+  function setupEventListeners() {
+    // Section 1: Blocker input
+    document.getElementById('blockersList').addEventListener('input', function(e) {
+      var blockerId = e.target.getAttribute('data-blocker-id');
+      if (blockerId) {
+        var blocker = state.blockers.find(function(b) { return b.id === blockerId; });
+        if (blocker) {
+          blocker.topic = e.target.value;
+          // Re-render downstream when topic text changes (affects which blockers are "active")
+          renderPrereqs();
+          renderRatings();
+          renderPriorities();
+          renderRepair();
+          debouncedSave();
+        }
+      }
+    });
+
+    document.getElementById('blockersList').addEventListener('click', function(e) {
+      var removeId = e.target.getAttribute('data-remove-blocker');
+      if (removeId) removeBlocker(removeId);
+    });
+
+    document.getElementById('addBlockerBtn').addEventListener('click', addBlocker);
+
+    // Section 2: Prereq chips + custom
+    document.getElementById('prereqSection').addEventListener('change', function(e) {
+      if (e.target.type === 'checkbox') {
+        var blockerId = e.target.getAttribute('data-blocker-id');
+        var prereqId = e.target.getAttribute('data-prereq-id');
+        if (blockerId && prereqId) {
+          toggleBlockerPrereq(blockerId, prereqId, e.target.checked);
+          // Update chip visual
+          var chip = e.target.closest('.prereq-chip');
+          if (chip) chip.classList.toggle('checked', e.target.checked);
+          renderRatings();
+          renderPriorities();
+          renderRepair();
+          saveState();
+        }
+      }
+    });
+
+    // Custom prereq input: submit on Enter
+    document.getElementById('prereqSection').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && e.target.classList.contains('custom-prereq__input')) {
+        e.preventDefault();
+        var blockerId = e.target.getAttribute('data-custom-for');
+        var val = e.target.value;
+        if (blockerId && val.trim()) {
+          addCustomPrereq(blockerId, val);
+        }
+      }
+    });
+
+    // Section 3: Rating radios
+    document.getElementById('ratingSection').addEventListener('change', function(e) {
+      if (e.target.type === 'radio') {
+        var prereqId = e.target.getAttribute('data-rate-for');
+        if (prereqId) {
+          state.ratings[prereqId] = e.target.value;
+          renderRatings(); // Re-render to update visual selection
+          renderPriorities();
+          renderRepair();
+          saveState();
+        }
+      }
+    });
+
+    // Section 5: Repair fields
+    document.getElementById('repairSection').addEventListener('input', function(e) {
+      var field = e.target.getAttribute('data-repair-field');
+      var idx = parseInt(e.target.getAttribute('data-repair-idx'), 10);
+      if (field && !isNaN(idx) && state.repair[idx]) {
+        state.repair[idx][field] = e.target.value;
+        debouncedSave();
+      }
+    });
+
+    document.getElementById('repairSection').addEventListener('change', function(e) {
+      if (e.target.tagName === 'SELECT') {
+        var field = e.target.getAttribute('data-repair-field');
+        var idx = parseInt(e.target.getAttribute('data-repair-idx'), 10);
+        if (field && !isNaN(idx) && state.repair[idx]) {
+          state.repair[idx][field] = e.target.value;
+          saveState();
+        }
+      }
+    });
+
+    // Action buttons
+    document.getElementById('printBtn').addEventListener('click', function() {
+      window.print();
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      downloadHTML();
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', function() {
+      if (confirm('Clear all data? This cannot be undone.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      }
+    });
+  }
+
+  // ============================================
+  // DOWNLOAD
+  // ============================================
+  function downloadHTML() {
+    var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Foundation Gap Identifier</title></head><body>' +
+               document.documentElement.outerHTML +
+               '</body></html>';
+    var blob = new Blob([html], { type: 'text/html' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'stat-foundation-gaps-' + new Date().toISOString().slice(0, 10) + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // ============================================
+  // INIT
+  // ============================================
+  function init() {
+    loadState();
+    renderBlockers();
+    renderPrereqs();
+    renderRatings();
+    renderPriorities();
+    renderRepair();
+    setupEventListeners();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // ============================================
+  // IFRAME HEIGHT SENDER
+  // ============================================
+  var frameId = window.name || 'stat_foundation_gaps';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 200);
+})();
+</script>
+
+</body>
+</html>

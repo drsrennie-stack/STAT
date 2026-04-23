@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 2 Pre-read — Morgan's Case</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Theme card */
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 0 0 2.5rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+/* Patient-chart-style data card */
+.chart-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+.chart-card__header {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chart-card__header-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+}
+
+.chart-card__header-id {
+  font-size: 0.75rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  color: rgba(250, 250, 247, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.chart-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.chart-card__field {
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+}
+
+.chart-card__field:nth-child(even) { border-right: none; }
+.chart-card__field:nth-last-child(-n+2) { border-bottom: none; }
+
+.chart-card__field-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.chart-card__field-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  line-height: 1.4;
+}
+
+.chart-card__field-value--alert {
+  color: #B91C1C;
+}
+
+@media (max-width: 560px) {
+  .chart-card__grid { grid-template-columns: 1fr; }
+  .chart-card__field { border-right: none; }
+  .chart-card__field:nth-last-child(2) { border-bottom: 1px solid var(--cc-border); }
+}
+
+/* Quote block (Morgan's words) */
+.quote {
+  background: var(--cc-tint-gold);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  position: relative;
+  border-left: 3px solid var(--cc-gold);
+}
+
+.quote__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+
+.quote__text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-navy);
+  font-style: italic;
+  margin: 0;
+}
+
+.quote__text p {
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+
+.quote__text p:last-child { margin-bottom: 0; }
+
+/* Habits lists (two-column, does/doesn't) */
+.habits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .habits { grid-template-columns: 1fr; }
+}
+
+.habits__col {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.habits__col-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.habits__col--does .habits__col-label { color: var(--cc-gold-deep); }
+.habits__col--doesnt .habits__col-label { color: #B91C1C; }
+
+.habits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.habits__list li {
+  font-size: 0.875rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  padding: 0.375rem 0;
+  padding-left: 1.125rem;
+  position: relative;
+}
+
+.habits__list li::before {
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-weight: 700;
+}
+
+.habits__col--does .habits__list li::before {
+  content: "+";
+  color: var(--cc-gold);
+}
+
+.habits__col--doesnt .habits__list li::before {
+  content: "—";
+  color: #B91C1C;
+}
+
+/* Callouts */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Prep checklist */
+.prep-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.prep-list li {
+  position: relative;
+  padding: 0.875rem 1.125rem 0.875rem 2.75rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.prep-list li::before {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  top: 1rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 3px;
+  background: white;
+}
+
+.prep-list li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Next step */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 2 Pre-read</div>
+  <h1>Morgan's case.</h1>
+  <p class="lead">
+    Read this before your Week 2 live session. Come in ready to work the case as a team. You will not be asked to solve Morgan's situation alone, and you do not need to submit answers before the session.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 2 theme</div>
+    <div class="theme-card__title">Stop the bleeding.</div>
+    <p class="theme-card__body">
+      In critical care, the first thing you do with an unstable patient is stop whatever is actively making things worse. Not everything gets fixed in the first intervention. You stabilize first. The same is true for academic recovery. Morgan's case is about identifying what is actively making things worse and stopping it before anything else.
+    </p>
+  </div>
+
+  <h2>Meet Morgan</h2>
+
+  <p>
+    Morgan is a 22-year-old pre-nursing student at a community college. They are in their second semester of Anatomy and Physiology, having passed A&amp;P 1 with a C last semester. The current semester started in September and it is now early October. Four weeks in, Morgan has taken two of the five unit exams.
+  </p>
+
+  <p>
+    Morgan's current grade in A&amp;P 2 is <strong>58%</strong>. The first exam was 56. The second was 38. Three more unit exams, three more lab practicals, and the cumulative final are still to come.
+  </p>
+
+  <div class="chart-card">
+    <div class="chart-card__header">
+      <span class="chart-card__header-label">Case file</span>
+      <span class="chart-card__header-id">ID-0042 · Week 2</span>
+    </div>
+    <div class="chart-card__grid">
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Current course</div>
+        <div class="chart-card__field-value">Anatomy and Physiology 2</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Program</div>
+        <div class="chart-card__field-value">Pre-nursing, 2nd semester</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Current grade</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">58%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Week of semester</div>
+        <div class="chart-card__field-value">4 of 16</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Exams completed</div>
+        <div class="chart-card__field-value">2 of 5 (56%, 38%)</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Lab practicals completed</div>
+        <div class="chart-card__field-value">2 of 5 (avg 74%)</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Homework average</div>
+        <div class="chart-card__field-value">80%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Hours studied per week</div>
+        <div class="chart-card__field-value">15 to 18 (self-reported)</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Office hours visits</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">0</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Morgan in their own words</h2>
+
+  <p>
+    Morgan's facilitator asked them to describe their study approach and how things are going. This is what Morgan wrote.
+  </p>
+
+  <div class="quote">
+    <div class="quote__label">Morgan, week 4 of the semester</div>
+    <div class="quote__text">
+      <p>
+        "I do not understand what is happening. I study harder than anyone I know. I put in at least 15 hours a week on A&amp;P, sometimes more. My notes are beautiful. I color-code them by system. I reread the chapters before lectures and again before exams. I use Quizlet almost every day. I watch the YouTube videos my professor recommends, sometimes twice."
+      </p>
+      <p>
+        "But when I sit down for the exam, my mind goes blank. I stare at the questions and everything I studied is just gone. I leave the exam feeling like I did not know half of what was asked. Then I get the grade back and I was right."
+      </p>
+      <p>
+        "I am starting to wonder if I am just not smart enough for nursing. My parents do not know about the second exam score yet. I have been avoiding my professor's office hours because I feel like I should know this stuff by now."
+      </p>
+    </div>
+  </div>
+
+  <h2>Morgan's typical study week</h2>
+
+  <p>
+    Morgan spends roughly 15 to 18 hours per week on A&amp;P outside of class. Here is what that time actually looks like.
+  </p>
+
+  <div class="habits">
+    <div class="habits__col habits__col--does">
+      <div class="habits__col-label">What Morgan does</div>
+      <ul class="habits__list">
+        <li>Reads the chapter with highlighter before lecture</li>
+        <li>Takes handwritten notes during lecture</li>
+        <li>Color-codes notes at home afterward, by body system</li>
+        <li>Rereads the chapter a second time, underlining new details</li>
+        <li>Builds Quizlet cards, uses Learn mode</li>
+        <li>Watches professor-recommended YouTube videos at 1.5x speed</li>
+        <li>Reviews all materials the night before each exam</li>
+      </ul>
+    </div>
+    <div class="habits__col habits__col--doesnt">
+      <div class="habits__col-label">What Morgan does not do</div>
+      <ul class="habits__list">
+        <li>Take practice exams or practice questions</li>
+        <li>Self-test without notes in hand</li>
+        <li>Study with other students</li>
+        <li>Attend office hours</li>
+        <li>Work with models or practicals outside of lab time</li>
+        <li>Explain concepts out loud to themselves or anyone else</li>
+        <li>Space study across multiple days per topic</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The teaching point of Morgan's case</p>
+    </div>
+    <p class="callout__text">
+      Morgan is not lazy. Morgan is not unintelligent. Morgan is studying <strong>15 to 18 hours a week</strong> on this course. The problem is not effort. The problem is that the methods Morgan is using feel productive but do not produce the kind of learning that transfers to an exam. <strong>This is the most common pattern in failing A&amp;P students.</strong> It is almost certainly a pattern you will recognize in yourself, in part.
+    </p>
+  </div>
+
+  <h2>Before the live session</h2>
+
+  <p>
+    You do not need to solve Morgan's case before the session. The whole point of the Observe phase is that your team works through it together, with your facilitator guiding. What you <strong>do</strong> need to do is read the case carefully and think about it.
+  </p>
+
+  <h3>Come to the session with these three things in mind</h3>
+
+  <ul class="prep-list">
+    <li>
+      <strong>Where do you see yourself in Morgan's story?</strong> Be specific. Which habits are yours? Which "does not do" items apply to you? Not all of them will. Some will.
+    </li>
+    <li>
+      <strong>What do you think is actually happening with Morgan?</strong> Come in with a hypothesis. You do not need to be right. Your team will work this out together.
+    </li>
+    <li>
+      <strong>What would you want Morgan to do first?</strong> Not the full plan. Just the very first change. Remember the theme: stop the bleeding.
+    </li>
+  </ul>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">What you will do in the session</p>
+    </div>
+    <p class="callout__text">
+      Your team will work through three questions together, guided by your facilitator. What do we think is happening for Morgan. What should Morgan stop doing. What should Morgan start doing. You will reason through it as a team, not as individuals. After the session, you will write your own decision plan, which applies what the team surfaced to your own situation.
+    </p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Before the session</div>
+    <h3 class="next-step__title">Read the case once. Then read it again.</h3>
+    <p class="next-step__body">
+      15 to 20 minutes total. The second reading is where you start to recognize the parallels to your own situation. Come to the live session ready to work.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week2_case_morgan';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

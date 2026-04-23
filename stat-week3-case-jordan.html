@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 3 Pre-read — Jordan's Case</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 0 0 2.5rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+/* Patient-chart-style data card */
+.chart-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+.chart-card__header {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chart-card__header-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+}
+
+.chart-card__header-id {
+  font-size: 0.75rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  color: rgba(250, 250, 247, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.chart-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.chart-card__field {
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+}
+
+.chart-card__field:nth-child(even) { border-right: none; }
+.chart-card__field:nth-last-child(-n+2) { border-bottom: none; }
+
+.chart-card__field-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.chart-card__field-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  line-height: 1.4;
+}
+
+.chart-card__field-value--alert {
+  color: #B91C1C;
+}
+
+@media (max-width: 560px) {
+  .chart-card__grid { grid-template-columns: 1fr; }
+  .chart-card__field { border-right: none; }
+  .chart-card__field:nth-last-child(2) { border-bottom: 1px solid var(--cc-border); }
+}
+
+/* Quote block */
+.quote {
+  background: var(--cc-tint-gold);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  position: relative;
+  border-left: 3px solid var(--cc-gold);
+}
+
+.quote__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+
+.quote__text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-navy);
+  font-style: italic;
+  margin: 0;
+}
+
+.quote__text p {
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+
+.quote__text p:last-child { margin-bottom: 0; }
+
+/* Habits / changes lists */
+.habits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .habits { grid-template-columns: 1fr; }
+}
+
+.habits__col {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.habits__col-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.habits__col--does .habits__col-label { color: var(--cc-gold-deep); }
+.habits__col--doesnt .habits__col-label { color: #B91C1C; }
+
+.habits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.habits__list li {
+  font-size: 0.875rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  padding: 0.375rem 0;
+  padding-left: 1.125rem;
+  position: relative;
+}
+
+.habits__list li::before {
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-weight: 700;
+}
+
+.habits__col--does .habits__list li::before {
+  content: "+";
+  color: var(--cc-gold);
+}
+
+.habits__col--doesnt .habits__list li::before {
+  content: "—";
+  color: #B91C1C;
+}
+
+/* Gaps list (specific foundation concepts) */
+.gaps-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+}
+
+.gaps-list li {
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.gaps-list li strong {
+  display: block;
+  color: var(--cc-navy);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+/* Callouts */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Prep checklist */
+.prep-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.prep-list li {
+  position: relative;
+  padding: 0.875rem 1.125rem 0.875rem 2.75rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.prep-list li::before {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  top: 1rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 3px;
+  background: white;
+}
+
+.prep-list li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Next step */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 3 Pre-read</div>
+  <h1>Jordan's case.</h1>
+  <p class="lead">
+    Read this before your Week 3 live session. Jordan's situation is different from Morgan's. Jordan has already fixed their methods. Something else is still missing.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 3 theme</div>
+    <div class="theme-card__title">Foundation repair, selective.</div>
+    <p class="theme-card__body">
+      Some struggling students have a method problem. Others have a foundation problem. Many have both. Jordan is now past the method problem. What is left is harder to see and harder to name, which is why Week 3 dedicates a full case to it.
+    </p>
+  </div>
+
+  <h2>Meet Jordan</h2>
+
+  <p>
+    Jordan is a 20-year-old pre-nursing student at a community college, second semester of Anatomy and Physiology. They passed A&amp;P 1 with a C-minus last semester. They are currently six weeks into A&amp;P 2, which means they have taken three unit exams and two lab practicals so far.
+  </p>
+
+  <p>
+    Two weeks ago, Jordan worked through Morgan's case with their own team. The discussion hit home. Jordan realized their study methods were producing exactly the kind of "feels productive but does not retain" work the team had identified in Morgan. Since that session, Jordan has changed how they study. They have done real work on the methods.
+  </p>
+
+  <p>
+    <strong>And yet their grade has barely moved.</strong>
+  </p>
+
+  <div class="chart-card">
+    <div class="chart-card__header">
+      <span class="chart-card__header-label">Case file</span>
+      <span class="chart-card__header-id">ID-0081 · Week 3</span>
+    </div>
+    <div class="chart-card__grid">
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Current course</div>
+        <div class="chart-card__field-value">Anatomy and Physiology 2</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Program</div>
+        <div class="chart-card__field-value">Pre-nursing, 2nd semester</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">A&amp;P 1 grade (prior)</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">C-minus</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Current A&amp;P 2 grade</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">62%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Lecture exams completed</div>
+        <div class="chart-card__field-value">3 of 5 (65%, 60%, 61%)</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Lab practicals completed</div>
+        <div class="chart-card__field-value chart-card__field-value--alert">2 of 5 (58%, 55%)</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Homework average</div>
+        <div class="chart-card__field-value">85%</div>
+      </div>
+      <div class="chart-card__field">
+        <div class="chart-card__field-label">Hours studied per week</div>
+        <div class="chart-card__field-value">18 to 22 (self-reported)</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Jordan in their own words</h2>
+
+  <p>
+    Jordan's facilitator asked them to describe what has changed since working Morgan's case, and what is still not working.
+  </p>
+
+  <div class="quote">
+    <div class="quote__label">Jordan, two weeks after Morgan's case</div>
+    <div class="quote__text">
+      <p>
+        "I did the work. I stopped rereading. I got rid of the color-coded notes. I stopped watching videos on 1.5x speed like I could just absorb them. I bought a practice question bank and I actually use it. I self-test without notes in front of me. I went to office hours once. My study time went UP, not down, but it feels different now. More active. I can tell my brain is doing more work."
+      </p>
+      <p>
+        "And yet the exam last week was a 61. The one before was a 60. I thought I understood the material when I was studying. I did practice questions and got them right. Then I sat down for the exam and the questions were phrased differently, and I could not figure out how to apply what I knew."
+      </p>
+      <p>
+        "Here is what I noticed. When I try to explain the resting membrane potential out loud, I cannot do it. I can name the phases of an action potential. I can tell you sodium goes in and potassium goes out. But I cannot explain <em>why</em>. I do not understand what a concentration gradient really is. I do not understand what the sodium-potassium pump is actually doing at a deep level. It is like the professor is building a house and everyone else has the foundation already and I am standing on sand."
+      </p>
+    </div>
+  </div>
+
+  <h2>What Jordan changed, and what still is not working</h2>
+
+  <p>
+    Since Morgan's case two weeks ago, Jordan has made specific changes to how they study. Here is the before-and-after.
+  </p>
+
+  <div class="habits">
+    <div class="habits__col habits__col--does">
+      <div class="habits__col-label">What Jordan has changed</div>
+      <ul class="habits__list">
+        <li>Stopped rereading chapters</li>
+        <li>Stopped rewriting or color-coding notes</li>
+        <li>Uses practice question bank almost daily</li>
+        <li>Self-tests without notes in hand</li>
+        <li>Watches videos once at normal speed, takes retrieval notes after</li>
+        <li>Attended office hours once</li>
+        <li>Tries to explain concepts out loud while studying</li>
+      </ul>
+    </div>
+    <div class="habits__col habits__col--doesnt">
+      <div class="habits__col-label">What still is not working</div>
+      <ul class="habits__list">
+        <li>Cannot explain core mechanisms when asked</li>
+        <li>Gets practice questions right but fails on exam variants</li>
+        <li>Understands while studying, forgets during exam</li>
+        <li>Cannot connect concepts across systems</li>
+        <li>Struggles with any question requiring integration</li>
+        <li>Feels "lost" in lecture within the first 15 minutes</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>The concepts Jordan has flagged as unclear</h2>
+
+  <p>
+    When Jordan's facilitator asked them to name specific things they do not understand, Jordan named these. Note that these are all <strong>foundational concepts</strong>, not current-unit material.
+  </p>
+
+  <ul class="gaps-list">
+    <li>
+      <strong>What a concentration gradient really is</strong>
+      How ions are distributed differently inside and outside a cell, what that means in terms of potential energy, and why it matters.
+    </li>
+    <li>
+      <strong>What the sodium-potassium pump is actually doing</strong>
+      Jordan can describe it as "sodium out, potassium in" but cannot explain why the cell spends energy to do this or what it accomplishes.
+    </li>
+    <li>
+      <strong>Osmosis beyond the textbook definition</strong>
+      Jordan knows "water moves toward higher solute concentration" but cannot apply this to real situations like kidney function or fluid balance.
+    </li>
+    <li>
+      <strong>What a membrane protein does mechanically</strong>
+      Jordan knows proteins are in membranes and that some are channels. Cannot explain how a channel actually opens or what determines whether something can pass through.
+    </li>
+  </ul>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The teaching point of Jordan's case</p>
+    </div>
+    <p class="callout__text">
+      Jordan fixed the method. The method was real. But Jordan also has <strong>foundational gaps from A&amp;P 1 and chemistry</strong> that are blocking current material. No amount of good study method will help if the prerequisite understanding is missing. The work of Week 3 is learning to identify which foundation gaps are blocking current coursework and selectively repairing them. <strong>Not all of them. The ones that matter right now.</strong>
+    </p>
+  </div>
+
+  <h2>Before the live session</h2>
+
+  <p>
+    Same structure as Week 2. You do not need to solve Jordan's case before the session. Your team will work it out together. What you do need to do is read it carefully and think about it.
+  </p>
+
+  <h3>Come to the session with these three things in mind</h3>
+
+  <ul class="prep-list">
+    <li>
+      <strong>Where do you see yourself in Jordan's story?</strong> If you changed methods after Morgan's case and are still struggling, Jordan's situation may be familiar. Even if you have not yet changed methods, you may still have foundational gaps that will hit you later.
+    </li>
+    <li>
+      <strong>What specific concepts from A&amp;P 1 or chemistry do you feel uncertain about?</strong> Not the ones you do not remember at all. The ones that feel fuzzy, where you can name them but cannot explain them. Those are the most dangerous gaps, because they hide.
+    </li>
+    <li>
+      <strong>Which of Jordan's specific gaps feel familiar to you?</strong> Concentration gradients, sodium-potassium pump, osmosis, membrane proteins. Be honest. Most A&amp;P 2 students have gaps in at least one of these.
+    </li>
+  </ul>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">What you will do in the session</p>
+    </div>
+    <p class="callout__text">
+      Your team will work through three questions together, same structure as Morgan's case. What do we think is happening for Jordan. What should Jordan stop doing. What should Jordan start doing. Expect the discussion to get specific about which foundation concepts Jordan needs to repair first, and in what order. Bring your own list of foundational concepts you are uncertain about. You will use them this week.
+    </p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Before the session</div>
+    <h3 class="next-step__title">Read once for the story. Read again for the gaps.</h3>
+    <p class="next-step__body">
+      15 to 20 minutes total. On the second reading, highlight the concepts Jordan names that feel uncertain for you too. You will bring that list to the team discussion.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week3_case_jordan';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

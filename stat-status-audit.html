@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Status Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #166534;
+  --cc-warning: #92400E;
+  --cc-alert: #991B1B;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+  --cc-space-9: 4rem;
+
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+
+  --cc-radius-sm: 4px;
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+  --cc-radius-xl: 24px;
+
+  --cc-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cc-duration-fast: 150ms;
+  --cc-duration: 250ms;
+  --cc-duration-slow: 400ms;
+
+  --cc-focus-ring: 0 0 0 3px var(--cc-white), 0 0 0 6px var(--cc-gold-deep);
+  --cc-focus-ring-inverse: 0 0 0 3px var(--cc-navy), 0 0 0 6px var(--cc-gold-bright);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute; top: -48px; left: 0;
+  background: var(--cc-navy); color: var(--cc-text-inverse);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-weight: var(--cc-weight-semi); text-decoration: none;
+  z-index: 1000; transition: top var(--cc-duration) var(--cc-ease);
+}
+.skip-link:focus { top: 0; outline: none; box-shadow: var(--cc-focus-ring-inverse); }
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--cc-space-6) var(--cc-space-5);
+}
+
+/* ==========================================================================
+   WEEK PICKER (shown if no week param)
+   ========================================================================== */
+
+.week-picker {
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-navy);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-7);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.week-picker__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-3);
+}
+
+.week-picker__intro {
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-4);
+  font-size: var(--cc-size-sm);
+}
+
+.week-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--cc-space-3);
+}
+
+.week-option {
+  padding: var(--cc-space-4);
+  border: 2px solid var(--cc-border);
+  background: var(--cc-surface);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  font-family: var(--cc-font);
+}
+
+.week-option:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+}
+
+.week-option:focus-visible {
+  outline: none;
+  box-shadow: var(--cc-focus-ring);
+}
+
+.week-option__week {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+}
+
+.week-option__theme {
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+  margin-top: var(--cc-space-1);
+}
+
+/* ==========================================================================
+   MASTHEAD
+   ========================================================================== */
+
+.masthead {
+  border-bottom: 1px solid var(--cc-border);
+  padding-bottom: var(--cc-space-6);
+  margin-bottom: var(--cc-space-7);
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--cc-space-2);
+  font-size: var(--cc-size-xs); font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cc-gold-deep); margin-bottom: var(--cc-space-3);
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 2px;
+  background: var(--cc-gold); display: inline-block;
+}
+
+.masthead h1 {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-3);
+}
+
+.masthead__theme {
+  font-size: var(--cc-size-md);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-3);
+}
+
+.masthead__lead {
+  font-size: var(--cc-size-sm);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+}
+
+/* ==========================================================================
+   SECTION (SOAP)
+   ========================================================================== */
+
+.soap-section {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+  border-left: 4px solid var(--cc-navy);
+}
+
+.soap-section--track {
+  border-left-color: var(--cc-gold);
+}
+
+.soap-section__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--cc-space-4);
+  margin-bottom: var(--cc-space-4);
+  padding-bottom: var(--cc-space-3);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.soap-section__letter {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+  min-width: 28px;
+}
+
+.soap-section__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin: 0;
+  flex: 1;
+}
+
+.soap-section__subtitle {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.soap-section__intro {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-5);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* ==========================================================================
+   FORM ELEMENTS
+   ========================================================================== */
+
+.field {
+  margin-bottom: var(--cc-space-5);
+}
+
+.field:last-child { margin-bottom: 0; }
+
+.field-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--cc-space-4);
+}
+
+@media (max-width: 560px) {
+  .field-grid-2 { grid-template-columns: 1fr; }
+}
+
+.label {
+  display: block;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  margin-bottom: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.help {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-secondary);
+  margin-top: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.input, .textarea, .select {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  border-radius: var(--cc-radius);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.input:hover, .textarea:hover, .select:hover { border-color: var(--cc-text-muted); }
+
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  border-color: var(--cc-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 61, 0.15);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: var(--cc-leading-relaxed);
+}
+
+.textarea--sm { min-height: 72px; }
+.textarea--lg { min-height: 140px; }
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3e%3cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230A1F3D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+/* Option cards */
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cc-space-3);
+}
+
+.option-group--compact { gap: var(--cc-space-2); }
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cc-space-3);
+  padding: var(--cc-space-3) var(--cc-space-4);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  background: var(--cc-surface);
+}
+
+.option:hover {
+  border-color: var(--cc-navy-soft);
+  background: var(--cc-tint-navy);
+}
+
+.option input[type="radio"], .option input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  margin-top: 2px;
+  accent-color: var(--cc-navy);
+  cursor: pointer;
+}
+
+.option input:focus-visible {
+  outline: 2px solid var(--cc-gold-deep);
+  outline-offset: 2px;
+}
+
+.option:has(input:checked) {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.option__content { flex: 1; }
+
+.option__title {
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  line-height: var(--cc-leading-snug);
+}
+
+.option__description {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  margin-top: 2px;
+  line-height: var(--cc-leading-snug);
+}
+
+/* ==========================================================================
+   TRACK SECTION (week 3+)
+   ========================================================================== */
+
+.track-item {
+  background: var(--cc-white);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  padding: var(--cc-space-4);
+  margin-bottom: var(--cc-space-3);
+}
+
+.track-item__commitment {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-3);
+  font-style: italic;
+  padding-left: var(--cc-space-3);
+  border-left: 2px solid var(--cc-gold);
+}
+
+.track-item__radios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--cc-space-2);
+  margin-top: var(--cc-space-3);
+}
+
+@media (max-width: 480px) {
+  .track-item__radios { grid-template-columns: 1fr; }
+}
+
+.track-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-2) var(--cc-space-3);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  background: var(--cc-surface);
+  font-size: var(--cc-size-sm);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 44px;
+  text-align: center;
+}
+
+.track-option:hover {
+  border-color: var(--cc-navy-soft);
+  background: var(--cc-tint-navy);
+}
+
+.track-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px; height: 1px;
+}
+
+.track-option:has(input:checked) {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  font-weight: var(--cc-weight-semi);
+}
+
+/* ==========================================================================
+   CALLOUTS
+   ========================================================================== */
+
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* ==========================================================================
+   SOAP REVEAL (week 3+)
+   ========================================================================== */
+
+.soap-reveal {
+  background: var(--cc-tint-gold);
+  border: 1px solid #E8D9B5;
+  border-radius: var(--cc-radius);
+  padding: var(--cc-space-4) var(--cc-space-5);
+  margin-bottom: var(--cc-space-5);
+}
+
+.soap-reveal__title {
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--cc-space-2);
+}
+
+.soap-reveal__text {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+  margin: 0;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.button--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+.button--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+.button--secondary:hover {
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.button--tertiary {
+  background: transparent;
+  color: var(--cc-text-muted);
+  border-color: transparent;
+}
+.button--tertiary:hover { color: var(--cc-navy); background: var(--cc-tint-navy); }
+
+.button--gold-bright {
+  background: var(--cc-gold-bright);
+  color: var(--cc-navy);
+  border-color: var(--cc-gold-bright);
+  box-shadow: var(--cc-shadow-sm);
+  font-weight: var(--cc-weight-bold);
+}
+.button--gold-bright:hover {
+  background: #C49A52;
+  border-color: #C49A52;
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--lg {
+  padding: var(--cc-space-4) var(--cc-space-6);
+  font-size: var(--cc-size-base);
+  min-height: 56px;
+}
+
+.button:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+
+.button-row {
+  display: flex;
+  gap: var(--cc-space-3);
+  margin-top: var(--cc-space-7);
+  padding-top: var(--cc-space-5);
+  border-top: 1px solid var(--cc-border);
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   SAVE INDICATOR
+   ========================================================================== */
+
+.save-indicator {
+  position: fixed;
+  bottom: var(--cc-space-5);
+  right: var(--cc-space-5);
+  padding: var(--cc-space-2) var(--cc-space-4);
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-xl);
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-semi);
+  box-shadow: var(--cc-shadow-lg);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--cc-duration) var(--cc-ease);
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--cc-space-2);
+}
+
+.save-indicator[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.save-indicator__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cc-gold-bright);
+}
+
+/* ==========================================================================
+   SUBMISSION CONFIRMATION
+   ========================================================================== */
+
+.confirmation {
+  display: none;
+  animation: fadeIn var(--cc-duration-slow) var(--cc-ease);
+}
+
+.confirmation[data-visible="true"] { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confirmation__hero {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-7) var(--cc-space-6);
+  margin-bottom: var(--cc-space-6);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.confirmation__hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.confirmation__eyebrow {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.confirmation__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-tight);
+}
+
+.confirmation__body {
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .skip-link, .button, .button-row, .save-indicator, .week-picker { display: none !important; }
+  .soap-section, .track-item, .callout, .soap-reveal { box-shadow: none; border: 1px solid #666; }
+  .soap-section { page-break-inside: avoid; }
+  .confirmation__hero { background: white !important; color: black !important; border: 2px solid var(--cc-navy); }
+  .confirmation__title, .confirmation__body, .confirmation__eyebrow { color: black !important; }
+  h1, h2, .soap-section__title { page-break-after: avoid; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="shell" id="main">
+
+  <!-- WEEK PICKER: shown if no ?week= param -->
+  <div id="weekPicker" style="display: none;">
+    <header style="margin-bottom: var(--cc-space-6);">
+      <div class="eyebrow">STAT Success Cohort</div>
+      <h1 style="font-size: var(--cc-size-3xl); font-weight: var(--cc-weight-extra); color: var(--cc-navy); line-height: var(--cc-leading-tight); letter-spacing: -0.02em; margin-bottom: var(--cc-space-4);">Current State Audit</h1>
+      <p style="font-size: var(--cc-size-md); color: var(--cc-text-secondary); line-height: var(--cc-leading-relaxed); max-width: 62ch;">
+        Your weekly self-assessment. Written as a SOAP note on yourself. Which week's
+        audit are you working on?
+      </p>
+    </header>
+    <div class="week-picker">
+      <div class="week-picker__title">Select your week</div>
+      <p class="week-picker__intro">
+        Normally you would reach this page with your week pre-selected. Pick below to continue.
+      </p>
+      <div class="week-picker__grid" id="weekGrid"></div>
+    </div>
+  </div>
+
+  <!-- MAIN AUDIT FORM -->
+  <div id="auditForm" style="display: none;">
+    <header class="masthead">
+      <div class="eyebrow" id="weekLabel">STAT Success Cohort · Current State Audit</div>
+      <h1 id="weekTitle">Your Current State</h1>
+      <div class="masthead__theme" id="weekTheme"></div>
+      <p class="masthead__lead" id="weekIntro"></p>
+    </header>
+
+    <!-- TRACK section (weeks 3+) -->
+    <div id="trackSection" style="display: none;"></div>
+
+    <!-- SOAP REVEAL (week 3+) -->
+    <div id="soapReveal" style="display: none;" class="soap-reveal">
+      <div class="soap-reveal__title">Starting this week: SOAP</div>
+      <p class="soap-reveal__text">
+        You may have noticed the Current state audit follows a consistent structure. It is called a
+        SOAP note, the same framework clinicians use to document patient visits. Subjective,
+        Objective, Assessment, Plan. You've been writing SOAP notes on yourself for two weeks
+        already. Now it has a name.
+      </p>
+    </div>
+
+    <!-- S: SUBJECTIVE -->
+    <div class="soap-section">
+      <div class="soap-section__header">
+        <span class="soap-section__letter">S</span>
+        <h2 class="soap-section__title">Subjective</h2>
+        <span class="soap-section__subtitle">How this week felt</span>
+      </div>
+      <p class="soap-section__intro">
+        The emotional and experiential data from your week. Not judgments or goals, just
+        what was.
+      </p>
+
+      <div class="field">
+        <label for="s_truest" class="label">What is the truest thing you can say about this past week?</label>
+        <textarea id="s_truest" name="s_truest" class="textarea" data-field="s_truest"></textarea>
+        <p class="help">One or two sentences. The answer you'd give if no one was listening.</p>
+      </div>
+
+      <div class="field">
+        <label class="label">Overall, this week was:</label>
+        <div class="option-group option-group--compact">
+          <label class="option">
+            <input type="radio" name="s_overall" value="better" data-field="s_overall">
+            <div class="option__content">
+              <div class="option__title">Better than last week</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="s_overall" value="same" data-field="s_overall">
+            <div class="option__content">
+              <div class="option__title">About the same</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="s_overall" value="worse" data-field="s_overall">
+            <div class="option__content">
+              <div class="option__title">Worse than last week</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="s_overall" value="unsure" data-field="s_overall">
+            <div class="option__content">
+              <div class="option__title">Hard to say</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="s_obstacle" class="label">If something got in the way this week, what was it?</label>
+        <textarea id="s_obstacle" name="s_obstacle" class="textarea textarea--sm" data-field="s_obstacle"></textarea>
+        <p class="help">Leave blank if nothing did.</p>
+      </div>
+    </div>
+
+    <!-- O: OBJECTIVE -->
+    <div class="soap-section">
+      <div class="soap-section__header">
+        <span class="soap-section__letter">O</span>
+        <h2 class="soap-section__title">Objective</h2>
+        <span class="soap-section__subtitle">The data of your week</span>
+      </div>
+      <p class="soap-section__intro">
+        The numbers. Not interpretation, just measurement.
+      </p>
+
+      <div class="field-grid-2">
+        <div class="field">
+          <label for="o_grade" class="label">Your current grade in A&P</label>
+          <input type="text" id="o_grade" name="o_grade" class="input" data-field="o_grade" placeholder="e.g. 62%">
+        </div>
+        <div class="field">
+          <label for="o_hours" class="label">Hours actually studied this week</label>
+          <input type="number" id="o_hours" name="o_hours" class="input" data-field="o_hours" min="0" max="60" step="0.5" placeholder="Honest estimate">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="o_next" class="label">Your next assessment: what, when, weight</label>
+        <input type="text" id="o_next" name="o_next" class="input" data-field="o_next" placeholder="e.g. Exam 3 on Oct 12, worth 15% of grade">
+      </div>
+
+      <div class="field">
+        <label class="label">Instructor contact this week</label>
+        <div class="option-group option-group--compact">
+          <label class="option">
+            <input type="radio" name="o_instructor" value="office-hours" data-field="o_instructor">
+            <div class="option__content">
+              <div class="option__title">Went to office hours</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="o_instructor" value="email" data-field="o_instructor">
+            <div class="option__content">
+              <div class="option__title">Emailed them</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="o_instructor" value="class" data-field="o_instructor">
+            <div class="option__content">
+              <div class="option__title">Asked a question in class</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="o_instructor" value="attempted" data-field="o_instructor">
+            <div class="option__content">
+              <div class="option__title">Tried but didn't follow through</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="o_instructor" value="none" data-field="o_instructor">
+            <div class="option__content">
+              <div class="option__title">No contact this week</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- A: ASSESSMENT (week-specific content) -->
+    <div class="soap-section">
+      <div class="soap-section__header">
+        <span class="soap-section__letter">A</span>
+        <h2 class="soap-section__title">Assessment</h2>
+        <span class="soap-section__subtitle">What the data means</span>
+      </div>
+      <p class="soap-section__intro" id="a_intro"></p>
+
+      <div id="a_questions"></div>
+
+      <div class="field">
+        <label for="a_biggest" class="label">What is the single biggest thing hurting your grade right now?</label>
+        <textarea id="a_biggest" name="a_biggest" class="textarea textarea--sm" data-field="a_biggest"></textarea>
+      </div>
+    </div>
+
+    <!-- P: PLAN -->
+    <div class="soap-section">
+      <div class="soap-section__header">
+        <span class="soap-section__letter">P</span>
+        <h2 class="soap-section__title">Plan</h2>
+        <span class="soap-section__subtitle">Coming into today's session</span>
+      </div>
+      <p class="soap-section__intro">
+        A preview of where your Action work will focus this week. You'll write the actual
+        plan during the live session after the team discussion.
+      </p>
+
+      <div class="field">
+        <label for="p_focus" class="label">Going into today's session, what do you think you most need to work on?</label>
+        <textarea id="p_focus" name="p_focus" class="textarea" data-field="p_focus"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="p_question" class="label">What question do you want the team or facilitator to help you think through?</label>
+        <textarea id="p_question" name="p_question" class="textarea textarea--sm" data-field="p_question"></textarea>
+        <p class="help">Optional. Use this to surface something specific you want help with.</p>
+      </div>
+    </div>
+
+    <!-- TRUST CHECK -->
+    <div class="soap-section soap-section--track">
+      <div class="soap-section__header">
+        <span class="soap-section__letter">T</span>
+        <h2 class="soap-section__title">Trust check</h2>
+        <span class="soap-section__subtitle">For today's team discussion</span>
+      </div>
+      <p class="soap-section__intro">
+        Your facilitator reads this to understand how much personal material you want in
+        today's conversation. It's not a commitment, just a reading of where you are.
+      </p>
+
+      <div class="field">
+        <label class="label">Today, I'm comfortable sharing:</label>
+        <div class="option-group option-group--compact">
+          <label class="option">
+            <input type="radio" name="t_sharing" value="nothing" data-field="t_sharing">
+            <div class="option__content">
+              <div class="option__title">Nothing personal</div>
+              <div class="option__description">Engage with the case, skip the rest.</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="t_sharing" value="themes" data-field="t_sharing">
+            <div class="option__content">
+              <div class="option__title">General themes</div>
+              <div class="option__description">Without specifics from my own situation.</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="t_sharing" value="specific" data-field="t_sharing">
+            <div class="option__content">
+              <div class="option__title">Specific details</div>
+              <div class="option__description">If it feels useful to the conversation.</div>
+            </div>
+          </label>
+          <label class="option">
+            <input type="radio" name="t_sharing" value="see-how" data-field="t_sharing">
+            <div class="option__content">
+              <div class="option__title">I'll see how it goes</div>
+              <div class="option__description">Decide in the moment based on the team.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="t_need" class="label">Anything your facilitator should know before today?</label>
+        <textarea id="t_need" name="t_need" class="textarea textarea--sm" data-field="t_need"></textarea>
+        <p class="help">Optional. Use this for things that don't fit anywhere else.</p>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="button-row">
+      <button class="button button--tertiary" onclick="window.print()" type="button">Print</button>
+      <button class="button button--secondary" data-action="download" type="button">Download</button>
+      <div style="flex: 1;"></div>
+      <button class="button button--gold-bright button--lg" data-action="submit" type="button">Submit audit</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div id="confirmation" class="confirmation">
+    <div class="confirmation__hero">
+      <div class="confirmation__eyebrow">Current state submitted</div>
+      <h2 class="confirmation__title">Thank you.</h2>
+      <p class="confirmation__body" id="confirmBody">
+        Your audit is saved. Your facilitator will review it before today's session. Bring
+        what came up here into the team discussion.
+      </p>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">What happens next</p></div><div class="callout__body"><p class="callout__text">
+          Show up to your live session ready to work the case. After the session, you will write
+          your decision plan for the week ahead. Next week's Current state audit will ask whether you did
+          what you said you would.
+        </p></div></div>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--secondary" onclick="window.print()" type="button">Print my audit</button>
+      <button class="button button--tertiary" data-action="download" type="button">Download a copy</button>
+      <div style="flex: 1;"></div>
+      <button class="button button--primary" data-action="return" type="button">Back to audit</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- SAVE INDICATOR -->
+<div class="save-indicator" id="saveIndicator" role="status" aria-live="polite">
+  <span class="save-indicator__dot"></span>
+  <span>Saved</span>
+</div>
+
+<script>
+// ==========================================================================
+// WEEK CONFIG
+// ==========================================================================
+
+const WEEKS = {
+  2: {
+    theme: 'Stop the bleeding',
+    eyebrow: 'Week 2 Current State',
+    title: 'Your Current State for Week 2',
+    intro: 'This is your first full Current State audit. Take about 15 minutes. The rest of the program runs on this rhythm, so getting it right now makes everything that follows easier.',
+    aIntro: 'Coming off the Week 1 session, what do you make of what you\'re doing and how it\'s working?',
+    aQuestions: [
+      { id: 'a_methods_working', label: 'Are the study methods you\'re using actually producing learning?', type: 'radio', options: [
+        { value: 'yes', title: 'Yes, when I can see it, I understand and retain' },
+        { value: 'mixed', title: 'Mixed, some methods work and some don\'t' },
+        { value: 'no', title: 'Honestly, not really' },
+        { value: 'unsure', title: 'I don\'t know how to tell' }
+      ]},
+      { id: 'a_hard_chapter', label: 'What\'s one chapter or concept that you\'ve been avoiding or that feels too hard to approach?', type: 'textarea', placeholder: 'It\'s okay to name it honestly. Naming it is step one.' }
+    ],
+    hasTrack: false,
+    hasSoapReveal: false
+  },
+  3: {
+    theme: 'Foundation repair, selective',
+    eyebrow: 'Week 3 Current State',
+    title: 'Your Current State for Week 3',
+    intro: 'This week we\'re looking at what earlier content is still with you and what isn\'t. Not to panic you, but to find what\'s load-bearing.',
+    aIntro: 'The current material in A&P depends on things you were supposed to learn earlier. Which of those are still solid, and which are shaky?',
+    aQuestions: [
+      { id: 'a_current_unit', label: 'What is the current unit or chapter you\'re studying?', type: 'input', placeholder: 'e.g. Endocrine system, cardiovascular physiology' },
+      { id: 'a_dependencies', label: 'List three concepts from earlier units that this current unit depends on.', type: 'textarea', placeholder: 'One per line. If you can only name one or two, note that.' },
+      { id: 'a_can_explain', label: 'Of those concepts, how many can you explain out loud in one or two sentences, without notes?', type: 'radio', options: [
+        { value: 'all', title: 'All of them' },
+        { value: 'most', title: 'Most of them, one or two are shaky' },
+        { value: 'some', title: 'Some of them' },
+        { value: 'none', title: 'None of them, or very few' }
+      ]},
+      { id: 'a_skipped', label: 'Is there a concept from earlier in the course you know you never really learned, and have been hoping wouldn\'t matter?', type: 'textarea', placeholder: 'Name it here. This is the most valuable question in the audit.' }
+    ],
+    hasTrack: true,
+    hasSoapReveal: true
+  },
+  4: {
+    theme: 'The midterm hinge',
+    eyebrow: 'Week 4 Current State',
+    title: 'Your Current State for Week 4',
+    intro: 'We\'re at the hinge point. This is where recovery either takes hold or slips. Your audit this week is about exam strategy as much as content.',
+    aIntro: 'Look at your most recent major assessment. What can you learn from how it went?',
+    aQuestions: [
+      { id: 'a_last_exam_grade', label: 'Your most recent exam grade (number or letter)', type: 'input', placeholder: 'e.g. 62%, D+' },
+      { id: 'a_lost_points_content', label: 'Points lost on that exam from content you didn\'t know', type: 'input', placeholder: 'Estimate percentage of lost points' },
+      { id: 'a_lost_points_careless', label: 'Points lost from careless errors (knew it, missed it)', type: 'input', placeholder: 'Estimate percentage of lost points' },
+      { id: 'a_lost_points_time', label: 'Points lost from running out of time', type: 'input', placeholder: 'Estimate percentage of lost points' },
+      { id: 'a_lost_points_blanked', label: 'Points lost from blanking or panicking', type: 'input', placeholder: 'Estimate percentage of lost points' },
+      { id: 'a_strategy_failure', label: 'What, specifically, would you do differently on the next exam?', type: 'textarea', placeholder: 'Not "study more." Specific behavior change.' }
+    ],
+    hasTrack: true,
+    hasSoapReveal: false
+  },
+  5: {
+    theme: 'Point recovery',
+    eyebrow: 'Week 5 Current State',
+    title: 'Your Current State for Week 5',
+    intro: 'This week is about the points already in your course that might still be recoverable. Extra credit, resubmissions, participation, anything in your syllabus you haven\'t fully claimed.',
+    aIntro: 'Go to your syllabus. Look at every gradable thing. What\'s recoverable that you haven\'t pursued?',
+    aQuestions: [
+      { id: 'a_missing_assignments', label: 'Are there any assignments you didn\'t submit or submitted incomplete?', type: 'textarea', placeholder: 'List them. Even if the deadline passed.' },
+      { id: 'a_extra_credit', label: 'Is there extra credit available in your course?', type: 'radio', options: [
+        { value: 'yes-pursued', title: 'Yes, and I\'ve pursued it' },
+        { value: 'yes-not-yet', title: 'Yes, but I haven\'t pursued it' },
+        { value: 'maybe', title: 'Not sure, I should check' },
+        { value: 'no', title: 'No extra credit in this course' }
+      ]},
+      { id: 'a_participation', label: 'Are you earning all available participation and attendance points?', type: 'radio', options: [
+        { value: 'yes', title: 'Yes' },
+        { value: 'mostly', title: 'Mostly, but missing some' },
+        { value: 'no', title: 'No, and I know which ones' }
+      ]},
+      { id: 'a_instructor_conversation', label: 'Have you asked your instructor about grade recovery options?', type: 'radio', options: [
+        { value: 'yes', title: 'Yes' },
+        { value: 'plan-to', title: 'Plan to this week' },
+        { value: 'avoiding', title: 'I\'ve been avoiding the conversation' },
+        { value: 'not-applicable', title: 'Not applicable' }
+      ]}
+    ],
+    hasTrack: true,
+    hasSoapReveal: false
+  },
+  6: {
+    theme: 'Consolidation and integration',
+    eyebrow: 'Week 6 Current State',
+    title: 'Your Current State for Week 6',
+    intro: 'The work shifts this week from fixing what\'s broken to connecting what you have. Cross-system thinking is where A&P gets harder, and also where it pays off.',
+    aIntro: 'How well are you connecting concepts across body systems right now?',
+    aQuestions: [
+      { id: 'a_integration_example', label: 'Name one connection between two body systems that you can explain clearly.', type: 'textarea', placeholder: 'e.g. how the cardiovascular system and respiratory system work together in gas exchange' },
+      { id: 'a_integration_struggle', label: 'Name one system-to-system connection that still feels fuzzy.', type: 'textarea', placeholder: 'Be specific. "Everything" doesn\'t count.' },
+      { id: 'a_clinical_scenario', label: 'When you try a practice clinical scenario, what happens?', type: 'radio', options: [
+        { value: 'can-reason', title: 'I can reason through it, even if imperfectly' },
+        { value: 'stuck', title: 'I get stuck because I can\'t connect systems' },
+        { value: 'memorized', title: 'I can match facts but not reason' },
+        { value: 'havent-tried', title: 'I haven\'t tried practice scenarios' }
+      ]}
+    ],
+    hasTrack: true,
+    hasSoapReveal: false
+  },
+  7: {
+    theme: 'Final exam runway',
+    eyebrow: 'Week 7 Current State',
+    title: 'Your Current State for Week 7',
+    intro: 'Final exam preparation week. What\'s still to learn, what\'s still to review, what\'s the plan for the next 7 to 10 days.',
+    aIntro: 'How well prepared are you for your final exam, honestly?',
+    aQuestions: [
+      { id: 'a_final_date', label: 'When is your final exam?', type: 'input', placeholder: 'Date and time' },
+      { id: 'a_final_cumulative', label: 'Is your final cumulative or unit-specific?', type: 'radio', options: [
+        { value: 'cumulative', title: 'Cumulative, covers the whole course' },
+        { value: 'partial', title: 'Partially cumulative' },
+        { value: 'unit', title: 'Only covers the last unit' }
+      ]},
+      { id: 'a_strongest_unit', label: 'What\'s your strongest unit going into the final?', type: 'input', placeholder: 'e.g. endocrine system' },
+      { id: 'a_weakest_unit', label: 'What\'s your weakest unit going into the final?', type: 'input', placeholder: 'Be specific. This is where your final-prep time should go.' },
+      { id: 'a_prep_plan', label: 'Briefly, what\'s your plan for the next 7 days?', type: 'textarea', placeholder: 'Hours per day, topics, methods, test dates along the way.' }
+    ],
+    hasTrack: true,
+    hasSoapReveal: false
+  },
+  8: {
+    theme: 'Definitive care',
+    eyebrow: 'Week 8 Current State',
+    title: 'Your Current State for Week 8',
+    intro: 'The final Current State audit. Your final is either done or imminent. This week we are looking at what you learned, what you will keep, and what comes next.',
+    aIntro: 'Looking back across the 8 weeks, what changed?',
+    aQuestions: [
+      { id: 'a_final_grade', label: 'Your final course grade (or projected, if not posted yet)', type: 'input', placeholder: 'e.g. C, 75%, in progress' },
+      { id: 'a_biggest_change', label: 'What changed most in how you approach studying over these 8 weeks?', type: 'textarea', placeholder: 'Specific behaviors, not general feelings.' },
+      { id: 'a_keeping', label: 'What from this program are you keeping going forward?', type: 'textarea', placeholder: 'The weekly audit, team accountability, specific methods, the CODE cycle, a mindset shift...' },
+      { id: 'a_next_course', label: 'What\'s your next course or program?', type: 'input', placeholder: 'e.g. Microbiology, nursing school, pathophysiology' }
+    ],
+    hasTrack: true,
+    hasSoapReveal: false
+  }
+};
+
+// ==========================================================================
+// STATE
+// ==========================================================================
+
+let currentWeek = null;
+const STORAGE_PREFIX = 'mmcc_status_audit_w';
+
+function getStorageKey() { return STORAGE_PREFIX + currentWeek; }
+
+const state = { data: {} };
+
+// ==========================================================================
+// INITIALIZATION
+// ==========================================================================
+
+function init() {
+  // Read week from URL param
+  const params = new URLSearchParams(window.location.search);
+  const weekParam = parseInt(params.get('week'));
+
+  if (weekParam && WEEKS[weekParam]) {
+    currentWeek = weekParam;
+    showAuditForm();
+  } else {
+    showWeekPicker();
+  }
+}
+
+function showWeekPicker() {
+  document.getElementById('weekPicker').style.display = 'block';
+  document.getElementById('auditForm').style.display = 'none';
+
+  const grid = document.getElementById('weekGrid');
+  grid.innerHTML = Object.keys(WEEKS).sort().map(w => `
+    <button type="button" class="week-option" data-week="${w}">
+      <div class="week-option__week">Week ${w}</div>
+      <div class="week-option__theme">${escapeHtml(WEEKS[w].theme)}</div>
+    </button>
+  `).join('');
+
+  grid.addEventListener('click', (e) => {
+    const option = e.target.closest('[data-week]');
+    if (option) {
+      currentWeek = parseInt(option.dataset.week);
+      const url = new URL(window.location);
+      url.searchParams.set('week', currentWeek);
+      window.history.replaceState({}, '', url);
+      showAuditForm();
+    }
+  });
+}
+
+function showAuditForm() {
+  document.getElementById('weekPicker').style.display = 'none';
+  document.getElementById('auditForm').style.display = 'block';
+  document.getElementById('confirmation').setAttribute('data-visible', 'false');
+
+  const week = WEEKS[currentWeek];
+
+  // Masthead
+  document.getElementById('weekLabel').textContent = week.eyebrow;
+  document.getElementById('weekTitle').textContent = week.title;
+  document.getElementById('weekTheme').textContent = 'Theme: ' + week.theme;
+  document.getElementById('weekIntro').textContent = week.intro;
+
+  // Assessment section
+  document.getElementById('a_intro').textContent = week.aIntro;
+  renderAssessmentQuestions(week.aQuestions);
+
+  // Track section
+  if (week.hasTrack) {
+    renderTrackSection();
+  }
+
+  // SOAP reveal (week 3 only)
+  document.getElementById('soapReveal').style.display = week.hasSoapReveal ? 'block' : 'none';
+
+  // Load saved state
+  loadState();
+}
+
+function renderAssessmentQuestions(questions) {
+  const container = document.getElementById('a_questions');
+  container.innerHTML = questions.map(q => {
+    if (q.type === 'textarea') {
+      return `
+        <div class="field">
+          <label for="${q.id}" class="label">${escapeHtml(q.label)}</label>
+          <textarea id="${q.id}" name="${q.id}" class="textarea textarea--sm" data-field="${q.id}" placeholder="${escapeHtml(q.placeholder || '')}"></textarea>
+        </div>
+      `;
+    } else if (q.type === 'input') {
+      return `
+        <div class="field">
+          <label for="${q.id}" class="label">${escapeHtml(q.label)}</label>
+          <input type="text" id="${q.id}" name="${q.id}" class="input" data-field="${q.id}" placeholder="${escapeHtml(q.placeholder || '')}">
+        </div>
+      `;
+    } else if (q.type === 'radio') {
+      return `
+        <div class="field">
+          <label class="label">${escapeHtml(q.label)}</label>
+          <div class="option-group option-group--compact">
+            ${q.options.map(opt => `
+              <label class="option">
+                <input type="radio" name="${q.id}" value="${opt.value}" data-field="${q.id}">
+                <div class="option__content">
+                  <div class="option__title">${escapeHtml(opt.title)}</div>
+                  ${opt.description ? `<div class="option__description">${escapeHtml(opt.description)}</div>` : ''}
+                </div>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+    return '';
+  }).join('');
+}
+
+function renderTrackSection() {
+  const trackSection = document.getElementById('trackSection');
+  trackSection.style.display = 'block';
+
+  // Load last week's action plan commitments if they exist
+  const lastWeek = currentWeek - 1;
+  const lastWeekActionKey = `mmcc_action_plan_w${lastWeek}`;
+  let lastCommitments = [];
+
+  try {
+    const lastWeekData = JSON.parse(localStorage.getItem(lastWeekActionKey));
+    if (lastWeekData && lastWeekData.commitments) {
+      lastCommitments = lastWeekData.commitments;
+    }
+  } catch (e) {}
+
+  // Also check for commitments saved from Action plan tool (may be named differently)
+  // For now, we'll let students enter what they committed to manually if auto-load fails
+
+  trackSection.innerHTML = `
+    <div class="soap-section soap-section--track">
+      <div class="soap-section__header">
+        <span class="soap-section__letter">E</span>
+        <h2 class="soap-section__title">Evaluate</h2>
+        <span class="soap-section__subtitle">Last week's commitments</span>
+      </div>
+      <p class="soap-section__intro">
+        Before we look at this week, we check what happened with last week's decisions.
+        Honest reporting. Scored for truthfulness, not performance.
+      </p>
+
+      ${lastCommitments.length > 0 ? lastCommitments.map((c, i) => `
+        <div class="track-item">
+          <div class="track-item__commitment">${escapeHtml(c)}</div>
+          <div class="track-item__radios" role="radiogroup" aria-label="Execution status">
+            <label class="track-option">
+              <input type="radio" name="track_${i}" value="completed" data-field="track_${i}">
+              <span>Completed</span>
+            </label>
+            <label class="track-option">
+              <input type="radio" name="track_${i}" value="partial" data-field="track_${i}">
+              <span>Partial</span>
+            </label>
+            <label class="track-option">
+              <input type="radio" name="track_${i}" value="not-attempted" data-field="track_${i}">
+              <span>Not attempted</span>
+            </label>
+          </div>
+        </div>
+      `).join('') : `
+        <div class="callout callout--accent">
+          <div class="callout__body">
+            <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">Your Week ${currentWeek - 1} decisions</p></div><div class="callout__body"><p class="callout__text">
+              We could not find your saved decision plan from last week. If you wrote one, paste
+              your commitments below. If you did not, that is itself useful data, just note that.
+            </p></div></div>
+        </div>
+        <div class="field">
+          <label for="t_manual_commitments" class="label">What did you commit to last week?</label>
+          <textarea id="t_manual_commitments" name="t_manual_commitments" class="textarea" data-field="t_manual_commitments" placeholder="List your commitments, one per line."></textarea>
+        </div>
+        <div class="field">
+          <label for="t_manual_execution" class="label">For each commitment, did you do it?</label>
+          <textarea id="t_manual_execution" name="t_manual_execution" class="textarea" data-field="t_manual_execution" placeholder="Completed, partial, or not attempted, for each."></textarea>
+        </div>
+      `}
+
+      <div class="field" style="margin-top: var(--cc-space-5);">
+        <label for="t_reflection" class="label">If anything was not completed or partial, what got in the way?</label>
+        <textarea id="t_reflection" name="t_reflection" class="textarea textarea--sm" data-field="t_reflection" placeholder="Pick all that apply: time, motivation, confusion about how to start, life circumstance, anxiety or avoidance, something else. Say it in your own words."></textarea>
+      </div>
+    </div>
+  `;
+}
+
+// ==========================================================================
+// PERSISTENCE
+// ==========================================================================
+
+function saveState() {
+  try {
+    const data = collectFormData();
+    const payload = { data, savedAt: new Date().toISOString(), week: currentWeek };
+    localStorage.setItem(getStorageKey(), JSON.stringify(payload));
+    showSaveIndicator();
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(getStorageKey());
+    if (!raw) return;
+    const payload = JSON.parse(raw);
+    const data = payload.data || {};
+    Object.entries(data).forEach(([name, value]) => {
+      const elements = document.querySelectorAll(`[name="${name}"]`);
+      elements.forEach(el => {
+        if (el.type === 'radio') el.checked = el.value === value;
+        else el.value = value;
+      });
+    });
+  } catch (e) {}
+}
+
+function collectFormData() {
+  const data = {};
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const name = el.name;
+    if (!name) return;
+    if (el.type === 'radio') {
+      if (el.checked) data[name] = el.value;
+    } else {
+      if (el.value) data[name] = el.value;
+    }
+  });
+  return data;
+}
+
+// ==========================================================================
+// SAVE INDICATOR
+// ==========================================================================
+
+let saveTimer;
+function showSaveIndicator() {
+  const indicator = document.getElementById('saveIndicator');
+  indicator.setAttribute('data-visible', 'true');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    indicator.setAttribute('data-visible', 'false');
+  }, 1500);
+}
+
+// ==========================================================================
+// SUBMIT AND DOWNLOAD
+// ==========================================================================
+
+function submitAudit() {
+  const data = collectFormData();
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    week: currentWeek,
+    data
+  };
+
+  // Save a submission record (separate from draft)
+  try {
+    localStorage.setItem(`${getStorageKey()}_submitted`, JSON.stringify(payload));
+  } catch (e) {}
+
+  // Show confirmation
+  document.getElementById('auditForm').style.display = 'none';
+  document.getElementById('confirmation').setAttribute('data-visible', 'true');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // In production, this is where we'd POST to the data endpoint
+  // (Google Form, Formspree, etc.), to be wired up later.
+}
+
+function downloadAudit() {
+  const data = collectFormData();
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    week: currentWeek,
+    theme: WEEKS[currentWeek].theme,
+    data
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `status_audit_week${currentWeek}_${new Date().toISOString().slice(0,10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// EVENT LISTENERS
+// ==========================================================================
+
+document.addEventListener('input', (e) => {
+  if (e.target.matches('[data-field]')) {
+    clearTimeout(window._inputTimer);
+    window._inputTimer = setTimeout(saveState, 500);
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.matches('[data-field]')) saveState();
+});
+
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+
+  const action = target.dataset.action;
+  if (action === 'submit') {
+    submitAudit();
+  } else if (action === 'download') {
+    downloadAudit();
+  } else if (action === 'return') {
+    document.getElementById('confirmation').setAttribute('data-visible', 'false');
+    document.getElementById('auditForm').style.display = 'block';
+    window.scrollTo({ top: 0 });
+  }
+});
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+// INIT
+init();
+
+// IFRAME HEIGHT SENDER
+(function() {
+  const frameId = window.name || 'mmcc_status_audit';
+  function sendHeight() {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

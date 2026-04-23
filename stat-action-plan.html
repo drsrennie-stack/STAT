@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Action Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #166534;
+  --cc-warning: #92400E;
+  --cc-alert: #991B1B;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+  --cc-space-9: 4rem;
+
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+
+  --cc-radius-sm: 4px;
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+  --cc-radius-xl: 24px;
+
+  --cc-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cc-duration-fast: 150ms;
+  --cc-duration: 250ms;
+  --cc-duration-slow: 400ms;
+
+  --cc-focus-ring: 0 0 0 3px var(--cc-white), 0 0 0 6px var(--cc-gold-deep);
+  --cc-focus-ring-inverse: 0 0 0 3px var(--cc-navy), 0 0 0 6px var(--cc-gold-bright);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute; top: -48px; left: 0;
+  background: var(--cc-navy); color: var(--cc-text-inverse);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-weight: var(--cc-weight-semi); text-decoration: none;
+  z-index: 1000; transition: top var(--cc-duration) var(--cc-ease);
+}
+.skip-link:focus { top: 0; outline: none; box-shadow: var(--cc-focus-ring-inverse); }
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--cc-space-6) var(--cc-space-5);
+}
+
+/* WEEK PICKER */
+.week-picker {
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-navy);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-7);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.week-picker__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-3);
+}
+
+.week-picker__intro {
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-4);
+  font-size: var(--cc-size-sm);
+}
+
+.week-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--cc-space-3);
+}
+
+.week-option {
+  padding: var(--cc-space-4);
+  border: 2px solid var(--cc-border);
+  background: var(--cc-surface);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  font-family: var(--cc-font);
+}
+
+.week-option:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+}
+
+.week-option:focus-visible {
+  outline: none;
+  box-shadow: var(--cc-focus-ring);
+}
+
+.week-option__week {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+}
+
+.week-option__theme {
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+  margin-top: var(--cc-space-1);
+}
+
+/* MASTHEAD */
+.masthead {
+  border-bottom: 1px solid var(--cc-border);
+  padding-bottom: var(--cc-space-6);
+  margin-bottom: var(--cc-space-7);
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--cc-space-2);
+  font-size: var(--cc-size-xs); font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cc-gold-deep); margin-bottom: var(--cc-space-3);
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 2px;
+  background: var(--cc-gold); display: inline-block;
+}
+
+.masthead h1 {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-3);
+}
+
+.masthead__theme {
+  font-size: var(--cc-size-md);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-3);
+}
+
+.masthead__lead {
+  font-size: var(--cc-size-sm);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+}
+
+/* SECTION */
+.section {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+  border-left: 4px solid var(--cc-navy);
+}
+
+.section--gold { border-left-color: var(--cc-gold); }
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--cc-space-4);
+  margin-bottom: var(--cc-space-4);
+  padding-bottom: var(--cc-space-3);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.15em;
+  min-width: 36px;
+}
+
+.section__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin: 0;
+  flex: 1;
+}
+
+.section__subtitle {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section__intro {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-5);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* FORM */
+.field { margin-bottom: var(--cc-space-5); }
+.field:last-child { margin-bottom: 0; }
+
+.label {
+  display: block;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  margin-bottom: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.help {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-secondary);
+  margin-top: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  border-radius: var(--cc-radius);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.input:hover, .textarea:hover { border-color: var(--cc-text-muted); }
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--cc-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 61, 0.15);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: var(--cc-leading-relaxed);
+}
+
+.textarea--sm { min-height: 72px; }
+
+/* COMMITMENT ROW (for 3 numbered commitments) */
+.commitment-row {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--cc-space-3);
+  align-items: start;
+  margin-bottom: var(--cc-space-3);
+}
+
+.commitment-number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-base);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  line-height: 1.5;
+  text-align: center;
+  background: var(--cc-tint-gold);
+  border-radius: var(--cc-radius);
+  padding: var(--cc-space-3) 0;
+  height: 48px;
+}
+
+.commitment-input {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  border-radius: var(--cc-radius);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+  line-height: var(--cc-leading-snug);
+}
+
+.commitment-input:focus {
+  outline: none;
+  border-color: var(--cc-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 61, 0.15);
+}
+
+/* CALLOUTS */
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* FEATURE BLOCK (for 24-hour action emphasis) */
+.feature-block {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.feature-block::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.feature-block__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.feature-block__title {
+  font-size: var(--cc-size-xl);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.feature-block__intro {
+  font-size: var(--cc-size-sm);
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+  margin-bottom: var(--cc-space-4);
+}
+
+.feature-block .input, .feature-block .textarea {
+  background: rgba(250, 250, 247, 0.05);
+  border-color: rgba(212, 169, 98, 0.35);
+  color: var(--cc-text-inverse);
+}
+
+.feature-block .input::placeholder, .feature-block .textarea::placeholder {
+  color: rgba(250, 250, 247, 0.5);
+}
+
+.feature-block .input:focus, .feature-block .textarea:focus {
+  background: rgba(250, 250, 247, 0.08);
+  border-color: var(--cc-gold-bright);
+  box-shadow: 0 0 0 3px rgba(212, 169, 98, 0.2);
+}
+
+.feature-block .label {
+  color: rgba(250, 250, 247, 0.95);
+}
+
+.feature-block .help {
+  color: rgba(250, 250, 247, 0.7);
+}
+
+/* BUTTONS */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.button--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+.button--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+.button--secondary:hover {
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.button--tertiary {
+  background: transparent;
+  color: var(--cc-text-muted);
+  border-color: transparent;
+}
+.button--tertiary:hover { color: var(--cc-navy); background: var(--cc-tint-navy); }
+
+.button--gold-bright {
+  background: var(--cc-gold-bright);
+  color: var(--cc-navy);
+  border-color: var(--cc-gold-bright);
+  box-shadow: var(--cc-shadow-sm);
+  font-weight: var(--cc-weight-bold);
+}
+.button--gold-bright:hover {
+  background: #C49A52;
+  border-color: #C49A52;
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--lg {
+  padding: var(--cc-space-4) var(--cc-space-6);
+  font-size: var(--cc-size-base);
+  min-height: 56px;
+}
+
+.button:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+
+.button-row {
+  display: flex;
+  gap: var(--cc-space-3);
+  margin-top: var(--cc-space-7);
+  padding-top: var(--cc-space-5);
+  border-top: 1px solid var(--cc-border);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button-row__spacer { flex: 1; }
+
+/* SAVE INDICATOR */
+.save-indicator {
+  position: fixed;
+  bottom: var(--cc-space-5);
+  right: var(--cc-space-5);
+  padding: var(--cc-space-2) var(--cc-space-4);
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-xl);
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-semi);
+  box-shadow: var(--cc-shadow-lg);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--cc-duration) var(--cc-ease);
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--cc-space-2);
+}
+
+.save-indicator[data-visible="true"] { opacity: 1; transform: translateY(0); }
+
+.save-indicator__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cc-gold-bright);
+}
+
+/* CONFIRMATION */
+.confirmation {
+  display: none;
+  animation: fadeIn var(--cc-duration-slow) var(--cc-ease);
+}
+
+.confirmation[data-visible="true"] { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confirmation__hero {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-7) var(--cc-space-6);
+  margin-bottom: var(--cc-space-6);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.confirmation__hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.confirmation__eyebrow {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.confirmation__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-tight);
+}
+
+.confirmation__body {
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+}
+
+.commitments-review {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-5);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.commitments-review__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-3);
+}
+
+.commitments-review__item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: var(--cc-space-3);
+  padding: var(--cc-space-3) 0;
+  border-bottom: 1px solid var(--cc-border);
+  align-items: start;
+}
+
+.commitments-review__item:last-child { border-bottom: none; padding-bottom: 0; }
+.commitments-review__item:first-child { padding-top: 0; }
+
+.commitments-review__num {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+}
+
+.commitments-review__text {
+  font-size: var(--cc-size-base);
+  color: var(--cc-text);
+  line-height: var(--cc-leading-snug);
+}
+
+/* PRINT */
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .skip-link, .button, .button-row, .save-indicator, .week-picker { display: none !important; }
+  .section, .feature-block, .callout, .commitments-review { box-shadow: none; border: 1px solid #666; }
+  .section { page-break-inside: avoid; }
+  .feature-block, .confirmation__hero { background: white !important; color: black !important; border: 2px solid var(--cc-navy); }
+  .feature-block__title, .feature-block__label, .feature-block__intro { color: black !important; }
+  .feature-block .input, .feature-block .textarea { background: white !important; color: black !important; }
+  .feature-block .label, .feature-block .help { color: #333 !important; }
+  .confirmation__title, .confirmation__body, .confirmation__eyebrow { color: black !important; }
+  h1, h2, .section__title { page-break-after: avoid; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="shell" id="main">
+
+  <!-- WEEK PICKER -->
+  <div id="weekPicker" style="display: none;">
+    <header style="margin-bottom: var(--cc-space-6);">
+      <div class="eyebrow">STAT Success Cohort</div>
+      <h1 style="font-size: var(--cc-size-3xl); font-weight: var(--cc-weight-extra); color: var(--cc-navy); line-height: var(--cc-leading-tight); letter-spacing: -0.02em; margin-bottom: var(--cc-space-4);">Decision Plan</h1>
+      <p style="font-size: var(--cc-size-md); color: var(--cc-text-secondary); line-height: var(--cc-leading-relaxed); max-width: 62ch;">
+        Written after the live session, this is where the team's case reasoning becomes
+        your own plan for the week. Which week are you on?
+      </p>
+    </header>
+    <div class="week-picker">
+      <div class="week-picker__title">Select your week</div>
+      <p class="week-picker__intro">
+        Normally you would reach this page with your week pre-selected. Pick below to continue.
+      </p>
+      <div class="week-picker__grid" id="weekGrid"></div>
+    </div>
+  </div>
+
+  <!-- MAIN FORM -->
+  <div id="actionForm" style="display: none;">
+    <header class="masthead">
+      <div class="eyebrow" id="weekLabel">STAT Success Cohort · Decision Plan</div>
+      <h1 id="weekTitle">Your Decision Plan</h1>
+      <div class="masthead__theme" id="weekTheme"></div>
+      <p class="masthead__lead" id="weekIntro"></p>
+    </header>
+
+    <div class="callout callout--accent">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">How this works</p></div><div class="callout__body"><p class="callout__text">
+          Take 10 to 15 minutes right after your live session while the case discussion
+          is still fresh. Short, specific, realistic. Your commitments this week become
+          next week's Evaluate section. What you promise here is what we check.
+        </p></div></div>
+    </div>
+
+    <!-- 1. SYNTHESIS -->
+    <div class="section">
+      <div class="section__header">
+        <span class="section__number">01</span>
+        <h2 class="section__title">From Observe to Decide</h2>
+        <span class="section__subtitle">Synthesis</span>
+      </div>
+      <p class="section__intro" id="synthesisIntro"></p>
+
+      <div class="field">
+        <label for="synthesis_case_takeaway" class="label">What did you learn from today's case that applies to you?</label>
+        <textarea id="synthesis_case_takeaway" name="synthesis_case_takeaway" class="textarea" data-field="synthesis_case_takeaway" placeholder="One or two sentences. The insight, not the recap."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="synthesis_self_recognition" class="label">Where in today's case did you recognize yourself?</label>
+        <textarea id="synthesis_self_recognition" name="synthesis_self_recognition" class="textarea textarea--sm" data-field="synthesis_self_recognition" placeholder="Be specific. Not "all of it", what moment, what choice, what mistake?"></textarea>
+      </div>
+    </div>
+
+    <!-- 2. SEVEN DAY PLAN -->
+    <div class="section">
+      <div class="section__header">
+        <span class="section__number">02</span>
+        <h2 class="section__title">Your 7-day plan</h2>
+        <span class="section__subtitle">What the week looks like</span>
+      </div>
+      <p class="section__intro">
+        A sketch of this week, not an hour-by-hour schedule. Use this to map the shape of
+        what's coming so your commitments below have somewhere to live.
+      </p>
+
+      <div class="field">
+        <label for="plan_focus" class="label">What is this week's focus for your A&P course?</label>
+        <textarea id="plan_focus" name="plan_focus" class="textarea textarea--sm" data-field="plan_focus" placeholder="e.g. Finishing endocrine, preparing for quiz on Tuesday, starting cardiovascular lab readings."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="plan_hours" class="label">How many hours this week will you realistically spend on A&P?</label>
+        <input type="text" id="plan_hours" name="plan_hours" class="input" data-field="plan_hours" placeholder="Honest estimate. Not aspirational.">
+      </div>
+
+      <div class="field">
+        <label for="plan_constraints" class="label">What's already in your week that you have to work around?</label>
+        <textarea id="plan_constraints" name="plan_constraints" class="textarea textarea--sm" data-field="plan_constraints" placeholder="Work, other classes, family, appointments, anything that limits your time."></textarea>
+      </div>
+    </div>
+
+    <!-- 3. COMMITMENTS -->
+    <div class="section section--gold">
+      <div class="section__header">
+        <span class="section__number">03</span>
+        <h2 class="section__title">Three commitments</h2>
+        <span class="section__subtitle">What you will do</span>
+      </div>
+      <p class="section__intro">
+        Three specific, time-bound actions you commit to this week. Not "study more" or
+        "do better." Concrete behaviors you will either do or not do, with a way to know
+        whether they happened.
+      </p>
+
+      <div class="callout callout--info">
+        <div class="callout__body">
+          <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">What makes a good commitment</p></div><div class="callout__body"><p class="callout__text">
+            Specific behavior, not outcome. Time-bound. Achievable this week. Example:
+            "Spend 30 minutes every Tuesday and Thursday after class doing retrieval practice
+            on this week's concepts." Not "study harder." Not "understand endocrine."
+          </p></div></div>
+      </div>
+
+      <div class="field">
+        <label class="label">Your three commitments for this week</label>
+
+        <div class="commitment-row">
+          <div class="commitment-number">01</div>
+          <input type="text" class="commitment-input" name="commitment_1" data-field="commitment_1" placeholder="Specific, time-bound, yours.">
+        </div>
+
+        <div class="commitment-row">
+          <div class="commitment-number">02</div>
+          <input type="text" class="commitment-input" name="commitment_2" data-field="commitment_2" placeholder="Specific, time-bound, yours.">
+        </div>
+
+        <div class="commitment-row">
+          <div class="commitment-number">03</div>
+          <input type="text" class="commitment-input" name="commitment_3" data-field="commitment_3" placeholder="Specific, time-bound, yours.">
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 24-HOUR ACTION (feature block) -->
+    <div class="feature-block">
+      <div class="feature-block__label">The anti-paralysis step</div>
+      <h2 class="feature-block__title">Your 24-hour action</h2>
+      <p class="feature-block__intro">
+        The smallest specific thing you will do in the next 24 hours. Not the most
+        important thing. The smallest thing you will actually do. 30 minutes or less.
+        This is what breaks the gap between writing a plan and living it.
+      </p>
+
+      <div class="field">
+        <label for="action_24h" class="label">Within 24 hours, I will:</label>
+        <input type="text" id="action_24h" name="action_24h" class="input" data-field="action_24h" placeholder="e.g. Open chapter 12, read pages 345-347, attempt 5 practice questions.">
+        <p class="help">Name something you could do tonight if you had to.</p>
+      </div>
+
+      <div class="field">
+        <label for="action_24h_when" class="label">When specifically will you do it?</label>
+        <input type="text" id="action_24h_when" name="action_24h_when" class="input" data-field="action_24h_when" placeholder="e.g. Tonight at 9pm, tomorrow morning before work, Thursday during lunch.">
+      </div>
+    </div>
+
+    <!-- 5. PREDICTION -->
+    <div class="section">
+      <div class="section__header">
+        <span class="section__number">04</span>
+        <h2 class="section__title">Prediction and defense</h2>
+        <span class="section__subtitle">Honest reckoning</span>
+      </div>
+      <p class="section__intro">
+        Two questions that change how seriously you take your own plan. Answer them honestly
+        even if the answers are uncomfortable.
+      </p>
+
+      <div class="field">
+        <label for="prediction" class="label">If you don't follow through on this plan this week, what's likely to happen?</label>
+        <textarea id="prediction" name="prediction" class="textarea textarea--sm" data-field="prediction" placeholder="Be specific. "I'll fall further behind" doesn't count. What assessment is affected, what grade outcome changes, what\'s the cost?"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="defense" class="label">Look at your study habits. What are you most tempted to keep doing that is probably not working?</label>
+        <textarea id="defense" name="defense" class="textarea textarea--sm" data-field="defense" placeholder="The method, habit, or assumption you\'d defend if someone pointed it out. Naming it is the point."></textarea>
+        <p class="help">This is often the most important field in the whole plan.</p>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="button-row">
+      <button class="button button--tertiary" onclick="window.print()" type="button">Print</button>
+      <button class="button button--secondary" data-action="download" type="button">Download</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--gold-bright button--lg" data-action="submit" type="button">Commit to my plan</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div id="confirmation" class="confirmation">
+    <div class="confirmation__hero">
+      <div class="confirmation__eyebrow">Plan committed</div>
+      <h2 class="confirmation__title">Now go do the 24-hour action.</h2>
+      <p class="confirmation__body">
+        Your decision plan is saved. Next week's Current State audit will open with these commitments
+        and ask whether you executed. That's the loop. Show up there with honest answers,
+        regardless of how the week goes.
+      </p>
+    </div>
+
+    <div class="commitments-review">
+      <div class="commitments-review__label">Your commitments this week</div>
+      <div id="commitmentsReviewList"></div>
+    </div>
+
+    <div class="callout callout--accent">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">Your 24-hour action</p></div><div class="callout__body"><p class="callout__text" id="confirm24Text"></p></div></div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">One thing before you close this tab</p></div><div class="callout__body"><p class="callout__text">
+          Put your 24-hour action somewhere you'll see it in the next day. Phone
+          reminder, sticky note, calendar event. The plan lives in whatever external
+          structure holds it for you.
+        </p></div></div>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--secondary" onclick="window.print()" type="button">Print my plan</button>
+      <button class="button button--tertiary" data-action="download" type="button">Download a copy</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="return" type="button">Back to plan</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- SAVE INDICATOR -->
+<div class="save-indicator" id="saveIndicator" role="status" aria-live="polite">
+  <span class="save-indicator__dot"></span>
+  <span>Saved</span>
+</div>
+
+<script>
+// ==========================================================================
+// WEEK CONFIG
+// ==========================================================================
+
+const WEEKS = {
+  1: {
+    theme: 'Stabilization and team formation',
+    eyebrow: 'Week 1 Decision Plan',
+    title: 'Your Decision Plan for Week 1',
+    intro: 'Week 1 is different. There is no case yet, and the team is just forming. Your decision plan this week is about getting started well.',
+    synthesisIntro: 'Week 1 focuses on individual stabilization, not a team case. Use this space to capture what you realized about yourself during the session.'
+  },
+  2: {
+    theme: 'Stop the bleeding',
+    eyebrow: 'Week 2 Decision Plan',
+    title: 'Your Decision Plan for Week 2',
+    intro: 'Morgan\'s case surfaced how method failure works. Now apply what the team reasoned through to your own situation.',
+    synthesisIntro: 'You and your team worked Morgan\'s case. Most students in recovery make at least one of Morgan\'s moves. The work now is identifying which ones are yours and naming them.'
+  },
+  3: {
+    theme: 'Foundation repair, selective',
+    eyebrow: 'Week 3 Decision Plan',
+    title: 'Your Decision Plan for Week 3',
+    intro: 'Jordan\'s case showed that good methods on broken foundations do not work. Your decisions this week probably include selective foundation repair.',
+    synthesisIntro: 'Jordan was doing almost everything right and still struggling. The case surfaced how foundation gaps compound. Use this space to name your own load-bearing gaps.'
+  },
+  4: {
+    theme: 'The midterm hinge',
+    eyebrow: 'Week 4 Decision Plan',
+    title: 'Your Decision Plan for Week 4',
+    intro: 'This is the hinge. Your decisions this week are about exam strategy recovery, not just content. What went wrong on your last exam, and what changes for the next one.',
+    synthesisIntro: 'This week\'s case focused on exam strategy failure. Apply what you learned to your own exam performance: what went wrong, what changes for next time.'
+  },
+  5: {
+    theme: 'Point recovery',
+    eyebrow: 'Week 5 Decision Plan',
+    title: 'Your Decision Plan for Week 5',
+    intro: 'Point recovery is external work as much as internal work. This week\'s decisions almost certainly involve a conversation or two you have been avoiding.',
+    synthesisIntro: 'The case this week surfaced the mechanics of point recovery: extra credit, resubmissions, conversations with instructors, institutional mechanisms. Apply what you learned to your course.'
+  },
+  6: {
+    theme: 'Consolidation and integration',
+    eyebrow: 'Week 6 Decision Plan',
+    title: 'Your Decision Plan for Week 6',
+    intro: 'The work shifts this week from fixing to integrating. Your commitments probably involve cross-system reasoning practice and teach-backs.',
+    synthesisIntro: 'The case this week examined what happens when students can name parts but cannot connect them. Your decisions this week are about building the connections, one pair of systems at a time.'
+  },
+  7: {
+    theme: 'Final exam runway',
+    eyebrow: 'Week 7 Decision Plan',
+    title: 'Your Decision Plan for Week 7',
+    intro: 'Your final is imminent. This week\'s decision plan is shorter than usual because the execution matters more than the plan. Small, specific, time-bound.',
+    synthesisIntro: 'The case this week looked at the difference between effective and ineffective final exam preparation. Your plan this week lives or dies on specificity and realism.'
+  },
+  8: {
+    theme: 'Definitive care',
+    eyebrow: 'Week 8 Decision Plan',
+    title: 'Your Decision Plan for Week 8',
+    intro: 'This is the last decision plan of the program. The 24-hour action is executing your final exam, or the work that remains. The 7-day plan is about closing out, and what you are keeping going forward.',
+    synthesisIntro: 'No case this week. This space is for you to synthesize what 7 weeks of recovery work produced. Concrete changes, specific wins, what you carry forward.'
+  }
+};
+
+// ==========================================================================
+// STATE
+// ==========================================================================
+
+let currentWeek = null;
+const STORAGE_PREFIX = 'mmcc_action_plan_w';
+function getStorageKey() { return STORAGE_PREFIX + currentWeek; }
+
+// ==========================================================================
+// INIT
+// ==========================================================================
+
+function init() {
+  const params = new URLSearchParams(window.location.search);
+  const weekParam = parseInt(params.get('week'));
+
+  if (weekParam && WEEKS[weekParam]) {
+    currentWeek = weekParam;
+    showActionForm();
+  } else {
+    showWeekPicker();
+  }
+}
+
+function showWeekPicker() {
+  document.getElementById('weekPicker').style.display = 'block';
+  document.getElementById('actionForm').style.display = 'none';
+
+  const grid = document.getElementById('weekGrid');
+  grid.innerHTML = Object.keys(WEEKS).sort((a, b) => parseInt(a) - parseInt(b)).map(w => `
+    <button type="button" class="week-option" data-week="${w}">
+      <div class="week-option__week">Week ${w}</div>
+      <div class="week-option__theme">${escapeHtml(WEEKS[w].theme)}</div>
+    </button>
+  `).join('');
+
+  grid.addEventListener('click', (e) => {
+    const option = e.target.closest('[data-week]');
+    if (option) {
+      currentWeek = parseInt(option.dataset.week);
+      const url = new URL(window.location);
+      url.searchParams.set('week', currentWeek);
+      window.history.replaceState({}, '', url);
+      showActionForm();
+    }
+  });
+}
+
+function showActionForm() {
+  document.getElementById('weekPicker').style.display = 'none';
+  document.getElementById('actionForm').style.display = 'block';
+  document.getElementById('confirmation').setAttribute('data-visible', 'false');
+
+  const week = WEEKS[currentWeek];
+  document.getElementById('weekLabel').textContent = week.eyebrow;
+  document.getElementById('weekTitle').textContent = week.title;
+  document.getElementById('weekTheme').textContent = 'Theme: ' + week.theme;
+  document.getElementById('weekIntro').textContent = week.intro;
+  document.getElementById('synthesisIntro').textContent = week.synthesisIntro;
+
+  loadState();
+}
+
+// ==========================================================================
+// PERSISTENCE
+// ==========================================================================
+
+function saveState() {
+  try {
+    const data = collectFormData();
+    const commitments = [
+      data.commitment_1,
+      data.commitment_2,
+      data.commitment_3
+    ].filter(c => c && c.trim() !== '');
+
+    const payload = {
+      data,
+      commitments, // Stored as simple array for Status audit to read
+      savedAt: new Date().toISOString(),
+      week: currentWeek
+    };
+    localStorage.setItem(getStorageKey(), JSON.stringify(payload));
+    showSaveIndicator();
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(getStorageKey());
+    if (!raw) return;
+    const payload = JSON.parse(raw);
+    const data = payload.data || {};
+    Object.entries(data).forEach(([name, value]) => {
+      const elements = document.querySelectorAll(`[name="${name}"]`);
+      elements.forEach(el => {
+        if (el.type === 'radio') el.checked = el.value === value;
+        else el.value = value;
+      });
+    });
+  } catch (e) {}
+}
+
+function collectFormData() {
+  const data = {};
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const name = el.name;
+    if (!name) return;
+    if (el.type === 'radio') {
+      if (el.checked) data[name] = el.value;
+    } else {
+      if (el.value) data[name] = el.value;
+    }
+  });
+  return data;
+}
+
+// ==========================================================================
+// SAVE INDICATOR
+// ==========================================================================
+
+let saveTimer;
+function showSaveIndicator() {
+  const indicator = document.getElementById('saveIndicator');
+  indicator.setAttribute('data-visible', 'true');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    indicator.setAttribute('data-visible', 'false');
+  }, 1500);
+}
+
+// ==========================================================================
+// SUBMIT
+// ==========================================================================
+
+function submitPlan() {
+  const data = collectFormData();
+
+  // Build commitments array
+  const commitments = [
+    data.commitment_1,
+    data.commitment_2,
+    data.commitment_3
+  ].filter(c => c && c.trim() !== '');
+
+  // Save as submitted (separate from draft)
+  try {
+    localStorage.setItem(`${getStorageKey()}_submitted`, JSON.stringify({
+      submittedAt: new Date().toISOString(),
+      week: currentWeek,
+      data,
+      commitments
+    }));
+    // Also update the main storage key with commitments for Status audit to read
+    localStorage.setItem(getStorageKey(), JSON.stringify({
+      data,
+      commitments,
+      savedAt: new Date().toISOString(),
+      week: currentWeek
+    }));
+  } catch (e) {}
+
+  // Render confirmation
+  renderConfirmation(data, commitments);
+
+  document.getElementById('actionForm').style.display = 'none';
+  document.getElementById('confirmation').setAttribute('data-visible', 'true');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // TODO: POST to data endpoint
+}
+
+function renderConfirmation(data, commitments) {
+  const list = document.getElementById('commitmentsReviewList');
+
+  if (commitments.length === 0) {
+    list.innerHTML = `
+      <p style="font-size: var(--cc-size-sm); color: var(--cc-text-muted); margin: 0;">
+        No commitments entered. Go back and add them.
+      </p>
+    `;
+  } else {
+    list.innerHTML = commitments.map((c, i) => `
+      <div class="commitments-review__item">
+        <span class="commitments-review__num">${String(i + 1).padStart(2, '0')}</span>
+        <span class="commitments-review__text">${escapeHtml(c)}</span>
+      </div>
+    `).join('');
+  }
+
+  const action24 = data.action_24h || '';
+  const when24 = data.action_24h_when || '';
+  const confirm24Text = document.getElementById('confirm24Text');
+
+  if (action24) {
+    confirm24Text.textContent = action24 + (when24 ? ', ' + when24 : '');
+  } else {
+    confirm24Text.textContent = 'No 24-hour action entered. Go back and add one before you close this tab.';
+  }
+}
+
+function downloadPlan() {
+  const data = collectFormData();
+  const commitments = [
+    data.commitment_1,
+    data.commitment_2,
+    data.commitment_3
+  ].filter(c => c && c.trim() !== '');
+
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    week: currentWeek,
+    theme: WEEKS[currentWeek].theme,
+    commitments,
+    data
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `action_plan_week${currentWeek}_${new Date().toISOString().slice(0,10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// EVENTS
+// ==========================================================================
+
+document.addEventListener('input', (e) => {
+  if (e.target.matches('[data-field]')) {
+    clearTimeout(window._inputTimer);
+    window._inputTimer = setTimeout(saveState, 500);
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.matches('[data-field]')) saveState();
+});
+
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+
+  const action = target.dataset.action;
+  if (action === 'submit') {
+    submitPlan();
+  } else if (action === 'download') {
+    downloadPlan();
+  } else if (action === 'return') {
+    document.getElementById('confirmation').setAttribute('data-visible', 'false');
+    document.getElementById('actionForm').style.display = 'block';
+    window.scrollTo({ top: 0 });
+  }
+});
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+init();
+
+// IFRAME HEIGHT SENDER
+(function() {
+  const frameId = window.name || 'mmcc_action_plan';
+  function sendHeight() {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

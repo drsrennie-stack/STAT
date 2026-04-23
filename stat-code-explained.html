@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | The CODE Cycle Explained</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-warning: #92400E;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.phase-section {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid var(--cc-navy);
+  border-radius: 12px;
+  padding: 2rem 1.75rem;
+  margin-bottom: 2.25rem;
+  margin-right: 10px;
+  box-shadow: 8px 8px 0 0 var(--cc-navy);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.phase-section:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0 0 var(--cc-navy);
+}
+
+.phase-section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.phase-section__letter {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  min-width: 36px;
+}
+
+.phase-section__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 0;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.phase-section__subtitle {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.phase-section__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+}
+
+.phase-section__body p {
+  margin-bottom: 1rem;
+}
+
+.phase-section__body p:last-child {
+  margin-bottom: 0;
+}
+
+.soap-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid var(--cc-gold);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 10px 1.5rem 0;
+  box-shadow: 6px 6px 0 0 var(--cc-gold);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.soap-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 0 var(--cc-gold);
+}
+
+.soap-card__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.soap-card__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+.closing {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.closing::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.closing__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.closing__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.closing__body {
+  font-size: 1rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .phase-section { padding: 1.5rem 1.25rem; }
+  .phase-section__header { flex-wrap: wrap; }
+  .phase-section__subtitle { margin-left: 0; width: 100%; margin-top: 0.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Program Rhythm</div>
+  <h1>The CODE cycle, explained.</h1>
+  <p class="lead">
+    CODE means four things: Current state, Observe, Decide, Evaluate. Together they form the rhythm that every week of STAT Success Cohort runs on.
+  </p>
+
+  <p>
+    We call it CODE on purpose. In clinical settings, calling a code means a patient is unstable and needs a coordinated team response right now. That is exactly what the weekly rhythm is for. You are running a code on your own academic situation every week for 8 weeks. The team moves together. The work is specific. The stakes are real.
+  </p>
+
+  <p>
+    Let me walk through each phase.
+  </p>
+
+  <div class="phase-section">
+    <div class="phase-section__header">
+      <span class="phase-section__letter">C</span>
+      <h3 class="phase-section__title">Current state</h3>
+      <span class="phase-section__subtitle">Before the session</span>
+    </div>
+    <div class="phase-section__body">
+      <p>
+        Your self-assessment before each live session. It is structured as a <strong>SOAP note</strong>, which is how clinicians document patient visits: Subjective, Objective, Assessment, Plan. Except instead of writing the note on a patient, you are writing it on yourself.
+      </p>
+      <p>
+        <strong>Subjective</strong> is how the week felt. <strong>Objective</strong> is the data: your current grade, hours studied, instructor contact. <strong>Assessment</strong> is what the data means. <strong>Plan</strong> is where you think the work needs to focus.
+      </p>
+      <p>
+        It takes about 15 minutes and you do it before every session starting in Week 2.
+      </p>
+
+      <div class="soap-card">
+        <p class="soap-card__title">Why you don't hear "SOAP" until Week 3</p>
+        <p class="soap-card__text">
+          You will be using SOAP from Week 2 onward, but the name is revealed in Week 3 once the structure feels natural. You learn it by doing it first. Then we name it.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section__header">
+      <span class="phase-section__letter">O</span>
+      <h3 class="phase-section__title">Observe</h3>
+      <span class="phase-section__subtitle">During the session</span>
+    </div>
+    <div class="phase-section__body">
+      <p>
+        Your team gets a case, a fictional failing student whose situation has instructive parallels to real recovery work. You observe what is happening for that student, reason through what they should do, and watch your facilitator guide the discussion.
+      </p>
+      <p>
+        You do not have to solve your own situation directly. You solve someone else's, and in doing so you get a clearer view of your own.
+      </p>
+      <p>
+        <strong>This is the teaching mechanism of the program.</strong> Observing someone else's problem once helps you recognize your own.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section__header">
+      <span class="phase-section__letter">D</span>
+      <h3 class="phase-section__title">Decide</h3>
+      <span class="phase-section__subtitle">After the session</span>
+    </div>
+    <div class="phase-section__body">
+      <p>
+        Right after the session, while the team's case reasoning is still fresh. You decide on <strong>three specific commitments</strong> for the week and <strong>one 24-hour action</strong>.
+      </p>
+      <p>
+        Specific means behavioral, time-bound, and measurable. Not "study more." Something like "spend 30 minutes every Tuesday and Thursday after class doing retrieval practice."
+      </p>
+      <p>
+        The 24-hour action is the smallest specific thing you will do in the next day. Not the biggest, not the hardest. The smallest thing you will actually do. This breaks the gap between planning and executing.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-section">
+    <div class="phase-section__header">
+      <span class="phase-section__letter">E</span>
+      <h3 class="phase-section__title">Evaluate</h3>
+      <span class="phase-section__subtitle">Following week</span>
+    </div>
+    <div class="phase-section__body">
+      <p>
+        When you open your Current state audit for the next week, the first section asks whether you did what you said you would do. <strong>Completed, partial, or not attempted.</strong> Honest reporting, not performance reporting.
+      </p>
+      <p>
+        The Evaluate section is not about judgment. It is about data. Students who report their failures honestly recover faster than students who falsify their successes, because honest data lets us fix what is actually broken.
+      </p>
+    </div>
+  </div>
+
+  <h2>That's the rhythm</h2>
+
+  <p>
+    Current state, Observe, Decide, Evaluate. Four phases, one weekly loop, eight times over.
+  </p>
+
+  <p>
+    When you walk into Week 1, you will use the grade audit and optionally the failure mode diagnostic to get your baseline. From Week 2 onward, the CODE cycle runs every week without interruption until Week 8.
+  </p>
+
+  <div class="closing">
+    <div class="closing__label">The bottom line</div>
+    <h3 class="closing__title">The rhythm is the product.</h3>
+    <p class="closing__body">
+      Not the content, not the tools, not even the team on its own. What makes recovery possible is doing the same work in the same structure every week for 8 weeks. That is STAT Success Cohort.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'mmcc_code_explained';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

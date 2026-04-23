@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Grade Audit Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #166534;
+  --cc-warning: #92400E;
+  --cc-alert: #991B1B;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+  --cc-space-9: 4rem;
+
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+
+  --cc-radius-sm: 4px;
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+  --cc-radius-xl: 24px;
+
+  --cc-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cc-duration-fast: 150ms;
+  --cc-duration: 250ms;
+  --cc-duration-slow: 400ms;
+
+  --cc-focus-ring: 0 0 0 3px var(--cc-white), 0 0 0 6px var(--cc-gold-deep);
+  --cc-focus-ring-inverse: 0 0 0 3px var(--cc-navy), 0 0 0 6px var(--cc-gold-bright);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute; top: -48px; left: 0;
+  background: var(--cc-navy); color: var(--cc-text-inverse);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-weight: var(--cc-weight-semi); text-decoration: none;
+  z-index: 1000; transition: top var(--cc-duration) var(--cc-ease);
+}
+.skip-link:focus { top: 0; outline: none; box-shadow: var(--cc-focus-ring-inverse); }
+
+.shell {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: var(--cc-space-6) var(--cc-space-5);
+}
+
+.masthead {
+  border-bottom: 1px solid var(--cc-border);
+  padding-bottom: var(--cc-space-6);
+  margin-bottom: var(--cc-space-7);
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--cc-space-2);
+  font-size: var(--cc-size-xs); font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cc-gold-deep); margin-bottom: var(--cc-space-3);
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 2px;
+  background: var(--cc-gold); display: inline-block;
+}
+
+h1 {
+  font-size: var(--cc-size-3xl);
+  font-weight: var(--cc-weight-extra);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-4);
+}
+
+.lead {
+  font-size: var(--cc-size-md);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+}
+
+.section {
+  margin-bottom: var(--cc-space-8);
+  scroll-margin-top: var(--cc-space-5);
+}
+
+.section__header {
+  display: flex; align-items: baseline; gap: var(--cc-space-4);
+  padding-bottom: var(--cc-space-3);
+  border-bottom: 2px solid var(--cc-navy);
+  margin-bottom: var(--cc-space-5);
+}
+
+.section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.15em;
+}
+
+.section__title {
+  font-size: var(--cc-size-xl);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.section__intro {
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-5);
+  max-width: 62ch;
+}
+
+.form-group { margin-bottom: var(--cc-space-4); }
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--cc-space-4);
+}
+@media (max-width: 640px) {
+  .form-grid-3 { grid-template-columns: 1fr; }
+}
+
+.label {
+  display: block;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  margin-bottom: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.help {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-secondary);
+  margin-top: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.input, .select {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  border-radius: var(--cc-radius);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.input:hover, .select:hover { border-color: var(--cc-text-muted); }
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--cc-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 61, 0.15);
+}
+
+.input--sm {
+  min-height: 42px;
+  padding: var(--cc-space-2) var(--cc-space-3);
+  font-size: var(--cc-size-sm);
+}
+
+/* CATEGORY CARD */
+.category {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-sm);
+  margin-bottom: var(--cc-space-4);
+  border-left: 4px solid var(--cc-navy);
+}
+
+.category__header {
+  display: grid;
+  grid-template-columns: 1fr minmax(100px, 140px) 44px;
+  gap: var(--cc-space-3);
+  align-items: center;
+  padding: var(--cc-space-4) var(--cc-space-5);
+  background: var(--cc-tint-navy);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+@media (max-width: 640px) {
+  .category__header {
+    grid-template-columns: 1fr 44px;
+    gap: var(--cc-space-2);
+  }
+  .category__header > .category__weight-wrap { grid-column: 1 / 3; }
+  .category__header > button { grid-column: 2; grid-row: 1; justify-self: end; }
+}
+
+.category__name {
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+}
+
+.category__weight-wrap {
+  position: relative;
+}
+
+.category__weight {
+  padding-right: 28px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.category__weight-suffix {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cc-text-muted);
+  font-size: var(--cc-size-sm);
+  pointer-events: none;
+  font-weight: var(--cc-weight-semi);
+}
+
+.category__body {
+  padding: var(--cc-space-4) var(--cc-space-5);
+}
+
+.category__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cc-space-4);
+  padding: var(--cc-space-3) var(--cc-space-4);
+  background: var(--cc-white);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  margin-bottom: var(--cc-space-4);
+  font-size: var(--cc-size-xs);
+}
+
+.category__summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.category__summary-label {
+  color: var(--cc-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.category__summary-value {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--cc-size-sm);
+}
+
+.assessments-header, .assessment-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(80px, 110px) minmax(80px, 110px) 40px;
+  gap: var(--cc-space-3);
+  align-items: center;
+  padding: var(--cc-space-2) 0;
+}
+
+.assessments-header {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  padding-bottom: var(--cc-space-3);
+  border-bottom: 1px solid var(--cc-border);
+  margin-bottom: var(--cc-space-2);
+}
+
+.assessment-row {
+  border-bottom: 1px solid var(--cc-border);
+  padding: var(--cc-space-3) 0;
+}
+
+.assessment-row:last-child { border-bottom: none; padding-bottom: var(--cc-space-2); }
+
+@media (max-width: 640px) {
+  .assessments-header { display: none; }
+  .assessment-row {
+    grid-template-columns: 1fr 40px;
+    gap: var(--cc-space-2);
+  }
+  .assessment-row > .input:nth-child(1) { grid-column: 1 / 3; }
+  .assessment-row > .input:nth-child(2), .assessment-row > .assessment-row__status {
+    grid-column: 1 / 3;
+  }
+  .assessment-row > button { grid-column: 2; grid-row: 1; justify-self: end; align-self: start; }
+}
+
+.assessment-row__status {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  font-weight: var(--cc-weight-semi);
+}
+
+.category__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cc-space-2);
+  margin-top: var(--cc-space-3);
+  padding-top: var(--cc-space-3);
+  border-top: 1px solid var(--cc-border);
+}
+
+.category__drop-config {
+  display: flex;
+  align-items: center;
+  gap: var(--cc-space-3);
+  padding: var(--cc-space-3) var(--cc-space-4);
+  background: var(--cc-tint-gold);
+  border: 1px solid #E8D9B5;
+  border-radius: var(--cc-radius);
+  margin-top: var(--cc-space-3);
+  font-size: var(--cc-size-sm);
+  flex-wrap: wrap;
+}
+
+.category__drop-config label {
+  color: var(--cc-text-secondary);
+  font-weight: var(--cc-weight-medium);
+}
+
+.category__drop-config .input--sm {
+  width: 80px;
+  text-align: center;
+}
+
+.remove-btn {
+  width: 40px; height: 40px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--cc-radius);
+  color: var(--cc-text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+}
+.remove-btn:hover {
+  background: #FEE2E2;
+  color: var(--cc-alert);
+  border-color: #FECACA;
+}
+.remove-btn:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+.remove-btn svg { width: 16px; height: 16px; }
+
+.remove-btn--large { width: 44px; height: 44px; }
+.remove-btn--large svg { width: 18px; height: 18px; }
+
+/* BUTTONS */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 44px;
+}
+
+.button--sm {
+  padding: var(--cc-space-2) var(--cc-space-4);
+  font-size: var(--cc-size-xs);
+  min-height: 36px;
+}
+
+.button--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+.button--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+.button--secondary:hover {
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.button--tertiary {
+  background: transparent;
+  color: var(--cc-text-muted);
+  border-color: transparent;
+}
+.button--tertiary:hover {
+  color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+}
+
+.button:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+
+.button-row {
+  display: flex;
+  gap: var(--cc-space-3);
+  margin-top: var(--cc-space-4);
+  flex-wrap: wrap;
+}
+
+/* CALLOUTS */
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* CURRENT DISPLAY */
+.current-display {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-left: 4px solid var(--cc-navy);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-5);
+  margin: var(--cc-space-5) 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.current-display__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-2);
+}
+
+.current-display__value {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-navy);
+  line-height: 1;
+}
+
+.current-display__sub {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  margin-top: var(--cc-space-2);
+}
+
+/* WEIGHT CHECK */
+.weight-check {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--cc-space-4) var(--cc-space-5);
+  border-radius: var(--cc-radius);
+  margin-top: var(--cc-space-4);
+  font-size: var(--cc-size-sm);
+  background: var(--cc-tint-navy);
+}
+
+.weight-check__label {
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+}
+
+.weight-check__value {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--cc-size-md);
+}
+
+.weight-check--warning { background: #FEF3C7; }
+.weight-check--warning .weight-check__label,
+.weight-check--warning .weight-check__value { color: var(--cc-warning); }
+
+.weight-check--success { background: #DCFCE7; }
+.weight-check--success .weight-check__label,
+.weight-check--success .weight-check__value { color: var(--cc-success); }
+
+/* RESULTS */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--cc-space-5);
+  margin-bottom: var(--cc-space-5);
+}
+
+.result-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+  border-top: 4px solid var(--cc-navy);
+  display: flex;
+  flex-direction: column;
+  gap: var(--cc-space-3);
+}
+
+.result-card--target { border-top-color: var(--cc-navy); }
+.result-card--program { border-top-color: var(--cc-gold); }
+.result-card--stretch { border-top-color: var(--cc-gold-bright); }
+
+.result-card__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+}
+
+.result-card__target {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  line-height: var(--cc-leading-snug);
+}
+
+.result-card__need {
+  font-size: var(--cc-size-3xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-navy);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.result-card__need--success { color: var(--cc-success); }
+.result-card__need--alert { color: var(--cc-alert); }
+.result-card__need--warning { color: var(--cc-warning); }
+
+.result-card__explain {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* SCENARIO */
+.scenario-output {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-6);
+  margin-top: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.scenario-output::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.scenario-output__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.scenario-output__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--cc-space-5);
+  margin-top: var(--cc-space-4);
+}
+
+.scenario-stat__label {
+  font-size: var(--cc-size-xs);
+  color: rgba(250, 250, 247, 0.7);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--cc-space-1);
+}
+
+.scenario-stat__value {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-gold-bright);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.scenario-stat__sub {
+  font-size: var(--cc-size-xs);
+  color: rgba(250, 250, 247, 0.7);
+  margin-top: var(--cc-space-1);
+}
+
+/* TEMPLATE PICKER */
+.template-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--cc-space-3);
+  margin-bottom: var(--cc-space-5);
+}
+
+.template-card {
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  padding: var(--cc-space-4);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  font-family: var(--cc-font);
+}
+
+.template-card:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.template-card:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+
+.template-card__title {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  font-size: var(--cc-size-sm);
+  margin-bottom: var(--cc-space-1);
+}
+
+.template-card__detail {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-snug);
+}
+
+/* PRINT */
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .skip-link, .remove-btn, .button, .button-row, .template-picker { display: none !important; }
+  .category, .current-display, .result-card, .callout, .category__summary {
+    box-shadow: none; border: 1px solid #666;
+  }
+  .scenario-output { background: white !important; color: black !important; border: 2px solid var(--cc-navy); }
+  .scenario-output__label, .scenario-stat__value, .scenario-stat__label, .scenario-stat__sub { color: black !important; }
+  .section__header, h2, h3 { page-break-after: avoid; }
+  .category { page-break-inside: avoid; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.mt-4 { margin-top: var(--cc-space-4); }
+.mt-5 { margin-top: var(--cc-space-5); }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="shell" id="main">
+
+  <header class="masthead">
+    <div class="eyebrow">STAT Success Cohort · Baseline Assessment</div>
+    <h1>Grade Audit</h1>
+    <p class="lead">
+      Where you actually stand, in numbers. A&amp;P courses are usually graded by category
+      (lecture exams, lab exams, quizzes, and so on). Enter your categories the way your
+      syllabus describes them, then add the assessments you've taken and the ones still
+      to come.
+    </p>
+  </header>
+
+  <div class="callout callout--info">
+    <div class="callout__body">
+      <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">Before you start</p></div><div class="callout__body"><p class="callout__text">
+        Open your syllabus and your gradebook. The syllabus tells you the category weights.
+        The gradebook tells you your scores. Both are needed. Accuracy here matters because
+        the output is only as honest as the input.
+      </p></div></div>
+  </div>
+
+  <!-- SECTION 1: TARGETS -->
+  <section class="section" id="targets" aria-labelledby="targetsTitle">
+    <div class="section__header">
+      <span class="section__number">01</span>
+      <h2 class="section__title" id="targetsTitle">Your targets</h2>
+    </div>
+    <p class="section__intro">Three grades you might be aiming for. Enter the ones that apply.</p>
+
+    <div class="form-grid-3">
+      <div class="form-group">
+        <label for="passingTarget" class="label">Grade to pass (%)</label>
+        <input type="number" id="passingTarget" class="input" placeholder="70" min="0" max="100" step="0.1">
+        <p class="help">Institutional minimum.</p>
+      </div>
+      <div class="form-group">
+        <label for="programTarget" class="label">Grade for your program (%)</label>
+        <input type="number" id="programTarget" class="input" placeholder="80" min="0" max="100" step="0.1">
+        <p class="help">Nursing or pre-health requirement.</p>
+      </div>
+      <div class="form-group">
+        <label for="stretchTarget" class="label">Stretch goal (%)</label>
+        <input type="number" id="stretchTarget" class="input" placeholder="Optional" min="0" max="100" step="0.1">
+        <p class="help">Where you'd love to be.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TEMPLATES -->
+  <section class="section" id="templates" aria-labelledby="templatesTitle">
+    <div class="section__header">
+      <span class="section__number">02</span>
+      <h2 class="section__title" id="templatesTitle">Start from a template</h2>
+    </div>
+    <p class="section__intro">
+      Common A&amp;P grading structures. Pick one that matches your syllabus or start blank
+      and build it yourself. You can adjust category weights after loading a template.
+    </p>
+
+    <div class="template-picker" id="templatePicker"></div>
+  </section>
+
+  <!-- SECTION 3: CATEGORIES -->
+  <section class="section" id="categoriesSection" aria-labelledby="categoriesTitle">
+    <div class="section__header">
+      <span class="section__number">03</span>
+      <h2 class="section__title" id="categoriesTitle">Your grade categories</h2>
+    </div>
+    <p class="section__intro">
+      Each category has a weight (like "Lecture exams 40%"). Add the assessments in each
+      category. Enter a score for ones you've already taken. Leave scores blank for ones
+      still to come, or enter a predicted score for planning.
+    </p>
+
+    <div id="categoriesContainer"></div>
+
+    <div class="weight-check" id="weightCheck">
+      <span class="weight-check__label">Total of all category weights</span>
+      <span class="weight-check__value"><span id="weightCheckValue">0</span>%</span>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--secondary" id="addCategoryBtn" type="button">
+        <span aria-hidden="true">+</span> Add category
+      </button>
+    </div>
+
+    <div class="current-display" aria-live="polite">
+      <div>
+        <div class="current-display__label">Your current grade</div>
+        <div class="current-display__value" id="currentGrade">Not yet</div>
+        <div class="current-display__sub" id="currentGradeSub">Add categories and scores</div>
+      </div>
+      <div>
+        <div class="current-display__label">Points earned</div>
+        <div class="current-display__value" id="pointsEarned">0%</div>
+        <div class="current-display__sub">Of final grade</div>
+      </div>
+      <div>
+        <div class="current-display__label">Points still available</div>
+        <div class="current-display__value" id="pointsRemaining">0%</div>
+        <div class="current-display__sub">Not yet graded</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: RESULTS -->
+  <section class="section" id="results" aria-labelledby="resultsTitle">
+    <div class="section__header">
+      <span class="section__number">04</span>
+      <h2 class="section__title" id="resultsTitle">What you need</h2>
+    </div>
+    <p class="section__intro">
+      If you score the same on every remaining assessment, this is what you'd need to
+      average to hit each target.
+    </p>
+
+    <div class="results-grid" id="resultsGrid"></div>
+    <div id="contextualGuidance"></div>
+  </section>
+
+  <!-- SECTION 5: SCENARIO -->
+  <section class="section" id="scenario" aria-labelledby="scenarioTitle">
+    <div class="section__header">
+      <span class="section__number">05</span>
+      <h2 class="section__title" id="scenarioTitle">Scenario playground</h2>
+    </div>
+    <p class="section__intro">
+      A realistic plan is rarely "score the same on everything." Enter predicted scores for
+      remaining assessments in any category above and check the predicted-score box to flag
+      them as predictions. The projection below updates automatically.
+    </p>
+
+    <div class="callout callout--accent">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">How to use this</p></div><div class="callout__body"><p class="callout__text">
+          In any category above, enter a score for a remaining assessment. It's automatically
+          treated as a prediction rather than a real score. Be realistic, not aspirational.
+          Unpredicted assessments are assumed to match the average of your predictions.
+        </p></div></div>
+    </div>
+
+    <div class="scenario-output" id="scenarioOutput">
+      <div class="scenario-output__label">If you score as predicted</div>
+      <div class="scenario-output__grid">
+        <div>
+          <div class="scenario-stat__label">Final grade</div>
+          <div class="scenario-stat__value" id="scenarioFinalGrade">, </div>
+          <div class="scenario-stat__sub" id="scenarioOutcome">Enter predicted scores above</div>
+        </div>
+        <div>
+          <div class="scenario-stat__label">Change from current</div>
+          <div class="scenario-stat__value" id="scenarioChange">, </div>
+          <div class="scenario-stat__sub" id="scenarioDirection">vs. current grade</div>
+        </div>
+        <div>
+          <div class="scenario-stat__label">Cushion above passing</div>
+          <div class="scenario-stat__value" id="scenarioCushion">, </div>
+          <div class="scenario-stat__sub">Passing target</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: ACTIONS -->
+  <section class="section" aria-label="Save and export">
+    <div class="section__header">
+      <span class="section__number">06</span>
+      <h2 class="section__title">Save your work</h2>
+    </div>
+    <p class="section__intro">
+      This calculator keeps your data in your browser. Print or download a copy to reference
+      or share with your facilitator.
+    </p>
+
+    <div class="button-row">
+      <button class="button button--primary" onclick="window.print()">Print or save as PDF</button>
+      <button class="button button--secondary" id="downloadBtn" type="button">Download data</button>
+      <button class="button button--tertiary" id="resetBtn" type="button">Clear all and start over</button>
+    </div>
+
+    <div class="callout callout--info mt-5">
+      <div class="callout__body">
+        <p class="callout__title">Bring this to Week 1</p>
+        <p class="callout__text">
+          Your completed audit is the first real data in your Status for Week 1. Print it,
+          save it, or note down the key numbers. Your facilitator and team will reference
+          it during the opening triage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// ==========================================================================
+// TEMPLATES
+// ==========================================================================
+
+const TEMPLATES = [
+  {
+    id: 'ap-standard',
+    title: 'Standard A&P (lecture + lab)',
+    detail: 'Lecture exams, lab practicals, quizzes, homework',
+    categories: [
+      { name: 'Lecture exams', weight: 40, dropLowest: 0 },
+      { name: 'Lab practicals', weight: 25, dropLowest: 0 },
+      { name: 'Quizzes', weight: 15, dropLowest: 1 },
+      { name: 'Homework', weight: 10, dropLowest: 0 },
+      { name: 'Participation', weight: 10, dropLowest: 0 }
+    ]
+  },
+  {
+    id: 'ap-exam-heavy',
+    title: 'Exam-heavy A&P',
+    detail: '4 lecture exams + comprehensive final, plus labs',
+    categories: [
+      { name: 'Lecture exams', weight: 45, dropLowest: 0 },
+      { name: 'Comprehensive final', weight: 20, dropLowest: 0 },
+      { name: 'Lab practicals', weight: 25, dropLowest: 0 },
+      { name: 'Homework', weight: 10, dropLowest: 0 }
+    ]
+  },
+  {
+    id: 'ap-lab-practicum',
+    title: 'Lab-focused (pure anatomy)',
+    detail: 'Multiple lab practicals, lecture exams, no physiology',
+    categories: [
+      { name: 'Lab practicals', weight: 50, dropLowest: 0 },
+      { name: 'Lecture exams', weight: 30, dropLowest: 0 },
+      { name: 'Quizzes', weight: 10, dropLowest: 1 },
+      { name: 'Assignments', weight: 10, dropLowest: 0 }
+    ]
+  },
+  {
+    id: 'blank',
+    title: 'Start blank',
+    detail: 'Build your own categories from scratch',
+    categories: []
+  }
+];
+
+const STORAGE_KEY = 'mmcc_grade_audit_v2';
+
+const state = {
+  targets: { passing: null, program: null, stretch: null },
+  categories: []
+};
+
+let nextId = 1;
+function uid() { return 'x' + (nextId++) + Math.random().toString(36).slice(2, 5); }
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    Object.assign(state, JSON.parse(raw));
+    state.categories.forEach(c => {
+      if (!c.id) c.id = uid();
+      if (!c.assessments) c.assessments = [];
+      c.assessments.forEach(a => { if (!a.id) a.id = uid(); });
+    });
+    return true;
+  } catch (e) { return false; }
+}
+
+function clearState() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  state.targets = { passing: null, program: null, stretch: null };
+  state.categories = [];
+}
+
+// ==========================================================================
+// RENDERING
+// ==========================================================================
+
+function renderTemplatePicker() {
+  const container = document.getElementById('templatePicker');
+  container.innerHTML = TEMPLATES.map(t => `
+    <button type="button" class="template-card" data-template="${t.id}">
+      <div class="template-card__title">${escapeHtml(t.title)}</div>
+      <div class="template-card__detail">${escapeHtml(t.detail)}</div>
+    </button>
+  `).join('');
+}
+
+function renderCategories() {
+  const container = document.getElementById('categoriesContainer');
+  if (state.categories.length === 0) {
+    container.innerHTML = `
+      <div class="callout callout--accent">
+        <div class="callout__body">
+          <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">No categories yet</p></div><div class="callout__body"><p class="callout__text">Pick a template above or click "Add category" to start building your gradebook.</p></div></div>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = state.categories.map(cat => renderCategoryHtml(cat)).join('');
+}
+
+function renderCategoryHtml(cat) {
+  const completed = cat.assessments.filter(a => hasScore(a) && !a._predicted);
+  const predicted = cat.assessments.filter(a => hasScore(a) && a._predicted);
+  const remaining = cat.assessments.filter(a => !hasScore(a));
+
+  const avgCompleted = completed.length > 0
+    ? completed.reduce((sum, a) => sum + parseFloat(a.score), 0) / completed.length
+    : null;
+
+  const weightPerAssessment = cat.assessments.length > 0 && cat.weight
+    ? parseFloat(cat.weight) / cat.assessments.length
+    : null;
+
+  return `
+    <div class="category" data-category-id="${cat.id}">
+      <div class="category__header">
+        <input type="text" class="input input--sm category__name"
+               value="${escapeHtml(cat.name || '')}"
+               data-cat-field="name"
+               placeholder="e.g. Lecture exams"
+               aria-label="Category name">
+        <div class="category__weight-wrap">
+          <input type="number" class="input input--sm category__weight"
+                 value="${cat.weight ?? ''}"
+                 data-cat-field="weight"
+                 min="0" max="100" step="0.1"
+                 placeholder="0"
+                 aria-label="Category weight as percent of final grade">
+          <span class="category__weight-suffix">%</span>
+        </div>
+        <button class="remove-btn remove-btn--large" type="button" data-action="remove-category" aria-label="Remove category">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="category__body">
+        <div class="category__summary">
+          <div class="category__summary-item">
+            <span class="category__summary-label">Assessments</span>
+            <span class="category__summary-value">${cat.assessments.length}</span>
+          </div>
+          <div class="category__summary-item">
+            <span class="category__summary-label">Completed</span>
+            <span class="category__summary-value">${completed.length}</span>
+          </div>
+          <div class="category__summary-item">
+            <span class="category__summary-label">Remaining</span>
+            <span class="category__summary-value">${remaining.length}</span>
+          </div>
+          <div class="category__summary-item">
+            <span class="category__summary-label">Weight each</span>
+            <span class="category__summary-value">${weightPerAssessment !== null ? formatPercent(weightPerAssessment, 2) : ', '}</span>
+          </div>
+          ${avgCompleted !== null ? `
+            <div class="category__summary-item">
+              <span class="category__summary-label">Avg of completed</span>
+              <span class="category__summary-value">${formatPercent(avgCompleted)}</span>
+            </div>
+          ` : ''}
+        </div>
+
+        ${cat.assessments.length > 0 ? `
+          <div class="assessments-header">
+            <div>Assessment name</div>
+            <div>Score (%)</div>
+            <div>Status</div>
+            <div></div>
+          </div>
+          ${cat.assessments.map(a => renderAssessmentHtml(a)).join('')}
+        ` : ''}
+
+        <div class="category__actions">
+          <button class="button button--secondary button--sm" type="button" data-action="add-assessment">
+            <span aria-hidden="true">+</span> Add assessment
+          </button>
+          ${(cat.dropLowest || 0) === 0 && !cat._showDropConfig ? `
+            <button class="button button--tertiary button--sm" type="button" data-action="toggle-drop">
+              Drop lowest score
+            </button>
+          ` : ''}
+        </div>
+
+        ${(cat.dropLowest || 0) > 0 || cat._showDropConfig ? `
+          <div class="category__drop-config">
+            <label>
+              Drop the lowest
+              <input type="number" class="input input--sm" value="${cat.dropLowest || 1}"
+                     data-cat-field="dropLowest" min="0" max="${Math.max(cat.assessments.length - 1, 1)}" step="1"
+                     aria-label="Number of lowest scores to drop">
+              ${(cat.dropLowest || 0) === 1 ? 'score' : 'scores'} from this category
+            </label>
+            <button class="button button--tertiary button--sm" type="button" data-action="clear-drop">
+              Remove drop rule
+            </button>
+          </div>
+        ` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderAssessmentHtml(a) {
+  const scored = hasScore(a);
+  let status = 'Not scored';
+  if (scored) {
+    status = a._predicted ? 'Predicted' : 'Completed';
+  }
+
+  return `
+    <div class="assessment-row" data-assessment-id="${a.id}">
+      <input type="text" class="input input--sm"
+             value="${escapeHtml(a.name || '')}"
+             data-field="name"
+             placeholder="e.g. Exam 1"
+             aria-label="Assessment name">
+      <input type="number" class="input input--sm"
+             value="${a.score ?? ''}"
+             data-field="score"
+             placeholder=", " min="0" max="150" step="0.1"
+             aria-label="Score as percent">
+      <span class="assessment-row__status">
+        ${scored ? `<label style="font-size: 0.8125rem; font-weight: 400; color: var(--cc-text-muted); display: inline-flex; align-items: center; gap: 6px;">
+          <input type="checkbox" data-field="predicted" ${a._predicted ? 'checked' : ''} aria-label="Mark as predicted rather than actual">
+          ${status}
+        </label>` : status}
+      </span>
+      <button class="remove-btn" type="button" data-action="remove-assessment" aria-label="Remove assessment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  `;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+function hasScore(a) {
+  if (a.score === '' || a.score === null || a.score === undefined) return false;
+  return !isNaN(parseFloat(a.score));
+}
+
+// ==========================================================================
+// COMPUTATION
+// ==========================================================================
+
+function computeCategoryStats(cat) {
+  const weight = parseFloat(cat.weight);
+  if (isNaN(weight) || weight <= 0 || cat.assessments.length === 0) {
+    return {
+      earned: 0,
+      completedWeight: 0,
+      remainingWeight: 0,
+      predictedContribution: 0,
+      predictedWeight: 0,
+      unpredictedWeight: 0
+    };
+  }
+
+  const assessmentsCount = cat.assessments.length;
+  const dropLowest = Math.min(cat.dropLowest || 0, Math.max(assessmentsCount - 1, 0));
+  const weightPerAssessment = weight / assessmentsCount;
+
+  // Collect scores by type
+  const completedScores = [];
+  const predictedScores = [];
+  let unpredictedCount = 0;
+
+  cat.assessments.forEach(a => {
+    if (hasScore(a)) {
+      const score = parseFloat(a.score);
+      if (a._predicted) predictedScores.push(score);
+      else completedScores.push(score);
+    } else {
+      unpredictedCount++;
+    }
+  });
+
+  // Drop rule: apply to completed scores first (most common case: drop lowest completed score)
+  let scoresToCount = [...completedScores];
+  let droppedCount = 0;
+  if (dropLowest > 0 && completedScores.length > 0) {
+    const sorted = [...completedScores].sort((a, b) => a - b);
+    const toDrop = Math.min(dropLowest, completedScores.length - 1);
+    // Only drop if dropping wouldn't leave us with nothing
+    if (toDrop > 0) {
+      const droppedValues = sorted.slice(0, toDrop);
+      droppedValues.forEach(v => {
+        const idx = scoresToCount.indexOf(v);
+        if (idx !== -1) scoresToCount.splice(idx, 1);
+      });
+      droppedCount = toDrop;
+    }
+  }
+
+  // Points earned (from completed, not-dropped)
+  const earned = scoresToCount.reduce((sum, s) => sum + (s / 100) * weightPerAssessment, 0);
+  const completedWeight = scoresToCount.length * weightPerAssessment;
+
+  // Predicted contribution (for scenario)
+  const predictedContribution = predictedScores.reduce((sum, s) => sum + (s / 100) * weightPerAssessment, 0);
+  const predictedWeight = predictedScores.length * weightPerAssessment;
+
+  // Remaining weight = total weight minus what's already counted (completed) minus dropped
+  // For simplicity: ignore drop rule effect on remaining (already complex enough)
+  // Weight in assessments that aren't completed (predicted + unpredicted, minus any drops from those)
+  const remainingWeight = (predictedScores.length + unpredictedCount) * weightPerAssessment;
+  const unpredictedWeight = unpredictedCount * weightPerAssessment;
+
+  return {
+    earned,
+    completedWeight,
+    remainingWeight,
+    predictedContribution,
+    predictedWeight,
+    unpredictedWeight
+  };
+}
+
+function compute() {
+  let totalEarned = 0;
+  let totalCompletedWeight = 0;
+  let totalRemainingWeight = 0;
+  let totalPredictedContribution = 0;
+  let totalPredictedWeight = 0;
+  let totalUnpredictedWeight = 0;
+  let totalCategoryWeight = 0;
+
+  state.categories.forEach(cat => {
+    const w = parseFloat(cat.weight);
+    if (!isNaN(w) && w > 0) totalCategoryWeight += w;
+
+    const stats = computeCategoryStats(cat);
+    totalEarned += stats.earned;
+    totalCompletedWeight += stats.completedWeight;
+    totalRemainingWeight += stats.remainingWeight;
+    totalPredictedContribution += stats.predictedContribution;
+    totalPredictedWeight += stats.predictedWeight;
+    totalUnpredictedWeight += stats.unpredictedWeight;
+  });
+
+  const currentGrade = totalCompletedWeight > 0
+    ? (totalEarned / totalCompletedWeight) * 100
+    : null;
+
+  document.getElementById('currentGrade').textContent = currentGrade !== null ? formatPercent(currentGrade) : 'Not yet';
+  document.getElementById('currentGradeSub').textContent = currentGrade !== null
+    ? `Based on ${formatPercent(totalCompletedWeight, 0)} of course graded`
+    : 'Add categories and scores above';
+  document.getElementById('pointsEarned').textContent = formatPercent(totalEarned, 1);
+  document.getElementById('pointsRemaining').textContent = formatPercent(totalRemainingWeight, 1);
+
+  const weightCheck = document.getElementById('weightCheck');
+  document.getElementById('weightCheckValue').textContent = formatPercent(totalCategoryWeight, 1);
+  weightCheck.classList.remove('weight-check--warning', 'weight-check--success');
+  if (totalCategoryWeight > 0) {
+    if (Math.abs(totalCategoryWeight - 100) < 0.5) {
+      weightCheck.classList.add('weight-check--success');
+    } else {
+      weightCheck.classList.add('weight-check--warning');
+    }
+  }
+
+  renderResults(totalEarned, totalCompletedWeight, totalRemainingWeight);
+  renderScenario(totalEarned, totalCompletedWeight, totalRemainingWeight, totalPredictedContribution, totalPredictedWeight, totalUnpredictedWeight);
+
+  saveState();
+}
+
+function renderResults(earned, completedWeight, remainingWeight) {
+  const targets = [
+    { label: 'Pass the course', value: state.targets.passing, variant: 'target' },
+    { label: 'Qualify for program', value: state.targets.program, variant: 'program' },
+    { label: 'Stretch goal', value: state.targets.stretch, variant: 'stretch' }
+  ];
+
+  const guidance = document.getElementById('contextualGuidance');
+  guidance.innerHTML = '';
+  const grid = document.getElementById('resultsGrid');
+
+  if (remainingWeight <= 0) {
+    if (completedWeight > 0) {
+      grid.innerHTML = `
+        <div class="result-card">
+          <div class="result-card__label">No remaining assessments</div>
+          <div class="result-card__explain">All assessments are scored. Your current grade is your final grade.</div>
+        </div>
+      `;
+    } else {
+      grid.innerHTML = `
+        <div class="result-card">
+          <div class="result-card__label">Nothing to compute yet</div>
+          <div class="result-card__explain">Add categories and assessments above to see what you need.</div>
+        </div>
+      `;
+    }
+    return;
+  }
+
+  const activeTargets = targets.filter(t => t.value !== null && t.value !== undefined && t.value !== '');
+  if (activeTargets.length === 0) {
+    grid.innerHTML = `
+      <div class="result-card">
+        <div class="result-card__label">No targets set</div>
+        <div class="result-card__explain">Enter at least one target above to see what you need to score.</div>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = activeTargets.map(target => {
+    const targetValue = parseFloat(target.value);
+    const pointsNeeded = targetValue - earned;
+    const requiredScore = (pointsNeeded / remainingWeight) * 100;
+
+    let needClass = '';
+    let explain = '';
+    let displayRequired = '';
+
+    if (requiredScore <= 0) {
+      needClass = 'result-card__need--success';
+      displayRequired = '0%';
+      explain = `You've already locked in enough points to hit ${formatPercent(targetValue)}. Even zeros on everything remaining still reach this target.`;
+    } else if (requiredScore > 100) {
+      needClass = 'result-card__need--alert';
+      displayRequired = 'Not possible';
+      const maxPossible = earned + remainingWeight;
+      explain = `This target is no longer mathematically possible with the assessments remaining. The maximum grade you could still earn is ${formatPercent(maxPossible)}.`;
+    } else if (requiredScore > 95) {
+      needClass = 'result-card__need--warning';
+      displayRequired = formatPercent(requiredScore);
+      explain = `You'd need to average ${displayRequired} on remaining work. Technically possible, but leaves no margin.`;
+    } else if (requiredScore > 85) {
+      needClass = 'result-card__need--warning';
+      displayRequired = formatPercent(requiredScore);
+      explain = `You'd need to average ${displayRequired} on remaining work. Demanding but achievable with consistent execution.`;
+    } else if (requiredScore > 70) {
+      displayRequired = formatPercent(requiredScore);
+      explain = `You'd need to average ${displayRequired} on remaining work. A realistic target for solid execution.`;
+    } else {
+      needClass = 'result-card__need--success';
+      displayRequired = formatPercent(requiredScore);
+      explain = `You'd need to average ${displayRequired} on remaining work. Achievable with competent execution.`;
+    }
+
+    return `
+      <div class="result-card result-card--${target.variant}">
+        <div class="result-card__label">${escapeHtml(target.label)}</div>
+        <div class="result-card__target">Target: ${formatPercent(targetValue)}</div>
+        <div class="result-card__need ${needClass}">${displayRequired}</div>
+        <div class="result-card__explain">${explain}</div>
+      </div>
+    `;
+  }).join('');
+
+  const passingValue = parseFloat(state.targets.passing);
+  if (!isNaN(passingValue)) {
+    const passingNeeded = passingValue - earned;
+    const passingRequired = (passingNeeded / remainingWeight) * 100;
+
+    if (passingRequired > 100) {
+      guidance.innerHTML = `
+        <div class="callout callout--alert">
+          <div class="callout__body">
+            <div class="callout__header"><span class="callout__mark" aria-hidden="true">!</span><p class="callout__title">Passing is no longer mathematically possible</p></div><div class="callout__body"><p class="callout__text">This is hard news, and it deserves a real conversation with your facilitator. Options that may still exist: withdrawing with a W grade, requesting an incomplete if your institution allows it, planning a retake, or discussing the math with your instructor to confirm. You are not the first student to face this, and there are paths forward. But this is not the week to pretend otherwise.</p></div></div>
+        </div>
+      `;
+    } else if (passingRequired > 85) {
+      guidance.innerHTML = `
+        <div class="callout callout--warning">
+          <div class="callout__body">
+            <div class="callout__header"><span class="callout__mark" aria-hidden="true">!</span><p class="callout__title">Passing requires strong performance ahead</p></div><div class="callout__body"><p class="callout__text">You need to average ${formatPercent(passingRequired)} on remaining work just to pass. This is doable, but it is a real recovery situation. This is exactly what The program is designed for.</p></div></div>
+        </div>
+      `;
+    } else if (passingRequired > 0) {
+      guidance.innerHTML = `
+        <div class="callout callout--info">
+          <div class="callout__body">
+            <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">Passing is within reach</p></div><div class="callout__body"><p class="callout__text">You need to average ${formatPercent(passingRequired)} on remaining work to pass. That's a realistic target with consistent execution.</p></div></div>
+        </div>
+      `;
+    } else {
+      guidance.innerHTML = `
+        <div class="callout callout--success">
+          <div class="callout__body">
+            <div class="callout__header"><span class="callout__mark" aria-hidden="true">✓</span><p class="callout__title">Passing is already locked in</p></div><div class="callout__body"><p class="callout__text">You've already earned enough to pass. The question now is whether you can reach your program target.</p></div></div>
+        </div>
+      `;
+    }
+  }
+}
+
+function renderScenario(earned, completedWeight, remainingWeight, predictedContribution, predictedWeight, unpredictedWeight) {
+  const finalGradeEl = document.getElementById('scenarioFinalGrade');
+  const outcomeEl = document.getElementById('scenarioOutcome');
+  const changeEl = document.getElementById('scenarioChange');
+  const directionEl = document.getElementById('scenarioDirection');
+  const cushionEl = document.getElementById('scenarioCushion');
+
+  if (predictedWeight <= 0) {
+    finalGradeEl.textContent = ', ';
+    outcomeEl.textContent = 'Check "predicted" on scored remaining assessments';
+    changeEl.textContent = ', ';
+    directionEl.textContent = 'vs. current grade';
+    cushionEl.textContent = ', ';
+    return;
+  }
+
+  const predictedAverage = (predictedContribution / predictedWeight) * 100;
+  const unpredictedContribution = (predictedAverage * unpredictedWeight) / 100;
+  const totalWeight = completedWeight + remainingWeight;
+  const finalContribution = earned + predictedContribution + unpredictedContribution;
+  const finalGrade = totalWeight > 0 ? (finalContribution / totalWeight) * 100 : null;
+
+  if (finalGrade === null) { finalGradeEl.textContent = ', '; return; }
+
+  finalGradeEl.textContent = formatPercent(finalGrade);
+
+  const passingValue = parseFloat(state.targets.passing);
+  const programValue = parseFloat(state.targets.program);
+  const stretchValue = parseFloat(state.targets.stretch);
+
+  const outcomeMsg = [];
+  if (!isNaN(stretchValue) && finalGrade >= stretchValue) outcomeMsg.push('Hits stretch');
+  else if (!isNaN(programValue) && finalGrade >= programValue) outcomeMsg.push('Hits program target');
+  else if (!isNaN(passingValue) && finalGrade >= passingValue) outcomeMsg.push('Passes the course');
+  else if (!isNaN(passingValue)) outcomeMsg.push('Below passing');
+
+  if (unpredictedWeight > 0.5) outcomeMsg.push(`Unpredicted: ${formatPercent(predictedAverage, 0)}`);
+  outcomeEl.textContent = outcomeMsg.length > 0 ? outcomeMsg.join(' · ') : 'Projected final grade';
+
+  const currentGrade = completedWeight > 0 ? (earned / completedWeight) * 100 : null;
+  if (currentGrade !== null) {
+    const change = finalGrade - currentGrade;
+    changeEl.textContent = (change >= 0 ? '+' : '') + formatPercent(change);
+    directionEl.textContent = change > 0 ? 'Improvement' : change < 0 ? 'Drop' : 'No change';
+  } else {
+    changeEl.textContent = ', ';
+    directionEl.textContent = 'Need completed work';
+  }
+
+  if (!isNaN(passingValue)) {
+    const cushion = finalGrade - passingValue;
+    cushionEl.textContent = (cushion >= 0 ? '+' : '') + formatPercent(cushion);
+  } else {
+    cushionEl.textContent = ', ';
+  }
+}
+
+function formatPercent(num, decimals = 1) {
+  if (num === null || num === undefined || isNaN(num)) return ', ';
+  return num.toFixed(decimals) + '%';
+}
+
+// ==========================================================================
+// EVENTS
+// ==========================================================================
+
+['passingTarget', 'programTarget', 'stretchTarget'].forEach(id => {
+  document.getElementById(id).addEventListener('input', (e) => {
+    const key = id.replace('Target', '');
+    state.targets[key] = e.target.value === '' ? null : e.target.value;
+    compute();
+  });
+});
+
+document.getElementById('templatePicker').addEventListener('click', (e) => {
+  const tpl = e.target.closest('.template-card');
+  if (!tpl) return;
+  const templateId = tpl.dataset.template;
+  const template = TEMPLATES.find(t => t.id === templateId);
+  if (!template) return;
+
+  if (state.categories.length > 0) {
+    if (!confirm('This will replace your current categories. Continue?')) return;
+  }
+
+  state.categories = template.categories.map(c => ({
+    id: uid(),
+    name: c.name,
+    weight: c.weight,
+    dropLowest: c.dropLowest || 0,
+    assessments: []
+  }));
+  renderCategories();
+  compute();
+});
+
+document.getElementById('addCategoryBtn').addEventListener('click', () => {
+  state.categories.push({
+    id: uid(),
+    name: '',
+    weight: '',
+    dropLowest: 0,
+    assessments: []
+  });
+  renderCategories();
+  compute();
+});
+
+document.getElementById('categoriesContainer').addEventListener('input', (e) => {
+  const categoryEl = e.target.closest('.category');
+  if (!categoryEl) return;
+  const catId = categoryEl.dataset.categoryId;
+  const category = state.categories.find(c => c.id === catId);
+  if (!category) return;
+
+  const catField = e.target.dataset.catField;
+  if (catField) {
+    if (catField === 'name') category.name = e.target.value;
+    else if (catField === 'weight') category.weight = e.target.value;
+    else if (catField === 'dropLowest') category.dropLowest = parseInt(e.target.value) || 0;
+    compute();
+    return;
+  }
+
+  const assessmentEl = e.target.closest('.assessment-row');
+  if (!assessmentEl) return;
+  const assessmentId = assessmentEl.dataset.assessmentId;
+  const assessment = category.assessments.find(a => a.id === assessmentId);
+  if (!assessment) return;
+
+  const field = e.target.dataset.field;
+  if (field === 'name') {
+    assessment.name = e.target.value;
+  } else if (field === 'score') {
+    assessment.score = e.target.value;
+    if (assessment.score === '') delete assessment._predicted;
+    // Re-render this assessment row to update status area
+    const newHtml = renderAssessmentHtml(assessment);
+    const temp = document.createElement('div');
+    temp.innerHTML = newHtml;
+    assessmentEl.replaceWith(temp.firstElementChild);
+  } else if (field === 'predicted') {
+    assessment._predicted = e.target.checked;
+    const newHtml = renderAssessmentHtml(assessment);
+    const temp = document.createElement('div');
+    temp.innerHTML = newHtml;
+    assessmentEl.replaceWith(temp.firstElementChild);
+  }
+
+  compute();
+});
+
+document.getElementById('categoriesContainer').addEventListener('change', (e) => {
+  // Also handle checkbox change (some browsers don't fire 'input' on checkboxes consistently)
+  if (e.target.dataset.field === 'predicted') {
+    const categoryEl = e.target.closest('.category');
+    if (!categoryEl) return;
+    const catId = categoryEl.dataset.categoryId;
+    const category = state.categories.find(c => c.id === catId);
+    if (!category) return;
+    const assessmentEl = e.target.closest('.assessment-row');
+    const assessmentId = assessmentEl.dataset.assessmentId;
+    const assessment = category.assessments.find(a => a.id === assessmentId);
+    if (!assessment) return;
+    assessment._predicted = e.target.checked;
+    const newHtml = renderAssessmentHtml(assessment);
+    const temp = document.createElement('div');
+    temp.innerHTML = newHtml;
+    assessmentEl.replaceWith(temp.firstElementChild);
+    compute();
+  }
+});
+
+document.getElementById('categoriesContainer').addEventListener('click', (e) => {
+  const actionEl = e.target.closest('[data-action]');
+  if (!actionEl) return;
+
+  const categoryEl = actionEl.closest('.category');
+  const catId = categoryEl?.dataset.categoryId;
+  const category = state.categories.find(c => c.id === catId);
+  if (!category) return;
+
+  const action = actionEl.dataset.action;
+
+  if (action === 'remove-category') {
+    if (confirm(`Remove category "${category.name || 'this category'}" and all its assessments?`)) {
+      state.categories = state.categories.filter(c => c.id !== catId);
+      renderCategories();
+      compute();
+    }
+  } else if (action === 'add-assessment') {
+    category.assessments.push({
+      id: uid(),
+      name: '',
+      score: ''
+    });
+    renderCategories();
+    compute();
+    setTimeout(() => {
+      const rows = document.querySelectorAll(`[data-category-id="${catId}"] .assessment-row`);
+      if (rows.length > 0) {
+        const nameInput = rows[rows.length - 1].querySelector('[data-field="name"]');
+        if (nameInput) nameInput.focus();
+      }
+    }, 10);
+  } else if (action === 'remove-assessment') {
+    const assessmentEl = actionEl.closest('.assessment-row');
+    const aId = assessmentEl.dataset.assessmentId;
+    category.assessments = category.assessments.filter(a => a.id !== aId);
+    renderCategories();
+    compute();
+  } else if (action === 'toggle-drop') {
+    category._showDropConfig = true;
+    if (!category.dropLowest) category.dropLowest = 1;
+    renderCategories();
+    compute();
+  } else if (action === 'clear-drop') {
+    category.dropLowest = 0;
+    category._showDropConfig = false;
+    renderCategories();
+    compute();
+  }
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    targets: state.targets,
+    categories: state.categories.map(c => ({
+      name: c.name,
+      weight: c.weight,
+      dropLowest: c.dropLowest || 0,
+      assessments: c.assessments.map(a => ({
+        name: a.name,
+        score: a.score,
+        predicted: !!a._predicted
+      }))
+    }))
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `grade_audit_${new Date().toISOString().slice(0,10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('Clear all data and start over? This cannot be undone.')) {
+    clearState();
+    document.getElementById('passingTarget').value = '';
+    document.getElementById('programTarget').value = '';
+    document.getElementById('stretchTarget').value = '';
+    renderCategories();
+    compute();
+  }
+});
+
+// INIT
+renderTemplatePicker();
+const loaded = loadState();
+if (loaded) {
+  document.getElementById('passingTarget').value = state.targets.passing ?? '';
+  document.getElementById('programTarget').value = state.targets.program ?? '';
+  document.getElementById('stretchTarget').value = state.targets.stretch ?? '';
+}
+renderCategories();
+compute();
+
+// IFRAME HEIGHT SENDER
+(function() {
+  const frameId = window.name || 'mmcc_grade_audit';
+  function sendHeight() {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

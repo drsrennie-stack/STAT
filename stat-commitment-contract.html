@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Commitment Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #166534;
+  --cc-warning: #92400E;
+  --cc-alert: #991B1B;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+
+  --cc-radius-sm: 4px;
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+  --cc-radius-xl: 24px;
+
+  --cc-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cc-duration-fast: 150ms;
+  --cc-duration: 250ms;
+  --cc-duration-slow: 400ms;
+
+  --cc-focus-ring: 0 0 0 3px var(--cc-white), 0 0 0 6px var(--cc-gold-deep);
+  --cc-focus-ring-inverse: 0 0 0 3px var(--cc-navy), 0 0 0 6px var(--cc-gold-bright);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute; top: -48px; left: 0;
+  background: var(--cc-navy); color: var(--cc-text-inverse);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-weight: var(--cc-weight-semi); text-decoration: none;
+  z-index: 1000; transition: top var(--cc-duration) var(--cc-ease);
+}
+.skip-link:focus { top: 0; outline: none; box-shadow: var(--cc-focus-ring-inverse); }
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--cc-space-6) var(--cc-space-5);
+}
+
+/* MASTHEAD */
+.masthead {
+  border-bottom: 1px solid var(--cc-border);
+  padding-bottom: var(--cc-space-6);
+  margin-bottom: var(--cc-space-7);
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--cc-space-2);
+  font-size: var(--cc-size-xs); font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cc-gold-deep); margin-bottom: var(--cc-space-3);
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 2px;
+  background: var(--cc-gold); display: inline-block;
+}
+
+.masthead h1 {
+  font-size: var(--cc-size-3xl);
+  font-weight: var(--cc-weight-extra);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-4);
+}
+
+.masthead__lead {
+  font-size: var(--cc-size-md);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+}
+
+/* SECTION */
+.section {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+  border-left: 4px solid var(--cc-navy);
+}
+
+.section--gold { border-left-color: var(--cc-gold); }
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--cc-space-4);
+  margin-bottom: var(--cc-space-4);
+  padding-bottom: var(--cc-space-3);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.15em;
+  min-width: 36px;
+}
+
+.section__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin: 0;
+  flex: 1;
+}
+
+.section__intro {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  margin-bottom: var(--cc-space-4);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* CONTRACT TEXT */
+.contract-body {
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+}
+
+.contract-body p { margin-bottom: var(--cc-space-4); }
+.contract-body p:last-child { margin-bottom: 0; }
+
+.contract-body strong { color: var(--cc-navy); font-weight: var(--cc-weight-bold); }
+
+/* COMMITMENT DIMENSIONS */
+.dimension {
+  padding: var(--cc-space-5);
+  background: var(--cc-white);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  margin-bottom: var(--cc-space-4);
+}
+
+.dimension:last-child { margin-bottom: 0; }
+
+.dimension__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--cc-space-3);
+  margin-bottom: var(--cc-space-3);
+}
+
+.dimension__letter {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-md);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+  min-width: 24px;
+}
+
+.dimension__title {
+  font-size: var(--cc-size-md);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin: 0;
+  flex: 1;
+}
+
+.dimension__body {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+  margin-bottom: var(--cc-space-4);
+}
+
+.dimension__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cc-space-3);
+  padding: var(--cc-space-3) var(--cc-space-4);
+  background: var(--cc-tint-navy);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+}
+
+.dimension__checkbox:hover {
+  border-color: var(--cc-navy-soft);
+  background: #EBF0F7;
+}
+
+.dimension__checkbox input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  margin-top: 2px;
+  accent-color: var(--cc-navy);
+  cursor: pointer;
+}
+
+.dimension__checkbox:has(input:checked) {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.dimension__checkbox-text {
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  line-height: var(--cc-leading-snug);
+}
+
+/* WHAT THIS DOES NOT PROMISE */
+.does-not-promise {
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  border-left: 4px solid var(--cc-warning);
+  border-radius: var(--cc-radius);
+  padding: var(--cc-space-5);
+  margin-bottom: var(--cc-space-5);
+}
+
+.does-not-promise__title {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-warning);
+  margin-bottom: var(--cc-space-2);
+  font-size: var(--cc-size-sm);
+  letter-spacing: 0.02em;
+}
+
+.does-not-promise__text {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+  margin: 0;
+}
+
+/* SIGNATURE BLOCK */
+.signature-block {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-7) var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.signature-block::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.signature-block__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.signature-block__title {
+  font-size: var(--cc-size-xl);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-snug);
+}
+
+.signature-block__intro {
+  font-size: var(--cc-size-sm);
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+  margin-bottom: var(--cc-space-5);
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--cc-space-4);
+}
+
+@media (max-width: 560px) {
+  .signature-grid { grid-template-columns: 1fr; }
+}
+
+.signature-block .label {
+  color: rgba(250, 250, 247, 0.95);
+  display: block;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  margin-bottom: var(--cc-space-2);
+}
+
+.signature-block .help {
+  color: rgba(250, 250, 247, 0.7);
+  font-size: var(--cc-size-xs);
+  margin-top: var(--cc-space-2);
+}
+
+.signature-block .input {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  color: var(--cc-text-inverse);
+  background: rgba(250, 250, 247, 0.05);
+  border: 2px solid rgba(212, 169, 98, 0.35);
+  border-radius: var(--cc-radius);
+  min-height: 48px;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+}
+
+.signature-block .input::placeholder { color: rgba(250, 250, 247, 0.5); }
+
+.signature-block .input:focus {
+  outline: none;
+  background: rgba(250, 250, 247, 0.08);
+  border-color: var(--cc-gold-bright);
+  box-shadow: 0 0 0 3px rgba(212, 169, 98, 0.2);
+}
+
+.signature-input {
+  font-family: 'Plus Jakarta Sans', cursive !important;
+  font-size: var(--cc-size-lg) !important;
+  font-style: italic;
+  font-weight: var(--cc-weight-semi) !important;
+  letter-spacing: 0.02em;
+}
+
+/* FORM */
+.field { margin-bottom: var(--cc-space-5); }
+.field:last-child { margin-bottom: 0; }
+
+.label {
+  display: block;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  margin-bottom: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.help {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-secondary);
+  margin-top: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.input {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  border-radius: var(--cc-radius);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.input:hover { border-color: var(--cc-text-muted); }
+
+.input:focus {
+  outline: none;
+  border-color: var(--cc-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 61, 0.15);
+}
+
+/* CALLOUTS */
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* BUTTONS */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+.button--primary:hover:not(:disabled) {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+.button--secondary:hover:not(:disabled) {
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.button--tertiary {
+  background: transparent;
+  color: var(--cc-text-muted);
+  border-color: transparent;
+}
+.button--tertiary:hover:not(:disabled) { color: var(--cc-navy); background: var(--cc-tint-navy); }
+
+.button--gold-bright {
+  background: var(--cc-gold-bright);
+  color: var(--cc-navy);
+  border-color: var(--cc-gold-bright);
+  box-shadow: var(--cc-shadow-sm);
+  font-weight: var(--cc-weight-bold);
+}
+.button--gold-bright:hover:not(:disabled) {
+  background: #C49A52;
+  border-color: #C49A52;
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--lg {
+  padding: var(--cc-space-4) var(--cc-space-6);
+  font-size: var(--cc-size-base);
+  min-height: 56px;
+}
+
+.button:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+
+.button-row {
+  display: flex;
+  gap: var(--cc-space-3);
+  margin-top: var(--cc-space-7);
+  padding-top: var(--cc-space-5);
+  border-top: 1px solid var(--cc-border);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.button-row__spacer { flex: 1; }
+
+.validation-message {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-alert);
+  margin-top: var(--cc-space-3);
+  display: none;
+  font-weight: var(--cc-weight-semi);
+}
+
+.validation-message[data-visible="true"] { display: block; }
+
+/* CONFIRMATION */
+.confirmation {
+  display: none;
+  animation: fadeIn var(--cc-duration-slow) var(--cc-ease);
+}
+
+.confirmation[data-visible="true"] { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confirmation__hero {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-7) var(--cc-space-6);
+  margin-bottom: var(--cc-space-6);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.confirmation__hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.confirmation__eyebrow {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.confirmation__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-tight);
+}
+
+.confirmation__body {
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+  margin-bottom: var(--cc-space-3);
+}
+
+.confirmation__signed {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-5);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.confirmation__signed-label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-3);
+}
+
+.confirmation__signed-detail {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--cc-space-3);
+  padding: var(--cc-space-2) 0;
+  border-bottom: 1px solid var(--cc-border);
+  font-size: var(--cc-size-sm);
+}
+
+.confirmation__signed-detail:last-child { border-bottom: none; }
+
+.confirmation__signed-key {
+  color: var(--cc-text-muted);
+  font-weight: var(--cc-weight-semi);
+}
+
+.confirmation__signed-value {
+  color: var(--cc-text);
+  font-weight: var(--cc-weight-semi);
+}
+
+.confirmation__signature {
+  font-family: 'Plus Jakarta Sans', cursive;
+  font-size: var(--cc-size-lg);
+  font-style: italic;
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+}
+
+/* PRINT */
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .skip-link, .button, .button-row, .validation-message { display: none !important; }
+  .section, .signature-block, .callout, .dimension, .does-not-promise { box-shadow: none; border: 1px solid #666; }
+  .signature-block, .confirmation__hero { background: white !important; color: black !important; border: 2px solid var(--cc-navy); }
+  .signature-block .label, .signature-block .help, .signature-block .input { color: black !important; background: white !important; }
+  .signature-block__title, .signature-block__label, .signature-block__intro { color: black !important; }
+  .confirmation__title, .confirmation__body, .confirmation__eyebrow { color: black !important; }
+  h1, h2, .section__title { page-break-after: avoid; }
+  .section, .dimension { page-break-inside: avoid; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="shell" id="main">
+
+  <!-- MAIN FORM -->
+  <div id="contractForm">
+    <header class="masthead">
+      <div class="eyebrow">STAT Success Cohort · Program Commitment</div>
+      <h1>Your Commitment</h1>
+      <p class="masthead__lead">
+        Before Week 1 opens, we ask you to read this commitment and sign it. This is not
+        a legal contract. It's a structural commitment to the work the next 8 weeks will
+        require, and an honest acknowledgment of what the program does and does not promise.
+      </p>
+    </header>
+
+    <!-- 1. WHAT THIS PROGRAM IS -->
+    <div class="section">
+      <div class="section__header">
+        <span class="section__number">01</span>
+        <h2 class="section__title">What this program is</h2>
+      </div>
+      <div class="contract-body">
+        <p>
+          STAT Success Cohort is an 8-week cohort-based recovery program for students
+          currently failing or at serious risk of failing Anatomy and Physiology. It is
+          built on the principle that failing students need structural intervention, not
+          more information.
+        </p>
+        <p>
+          The program runs weekly live team-based sessions. Between sessions, you complete
+          a weekly Current State audit, participate in a team case discussion, and commit to a
+          personal decision plan. The rhythm is called the <strong>CODE cycle</strong>:
+          Current state, Observe, Decide, Evaluate. That cycle is the product.
+        </p>
+        <p>
+          You will be assigned to a small team of 4 to 6 students with a trained facilitator.
+          Your team works together every week. Your progress is connected to theirs.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. WHAT THIS PROGRAM DOES NOT PROMISE -->
+    <div class="section">
+      <div class="section__header">
+        <span class="section__number">02</span>
+        <h2 class="section__title">What this program does not promise</h2>
+      </div>
+
+      <div class="does-not-promise">
+        <p class="does-not-promise__title">⚠ Read this carefully</p>
+        <p class="does-not-promise__text">
+          This program does not promise that you will pass your Anatomy and Physiology
+          course. It does not promise a specific grade. It does not promise that you will
+          qualify for your program. Your A&amp;P grade is determined by your instructor,
+          your institution, and your own execution, not by participation in this program.
+        </p>
+      </div>
+
+      <div class="contract-body">
+        <p>
+          What this program does commit to: providing the structure, methodology, team,
+          and facilitation that give recovery its best chance. What happens with that
+          infrastructure is in your hands.
+        </p>
+        <p>
+          Students who engage fully with the CODE cycle, show up to live sessions, do the
+          weekly work, and communicate honestly with their team typically see meaningful
+          recovery. Students who skim, skip, or treat the program as optional typically
+          do not. This pattern is not unique to this program. It's the pattern of recovery
+          work in any structured setting.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. WHAT YOU COMMIT TO -->
+    <div class="section section--gold">
+      <div class="section__header">
+        <span class="section__number">03</span>
+        <h2 class="section__title">Your commitments</h2>
+      </div>
+      <p class="section__intro">
+        Four commitments. Read each one, and check it if you can genuinely commit to it.
+        If you cannot commit to all four, this program is not the right fit right now, and
+        there are other paths forward we can discuss with you.
+      </p>
+
+      <div class="dimension">
+        <div class="dimension__header">
+          <span class="dimension__letter">A</span>
+          <h3 class="dimension__title">Attendance</h3>
+        </div>
+        <div class="dimension__body">
+          <p>
+            I will attend all 8 live weekly sessions, each approximately 90 minutes. If a
+            genuine emergency prevents attendance, I will notify my facilitator in advance
+            and watch the recording within 48 hours. I understand that missing more than
+            one session significantly impacts my team and my own recovery, and that I am
+            permitted one structured re-entry during the program.
+          </p>
+        </div>
+        <label class="dimension__checkbox">
+          <input type="checkbox" name="commit_attendance" data-field="commit_attendance" required>
+          <span class="dimension__checkbox-text">I commit to attending all 8 live sessions.</span>
+        </label>
+      </div>
+
+      <div class="dimension">
+        <div class="dimension__header">
+          <span class="dimension__letter">E</span>
+          <h3 class="dimension__title">Engagement</h3>
+        </div>
+        <div class="dimension__body">
+          <p>
+            I will complete my weekly Current State audit before each session and my decision plan
+            after each session. I will engage actively in the team case discussion during the
+            Observe phase, not just observe. I will execute my weekly commitments to the best of
+            my ability, and report honestly when I don't.
+          </p>
+        </div>
+        <label class="dimension__checkbox">
+          <input type="checkbox" name="commit_engagement" data-field="commit_engagement" required>
+          <span class="dimension__checkbox-text">I commit to completing the weekly work between sessions.</span>
+        </label>
+      </div>
+
+      <div class="dimension">
+        <div class="dimension__header">
+          <span class="dimension__letter">H</span>
+          <h3 class="dimension__title">Honesty</h3>
+        </div>
+        <div class="dimension__body">
+          <p>
+            I will report truthfully on my Current State audits and decision plan execution.
+            Performance reporting, where I tell my team what I think they want to hear
+            rather than what actually happened, makes recovery impossible. I understand
+            that honest reporting of failures is more valuable than false reporting of
+            successes.
+          </p>
+        </div>
+        <label class="dimension__checkbox">
+          <input type="checkbox" name="commit_honesty" data-field="commit_honesty" required>
+          <span class="dimension__checkbox-text">I commit to honest reporting over performance reporting.</span>
+        </label>
+      </div>
+
+      <div class="dimension">
+        <div class="dimension__header">
+          <span class="dimension__letter">T</span>
+          <h3 class="dimension__title">Team</h3>
+        </div>
+        <div class="dimension__body">
+          <p>
+            I will show up for my team as much as I ask them to show up for me. This means
+            engaging with their work, not just mine. Contributing to case discussions. Respecting
+            confidentiality within the team. Naming what I observe when it would help, and
+            offering support when it's needed. A team is not a group of individuals sharing
+            a Zoom link. It's a small accountable community.
+          </p>
+        </div>
+        <label class="dimension__checkbox">
+          <input type="checkbox" name="commit_team" data-field="commit_team" required>
+          <span class="dimension__checkbox-text">I commit to being a reliable team member, not just a consumer of the program.</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- 4. MUTUAL COMMITMENT -->
+    <div class="section">
+      <div class="section__header">
+        <span class="section__number">04</span>
+        <h2 class="section__title">What we commit to</h2>
+      </div>
+      <div class="contract-body">
+        <p>
+          In exchange, STAT Success Cohort commits to: trained facilitators who know
+          the methodology and protect the space, weekly sessions that run on time and
+          follow a consistent structure, clear tools for Current State audits and decision plans,
+          cases that reflect real recovery situations, responsiveness to your questions
+          between sessions, and an environment that takes your situation seriously without
+          minimizing it or panicking about it.
+        </p>
+        <p>
+          We commit to treating you as a capable adult in a temporarily difficult situation,
+          not as a broken student requiring rescue. The program works because you do the
+          work. Our job is to make sure the structure around that work is sound.
+        </p>
+      </div>
+    </div>
+
+    <!-- 5. SIGNATURE -->
+    <div class="signature-block">
+      <div class="signature-block__label">Signature</div>
+      <h2 class="signature-block__title">Sign your commitment</h2>
+      <p class="signature-block__intro">
+        Type your full name below as your signature. This creates a record of your
+        commitment and opens Week 1 for you. We keep this on file for the duration of
+        the program.
+      </p>
+
+      <div class="signature-grid">
+        <div class="field">
+          <label for="sig_fullname" class="label">Your full name</label>
+          <input type="text" id="sig_fullname" name="sig_fullname" class="input" data-field="sig_fullname" placeholder="First and last name" autocomplete="name">
+          <p class="help">As you want it on your record.</p>
+        </div>
+        <div class="field">
+          <label for="sig_email" class="label">Email on file</label>
+          <input type="email" id="sig_email" name="sig_email" class="input" data-field="sig_email" placeholder="you@email.com" autocomplete="email">
+          <p class="help">Used to verify your enrollment.</p>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top: var(--cc-space-5);">
+        <label for="sig_signature" class="label">Type your name to sign</label>
+        <input type="text" id="sig_signature" name="sig_signature" class="input signature-input" data-field="sig_signature" placeholder="Your name, as your signature">
+        <p class="help">Typed signatures are as valid here as handwritten ones.</p>
+      </div>
+
+      <div class="field" style="margin-top: var(--cc-space-5);">
+        <label for="sig_date" class="label">Date</label>
+        <input type="date" id="sig_date" name="sig_date" class="input" data-field="sig_date">
+      </div>
+    </div>
+
+    <div class="validation-message" id="validationMessage" role="alert">
+      Please complete all four commitments and fill in your name, email, typed signature, and date before submitting.
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" onclick="window.print()" type="button">Print contract</button>
+      <button class="button button--secondary" data-action="download" type="button">Download</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--gold-bright button--lg" data-action="submit" type="button">Submit commitment</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div id="confirmation" class="confirmation">
+    <div class="confirmation__hero">
+      <div class="confirmation__eyebrow">Commitment signed</div>
+      <h2 class="confirmation__title">You're in.</h2>
+      <p class="confirmation__body">
+        Your commitment is recorded. Week 1 opens when your cohort begins, and your
+        facilitator will reach out before the first session to introduce themselves.
+      </p>
+      <p class="confirmation__body">
+        In the meantime, complete the intake survey in the next lesson if you haven't
+        already. It's the single most important preparation for your first session.
+      </p>
+    </div>
+
+    <div class="confirmation__signed">
+      <div class="confirmation__signed-label">On file</div>
+      <div class="confirmation__signed-detail">
+        <span class="confirmation__signed-key">Name</span>
+        <span class="confirmation__signed-value" id="confirm_name"></span>
+      </div>
+      <div class="confirmation__signed-detail">
+        <span class="confirmation__signed-key">Email</span>
+        <span class="confirmation__signed-value" id="confirm_email"></span>
+      </div>
+      <div class="confirmation__signed-detail">
+        <span class="confirmation__signed-key">Signature</span>
+        <span class="confirmation__signed-value confirmation__signature" id="confirm_signature"></span>
+      </div>
+      <div class="confirmation__signed-detail">
+        <span class="confirmation__signed-key">Date</span>
+        <span class="confirmation__signed-value" id="confirm_date"></span>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">What happens next</p></div><div class="callout__body"><p class="callout__text">
+          Move to the next lesson to complete the intake survey. If your cohort has already
+          started, Week 1 is available. If not, you'll receive email updates as the start
+          date approaches.
+        </p></div></div>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--secondary" onclick="window.print()" type="button">Print my signed contract</button>
+      <button class="button button--tertiary" data-action="download" type="button">Download a copy</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ==========================================================================
+// STATE
+// ==========================================================================
+
+const STORAGE_KEY = 'mmcc_commitment_contract';
+
+// ==========================================================================
+// PERSISTENCE
+// ==========================================================================
+
+function saveState() {
+  try {
+    const data = collectFormData();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      data,
+      savedAt: new Date().toISOString()
+    }));
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const payload = JSON.parse(raw);
+    const data = payload.data || {};
+    Object.entries(data).forEach(([name, value]) => {
+      const el = document.querySelector(`[name="${name}"]`);
+      if (!el) return;
+      if (el.type === 'checkbox') {
+        el.checked = value === true || value === 'true';
+      } else {
+        el.value = value;
+      }
+    });
+  } catch (e) {}
+}
+
+function collectFormData() {
+  const data = {};
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const name = el.name;
+    if (!name) return;
+    if (el.type === 'checkbox') {
+      data[name] = el.checked;
+    } else {
+      data[name] = el.value;
+    }
+  });
+  return data;
+}
+
+// ==========================================================================
+// VALIDATION AND SUBMISSION
+// ==========================================================================
+
+function validate() {
+  const data = collectFormData();
+  const allChecked = data.commit_attendance && data.commit_engagement && data.commit_honesty && data.commit_team;
+  const hasName = data.sig_fullname && data.sig_fullname.trim().length > 1;
+  const hasEmail = data.sig_email && data.sig_email.includes('@');
+  const hasSig = data.sig_signature && data.sig_signature.trim().length > 1;
+  const hasDate = data.sig_date && data.sig_date.length > 0;
+
+  return allChecked && hasName && hasEmail && hasSig && hasDate;
+}
+
+function submitContract() {
+  const valid = validate();
+  const validationMsg = document.getElementById('validationMessage');
+
+  if (!valid) {
+    validationMsg.setAttribute('data-visible', 'true');
+    validationMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  validationMsg.setAttribute('data-visible', 'false');
+
+  const data = collectFormData();
+
+  // Save as submitted
+  try {
+    localStorage.setItem(`${STORAGE_KEY}_submitted`, JSON.stringify({
+      submittedAt: new Date().toISOString(),
+      data
+    }));
+  } catch (e) {}
+
+  // Render confirmation details
+  document.getElementById('confirm_name').textContent = data.sig_fullname;
+  document.getElementById('confirm_email').textContent = data.sig_email;
+  document.getElementById('confirm_signature').textContent = data.sig_signature;
+
+  // Format the date nicely
+  try {
+    const dateObj = new Date(data.sig_date);
+    const formatted = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('confirm_date').textContent = formatted;
+  } catch (e) {
+    document.getElementById('confirm_date').textContent = data.sig_date;
+  }
+
+  // Switch UI
+  document.getElementById('contractForm').style.display = 'none';
+  document.getElementById('confirmation').setAttribute('data-visible', 'true');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // TODO: POST to data endpoint to record the signed contract
+}
+
+function downloadContract() {
+  const data = collectFormData();
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    commitments: {
+      attendance: !!data.commit_attendance,
+      engagement: !!data.commit_engagement,
+      honesty: !!data.commit_honesty,
+      team: !!data.commit_team
+    },
+    signature: {
+      fullname: data.sig_fullname || '',
+      email: data.sig_email || '',
+      typedSignature: data.sig_signature || '',
+      date: data.sig_date || ''
+    }
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `commitment_contract_${new Date().toISOString().slice(0,10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// EVENTS
+// ==========================================================================
+
+document.addEventListener('input', (e) => {
+  if (e.target.matches('[data-field]')) {
+    clearTimeout(window._inputTimer);
+    window._inputTimer = setTimeout(saveState, 500);
+    // Also hide validation message once they start making progress
+    document.getElementById('validationMessage').setAttribute('data-visible', 'false');
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.matches('[data-field]')) {
+    saveState();
+    document.getElementById('validationMessage').setAttribute('data-visible', 'false');
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+
+  const action = target.dataset.action;
+  if (action === 'submit') {
+    submitContract();
+  } else if (action === 'download') {
+    downloadContract();
+  }
+});
+
+// Auto-fill today's date on first load (if empty)
+(function() {
+  const dateField = document.getElementById('sig_date');
+  if (dateField && !dateField.value) {
+    const today = new Date().toISOString().slice(0, 10);
+    dateField.value = today;
+  }
+})();
+
+loadState();
+
+// IFRAME HEIGHT SENDER
+(function() {
+  const frameId = window.name || 'mmcc_commitment_contract';
+  function sendHeight() {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

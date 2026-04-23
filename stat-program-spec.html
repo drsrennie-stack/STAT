@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Program Specification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cc-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* MASTHEAD */
+.cc-masthead {
+  border-bottom: 1px solid var(--cc-border);
+  padding-bottom: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.cc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.cc-eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+}
+
+.cc-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--cc-text-secondary);
+  max-width: 68ch;
+  margin-top: 1rem;
+}
+
+/* Table of contents */
+.cc-toc {
+  background: var(--cc-tint-navy);
+  border-radius: var(--cc-radius-md);
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  border-left: 4px solid var(--cc-navy);
+}
+
+.cc-toc__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+}
+
+.cc-toc__list {
+  list-style: none;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.cc-toc__list li {
+  padding: 0.25rem 0;
+  font-size: 0.9375rem;
+  break-inside: avoid;
+}
+
+.cc-toc a {
+  color: var(--cc-text-secondary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.cc-toc a:hover {
+  color: var(--cc-navy);
+}
+.cc-toc__num {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--cc-gold-deep);
+  font-weight: 700;
+}
+
+/* SECTION */
+.cc-section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 2rem;
+}
+
+.cc-section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--cc-navy);
+  margin-bottom: 2rem;
+}
+
+.cc-section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.15em;
+}
+
+.cc-section__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+p { margin-bottom: 1rem; max-width: 68ch; }
+
+strong { color: var(--cc-text); font-weight: 700; }
+
+/* The STAT card - feature treatment */
+.stat-feature {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: 3rem;
+  margin: 2rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+.stat-feature::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.stat-feature h3 {
+  color: var(--cc-text-inverse);
+  margin-top: 0;
+  font-size: 2.25rem;
+}
+
+.stat-feature__subtitle {
+  color: var(--cc-gold-bright);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-letter {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 169, 98, 0.3);
+  border-radius: var(--cc-radius);
+  padding: 1.25rem;
+}
+
+.stat-letter__char {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--cc-gold-bright);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-letter__word {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin-bottom: 0.5rem;
+}
+
+.stat-letter__description {
+  font-size: 0.875rem;
+  color: rgba(250, 250, 247, 0.85);
+  line-height: 1.5;
+}
+
+/* Spec card */
+.spec-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid var(--cc-navy);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin: 0 10px 1.5rem 0;
+  box-shadow: 6px 6px 0 0 var(--cc-navy);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.spec-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 0 var(--cc-navy);
+}
+
+.spec-card--navy {
+  border-color: var(--cc-navy);
+  box-shadow: 6px 6px 0 0 var(--cc-navy);
+}
+.spec-card--navy:hover { box-shadow: 8px 8px 0 0 var(--cc-navy); }
+
+.spec-card--gold {
+  border-color: var(--cc-gold);
+  box-shadow: 6px 6px 0 0 var(--cc-gold);
+}
+.spec-card--gold:hover { box-shadow: 8px 8px 0 0 var(--cc-gold); }
+
+.spec-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.spec-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  margin-bottom: 0.5rem;
+}
+
+.spec-card__body {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.65;
+}
+
+/* Data table */
+.spec-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-sm);
+  margin: 1rem 0 2rem;
+}
+
+.spec-table th {
+  background: var(--cc-tint-navy);
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  border-bottom: 2px solid var(--cc-navy);
+}
+
+.spec-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--cc-border);
+  font-size: 0.9375rem;
+  vertical-align: top;
+}
+
+.spec-table tr:last-child td { border-bottom: none; }
+
+.spec-table td:first-child {
+  font-weight: 600;
+  color: var(--cc-navy);
+  white-space: nowrap;
+}
+
+/* Key-value list */
+.kv-list {
+  list-style: none;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-sm);
+  margin: 1rem 0 2rem;
+}
+
+.kv-list li {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--cc-border);
+  font-size: 0.9375rem;
+  gap: 1.5rem;
+}
+.kv-list li:last-child { border-bottom: none; }
+
+.kv-list__key {
+  font-weight: 600;
+  color: var(--cc-navy);
+}
+
+.kv-list__value {
+  color: var(--cc-text-secondary);
+}
+
+/* Pills */
+.pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.pill--navy { background: var(--cc-navy); color: var(--cc-text-inverse); }
+.pill--gold { background: var(--cc-tint-gold); color: var(--cc-gold-deep); border: 1px solid #E8D9B5; }
+.pill--outline { background: var(--cc-surface); color: var(--cc-navy); border: 1.5px solid var(--cc-navy); }
+
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Lists */
+ul.bulleted, ol.ordered {
+  margin: 0 0 1rem 1.5rem;
+}
+ul.bulleted li, ol.ordered li {
+  margin-bottom: 0.5rem;
+  line-height: 1.65;
+}
+
+/* Grid */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+
+/* Divider */
+hr.divider {
+  border: none;
+  border-top: 1px solid var(--cc-border);
+  margin: 2.5rem 0;
+}
+
+hr.rule-gold {
+  border: none;
+  width: 60px;
+  height: 3px;
+  background: var(--cc-gold);
+  margin: 1rem 0 2rem;
+}
+
+/* Code */
+code {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.875em;
+  background: var(--cc-tint-navy);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--cc-navy);
+}
+
+/* PRINT */
+@media print {
+  body { background: white; color: black; font-size: 10.5pt; }
+  .cc-shell { max-width: 100%; padding: 0; }
+  .spec-card, .spec-table, .kv-list, .callout, .cc-toc {
+    box-shadow: none;
+    border: 1px solid #666;
+  }
+  .stat-feature {
+    background: white !important;
+    color: black !important;
+    border: 2px solid var(--cc-navy) !important;
+  }
+  .stat-feature h3, .stat-letter__word, .stat-letter__description {
+    color: black !important;
+  }
+  .stat-letter__char { color: #8F6E38 !important; }
+  .stat-feature__subtitle, .cc-eyebrow, .spec-card__label {
+    color: #8F6E38 !important;
+  }
+  h2, h3 { page-break-after: avoid; }
+  .spec-card, .callout { page-break-inside: avoid; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  h1 { font-size: 2.25rem; }
+  .cc-section__title { font-size: 1.5rem; }
+  .stat-feature { padding: 2rem 1.5rem; }
+  .stat-feature h3 { font-size: 1.75rem; }
+  .cc-toc__list { columns: 1; }
+  .kv-list li { grid-template-columns: 1fr; gap: 0.25rem; }
+  .cc-section__header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="cc-shell">
+
+  <header class="cc-masthead">
+    <div class="cc-eyebrow">STAT Success Cohort</div>
+    <h1>Program Specification</h1>
+    <p class="cc-lead">
+      The canonical reference for the STAT Success Cohort program. Terminology,
+      structure, pedagogical framework, pricing, and operational parameters for the
+      8-week cohort-based recovery program for students failing Anatomy &amp; Physiology.
+    </p>
+    <div style="margin-top: 1.5rem;">
+      <span class="pill pill--navy">Version 1.0</span>
+      <span class="pill pill--gold">Pilot ready</span>
+      <span class="pill pill--outline">Living document</span>
+    </div>
+
+    <nav class="cc-toc" aria-label="Table of contents">
+      <div class="cc-toc__title">Contents</div>
+      <ul class="cc-toc__list">
+        <li><a href="#identity"><span class="cc-toc__num">01</span> Program identity</a></li>
+        <li><a href="#audience"><span class="cc-toc__num">02</span> Audience and positioning</a></li>
+        <li><a href="#stat"><span class="cc-toc__num">03</span> The CODE cycle</a></li>
+        <li><a href="#soap"><span class="cc-toc__num">04</span> SOAP inside Status</a></li>
+        <li><a href="#structure"><span class="cc-toc__num">05</span> Weekly structure</a></li>
+        <li><a href="#teams"><span class="cc-toc__num">06</span> Team architecture</a></li>
+        <li><a href="#cases"><span class="cc-toc__num">07</span> Case-based pedagogy</a></li>
+        <li><a href="#ladder"><span class="cc-toc__num">08</span> Product ladder</a></li>
+        <li><a href="#pricing"><span class="cc-toc__num">09</span> Pricing</a></li>
+        <li><a href="#tracks"><span class="cc-toc__num">10</span> Delivery tracks</a></li>
+        <li><a href="#facilitators"><span class="cc-toc__num">11</span> Facilitator model</a></li>
+        <li><a href="#assessment"><span class="cc-toc__num">12</span> Assessment and credential</a></li>
+        <li><a href="#contract"><span class="cc-toc__num">13</span> Commitment contract</a></li>
+        <li><a href="#brand"><span class="cc-toc__num">14</span> Brand and design</a></li>
+        <li><a href="#tech"><span class="cc-toc__num">15</span> Technology stack</a></li>
+        <li><a href="#roadmap"><span class="cc-toc__num">16</span> Roadmap</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 01 PROGRAM IDENTITY -->
+  <section class="cc-section" id="identity">
+    <div class="cc-section__header">
+      <span class="cc-section__number">01</span>
+      <h2 class="cc-section__title">Program identity</h2>
+    </div>
+
+    <ul class="kv-list">
+      <li><span class="kv-list__key">Program name</span><span class="kv-list__value">STAT Success Cohort</span></li>
+      <li><span class="kv-list__key">Tagline</span><span class="kv-list__value">An 8-week recovery protocol for students failing Anatomy &amp; Physiology.</span></li>
+      <li><span class="kv-list__key">Parent brand</span><span class="kv-list__value">MedMasters Collaborative</span></li>
+      <li><span class="kv-list__key">Delivery format</span><span class="kv-list__value">Cohort-based, live synchronous sessions over 8 weeks</span></li>
+      <li><span class="kv-list__key">Session cadence</span><span class="kv-list__value">One 90-minute live session per week</span></li>
+      <li><span class="kv-list__key">Total time commitment</span><span class="kv-list__value">Approximately 5 to 7 hours per week (1 live session, 1 to 2 hours audit/orders work, 2 to 3 hours applied study in A&amp;P course)</span></li>
+      <li><span class="kv-list__key">Cohort size</span><span class="kv-list__value">10 to 15 students per cohort</span></li>
+      <li><span class="kv-list__key">Team size</span><span class="kv-list__value">4 to 5 students per team, typically 2 to 3 teams per cohort</span></li>
+      <li><span class="kv-list__key">Access duration</span><span class="kv-list__value">12 weeks (8 weeks program + 4 weeks post-program material access)</span></li>
+      <li><span class="kv-list__key">Credential</span><span class="kv-list__value">STAT Success Cohort Certificate of Completion</span></li>
+    </ul>
+  </section>
+
+  <!-- 02 AUDIENCE -->
+  <section class="cc-section" id="audience">
+    <div class="cc-section__header">
+      <span class="cc-section__number">02</span>
+      <h2 class="cc-section__title">Audience and positioning</h2>
+    </div>
+
+    <h3>Who this is for</h3>
+    <p>
+      Students currently enrolled in a college-level Anatomy &amp; Physiology course who are
+      currently failing or close to failing. Most commonly pre-nursing and pre-health students
+      whose academic progression depends on passing A&amp;P. Open to students at any institution,
+      any A&amp;P course variant, any instructor.
+    </p>
+
+    <h3>Who this is not for</h3>
+    <p>
+      Students who are passing and want to do better (this is not an enrichment program).
+      Students who want content tutoring on specific A&amp;P topics (this is not a tutoring service).
+      Students who have already failed the course and are not currently enrolled (a different
+      program would fit better).
+    </p>
+
+    <h3>The core problem the program solves</h3>
+    <p>
+      Failing students rarely lack information. They lack structures: reliable accountability,
+      working study methods, foundation knowledge from earlier units, strategic clarity about
+      what to do with limited time, and often the emotional regulation to do any of the above
+      consistently. Most study support is preventative and assumes a functional student.
+      The program is designed for students whose structures have collapsed and who need
+      them rebuilt quickly.
+    </p>
+
+    <h3>Key positioning statements</h3>
+    <div class="grid-2">
+      <div class="spec-card spec-card--navy">
+        <div class="spec-card__label">What we are</div>
+        <p class="spec-card__body">A structured recovery methodology borrowed from clinical critical care, applied to academic recovery.</p>
+      </div>
+      <div class="spec-card spec-card--navy">
+        <div class="spec-card__label">What we are not</div>
+        <p class="spec-card__body">A tutoring service, a replacement for the student's A&amp;P course, or a guarantee of a passing grade.</p>
+      </div>
+      <div class="spec-card spec-card--gold">
+        <div class="spec-card__label">Core mechanism</div>
+        <p class="spec-card__body">Accountability structure through the weekly CODE cycle and team-based case work, not additional content instruction.</p>
+      </div>
+      <div class="spec-card spec-card--gold">
+        <div class="spec-card__label">Differentiation</div>
+        <p class="spec-card__body">Clinical framing, physician-designed, team-based, and built specifically for students in crisis rather than students in maintenance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 STAT CYCLE -->
+  <section class="cc-section" id="stat">
+    <div class="cc-section__header">
+      <span class="cc-section__number">03</span>
+      <h2 class="cc-section__title">The CODE cycle</h2>
+    </div>
+
+    <p>
+      The operational rhythm of every week. Students learn to think in STAT from week 1.
+      The cycle is the program's core intellectual property and the mnemonic students use
+      to orient themselves week to week.
+    </p>
+
+    <div class="stat-feature">
+      <div class="stat-feature__subtitle">The weekly operational cycle</div>
+      <h3>STAT</h3>
+      <p style="color: rgba(250,250,247,0.9); font-size: 1.0625rem; margin-top: 1rem;">
+        Current state. Observe. Decide. Evaluate. The mantra students carry through the program and into
+        every course after.
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat-letter">
+          <div class="stat-letter__char">S</div>
+          <div class="stat-letter__word">Current state</div>
+          <div class="stat-letter__description">Individual audit completed before the live session. SOAP-structured honest self-assessment.</div>
+        </div>
+        <div class="stat-letter">
+          <div class="stat-letter__char">T</div>
+          <div class="stat-letter__word">Observe</div>
+          <div class="stat-letter__description">Team-based case discussion during the live session. Diagnose what matters most.</div>
+        </div>
+        <div class="stat-letter">
+          <div class="stat-letter__char">A</div>
+          <div class="stat-letter__word">Decide</div>
+          <div class="stat-letter__description">Personal orders for the week. 7-day plan, 24-hour action, smallest next step.</div>
+        </div>
+        <div class="stat-letter">
+          <div class="stat-letter__char">T</div>
+          <div class="stat-letter__word">Evaluate</div>
+          <div class="stat-letter__description">Progress note in next week's Status. Did you do what you said you would do.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Phase details</h3>
+
+    <h4>C, Current state (pre-session, individual)</h4>
+    <p>
+      Completed before each live session, on the student's own time. Structured as a SOAP note
+      on themselves (see section 04). Students submit the Current state audit to their facilitator.
+      Scored for completion and honesty, not performance.
+    </p>
+    <p>
+      Time required: 15 to 20 minutes per week.
+    </p>
+
+    <h4>T, Observe (live session, team)</h4>
+    <p>
+      During the weekly live session, teams receive a common case of a composite failing
+      student. Teams diagnose the case student's situation, identify what matters most, and
+      build a recovery plan for that student. Facilitator guides the discussion and surfaces
+      the reasoning frameworks that will transfer to each student's own situation.
+    </p>
+    <p>
+      Time required: 40 to 50 minutes of the live session.
+    </p>
+
+    <h4>D, Decide (post-session, individual)</h4>
+    <p>
+      Immediately after the team case discussion, students work individually on the Orders phase.
+      They apply the team's reasoning to their own situation, write a 7-day plan, commit to a
+      24-hour action, and identify the study method or assumption most likely to be wrong.
+    </p>
+    <p>
+      Time required: 20 to 25 minutes at the end of the live session, plus ongoing execution
+      through the week.
+    </p>
+
+    <h4>E, Evaluate (next week's Status, individual)</h4>
+    <p>
+      The first section of next week's Current state audit is the Evaluate phase. Students report
+      whether they executed this week's Action commitments. Track is what closes the loop and
+      creates the behavioral ratchet. The facilitator and team see this data, which is what
+      makes accountability structural rather than aspirational.
+    </p>
+  </section>
+
+  <!-- 04 SOAP -->
+  <section class="cc-section" id="soap">
+    <div class="cc-section__header">
+      <span class="cc-section__number">04</span>
+      <h2 class="cc-section__title">SOAP inside Status</h2>
+    </div>
+
+    <p>
+      The Current state phase is internally structured as a SOAP note. SOAP is the standard clinical
+      documentation framework used by every medical and nursing professional. Teaching students
+      to write a weekly SOAP note on themselves is both pedagogically rigorous and clinically
+      transferable.
+    </p>
+
+    <h3>The SOAP structure within Status</h3>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th style="width: 140px;">Section</th>
+          <th>Purpose</th>
+          <th>Example questions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>S, Subjective</td>
+          <td>How did this week feel. What got in the way. Honest one-sentence reflection.</td>
+          <td>What is the truest thing you can say about this past week?</td>
+        </tr>
+        <tr>
+          <td>O, Objective</td>
+          <td>The numbers. Current grade, hours studied, assessments completed, instructor contact.</td>
+          <td>What is your current grade? How many hours did you actually study?</td>
+        </tr>
+        <tr>
+          <td>A, Assessment</td>
+          <td>What does the data mean. What is the single biggest thing hurting your grade.</td>
+          <td>If nothing changes, what is the most likely reason you'll fail the next assessment?</td>
+        </tr>
+        <tr>
+          <td>P, Plan</td>
+          <td>Preview of where your Decide phase will focus this week. What you expect to commit to.</td>
+          <td>Coming into today's session, what do you think you most need to work on?</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--info">
+      <div>
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">When to introduce SOAP explicitly</p></div><div class="callout__body"><p class="callout__text">
+          The audit templates use SOAP structure from week 1, but the SOAP framework is not
+          named explicitly until week 3 or 4, when students have experienced enough Status
+          cycles to appreciate the frame. Introducing SOAP too early adds cognitive load.
+          Introducing it too late misses the pedagogical opportunity.
+        </p></div></div>
+    </div>
+  </section>
+
+  <!-- 05 WEEKLY STRUCTURE -->
+  <section class="cc-section" id="structure">
+    <div class="cc-section__header">
+      <span class="cc-section__number">05</span>
+      <h2 class="cc-section__title">Weekly structure</h2>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th style="width: 80px;">Week</th>
+          <th>Theme</th>
+          <th>Primary work</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Week 1</td>
+          <td>Stabilization and team formation</td>
+          <td>Intake, team charter, grade audit, failure mode diagnostic. No case this week.</td>
+        </tr>
+        <tr>
+          <td>Week 2</td>
+          <td>Stop the bleeding</td>
+          <td>Morgan case. Study method diagnostics. First full CODE cycle.</td>
+        </tr>
+        <tr>
+          <td>Week 3</td>
+          <td>Foundation repair, selective</td>
+          <td>Jordan case. Load-bearing prerequisites. Introduce SOAP framework explicitly.</td>
+        </tr>
+        <tr>
+          <td>Week 4</td>
+          <td>The midterm hinge</td>
+          <td>Exam strategy and exam wrapper. Recovery from a failed exam.</td>
+        </tr>
+        <tr>
+          <td>Week 5</td>
+          <td>Point recovery</td>
+          <td>Institutional navigation. Extra credit audit. Self-advocacy with instructors.</td>
+        </tr>
+        <tr>
+          <td>Week 6</td>
+          <td>Consolidation and integration</td>
+          <td>Cross-system reasoning. Teach-backs within teams.</td>
+        </tr>
+        <tr>
+          <td>Week 7</td>
+          <td>Final exam runway</td>
+          <td>Structured final push. Mock final in team. Finals week logistics.</td>
+        </tr>
+        <tr>
+          <td>Week 8</td>
+          <td>Definitive care</td>
+          <td>Final exam execution. Cumulative program assessment. Portfolio and debrief.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Session structure (every week)</h3>
+    <p>Each 90-minute live session follows a consistent structure so students always know what to expect.</p>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th style="width: 100px;">Time</th>
+          <th>Segment</th>
+          <th>What happens</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0-5 min</td>
+          <td>Opening ritual</td>
+          <td>One-word check-in per team member. Facilitator opens the week.</td>
+        </tr>
+        <tr>
+          <td>5-50 min</td>
+          <td>Observe: team case discussion</td>
+          <td>Four-part case work on this week's composite student case.</td>
+        </tr>
+        <tr>
+          <td>50-65 min</td>
+          <td>Whole-cohort debrief</td>
+          <td>Teams share findings. Facilitator connects patterns across cases.</td>
+        </tr>
+        <tr>
+          <td>65-85 min</td>
+          <td>Action: personal application</td>
+          <td>Individual Orders work informed by the case discussion.</td>
+        </tr>
+        <tr>
+          <td>85-90 min</td>
+          <td>Closing ritual</td>
+          <td>One-sentence takeaway per team member. Preview of next week.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 06 TEAMS -->
+  <section class="cc-section" id="teams">
+    <div class="cc-section__header">
+      <span class="cc-section__number">06</span>
+      <h2 class="cc-section__title">Team architecture</h2>
+    </div>
+
+    <h3>Formation principles</h3>
+    <ul class="bulleted">
+      <li><strong>Instructor-assigned, not self-selected.</strong> Friend groups fail together. Intentional heterogeneity outperforms affinity.</li>
+      <li><strong>Heterogeneous by failure mode.</strong> Mix students with different primary failure patterns (content gap, study method, time crunch, affective crisis) so teams can see multiple recovery pathways.</li>
+      <li><strong>Heterogeneous by current standing.</strong> A mix of students closer to passing and students further from passing. Students closer to the line provide modeling; students further provide urgency.</li>
+      <li><strong>Homogeneous by schedule.</strong> Team meetings outside the main session depend on schedule compatibility. Teams that cannot meet cannot study together.</li>
+      <li><strong>Attention to safety.</strong> Students flagged in intake as needing specific accommodations (for example, recovery from harassment, accessibility needs, language considerations) are placed into teams thoughtfully.</li>
+    </ul>
+
+    <h3>Team charter</h3>
+    <p>
+      Each team produces a charter in week 1. The charter is a one-page document that states
+      what the team commits to, what it will not tolerate, how it will communicate outside
+      sessions, and what the team will do if a member disappears. The charter is revisited
+      at weeks 4 and 8, and becomes the artifact teams use if they convert into a study group
+      after the program ends.
+    </p>
+
+    <h3>Trust scaffold</h3>
+    <p>
+      Teams build trust over the 8 weeks, not on day one. The Current state audit includes a weekly
+      trust check where students indicate what they are comfortable sharing with their team.
+      Facilitators use this data to calibrate how much personal material enters team discussions.
+      By week 5 or 6, most teams are sharing meaningful personal material voluntarily.
+    </p>
+
+    <h3>Peer accountability</h3>
+    <p>
+      Peer accountability is introduced progressively. Weeks 1 to 3: audits are private,
+      accountability is between student and facilitator. Weeks 4 to 5: formative peer
+      evaluation introduced, focused on team process. Weeks 6 to 8: teams share Status
+      summaries at the team's discretion.
+    </p>
+  </section>
+
+  <!-- 07 CASES -->
+  <section class="cc-section" id="cases">
+    <div class="cc-section__header">
+      <span class="cc-section__number">07</span>
+      <h2 class="cc-section__title">Case-based pedagogy</h2>
+    </div>
+
+    <h3>The central pedagogical move</h3>
+    <p>
+      The program's Observe phase uses composite cases of struggling students. Teams work the
+      case of a student other than themselves. This is the program's central pedagogical
+      mechanism. Students can reason clearly about a hypothetical failing student in ways they
+      cannot yet reason about themselves. The case becomes a mirror they are willing to look
+      into. By the time they reach the Decide phase, they have already developed the analytic
+      frame; applying it to themselves is a smaller cognitive and emotional lift.
+    </p>
+
+    <h3>Case library design</h3>
+    <ul class="bulleted">
+      <li>One case per week for weeks 2 through 7. Weeks 1 and 8 do not have cases.</li>
+      <li>Each case introduces a specific diagnostic or strategic challenge that parallels the cohort's current situation.</li>
+      <li>Cases increase in sophistication: early cases surface obvious problems (wrong study methods), later cases surface subtle problems (missing foundations, exam strategy errors, integration failures).</li>
+      <li>Characters and details rotate across cohorts to prevent students from knowing cases in advance through alumni contact.</li>
+      <li>Target library: 16 to 20 cases for the full product, allowing rotation across cohorts.</li>
+    </ul>
+
+    <h3>Established cases</h3>
+    <ul class="bulleted">
+      <li><strong>Week 2, Morgan.</strong> Failing student doing the wrong things with high effort. Lesson: method repair.</li>
+      <li><strong>Week 3, Jordan.</strong> Failing student doing the right things but with missing foundations. Lesson: selective foundation repair.</li>
+    </ul>
+    <p>Weeks 4 through 7 cases to be drafted during pilot development.</p>
+  </section>
+
+  <!-- 08 PRODUCT LADDER -->
+  <section class="cc-section" id="ladder">
+    <div class="cc-section__header">
+      <span class="cc-section__number">08</span>
+      <h2 class="cc-section__title">Product ladder</h2>
+    </div>
+
+    <p>
+      Four tiers serving different student situations and budgets. Every program tier has
+      real human accountability built in. Only the Toolkit tier is fully self-paced, and it
+      does not claim to be a program.
+    </p>
+
+    <h3>Tier 1: Cohort (flagship)</h3>
+    <div class="spec-card spec-card--navy">
+      <p class="spec-card__body">
+        Full 8-week cohort-based program. Team structure, live facilitated sessions, weekly
+        audits, cumulative assessment, certificate. Positioned as the recommended option for
+        most students. The most effective format and the leverage product economically.
+      </p>
+    </div>
+
+    <h3>Tier 2: 1:1 Coaching (premium)</h3>
+    <div class="spec-card spec-card--navy">
+      <p class="spec-card__body">
+        Same curriculum delivered as individualized coaching. Weekly 45 to 60 minute video
+        sessions with a coach. Positioned for students whose schedules or circumstances require
+        individual work. Explicitly framed as not necessarily superior to cohort for most
+        students; cohort benefits from peer support that 1:1 cannot provide.
+      </p>
+    </div>
+
+    <h3>Tier 3: Guided (accessible)</h3>
+    <div class="spec-card spec-card--gold">
+      <p class="spec-card__body">
+        Asynchronous delivery. Students submit weekly Current state audits and decision plans and receive
+        written feedback within 48 hours. No live sessions, no team. Accountability through
+        submission deadlines and human review. Positioned for students who cannot attend
+        synchronous sessions or who cannot afford the cohort.
+      </p>
+    </div>
+
+    <h3>Tier 4: Toolkit (materials only)</h3>
+    <div class="spec-card spec-card--gold">
+      <p class="spec-card__body">
+        One-time purchase of curriculum materials as a self-study resource. Explicitly
+        positioned as materials, not as a program. No certificate, no facilitator support.
+        Honest pricing for students who want the tools but are not ready for structured
+        program participation.
+      </p>
+    </div>
+  </section>
+
+  <!-- 09 PRICING -->
+  <section class="cc-section" id="pricing">
+    <div class="cc-section__header">
+      <span class="cc-section__number">09</span>
+      <h2 class="cc-section__title">Pricing</h2>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Pilot price</th>
+          <th>Launch price</th>
+          <th>Mature price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cohort</td>
+          <td>$397</td>
+          <td>$547 to $597</td>
+          <td>$697 to $797</td>
+        </tr>
+        <tr>
+          <td>1:1 Coaching</td>
+          <td>Not offered</td>
+          <td>$2,497</td>
+          <td>$2,997 to $3,497</td>
+        </tr>
+        <tr>
+          <td>Guided</td>
+          <td>Not offered</td>
+          <td>$197 to $247</td>
+          <td>$247 to $297</td>
+        </tr>
+        <tr>
+          <td>Toolkit</td>
+          <td>Not offered</td>
+          <td>$49 to $99</td>
+          <td>$49 to $99</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Pricing rationale</h3>
+    <ul class="bulleted">
+      <li>Cohort is leverage product. Priced to be accessible to most students while valuing expert delivery appropriately.</li>
+      <li>1:1 intentionally priced significantly higher than cohort. 1:1 uses scarcest resource (human time) at 1:1 ratio and must be priced to reflect that. Premium pricing also signals the tier is for specific circumstances, not the default.</li>
+      <li>Guided priced accessibly, with thin margins at the lower end. Viable at volume because it has less scheduling constraint.</li>
+      <li>Toolkit priced as materials, not as a program. No promises about outcomes.</li>
+    </ul>
+
+    <h3>Scholarship and access</h3>
+    <p>
+      Each cohort includes 2 scholarship slots at 50% off for students with documented financial
+      hardship. Additional access pathways: institutional grant funding (Track 1), employer
+      tuition support, and payment plans for the Cohort tier (2 or 3 installments).
+    </p>
+  </section>
+
+  <!-- 10 TRACKS -->
+  <section class="cc-section" id="tracks">
+    <div class="cc-section__header">
+      <span class="cc-section__number">10</span>
+      <h2 class="cc-section__title">Delivery tracks</h2>
+    </div>
+
+    <div class="grid-2">
+      <div class="spec-card spec-card--navy">
+        <div class="spec-card__label">Track 1</div>
+        <div class="spec-card__title">Institutional</div>
+        <p class="spec-card__body">
+          Program delivered at Dr. Rennie's institution as additional-FTE teaching arrangement.
+          Students pay tuition, potentially covered by institutional grants. MedMasters retains
+          curriculum IP. Instructor (Dr. Rennie) paid by institution. Serves students enrolled
+          at that specific institution.
+        </p>
+      </div>
+      <div class="spec-card spec-card--gold">
+        <div class="spec-card__label">Track 2</div>
+        <div class="spec-card__title">MedMasters Direct</div>
+        <p class="spec-card__body">
+          Program delivered as STAT Success Cohort product. Students pay MedMasters
+          directly. Serves students at any institution. Does not solicit Dr. Rennie's own
+          enrolled students. Revenue accrues to MedMasters LLC.
+        </p>
+      </div>
+    </div>
+
+    <h3>Ethical boundaries between tracks</h3>
+    <ul class="bulleted">
+      <li>Dr. Rennie does not refer her own enrolled students to Track 2. Referrals go to Track 1 or to institutional resources.</li>
+      <li>Track 2 marketing does not target Dr. Rennie's home institution.</li>
+      <li>Both tracks disclosed to institution through standard outside employment channels.</li>
+      <li>Track 2 exists independently. If institution declines Track 1 arrangement, Track 2 continues.</li>
+    </ul>
+
+    <h3>Future tracks</h3>
+    <p>
+      <strong>Track 3: Licensed.</strong> Institutions license the curriculum and deliver it with
+      their own certified facilitators. Targeted for year 3 launch.
+    </p>
+    <p>
+      <strong>Track 4: Certified Facilitator Network.</strong> Individual facilitators certified
+      to deliver the program at their own institutions or privately. Targeted for year 2 to 3 launch.
+    </p>
+  </section>
+
+  <!-- 11 FACILITATORS -->
+  <section class="cc-section" id="facilitators">
+    <div class="cc-section__header">
+      <span class="cc-section__number">11</span>
+      <h2 class="cc-section__title">Facilitator model</h2>
+    </div>
+
+    <h3>Core insight</h3>
+    <p>
+      The program's curriculum is academic recovery methodology, not A&amp;P content. Facilitators
+      do not need to be A&amp;P experts. They need to be skilled facilitators of the CODE cycle
+      and the case-based methodology. This is what makes the program scalable beyond Dr. Rennie's
+      personal delivery capacity.
+    </p>
+
+    <h3>Facilitator profile</h3>
+    <p>
+      Ideally someone who understands both preventative and rescue techniques for academic
+      performance. Candidates include:
+    </p>
+    <ul class="bulleted">
+      <li>Academic coaches and learning center staff</li>
+      <li>Graduate students in education, counseling psychology, or higher education</li>
+      <li>Former teachers who have left K-12 or higher ed</li>
+      <li>Certified instructional coaches</li>
+      <li>Eventually: STAT Success Cohort alumni who succeeded in the program</li>
+    </ul>
+
+    <h3>Facilitator boundaries</h3>
+    <ul class="bulleted">
+      <li>Facilitators do not answer A&amp;P content questions. They redirect students to their course resources.</li>
+      <li>Facilitators do not critique the student's A&amp;P instructor.</li>
+      <li>Facilitators facilitate the CODE cycle, discuss cases, provide written feedback on Actions, hold accountability.</li>
+      <li>Facilitators recognize and escalate concerns beyond their scope (mental health, accommodations, academic integrity).</li>
+    </ul>
+
+    <h3>Quality control</h3>
+    <ul class="bulleted">
+      <li>Certification training required before running any cohort (targeted: 20 to 30 hours).</li>
+      <li>Observation of first 2 to 3 sessions by Dr. Rennie or senior facilitator.</li>
+      <li>Per-facilitator outcome tracking with benchmarks.</li>
+      <li>Annual re-certification with program updates and continuing education.</li>
+      <li>Anonymous student feedback channels separate from the facilitator relationship.</li>
+    </ul>
+  </section>
+
+  <!-- 12 ASSESSMENT -->
+  <section class="cc-section" id="assessment">
+    <div class="cc-section__header">
+      <span class="cc-section__number">12</span>
+      <h2 class="cc-section__title">Assessment and credential</h2>
+    </div>
+
+    <h3>Program completion requirements</h3>
+    <ul class="bulleted">
+      <li>Intake survey submitted before week 1.</li>
+      <li>Weekly Current state audit submitted for all 8 weeks (one excused absence permitted).</li>
+      <li>Attendance at live sessions (one excused absence permitted, re-entry protocol for second absence).</li>
+      <li>Action commitments documented each week.</li>
+      <li>Cumulative program assessment completed in week 8.</li>
+      <li>Program portfolio completed in week 8.</li>
+    </ul>
+
+    <h3>Cumulative assessment</h3>
+    <p>
+      A comprehensive A&amp;P assessment administered in week 8. Approximately 60 to 100 questions
+      covering the major domains of a standard A&amp;P course. Designed to have real rigor so
+      that the credential signals genuine mastery. Multiple parallel forms to be developed for
+      licensing tier.
+    </p>
+
+    <h3>The certificate</h3>
+    <p>
+      Students who complete the program requirements receive a STAT Success Cohort
+      Certificate of Completion. The certificate documents what the student accomplished and
+      provides evidence of mastery that can be used in advocacy conversations with their
+      institution. The certificate does not claim to recover the student's A&amp;P grade. That
+      remains in the hands of the student's instructor and institution.
+    </p>
+  </section>
+
+  <!-- 13 CONTRACT -->
+  <section class="cc-section" id="contract">
+    <div class="cc-section__header">
+      <span class="cc-section__number">13</span>
+      <h2 class="cc-section__title">Commitment contract</h2>
+    </div>
+
+    <p>
+      Every enrolled student signs a commitment contract during Section 1 of the course, before
+      the intake survey. The contract is a program commitment contract, not a grade recovery
+      contract.
+    </p>
+
+    <h3>What the student commits to</h3>
+    <ul class="bulleted">
+      <li>Weekly Current state audit completed honestly and on time for all 8 weeks.</li>
+      <li>Attendance at all 8 live sessions (one excused absence built in).</li>
+      <li>Completion of all four STAT phases each week.</li>
+      <li>Execution of stated weekly Action commitments.</li>
+      <li>Cumulative assessment at end of program.</li>
+      <li>End-of-program portfolio.</li>
+      <li>Honest engagement, not performance.</li>
+    </ul>
+
+    <h3>What the program commits to</h3>
+    <ul class="bulleted">
+      <li>Facilitated weekly sessions for 8 weeks.</li>
+      <li>Team structure and case-based learning.</li>
+      <li>Instructor feedback on weekly Actions.</li>
+      <li>Cumulative assessment and certificate of completion.</li>
+      <li>Documentation student can use to advocate for grade recovery mechanisms at their institution.</li>
+      <li>Re-entry clause: one documented re-entry after a missed week.</li>
+      <li>Refund policy: documented and honored.</li>
+    </ul>
+
+    <h3>What the program does not promise</h3>
+    <ul class="bulleted">
+      <li>A passing grade in the student's A&amp;P course.</li>
+      <li>Completion of the student's A&amp;P course by any specific date.</li>
+      <li>Admission to any specific subsequent program (nursing, medical, etc.).</li>
+      <li>Any outcome beyond what the student's own execution produces.</li>
+    </ul>
+  </section>
+
+  <!-- 14 BRAND -->
+  <section class="cc-section" id="brand">
+    <div class="cc-section__header">
+      <span class="cc-section__number">14</span>
+      <h2 class="cc-section__title">Brand and design</h2>
+    </div>
+
+    <h3>Brand positioning</h3>
+    <p>
+      STAT Success Cohort is a sub-brand of MedMasters Collaborative with its own distinct
+      visual identity. The broader MedMasters brand is calm, aspirational, and preventative in
+      tone (sage and navy). STAT Success Cohort is high-stakes, serious, and urgent (navy and gold).
+      The palette reflects the emotional positioning.
+    </p>
+
+    <h3>Visual system</h3>
+    <ul class="kv-list">
+      <li><span class="kv-list__key">Primary color</span><span class="kv-list__value">Deep navy (#0A1F3D)</span></li>
+      <li><span class="kv-list__key">Accent color</span><span class="kv-list__value">Brushed gold (#B8904D) / Deep gold (#8F6E38) / Bright gold (#D4A962)</span></li>
+      <li><span class="kv-list__key">Background</span><span class="kv-list__value">Warm white (#FAFAF7)</span></li>
+      <li><span class="kv-list__key">Typography</span><span class="kv-list__value">Plus Jakarta Sans (all weights)</span></li>
+      <li><span class="kv-list__key">Accessibility target</span><span class="kv-list__value">WCAG AAA where feasible, AA minimum</span></li>
+      <li><span class="kv-list__key">Elevation system</span><span class="kv-list__value">Four levels: raised / accent-ruled / tinted / feature</span></li>
+      <li><span class="kv-list__key">Design principle</span><span class="kv-list__value">Restrained sophistication. Color as emphasis, not fill.</span></li>
+    </ul>
+
+    <p>Full design system documented in <code>critical-care-design-system.html</code>.</p>
+  </section>
+
+  <!-- 15 TECH -->
+  <section class="cc-section" id="tech">
+    <div class="cc-section__header">
+      <span class="cc-section__number">15</span>
+      <h2 class="cc-section__title">Technology stack</h2>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr><th>Function</th><th>Platform</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Course delivery</td>
+          <td>Kajabi</td>
+          <td>Sections, lessons, drip scheduling, enrollment, payment processing.</td>
+        </tr>
+        <tr>
+          <td>Interactive tools</td>
+          <td>GitHub Pages</td>
+          <td>Self-contained HTML files. Embedded via iframe with height-sender script.</td>
+        </tr>
+        <tr>
+          <td>Live sessions</td>
+          <td>Zoom</td>
+          <td>Consistent room per cohort. Link embedded in each week's session lesson.</td>
+        </tr>
+        <tr>
+          <td>Data collection</td>
+          <td>Airtable or Google Sheets</td>
+          <td>Weekly audit data, outcome tracking, per-cohort reporting.</td>
+        </tr>
+        <tr>
+          <td>Community</td>
+          <td>Kajabi community (optional)</td>
+          <td>Per-cohort private community for between-session communication.</td>
+        </tr>
+        <tr>
+          <td>Email automation</td>
+          <td>Kajabi</td>
+          <td>Pre-cohort nurture, weekly reminders, post-program follow-up.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 16 ROADMAP -->
+  <section class="cc-section" id="roadmap">
+    <div class="cc-section__header">
+      <span class="cc-section__number">16</span>
+      <h2 class="cc-section__title">Roadmap</h2>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr><th>Year</th><th>Focus</th><th>Revenue target</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026</td>
+          <td>Pilot cohort(s). Documentation. Foundation building. Institutional conversation.</td>
+          <td>$5K to $25K</td>
+        </tr>
+        <tr>
+          <td>2027</td>
+          <td>Full product launch. Multiple cohorts. 1:1 tier. First facilitator recruits.</td>
+          <td>$75K to $150K</td>
+        </tr>
+        <tr>
+          <td>2028</td>
+          <td>Facilitator network. First institutional licenses. Second product development.</td>
+          <td>$250K to $500K</td>
+        </tr>
+        <tr>
+          <td>2029</td>
+          <td>Second product launch. Facilitator network scales. Institutional partnerships.</td>
+          <td>$500K to $1M+</td>
+        </tr>
+        <tr>
+          <td>2030+</td>
+          <td>Multi-product catalog. Sustained scaling. Potential team and ops hires.</td>
+          <td>$1M+</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--accent">
+      <div>
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">Long-term positioning</p></div><div class="callout__body"><p class="callout__text">
+          Bootstrapped growth company. Full equity retained. Supplemental income during
+          teaching years, replacing and exceeding teaching income by year 3 to 4. Geographic
+          flexibility achieved through remote-first delivery. Catalog expansion to other
+          high-failure courses (organic chemistry, biochemistry, statistics) as foundation
+          proves out.
+        </p></div></div>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--cc-border); text-align: center;">
+    <div class="cc-eyebrow" style="justify-content: center; display: inline-flex;">STAT Success Cohort</div>
+    <p style="color: var(--cc-text-muted); font-size: 0.8125rem; margin-top: 0.5rem;">
+      Program specification v1.0 · Living document
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>

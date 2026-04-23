@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Intake Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   DESIGN TOKENS (imported from critical-care-design-system.html)
+   ========================================================================== */
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #166534;
+  --cc-warning: #92400E;
+  --cc-alert: #991B1B;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+  --cc-space-9: 4rem;
+
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+  --cc-shadow-xl: 0 8px 16px rgba(10, 31, 61, 0.08), 0 20px 40px rgba(10, 31, 61, 0.12);
+
+  --cc-radius-sm: 4px;
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+  --cc-radius-xl: 24px;
+
+  --cc-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cc-duration-fast: 150ms;
+  --cc-duration: 250ms;
+  --cc-duration-slow: 400ms;
+
+  --cc-focus-ring: 0 0 0 3px var(--cc-white), 0 0 0 6px var(--cc-gold-deep);
+  --cc-focus-ring-inverse: 0 0 0 3px var(--cc-navy), 0 0 0 6px var(--cc-gold-bright);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-weight: var(--cc-weight-semi);
+  text-decoration: none;
+  z-index: 1000;
+  transition: top var(--cc-duration) var(--cc-ease);
+}
+.skip-link:focus {
+  top: 0;
+  outline: none;
+  box-shadow: var(--cc-focus-ring-inverse);
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--cc-space-6) var(--cc-space-5);
+}
+
+/* ==========================================================================
+   PROGRESS BAR (sticky at top)
+   ========================================================================== */
+
+.progress-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 247, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: var(--cc-space-4) var(--cc-space-5);
+  border-bottom: 1px solid var(--cc-border);
+  margin: calc(var(--cc-space-6) * -1) calc(var(--cc-space-5) * -1) var(--cc-space-6);
+}
+
+.progress-bar__inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.progress-bar__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--cc-space-2);
+  gap: var(--cc-space-4);
+}
+
+.progress-bar__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+}
+
+.progress-bar__count {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-track {
+  height: 6px;
+  background: var(--cc-border);
+  border-radius: var(--cc-radius-xl);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cc-navy) 0%, var(--cc-navy-soft) 100%);
+  border-radius: var(--cc-radius-xl);
+  transition: width var(--cc-duration-slow) var(--cc-ease);
+  width: 0%;
+}
+
+/* ==========================================================================
+   MASTHEAD (appears on welcome screen only)
+   ========================================================================== */
+
+.masthead {
+  text-align: left;
+  margin-bottom: var(--cc-space-7);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cc-space-2);
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-3);
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+.masthead h1 {
+  font-size: var(--cc-size-3xl);
+  font-weight: var(--cc-weight-extra);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-4);
+}
+
+.masthead__lead {
+  font-size: var(--cc-size-md);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+}
+
+/* ==========================================================================
+   STEP CONTENT
+   ========================================================================== */
+
+.step {
+  display: none;
+  animation: fadeIn var(--cc-duration-slow) var(--cc-ease);
+}
+
+.step[data-active="true"] {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--cc-space-3);
+}
+
+.step__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-bold);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.015em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-4);
+}
+
+.step__intro {
+  font-size: var(--cc-size-md);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: var(--cc-space-7);
+}
+
+.step__section-title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+  margin-top: var(--cc-space-7);
+  margin-bottom: var(--cc-space-4);
+}
+
+.step__section-title:first-child {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   FORM ELEMENTS
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: var(--cc-space-5);
+}
+
+.form-group--row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--cc-space-4);
+}
+
+@media (max-width: 560px) {
+  .form-group--row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.label {
+  display: block;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  margin-bottom: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.label__required {
+  color: var(--cc-alert);
+  margin-left: 2px;
+  font-weight: var(--cc-weight-bold);
+}
+
+.help {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-secondary);
+  margin-top: var(--cc-space-2);
+  line-height: var(--cc-leading-snug);
+}
+
+.input, .textarea, .select {
+  width: 100%;
+  padding: var(--cc-space-3) var(--cc-space-4);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 2px solid var(--cc-border-strong);
+  border-radius: var(--cc-radius);
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+  font-weight: var(--cc-weight-regular);
+}
+
+.input:hover, .textarea:hover, .select:hover {
+  border-color: var(--cc-text-muted);
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  border-color: var(--cc-navy);
+  box-shadow: 0 0 0 3px rgba(10, 31, 61, 0.15);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: var(--cc-leading-relaxed);
+}
+
+.textarea--lg {
+  min-height: 160px;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3e%3cpath d='M1 1.5L6 6.5L11 1.5' stroke='%230A1F3D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+/* Radio / checkbox option cards */
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cc-space-3);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cc-space-3);
+  padding: var(--cc-space-4);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  background: var(--cc-surface);
+}
+
+.option:hover {
+  border-color: var(--cc-navy-soft);
+  background: var(--cc-tint-navy);
+}
+
+.option input[type="radio"],
+.option input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--cc-navy);
+  cursor: pointer;
+}
+
+.option input:focus-visible {
+  outline: 2px solid var(--cc-gold-deep);
+  outline-offset: 2px;
+}
+
+.option:has(input:checked) {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.option__content {
+  flex: 1;
+}
+
+.option__title {
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  line-height: var(--cc-leading-snug);
+}
+
+.option__description {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  margin-top: 2px;
+  line-height: var(--cc-leading-snug);
+}
+
+/* Inline radio (for shorter scales like 1-5) */
+.scale-group {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--cc-space-2);
+}
+
+@media (max-width: 560px) {
+  .scale-group {
+    gap: var(--cc-space-1);
+  }
+}
+
+.scale-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--cc-space-3) var(--cc-space-2);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  background: var(--cc-surface);
+  text-align: center;
+  min-height: 72px;
+}
+
+.scale-option:hover {
+  border-color: var(--cc-navy-soft);
+  background: var(--cc-tint-navy);
+}
+
+.scale-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.scale-option:has(input:checked) {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.scale-option:has(input:focus-visible) {
+  outline: 2px solid var(--cc-gold-deep);
+  outline-offset: 2px;
+}
+
+.scale-option__number {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  line-height: 1;
+}
+
+.scale-option__label {
+  font-size: 0.6875rem;
+  color: var(--cc-text-muted);
+  margin-top: var(--cc-space-1);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.scale-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--cc-space-2);
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+}
+
+/* ==========================================================================
+   CALLOUTS
+   ========================================================================== */
+
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  border: 2px solid transparent;
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+  white-space: nowrap;
+}
+
+.button--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+.button--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+.button--secondary:hover {
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.button--tertiary {
+  background: transparent;
+  color: var(--cc-text-muted);
+  border-color: transparent;
+}
+.button--tertiary:hover {
+  color: var(--cc-navy);
+}
+
+.button--gold-bright {
+  background: var(--cc-gold-bright);
+  color: var(--cc-navy);
+  border-color: var(--cc-gold-bright);
+  box-shadow: var(--cc-shadow-sm);
+  font-weight: var(--cc-weight-bold);
+}
+.button--gold-bright:hover {
+  background: #C49A52;
+  border-color: #C49A52;
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--lg {
+  padding: var(--cc-space-4) var(--cc-space-6);
+  font-size: var(--cc-size-base);
+  min-height: 56px;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--cc-focus-ring);
+}
+
+.button:disabled, .button[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--cc-space-3);
+  margin-top: var(--cc-space-7);
+  padding-top: var(--cc-space-5);
+  border-top: 1px solid var(--cc-border);
+}
+
+.button-row__spacer {
+  flex: 1;
+}
+
+/* ==========================================================================
+   SAVE INDICATOR
+   ========================================================================== */
+
+.save-indicator {
+  position: fixed;
+  bottom: var(--cc-space-5);
+  right: var(--cc-space-5);
+  padding: var(--cc-space-2) var(--cc-space-4);
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-xl);
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.02em;
+  box-shadow: var(--cc-shadow-lg);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--cc-duration) var(--cc-ease);
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--cc-space-2);
+}
+
+.save-indicator[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.save-indicator__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cc-gold-bright);
+}
+
+/* ==========================================================================
+   DIAGNOSTIC RESULT (shown on the report page)
+   ========================================================================== */
+
+.report {
+  animation: fadeIn var(--cc-duration-slow) var(--cc-ease);
+}
+
+.report__hero {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-7) var(--cc-space-6);
+  margin-bottom: var(--cc-space-6);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.report__hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.report__eyebrow {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.report__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-tight);
+}
+
+.report__subtitle {
+  font-size: var(--cc-size-md);
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+  max-width: 54ch;
+}
+
+.report-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.report-card--ruled {
+  border-left: 4px solid var(--cc-gold);
+}
+
+.report-card--ruled-navy {
+  border-left: 4px solid var(--cc-navy);
+}
+
+.report-card__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-2);
+}
+
+.report-card__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-snug);
+}
+
+.report-card__body {
+  font-size: var(--cc-size-base);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+}
+
+.report-card__body p + p {
+  margin-top: var(--cc-space-3);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--cc-space-4);
+  margin-top: var(--cc-space-4);
+  padding-top: var(--cc-space-4);
+  border-top: 1px solid var(--cc-border);
+}
+
+.stat {
+  text-align: left;
+}
+
+.stat__number {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-navy);
+  line-height: 1;
+  margin-bottom: var(--cc-space-1);
+}
+
+.stat__label {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cc-space-2);
+  margin-top: var(--cc-space-3);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--cc-radius-xl);
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.02em;
+}
+
+.pill--navy {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+}
+
+.pill--gold {
+  background: var(--cc-tint-gold);
+  color: var(--cc-gold-deep);
+  border: 1px solid #E8D9B5;
+}
+
+.pill--outline {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border: 1.5px solid var(--cc-navy);
+}
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+  body { background: white; color: black; font-size: 10.5pt; }
+  .progress-bar, .save-indicator, .button-row, .button { display: none !important; }
+  .step { display: block !important; page-break-after: always; }
+  .step:last-child { page-break-after: auto; }
+  .report__hero {
+    background: white !important;
+    color: black !important;
+    border: 2px solid var(--cc-navy) !important;
+  }
+  .report__title, .report__subtitle, .report__eyebrow {
+    color: black !important;
+  }
+  .report-card { box-shadow: none; border: 1px solid #666; }
+}
+
+/* Screen-reader-only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="shell" id="main">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar" role="region" aria-label="Survey progress">
+    <div class="progress-bar__inner">
+      <div class="progress-bar__meta">
+        <span class="progress-bar__label" id="stepLabel">Welcome</span>
+        <span class="progress-bar__count" id="stepCount">Step 1 of 10</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Survey progress">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================================
+       STEP 0: WELCOME
+       ================================================================== -->
+  <section class="step" data-step="0" data-active="true" aria-labelledby="welcomeTitle">
+    <header class="masthead">
+      <div class="eyebrow">STAT Success Cohort</div>
+      <h1 id="welcomeTitle">Your intake, your starting point.</h1>
+      <p class="masthead__lead">
+        Before the program begins, we need to know where you are. Not where you hope to be,
+        not where you think you should be. Where you actually are right now.
+      </p>
+    </header>
+
+    <div class="callout callout--info">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">What this intake is</p></div><div class="callout__body"><p class="callout__text">
+          This intake does three things. It helps us assign you to a team with good balance.
+          It gives you a personalized baseline report at the end, so you leave with something
+          useful. And it is the first act of honest self-assessment this program will ask of
+          you. Everything here is private between you and your facilitator.
+        </p></div></div>
+    </div>
+
+    <div class="callout callout--accent">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">How to answer</p></div><div class="callout__body"><p class="callout__text">
+          Be truthful. No one is scoring what you report. The more accurate your answers,
+          the more useful the program will be. If a question feels hard, that's often a
+          signal the honest answer is the important one. If you need to skip something,
+          skip it, but aim for honesty over comfort.
+        </p></div></div>
+    </div>
+
+    <div class="report-card report-card--ruled-navy" style="margin-top: var(--cc-space-6);">
+      <div class="report-card__label">What to expect</div>
+      <div class="report-card__body">
+        <p><strong>Time:</strong> About 20 to 25 minutes. You can save and come back later.</p>
+        <p><strong>Sections:</strong> 9 sections covering your current situation, study habits, learning profile, and honest reflection.</p>
+        <p><strong>Result:</strong> A personalized baseline report you'll review in week 1.</p>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary button--lg" data-action="next">
+        Begin intake
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 1: BASICS
+       ================================================================== -->
+  <section class="step" data-step="1" aria-labelledby="basicsTitle">
+    <div class="step__number">Section 01 of 09</div>
+    <h2 class="step__title" id="basicsTitle">The basics</h2>
+    <p class="step__intro">Contact information and logistics so we can reach you and schedule you into a team.</p>
+
+    <div class="form-group--row">
+      <div class="form-group">
+        <label for="firstName" class="label">First name <span class="label__required" aria-label="required">*</span></label>
+        <input type="text" id="firstName" name="firstName" class="input" autocomplete="given-name" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="label">Last name <span class="label__required" aria-label="required">*</span></label>
+        <input type="text" id="lastName" name="lastName" class="input" autocomplete="family-name" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preferredName" class="label">What would you like your facilitator and team to call you?</label>
+      <input type="text" id="preferredName" name="preferredName" class="input" placeholder="Optional. Leave blank if your first name works.">
+    </div>
+
+    <div class="form-group">
+      <label for="pronouns" class="label">Pronouns</label>
+      <select id="pronouns" name="pronouns" class="select">
+        <option value="">Prefer not to say</option>
+        <option value="she/her">she / her</option>
+        <option value="he/him">he / him</option>
+        <option value="they/them">they / them</option>
+        <option value="she/they">she / they</option>
+        <option value="he/they">he / they</option>
+        <option value="other">other (specify below)</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="pronounsOtherGroup" style="display: none;">
+      <label for="pronounsOther" class="label">Your pronouns</label>
+      <input type="text" id="pronounsOther" name="pronounsOther" class="input">
+    </div>
+
+    <div class="form-group--row">
+      <div class="form-group">
+        <label for="email" class="label">Email <span class="label__required" aria-label="required">*</span></label>
+        <input type="email" id="email" name="email" class="input" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone" class="label">Phone (for emergency contact only)</label>
+        <input type="tel" id="phone" name="phone" class="input" autocomplete="tel">
+      </div>
+    </div>
+
+    <div class="form-group--row">
+      <div class="form-group">
+        <label for="timezone" class="label">Time zone <span class="label__required" aria-label="required">*</span></label>
+        <select id="timezone" name="timezone" class="select" required>
+          <option value="">Select your time zone</option>
+          <option value="HT">Hawaii (HT / UTC-10)</option>
+          <option value="AKT">Alaska (AKT / UTC-9)</option>
+          <option value="PT">Pacific (PT / UTC-8)</option>
+          <option value="MT">Mountain (MT / UTC-7)</option>
+          <option value="CT">Central (CT / UTC-6)</option>
+          <option value="ET">Eastern (ET / UTC-5)</option>
+          <option value="AT">Atlantic (AT / UTC-4)</option>
+          <option value="GMT">UK (GMT / UTC+0)</option>
+          <option value="other">Other (specify below)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="country" class="label">Country</label>
+        <input type="text" id="country" name="country" class="input" placeholder="United States" autocomplete="country-name">
+      </div>
+    </div>
+
+    <h3 class="step__section-title">Accommodations and access</h3>
+    <div class="form-group">
+      <label for="accommodations" class="label">Do you have any accommodations or access needs we should know about?</label>
+      <textarea id="accommodations" name="accommodations" class="textarea" placeholder="For example: documented disability accommodations, language support, scheduling constraints, accessibility needs. This helps us place you in a team that works for you."></textarea>
+      <p class="help">Optional. This information is held in confidence and used only to support your participation.</p>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 2: YOUR CURRENT COURSE
+       ================================================================== -->
+  <section class="step" data-step="2" aria-labelledby="courseTitle">
+    <div class="step__number">Section 02 of 09</div>
+    <h2 class="step__title" id="courseTitle">Your current course</h2>
+    <p class="step__intro">The specific situation we're helping you recover from. Accuracy here matters because it shapes everything downstream.</p>
+
+    <div class="form-group">
+      <label for="institution" class="label">Institution <span class="label__required" aria-label="required">*</span></label>
+      <input type="text" id="institution" name="institution" class="input" placeholder="e.g. California State University, Fresno" required>
+    </div>
+
+    <div class="form-group">
+      <label for="courseName" class="label">Course name and number <span class="label__required" aria-label="required">*</span></label>
+      <input type="text" id="courseName" name="courseName" class="input" placeholder="e.g. BIO 431 Human Anatomy &amp; Physiology" required>
+    </div>
+
+    <div class="form-group">
+      <label for="instructor" class="label">Your instructor's name</label>
+      <input type="text" id="instructor" name="instructor" class="input" placeholder="Optional. We don't contact your instructor.">
+      <p class="help">We're asking so we understand your context, not because we'll reach out. Your course situation remains yours.</p>
+    </div>
+
+    <h3 class="step__section-title">Where you stand</h3>
+
+    <div class="form-group">
+      <label for="currentGrade" class="label">Your current grade in A&P, as of today <span class="label__required" aria-label="required">*</span></label>
+      <input type="text" id="currentGrade" name="currentGrade" class="input" placeholder="e.g. 58%, 52, D-" required>
+      <p class="help">Use whatever form is on your gradebook. Percentage, letter, or number.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="passingGrade" class="label">What grade do you need to pass this course?</label>
+      <input type="text" id="passingGrade" name="passingGrade" class="input" placeholder="e.g. 70%, C, 75%">
+      <p class="help">This is the institutional minimum to not fail. Check your syllabus if you're not sure.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="programGrade" class="label">What grade do you need for your next program or goal?</label>
+      <input type="text" id="programGrade" name="programGrade" class="input" placeholder="e.g. B, 80%, C with a 3.0 GPA minimum">
+      <p class="help">Many nursing and pre-health programs require a higher grade than passing. For example, many nursing programs require a B or better in A&amp;P even though the course passes at a C. If your target program has a specific grade requirement, put it here.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="programGoal" class="label">What program or goal is that grade for?</label>
+      <input type="text" id="programGoal" name="programGoal" class="input" placeholder="e.g. Nursing program at CSU Fresno, PA school applications, pre-med">
+      <p class="help">Optional. Helps us understand the stakes so we can triage accurately.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="weeksLeft" class="label">How many weeks are left in your semester? <span class="label__required" aria-label="required">*</span></label>
+      <input type="number" id="weeksLeft" name="weeksLeft" class="input" min="1" max="20" placeholder="e.g. 9" required>
+    </div>
+
+    <div class="form-group">
+      <label for="nextAssessment" class="label">Your next major assessment</label>
+      <input type="text" id="nextAssessment" name="nextAssessment" class="input" placeholder="e.g. Exam 3, covers cardiovascular system, in 10 days">
+      <p class="help">What, when, and what it covers if you know.</p>
+    </div>
+
+    <h3 class="step__section-title">Your history with this course</h3>
+
+    <div class="form-group">
+      <label class="label">Is this your first attempt at A&P?</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="radio" name="attempt" value="first">
+          <div class="option__content">
+            <div class="option__title">First attempt</div>
+            <div class="option__description">I'm currently taking it for the first time.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="attempt" value="retake">
+          <div class="option__content">
+            <div class="option__title">Retaking after a previous attempt</div>
+            <div class="option__description">I failed, withdrew, or didn't pass on a previous try.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="attempt" value="multiple">
+          <div class="option__content">
+            <div class="option__title">Third or more attempt</div>
+            <div class="option__description">I've taken this more than once before.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 3: YOUR JOURNEY SO FAR
+       ================================================================== -->
+  <section class="step" data-step="3" aria-labelledby="journeyTitle">
+    <div class="step__number">Section 03 of 09</div>
+    <h2 class="step__title" id="journeyTitle">Your journey so far</h2>
+    <p class="step__intro">What you've already tried in this course. Not what worked, just what you've attempted. The truth here helps us understand why you're in recovery.</p>
+
+    <div class="form-group">
+      <label for="triedSoFar" class="label">What have you tried for this course that didn't work?</label>
+      <textarea id="triedSoFar" name="triedSoFar" class="textarea textarea--lg" placeholder="Study methods, schedule attempts, resources, tutors, anything. Honest list, even if the list is short."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="whatWorked" class="label">Is there anything that HAS been working, even a little?</label>
+      <textarea id="whatWorked" name="whatWorked" class="textarea" placeholder="It's okay if the answer is 'nothing.' Many students in this program would say the same."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="whyFailing" class="label">If you had to name the single biggest reason you're struggling, what would it be?</label>
+      <textarea id="whyFailing" name="whyFailing" class="textarea" placeholder="One or two sentences. The honest answer, not the acceptable answer."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="askedHelp" class="label">Have you gone to office hours or asked your instructor for help this semester?</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="radio" name="askedHelp" value="yes-regular">
+          <div class="option__content">
+            <div class="option__title">Yes, regularly</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="askedHelp" value="yes-once">
+          <div class="option__content">
+            <div class="option__title">Yes, once or twice</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="askedHelp" value="tried">
+          <div class="option__content">
+            <div class="option__title">I tried but didn't follow through</div>
+            <div class="option__description">For example, you thought about it, signed up, and didn't go.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="askedHelp" value="no">
+          <div class="option__content">
+            <div class="option__title">No, I haven't</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 4: FAILURE MODE DIAGNOSTIC
+       ================================================================== -->
+  <section class="step" data-step="4" aria-labelledby="failureTitle">
+    <div class="step__number">Section 04 of 09</div>
+    <h2 class="step__title" id="failureTitle">What's actually broken</h2>
+    <p class="step__intro">Students fail for different reasons. Identifying your primary pattern helps us focus your recovery. Answer each question honestly. We'll show you your pattern at the end.</p>
+
+    <div class="callout callout--info">
+      <div class="callout__body">
+        <p class="callout__text">
+          <strong>Rate each statement:</strong> how true is it for you right now? 1 means not true at all, 5 means very true.
+        </p></div></div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">I often run out of time to study for A&P specifically, even when I plan to.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Time scarcity rating">
+        <label class="scale-option"><input type="radio" name="fm_time_1" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_1" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_1" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_1" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_1" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">When I study, I re-read notes or highlight the textbook.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Passive study methods rating">
+        <label class="scale-option"><input type="radio" name="fm_method_1" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_1" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_1" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_1" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_1" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">I feel like I'm missing foundation concepts from earlier units that I never fully learned.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Foundation gap rating">
+        <label class="scale-option"><input type="radio" name="fm_content_1" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_1" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_1" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_1" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_1" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">I feel panic or dread when I think about studying A&P.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Affective block rating">
+        <label class="scale-option"><input type="radio" name="fm_affect_1" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_1" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_1" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_1" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_1" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">Work, family, or health obligations take priority over studying in ways I cannot control.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Time conflict rating">
+        <label class="scale-option"><input type="radio" name="fm_time_2" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_2" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_2" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_2" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_time_2" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">I usually wait until close to an exam or deadline to seriously study.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Procrastination rating">
+        <label class="scale-option"><input type="radio" name="fm_method_2" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_2" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_2" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_2" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_method_2" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">During lectures or exams, I often feel like everyone else understands something I don't.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Content confusion rating">
+        <label class="scale-option"><input type="radio" name="fm_content_2" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_2" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_2" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_2" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_content_2" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">I avoid studying A&P even when I have time, because it feels overwhelming.</label>
+      <div class="scale-group" role="radiogroup" aria-label="Avoidance rating">
+        <label class="scale-option"><input type="radio" name="fm_affect_2" value="1"><span class="scale-option__number">1</span><span class="scale-option__label">Not true</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_2" value="2"><span class="scale-option__number">2</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_2" value="3"><span class="scale-option__number">3</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_2" value="4"><span class="scale-option__number">4</span></label>
+        <label class="scale-option"><input type="radio" name="fm_affect_2" value="5"><span class="scale-option__number">5</span><span class="scale-option__label">Very true</span></label>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 5: STUDY HABITS
+       ================================================================== -->
+  <section class="step" data-step="5" aria-labelledby="habitsTitle">
+    <div class="step__number">Section 05 of 09</div>
+    <h2 class="step__title" id="habitsTitle">Your study habits</h2>
+    <p class="step__intro">The actual data on how you study right now. Not an aspirational version, the real version.</p>
+
+    <div class="form-group">
+      <label for="hoursPerWeek" class="label">Hours per week you actually spend studying A&P</label>
+      <input type="number" id="hoursPerWeek" name="hoursPerWeek" class="input" min="0" max="40" placeholder="e.g. 4">
+      <p class="help">Honest estimate based on the past two weeks, not your best week. Include reading, notes, flashcards, homework, any study activity.</p>
+    </div>
+
+    <div class="form-group">
+      <label class="label">Which of these do you do? Check all that apply.</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="checkbox" name="methods" value="reread">
+          <div class="option__content">
+            <div class="option__title">Re-read notes or textbook</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="highlight">
+          <div class="option__content">
+            <div class="option__title">Highlight key terms or sections</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="flashcards">
+          <div class="option__content">
+            <div class="option__title">Make or use flashcards (Quizlet, Anki, paper)</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="practice-questions">
+          <div class="option__content">
+            <div class="option__title">Do practice questions from a bank or textbook</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="concept-maps">
+          <div class="option__content">
+            <div class="option__title">Draw concept maps or flowcharts</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="teach-back">
+          <div class="option__content">
+            <div class="option__title">Teach the material out loud, to yourself or someone else</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="videos">
+          <div class="option__content">
+            <div class="option__title">Watch YouTube videos or lecture recordings</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="group">
+          <div class="option__content">
+            <div class="option__title">Study with a group or study partner</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="tutor">
+          <div class="option__content">
+            <div class="option__title">Work with a tutor</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="methods" value="other-app">
+          <div class="option__content">
+            <div class="option__title">Use an AI tool or study app</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="whereStudy" class="label">Where do you usually study?</label>
+      <select id="whereStudy" name="whereStudy" class="select">
+        <option value="">Select one</option>
+        <option value="home-private">Home, in a private space</option>
+        <option value="home-shared">Home, but in a shared or busy space</option>
+        <option value="library">Campus library</option>
+        <option value="coffee-shop">Coffee shop or off-campus cafe</option>
+        <option value="mixed">Mixed, varies by day</option>
+        <option value="nowhere">I don't really have a consistent study spot</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="whenStudy" class="label">When do you usually study?</label>
+      <select id="whenStudy" name="whenStudy" class="select">
+        <option value="">Select one</option>
+        <option value="mornings">Mornings (before classes)</option>
+        <option value="afternoons">Afternoons (between classes)</option>
+        <option value="evenings">Evenings (after classes)</option>
+        <option value="late-night">Late night (after 10pm)</option>
+        <option value="weekends">Mostly weekends</option>
+        <option value="crammed">Whenever I can, usually crammed</option>
+      </select>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 6: LEARNING PROFILE
+       ================================================================== -->
+  <section class="step" data-step="6" aria-labelledby="profileTitle">
+    <div class="step__number">Section 06 of 09</div>
+    <h2 class="step__title" id="profileTitle">Your learning profile</h2>
+    <p class="step__intro">How you work best, how you work with others, and what we need to know to place you in a team that functions well.</p>
+
+    <div class="form-group">
+      <label class="label">How do you feel about working in a team?</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="radio" name="teamFeeling" value="love">
+          <div class="option__content">
+            <div class="option__title">I learn best in a team</div>
+            <div class="option__description">Group discussion helps me think clearly.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamFeeling" value="mixed">
+          <div class="option__content">
+            <div class="option__title">Mixed feelings</div>
+            <div class="option__description">Sometimes helpful, sometimes distracting. Depends on the team.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamFeeling" value="prefer-solo">
+          <div class="option__content">
+            <div class="option__title">I usually prefer working alone</div>
+            <div class="option__description">Group work is fine, but not my default.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamFeeling" value="anxious">
+          <div class="option__content">
+            <div class="option__title">Teams make me anxious</div>
+            <div class="option__description">I worry about contributing wrong answers or slowing others down.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">In group work, what role do you usually fall into?</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="radio" name="teamRole" value="organizer">
+          <div class="option__content">
+            <div class="option__title">The organizer</div>
+            <div class="option__description">I keep things moving, set the agenda, follow up.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamRole" value="thinker">
+          <div class="option__content">
+            <div class="option__title">The thinker</div>
+            <div class="option__description">I ask the questions no one else is asking.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamRole" value="supporter">
+          <div class="option__content">
+            <div class="option__title">The supporter</div>
+            <div class="option__description">I keep the team feeling okay and make sure people get heard.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamRole" value="quiet">
+          <div class="option__content">
+            <div class="option__title">The quiet one</div>
+            <div class="option__description">I listen more than I talk. Sometimes I don't contribute as much as I'd like.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="teamRole" value="unsure">
+          <div class="option__content">
+            <div class="option__title">I'm not sure / varies</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="englishLevel" class="label">Is English your primary language of instruction?</label>
+      <select id="englishLevel" name="englishLevel" class="select">
+        <option value="">Select one</option>
+        <option value="primary">Yes, English is my primary language</option>
+        <option value="comfortable">English is not my first language, but I'm comfortable</option>
+        <option value="learning">English is still something I'm working on</option>
+        <option value="prefer-not">Prefer not to say</option>
+      </select>
+    </div>
+
+    <h3 class="step__section-title">Your schedule</h3>
+
+    <div class="form-group">
+      <label class="label">Which day times work for the weekly live session? Check all that work.</label>
+      <p class="help" style="margin-top: 0; margin-bottom: var(--cc-space-3);">We'll use this to place you in a cohort with compatible schedules.</p>
+      <div class="option-group">
+        <label class="option">
+          <input type="checkbox" name="availability" value="weekday-evening">
+          <div class="option__content">
+            <div class="option__title">Weekday evenings (6pm to 9pm)</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="availability" value="weekday-afternoon">
+          <div class="option__content">
+            <div class="option__title">Weekday afternoons (1pm to 5pm)</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="availability" value="weekday-morning">
+          <div class="option__content">
+            <div class="option__title">Weekday mornings (8am to 12pm)</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="availability" value="saturday">
+          <div class="option__content">
+            <div class="option__title">Saturday</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="availability" value="sunday">
+          <div class="option__content">
+            <div class="option__title">Sunday</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="weeklyHours" class="label">How many hours per week can you realistically commit to this program (outside the live session)?</label>
+      <select id="weeklyHours" name="weeklyHours" class="select">
+        <option value="">Select one</option>
+        <option value="1-2">1 to 2 hours</option>
+        <option value="3-4">3 to 4 hours</option>
+        <option value="5-7">5 to 7 hours</option>
+        <option value="8-plus">8 or more hours</option>
+        <option value="unsure">I'm not sure yet</option>
+      </select>
+      <p class="help">Program work outside the live session (Current state audit, decision plan execution) takes about 3 to 5 hours per week. This is in addition to studying for your A&P course itself.</p>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 7: HONEST REFLECTION
+       ================================================================== -->
+  <section class="step" data-step="7" aria-labelledby="reflectionTitle">
+    <div class="step__number">Section 07 of 09</div>
+    <h2 class="step__title" id="reflectionTitle">Honest reflection</h2>
+    <p class="step__intro">The part of the intake where we ask for depth. You don't have to go deep. But if you can, it helps us help you.</p>
+
+    <div class="callout callout--accent">
+      <div class="callout__body">
+        <p class="callout__text">
+          These answers are private. Only your facilitator will read them, and only for the purpose of supporting your participation. You are never required to share them with your team.
+        </p></div></div>
+    </div>
+
+    <div class="form-group">
+      <label for="truest" class="label">What is the truest thing you can say about why you're here?</label>
+      <textarea id="truest" name="truest" class="textarea textarea--lg" placeholder="One or two sentences. The answer you'd give if no one was listening."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="afraid" class="label">What are you most afraid of?</label>
+      <textarea id="afraid" name="afraid" class="textarea" placeholder="For example: failing again, disappointing family, not belonging in nursing, confirming a suspicion about yourself, losing time."></textarea>
+      <p class="help">Naming a fear openly is often the first step in reducing its power over your decisions.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="success" class="label">If this program works, what does that actually look like for you in week 8?</label>
+      <textarea id="success" name="success" class="textarea" placeholder="Be specific. A letter grade, a feeling, a conversation you want to have with someone, an identity shift."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="label">How are you doing emotionally, not just academically?</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="radio" name="emotional" value="okay">
+          <div class="option__content">
+            <div class="option__title">Mostly okay, stressed but coping</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="emotional" value="struggling">
+          <div class="option__content">
+            <div class="option__title">Struggling but functional</div>
+            <div class="option__description">Hard days but I'm moving.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="emotional" value="overwhelmed">
+          <div class="option__content">
+            <div class="option__title">Overwhelmed</div>
+            <div class="option__description">I'm having trouble keeping up with daily life.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="emotional" value="crisis">
+          <div class="option__content">
+            <div class="option__title">In a real crisis</div>
+            <div class="option__description">I'm not sure I can hold it together right now.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="emotional" value="prefer-not">
+          <div class="option__content">
+            <div class="option__title">Prefer not to say</div>
+          </div>
+        </label>
+      </div>
+      <p class="help">If you selected "in a real crisis," your facilitator will reach out privately to check in and connect you with support resources. This program is not a substitute for mental health care when it's needed.</p>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary" data-action="next">Continue →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 8: YOUR COMMITMENT
+       ================================================================== -->
+  <section class="step" data-step="8" aria-labelledby="commitmentTitle">
+    <div class="step__number">Section 08 of 09</div>
+    <h2 class="step__title" id="commitmentTitle">Your readiness</h2>
+    <p class="step__intro">This isn't a filter. Everyone who wants to be here is welcome. It's a calibration so we understand what kind of support you're ready to receive.</p>
+
+    <div class="form-group">
+      <label class="label">Right now, how ready are you to do the weekly work?</label>
+      <div class="option-group">
+        <label class="option">
+          <input type="radio" name="readiness" value="all-in">
+          <div class="option__content">
+            <div class="option__title">All in</div>
+            <div class="option__description">I'm ready to commit to everything this program asks of me.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="readiness" value="mostly">
+          <div class="option__content">
+            <div class="option__title">Mostly ready</div>
+            <div class="option__description">I'll do the work, but I might miss some things.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="readiness" value="trying">
+          <div class="option__content">
+            <div class="option__title">I'm trying</div>
+            <div class="option__description">I want to do this, but consistency has been hard for me.</div>
+          </div>
+        </label>
+        <label class="option">
+          <input type="radio" name="readiness" value="uncertain">
+          <div class="option__content">
+            <div class="option__title">Uncertain</div>
+            <div class="option__description">I don't know if I can show up consistently, but I'm here.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label">What would help you keep showing up, even in a hard week?</label>
+      <textarea id="keepShowingUp" name="keepShowingUp" class="textarea" placeholder="Something your facilitator or team could do. Or a reminder to yourself. Or a boundary you want honored."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="label">Anything else you want your facilitator to know before the program starts?</label>
+      <textarea id="anythingElse" name="anythingElse" class="textarea" placeholder="Optional. Use this for anything we haven't already asked about."></textarea>
+    </div>
+
+    <div class="button-row">
+      <button class="button button--tertiary" data-action="prev">← Back</button>
+      <div class="button-row__spacer"></div>
+      <button class="button button--gold-bright button--lg" data-action="submit">Generate my baseline report →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       STEP 9: REPORT
+       ================================================================== -->
+  <section class="step" data-step="9" aria-labelledby="reportTitle">
+    <div class="report">
+      <div class="report__hero">
+        <div class="report__eyebrow">Your baseline report</div>
+        <h2 class="report__title" id="reportTitle">Where you are. Where we begin.</h2>
+        <p class="report__subtitle">
+          This is your starting point, not your ending point. The program's job is to move
+          you from here, not to judge you for being here.
+        </p>
+        <div class="stat-row" id="statRow">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <div class="report-card report-card--ruled-navy">
+        <div class="report-card__label">Your situation</div>
+        <h3 class="report-card__title" id="situationTitle">Summary</h3>
+        <div class="report-card__body" id="situationBody">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <div class="report-card report-card--ruled">
+        <div class="report-card__label">Your primary failure pattern</div>
+        <h3 class="report-card__title" id="patternTitle">Pattern</h3>
+        <div class="report-card__body" id="patternBody">
+          <!-- Injected by JS -->
+        </div>
+        <div class="pill-list" id="patternPills"></div>
+      </div>
+
+      <div class="report-card report-card--ruled-navy">
+        <div class="report-card__label">Your week-one priorities</div>
+        <h3 class="report-card__title">What we will focus on first</h3>
+        <div class="report-card__body" id="prioritiesBody">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+
+      <div class="report-card report-card--ruled">
+        <div class="report-card__label">What to expect from the program</div>
+        <h3 class="report-card__title">Your next 8 weeks</h3>
+        <div class="report-card__body">
+          <p>The program runs on a weekly CODE cycle. Each week you'll:</p>
+          <p><strong>Current state</strong>, a short written audit of your week, submitted before the live session. SOAP-structured self-assessment.</p>
+          <p><strong>Observe</strong>, a team case discussion during the live session. You reason about a composite student who is in a situation like yours, with your team.</p>
+          <p><strong>Decide</strong>, a personal recovery plan for the coming week, written right after the team discussion. Specific, time-bounded, realistic.</p>
+          <p><strong>Evaluate</strong>, at the start of next week's Status, you report whether you did what you said you would do. This is how accountability becomes structural rather than aspirational.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--accent" style="margin-top: var(--cc-space-6);">
+        <div class="callout__body">
+          <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">Next steps</p></div><div class="callout__body"><p class="callout__text">
+            Your intake has been submitted. We will review it and place you in a team within
+            the next few days. You'll receive a welcome email with your cohort details, your
+            team assignment, and instructions for Week 1.
+          </p></div></div>
+      </div>
+
+      <div class="button-row">
+        <button class="button button--secondary" onclick="window.print()">Print my report</button>
+        <div class="button-row__spacer"></div>
+        <button class="button button--primary" data-action="download">Download my responses</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Save indicator -->
+<div class="save-indicator" id="saveIndicator" role="status" aria-live="polite">
+  <span class="save-indicator__dot"></span>
+  <span id="saveText">Saved</span>
+</div>
+
+<script>
+// ==========================================================================
+// STATE MANAGEMENT
+// ==========================================================================
+
+const TOTAL_STEPS = 10; // 0 welcome + 1-8 sections + 9 report
+const STORAGE_KEY = 'mmcc_intake_v1';
+
+const state = {
+  currentStep: 0,
+  data: {}
+};
+
+// Section labels for progress bar
+const STEP_LABELS = [
+  'Welcome',
+  'The basics',
+  'Your current course',
+  'Your journey',
+  'What\'s broken',
+  'Study habits',
+  'Learning profile',
+  'Honest reflection',
+  'Your readiness',
+  'Your report'
+];
+
+// ==========================================================================
+// LOCALSTORAGE PERSISTENCE
+// ==========================================================================
+
+function saveState() {
+  try {
+    const formData = collectFormData();
+    const payload = {
+      currentStep: state.currentStep,
+      data: formData,
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    showSaveIndicator('Saved');
+  } catch (e) {
+    console.warn('Save failed:', e);
+  }
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const payload = JSON.parse(raw);
+    state.data = payload.data || {};
+
+    // Restore form fields
+    Object.entries(state.data).forEach(([name, value]) => {
+      const elements = document.querySelectorAll(`[name="${name}"]`);
+      elements.forEach(el => {
+        if (el.type === 'checkbox') {
+          el.checked = Array.isArray(value) ? value.includes(el.value) : value === el.value;
+        } else if (el.type === 'radio') {
+          el.checked = el.value === value;
+        } else {
+          el.value = value;
+        }
+      });
+    });
+
+    // Trigger any dependent UI updates
+    updateConditionalFields();
+
+    // Offer to resume if they weren't on welcome
+    if (payload.currentStep && payload.currentStep > 0 && payload.currentStep < 9) {
+      // Auto-resume silently
+      goToStep(payload.currentStep);
+    }
+  } catch (e) {
+    console.warn('Load failed:', e);
+  }
+}
+
+function clearSaved() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+}
+
+// ==========================================================================
+// FORM DATA COLLECTION
+// ==========================================================================
+
+function collectFormData() {
+  const data = {};
+  const formElements = document.querySelectorAll('input, textarea, select');
+
+  formElements.forEach(el => {
+    const name = el.name;
+    if (!name) return;
+
+    if (el.type === 'checkbox') {
+      if (!data[name]) data[name] = [];
+      if (el.checked) data[name].push(el.value);
+    } else if (el.type === 'radio') {
+      if (el.checked) data[name] = el.value;
+    } else {
+      if (el.value) data[name] = el.value;
+    }
+  });
+
+  return data;
+}
+
+// ==========================================================================
+// NAVIGATION
+// ==========================================================================
+
+function goToStep(stepIndex) {
+  if (stepIndex < 0 || stepIndex >= TOTAL_STEPS) return;
+
+  // Hide current
+  document.querySelectorAll('.step').forEach(s => s.setAttribute('data-active', 'false'));
+
+  // Show target
+  const targetStep = document.querySelector(`.step[data-step="${stepIndex}"]`);
+  if (targetStep) {
+    targetStep.setAttribute('data-active', 'true');
+    state.currentStep = stepIndex;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Focus the main heading of the new step for screen readers
+    const heading = targetStep.querySelector('h1, h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      setTimeout(() => heading.focus(), 100);
+    }
+
+    saveState();
+  }
+}
+
+function updateProgress() {
+  const percent = ((state.currentStep) / (TOTAL_STEPS - 1)) * 100;
+  document.getElementById('progressFill').style.width = percent + '%';
+  document.getElementById('stepCount').textContent = `Step ${state.currentStep + 1} of ${TOTAL_STEPS}`;
+  document.getElementById('stepLabel').textContent = STEP_LABELS[state.currentStep] || '';
+
+  const progressbar = document.querySelector('.progress-track');
+  progressbar.setAttribute('aria-valuenow', Math.round(percent));
+}
+
+// ==========================================================================
+// SAVE INDICATOR
+// ==========================================================================
+
+let saveTimer;
+function showSaveIndicator(text) {
+  const indicator = document.getElementById('saveIndicator');
+  const textEl = document.getElementById('saveText');
+  textEl.textContent = text;
+  indicator.setAttribute('data-visible', 'true');
+
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    indicator.setAttribute('data-visible', 'false');
+  }, 2000);
+}
+
+// ==========================================================================
+// CONDITIONAL FIELDS
+// ==========================================================================
+
+function updateConditionalFields() {
+  // Show "other pronouns" field when "other" is selected
+  const pronounsSelect = document.getElementById('pronouns');
+  const pronounsOtherGroup = document.getElementById('pronounsOtherGroup');
+  if (pronounsSelect && pronounsOtherGroup) {
+    pronounsOtherGroup.style.display = pronounsSelect.value === 'other' ? 'block' : 'none';
+  }
+}
+
+// ==========================================================================
+// FAILURE MODE DIAGNOSTIC SCORING
+// ==========================================================================
+
+function computeFailureMode(data) {
+  const scores = {
+    time: (parseInt(data.fm_time_1) || 0) + (parseInt(data.fm_time_2) || 0),
+    method: (parseInt(data.fm_method_1) || 0) + (parseInt(data.fm_method_2) || 0),
+    content: (parseInt(data.fm_content_1) || 0) + (parseInt(data.fm_content_2) || 0),
+    affect: (parseInt(data.fm_affect_1) || 0) + (parseInt(data.fm_affect_2) || 0)
+  };
+
+  // Sort by score
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const primary = sorted[0];
+  const secondary = sorted[1];
+
+  return { scores, primary: primary[0], primaryScore: primary[1], secondary: secondary[0], secondaryScore: secondary[1] };
+}
+
+const PATTERN_DESCRIPTIONS = {
+  time: {
+    name: 'Time scarcity',
+    description: 'You\'re running out of time before you run out of motivation. The primary bottleneck is not your effort or your intelligence, it\'s that the time available for A&P is not matching what A&P actually requires. This is the most common recovery pattern, and it has clear solutions. You don\'t need to study harder. You need to audit where your time actually goes and make structural changes to how it\'s allocated.',
+    priorities: [
+      'Build a realistic time budget for the next 7 days. Not an aspirational schedule, a real one.',
+      'Identify the one activity currently consuming time that you can cut or reduce, even temporarily.',
+      'Protect a minimum of 4 to 6 hours per week for A&P as non-negotiable, scheduled into specific blocks.',
+      'Stop aiming for long study sessions. Shorter, more frequent sessions outperform marathon cramming.'
+    ]
+  },
+  method: {
+    name: 'Study method failure',
+    description: 'You\'re working, but the methods you\'re using are not the ones that work for high-volume science learning. Re-reading, highlighting, and flashcard memorization are comforting but low-effectiveness for A&P\'s structure-function reasoning. This is good news, in a way. It means your effort is real. We just need to redirect it to methods that actually produce learning: retrieval practice, spaced repetition, structure-function linking, and teaching back.',
+    priorities: [
+      'Stop re-reading and highlighting immediately. Replace with retrieval practice for every study session.',
+      'Set up spaced repetition on a 1-3-7 day cycle for the concepts you\'re studying now.',
+      'For every anatomical structure you learn, write what it does and what would go wrong without it.',
+      'Build the habit of teaching concepts out loud, even to yourself, within 24 hours of first learning them.'
+    ]
+  },
+  content: {
+    name: 'Foundation gaps',
+    description: 'You\'re trying to learn current material on top of missing foundation from earlier units. This is the most frustrating pattern because it feels like studying harder should work, and it doesn\'t. The current unit depends on concepts you skimmed or didn\'t understand three or four weeks ago. The fix is selective foundation repair: identifying which prerequisite concepts are load-bearing for what you\'re learning now, and going back for those, not everything.',
+    priorities: [
+      'Identify the specific foundation concepts your current unit depends on. Not everything from earlier, just what the current content actually builds on.',
+      'For each foundation gap, spend a focused hour with one concept before returning to current material.',
+      'Use the team Triage discussions to surface foundation dependencies you might not notice on your own.',
+      'Accept that some earlier content genuinely doesn\'t matter for your remaining assessments, and stop trying to re-learn everything.'
+    ]
+  },
+  affect: {
+    name: 'Affective overload',
+    description: 'The biggest obstacle to your studying is not the content or the time, it\'s the weight of panic, dread, or avoidance you carry when you think about A&P. This is real, it is not weakness, and the program is built to address it. The work of this recovery is as much about reducing the emotional charge around studying as it is about building study skills. Both happen in parallel, and you will find that as one improves, the other becomes easier.',
+    priorities: [
+      'Start with the smallest possible study session: 10 minutes, one concept, no pressure to achieve anything specific.',
+      'Notice what you do instead of studying. That avoidance is data, not failure.',
+      'Use the weekly Status audit as a way to name the emotional weight without needing to resolve it.',
+      'If the distress is interfering with daily life, please let your facilitator know. This program works best alongside appropriate mental health support, not instead of it.'
+    ]
+  }
+};
+
+// ==========================================================================
+// REPORT GENERATION
+// ==========================================================================
+
+function generateReport() {
+  const data = collectFormData();
+
+  // Compute failure mode
+  const fm = computeFailureMode(data);
+  const pattern = PATTERN_DESCRIPTIONS[fm.primary];
+  const secondaryPattern = PATTERN_DESCRIPTIONS[fm.secondary];
+
+  // Build stat row
+  const statRow = document.getElementById('statRow');
+  const currentGrade = data.currentGrade || 'Not set';
+  const weeksLeft = data.weeksLeft || 'Not set';
+  const hoursPerWeek = data.hoursPerWeek || 'Not set';
+
+  // The target grade shown in the stat row is the program grade if set, otherwise the passing grade
+  const targetGrade = data.programGrade || data.passingGrade || 'Not set';
+  const targetLabel = data.programGrade ? 'Target for program' : (data.passingGrade ? 'Passing grade' : 'Target');
+
+  statRow.innerHTML = `
+    <div class="stat">
+      <div class="stat__number" style="color: var(--cc-gold-bright);">${currentGrade}</div>
+      <div class="stat__label" style="color: rgba(250,250,247,0.7);">Current grade</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number" style="color: var(--cc-gold-bright);">${targetGrade}</div>
+      <div class="stat__label" style="color: rgba(250,250,247,0.7);">${targetLabel}</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number" style="color: var(--cc-gold-bright);">${weeksLeft}</div>
+      <div class="stat__label" style="color: rgba(250,250,247,0.7);">Weeks remaining</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number" style="color: var(--cc-gold-bright);">${hoursPerWeek}</div>
+      <div class="stat__label" style="color: rgba(250,250,247,0.7);">Hours / week</div>
+    </div>
+  `;
+
+  // Situation summary
+  const situationTitle = document.getElementById('situationTitle');
+  const situationBody = document.getElementById('situationBody');
+  const name = data.preferredName || data.firstName || 'You';
+  const course = data.courseName || 'A&P';
+  const weeks = data.weeksLeft || 'several';
+  const passingGrade = data.passingGrade;
+  const programGrade = data.programGrade;
+  const programGoal = data.programGoal;
+
+  // Determine whether there's a gap between passing and program requirement
+  let gradeContext = '';
+  if (passingGrade && programGrade) {
+    // Both grades provided. Check if they're meaningfully different.
+    const passingNum = parseFloat(passingGrade);
+    const programNum = parseFloat(programGrade);
+    const bothNumeric = !isNaN(passingNum) && !isNaN(programNum);
+    const passingLetter = passingGrade.match(/^[A-D][+-]?/i)?.[0]?.toUpperCase();
+    const programLetter = programGrade.match(/^[A-D][+-]?/i)?.[0]?.toUpperCase();
+
+    const isDifferent = bothNumeric
+      ? programNum > passingNum
+      : passingLetter && programLetter && passingLetter !== programLetter;
+
+    if (isDifferent) {
+      const goalPhrase = programGoal ? ` to stay on track for ${programGoal}` : '';
+      gradeContext = ` You need at minimum <strong>${passingGrade}</strong> to pass the course, but you actually need <strong>${programGrade}</strong>${goalPhrase}. That distinction matters for how we triage the work. We won't plan for the floor. We'll plan for what you actually need.`;
+    } else {
+      gradeContext = ` The grade you need to pass (${passingGrade}) is also the grade your next step requires, so we have one clear target.`;
+    }
+  } else if (passingGrade && !programGrade) {
+    gradeContext = ` You need at minimum <strong>${passingGrade}</strong> to pass, and that's the target we'll plan for unless your situation changes.`;
+  } else if (!passingGrade && programGrade) {
+    gradeContext = ` Your target grade is <strong>${programGrade}</strong>${programGoal ? ` for ${programGoal}` : ''}, and that's what we'll plan around.`;
+  }
+
+  situationTitle.textContent = `${name}, here's your baseline.`;
+  situationBody.innerHTML = `
+    <p>You're currently at <strong>${currentGrade}</strong> in ${course} with about <strong>${weeks} weeks</strong> left in the semester. You're studying roughly <strong>${hoursPerWeek} hours per week</strong>, and you've come here because what you've been doing is not producing the grade you need.</p>
+    ${gradeContext ? `<p>${gradeContext.trim()}</p>` : ''}
+    <p>That's a real situation, and it's also a recoverable one for many students who are in it. The rest of this report is about what that recovery looks like for you specifically.</p>
+  `;
+
+  // Pattern
+  document.getElementById('patternTitle').textContent = pattern.name;
+  document.getElementById('patternBody').innerHTML = `<p>${pattern.description}</p>`;
+
+  // Pills showing pattern hierarchy
+  const pills = document.getElementById('patternPills');
+  pills.innerHTML = `
+    <span class="pill pill--navy">Primary: ${pattern.name}</span>
+    ${fm.secondaryScore >= 6 ? `<span class="pill pill--outline">Secondary: ${secondaryPattern.name}</span>` : ''}
+  `;
+
+  // Priorities
+  const priorities = pattern.priorities.map(p => `<p>• ${p}</p>`).join('');
+  document.getElementById('prioritiesBody').innerHTML = priorities;
+}
+
+// ==========================================================================
+// DOWNLOAD RESPONSES
+// ==========================================================================
+
+function downloadResponses() {
+  const data = collectFormData();
+  const fm = computeFailureMode(data);
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    studentResponses: data,
+    computedDiagnostic: {
+      failureModeScores: fm.scores,
+      primaryPattern: fm.primary,
+      secondaryPattern: fm.secondary
+    }
+  };
+
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  const name = (data.firstName || 'student').toLowerCase().replace(/\s+/g, '_');
+  link.href = url;
+  link.download = `mmcc_intake_${name}_${new Date().toISOString().slice(0,10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// EVENT HANDLERS
+// ==========================================================================
+
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+
+  const action = target.dataset.action;
+
+  if (action === 'next') {
+    goToStep(state.currentStep + 1);
+  } else if (action === 'prev') {
+    goToStep(state.currentStep - 1);
+  } else if (action === 'submit') {
+    generateReport();
+    goToStep(9);
+    clearSaved(); // Clear the saved draft since they've submitted
+  } else if (action === 'download') {
+    downloadResponses();
+  }
+});
+
+// Save on any form change
+document.addEventListener('change', (e) => {
+  if (e.target.matches('input, textarea, select')) {
+    updateConditionalFields();
+    saveState();
+  }
+});
+
+// Save on text input (debounced)
+let inputTimer;
+document.addEventListener('input', (e) => {
+  if (e.target.matches('input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea')) {
+    clearTimeout(inputTimer);
+    inputTimer = setTimeout(saveState, 600);
+  }
+});
+
+// Keyboard navigation within scale groups
+document.querySelectorAll('.scale-group').forEach(group => {
+  const options = group.querySelectorAll('input[type="radio"]');
+  options.forEach((opt, idx) => {
+    opt.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = options[(idx + 1) % options.length];
+        next.checked = true;
+        next.focus();
+        saveState();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = options[(idx - 1 + options.length) % options.length];
+        prev.checked = true;
+        prev.focus();
+        saveState();
+      }
+    });
+  });
+});
+
+// Initialize
+loadState();
+updateProgress();
+
+// ==========================================================================
+// IFRAME HEIGHT SENDER (for Kajabi embedding)
+// ==========================================================================
+
+(function() {
+  const frameId = window.name || 'mmcc_intake';
+  function sendHeight() {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  // Send initial height
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

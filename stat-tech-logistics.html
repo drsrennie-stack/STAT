@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Technology and Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-warning: #92400E;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+ol, ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+ol li, ul li {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+/* Checklist-style lists */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 3px;
+  background: white;
+}
+
+.checklist li::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.75rem;
+  width: 6px;
+  height: 4px;
+  border-left: 2px solid var(--cc-gold);
+  border-bottom: 2px solid var(--cc-gold);
+  transform: rotate(-45deg);
+}
+
+/* Detail list - definition style */
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.detail-list li {
+  padding: 0.75rem 1rem;
+  background: var(--cc-tint-navy);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.detail-list li strong {
+  color: var(--cc-navy);
+  display: inline-block;
+  min-width: 140px;
+  margin-right: 0.5rem;
+}
+
+/* Callouts */
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Info card for contact */
+.info-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-left: 4px solid var(--cc-navy);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.info-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.info-card__title {
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.info-card__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Before the program block */
+.before-program {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.before-program::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.before-program__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.before-program__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 1rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.before-program__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.before-program__list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+}
+
+.before-program__list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--cc-gold-bright);
+  font-weight: 700;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .detail-list li strong { display: block; min-width: 0; margin-right: 0; margin-bottom: 0.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Technology</div>
+  <h1>Technology and logistics.</h1>
+  <p class="lead">
+    The practical stuff. How to join sessions, where the tools live, what to do when something breaks, and how to reach your facilitator.
+  </p>
+
+  <h2>How to access your live sessions</h2>
+
+  <p>
+    Your live sessions happen on <strong>Zoom</strong>. You'll find the Zoom link in each weekly session lesson (for example, Lesson 2.4 is Live Session 1). Click the link at the scheduled session time to join.
+  </p>
+
+  <p>
+    We recommend joining 2 to 5 minutes before the session starts to handle any audio or video setup. If this is your first time using Zoom, open the link 15 minutes early to give yourself time to install the Zoom app if needed.
+  </p>
+
+  <p>
+    Sessions are <strong>90 minutes</strong>. Show up on camera if possible. Being present visually changes the quality of team conversation in ways audio-only can't replicate.
+  </p>
+
+  <h2>How to find each week's tools</h2>
+
+  <p>
+    Each week's section in this course contains the tools you need for that week. The pattern is consistent:
+  </p>
+
+  <ul>
+    <li>One "This week's STAT" overview lesson</li>
+    <li>Pre-read or case materials (starting Week 2)</li>
+    <li>The Current state audit tool (weekly)</li>
+    <li>The Live Session access link</li>
+    <li>The decision plan tool (weekly)</li>
+    <li>Any optional deeper tools specific to that week</li>
+  </ul>
+
+  <p>
+    You can work through each section sequentially. Tools auto-save your progress in your browser, so you can stop mid-tool and return later to finish.
+  </p>
+
+  <h2>If something breaks</h2>
+
+  <p>
+    If a tool won't load, won't save, or behaves unexpectedly, try these steps in order:
+  </p>
+
+  <ol>
+    <li>Refresh the page.</li>
+    <li>Clear your browser cache and reload.</li>
+    <li>Try a different browser. Chrome, Firefox, and Safari all work; Internet Explorer does not.</li>
+    <li>Try a different device (computer vs. phone vs. tablet).</li>
+  </ol>
+
+  <p>
+    If none of those fix it, email your facilitator with a description of what you were doing when it broke and what browser you were using. We'll sort it out.
+  </p>
+
+  <h2>Saving your work</h2>
+
+  <p>
+    Every tool saves your progress to your browser automatically. You don't need to click a save button. If you close the tab and come back later, your work should still be there.
+  </p>
+
+  <div class="callout callout--info">
+    <div class="callout__body">
+      <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">Important</p></div><div class="callout__body"><p class="callout__text">
+        If you clear your browser cache or switch devices, your saved data may not carry over. For important tools (like your commitment contract and your weekly audits), use the <strong>Download</strong> button to save a backup copy to your computer.
+      </p></div></div>
+  </div>
+
+  <h2>How to reach your facilitator</h2>
+
+  <p>
+    Your facilitator's email will be shared with you before your first live session. They are your primary point of contact between sessions for anything program-related.
+  </p>
+
+  <h3>Response time expectations</h3>
+
+  <ul class="detail-list">
+    <li><strong>Weekday email</strong>24 to 48 hours</li>
+    <li><strong>Weekend email</strong>May not respond until Monday</li>
+    <li><strong>Urgent concerns</strong>Crisis, withdrawal question, emergency, flag as urgent, we respond as soon as possible</li>
+  </ul>
+
+  <div class="info-card">
+    <div class="info-card__label">Different channel</div>
+    <div class="info-card__title">Technical issues, billing, or enrollment</div>
+    <p class="info-card__text">
+      For these, email <strong>support@medmasterscollaborative.com</strong> instead of your facilitator. They handle program work; support handles platform and account work.
+    </p>
+  </div>
+
+  <div class="before-program">
+    <div class="before-program__label">Before the program starts</div>
+    <h3 class="before-program__title">Your checklist</h3>
+    <ul class="before-program__list">
+      <li>Complete Lesson 1.3: sign your commitment contract</li>
+      <li>Complete Lesson 1.4: fill out your intake survey</li>
+      <li>Test your Zoom setup before the first session</li>
+      <li>Block off 90 minutes weekly on your calendar</li>
+      <li>Tell the people in your life that this time is protected</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'mmcc_tech_logistics';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

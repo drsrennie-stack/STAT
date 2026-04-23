@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | What to Expect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-warning: #92400E;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Phase cards for CODE cycle */
+.phase-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid var(--cc-navy);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 0 10px 1.5rem 0;
+  box-shadow: 5px 5px 0 0 var(--cc-navy);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.phase-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 var(--cc-navy);
+}
+
+.phase-card__letter {
+  display: inline-block;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+  margin-right: 0.75rem;
+}
+
+.phase-card__text {
+  display: inline;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+}
+
+.phase-card__text strong {
+  color: var(--cc-navy);
+}
+
+/* Weeks grid */
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  list-style: none;
+  padding: 0;
+}
+
+.weeks-grid li {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--cc-text);
+}
+
+.weeks-grid li strong {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+/* Callouts */
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Next step feature block */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Program Overview</div>
+  <h1>What to expect.</h1>
+  <p class="lead">
+    How STAT Success Cohort actually works. Read this before you sign the commitment contract in the next lesson. The rhythm and structure of the next 8 weeks live in here.
+  </p>
+
+  <h2>The weekly rhythm</h2>
+
+  <p>
+    Every week of STAT Success Cohort follows the same four-phase rhythm. It is called the <strong>CODE cycle</strong>: Current state, Observe, Decide, Evaluate. Think of it as running a code on your own academic situation, week after week, with your team.
+  </p>
+
+  <div class="phase-card">
+    <span class="phase-card__letter">S</span>
+    <span class="phase-card__text"><strong>Current state</strong> happens before each live session. You complete a written audit on yourself that documents how the week went, what you're currently working with, and what you're bringing into the team discussion. Think of it as a clinical note you are writing on your own recovery. It takes about 15 minutes.</span>
+  </div>
+
+  <div class="phase-card">
+    <span class="phase-card__letter">T</span>
+    <span class="phase-card__text"><strong>Observe</strong> happens during the live session. Your team works together on a case, a composite failing student whose situation parallels your own in some way. You observe what is happening, reason through what they should do, and watch your facilitator guide the discussion. This is the pedagogical core of the program.</span>
+  </div>
+
+  <div class="phase-card">
+    <span class="phase-card__letter">A</span>
+    <span class="phase-card__text"><strong>Decide</strong> happens right after the session. You write a personal action plan translating what the team surfaced into three specific commitments for the week ahead, plus one small thing you will do in the next 24 hours. About 10 to 15 minutes.</span>
+  </div>
+
+  <div class="phase-card">
+    <span class="phase-card__letter">T</span>
+    <span class="phase-card__text"><strong>Evaluate</strong> happens the following week. Your next Current state audit opens by asking what actually happened with last week's decisions. Did you do what you said you would do? Honest reporting is the point.</span>
+  </div>
+
+  <p>
+    That's the loop. It runs every week from Week 2 onward. Week 1 is slightly different because the team is still forming and there's no case yet.
+  </p>
+
+  <h2>The 8 weeks at a glance</h2>
+
+  <ul class="weeks-grid">
+    <li><strong>Week 1</strong>Stabilization and team formation</li>
+    <li><strong>Week 2</strong>Stop the bleeding</li>
+    <li><strong>Week 3</strong>Foundation repair, selective</li>
+    <li><strong>Week 4</strong>The midterm hinge</li>
+    <li><strong>Week 5</strong>Point recovery</li>
+    <li><strong>Week 6</strong>Consolidation and integration</li>
+    <li><strong>Week 7</strong>Final exam runway</li>
+    <li><strong>Week 8</strong>Definitive care</li>
+  </ul>
+
+  <p>
+    Each week builds on the previous one. Cases change. Focus shifts. The structure stays the same.
+  </p>
+
+  <h2>Your time commitment</h2>
+
+  <p>
+    Expect roughly <strong>3 to 4 hours per week</strong> for STAT Success Cohort work itself: one 90-minute live session, about 30 minutes on your Current state audit, about 15 minutes on your action plan, and 15 to 30 minutes of case pre-reading. That is separate from time spent on your actual A&amp;P course.
+  </p>
+
+  <div class="callout callout--warning">
+    <div class="callout__body">
+      <div class="callout__header"><span class="callout__mark" aria-hidden="true">!</span><p class="callout__title">⚠ Read this before signing the commitment</p></div><div class="callout__body"><p class="callout__text">
+        If 3 to 4 hours a week on top of your course work feels impossible right now, this program is not the right fit right now. That's information worth having before you sign the commitment contract in the next lesson.
+      </p></div></div>
+  </div>
+
+  <h2>Your team</h2>
+
+  <p>
+    You'll be assigned to a small team of 4 to 6 students with a trained facilitator. Your team meets at the same day and time every week for 8 weeks. Your progress is connected to theirs, and theirs to yours.
+  </p>
+
+  <p>
+    Teams are not support groups. They're not friend circles. They're <strong>small accountable working communities</strong> where other students in recovery do the work alongside you. Confidentiality matters. Reliability matters. Showing up for the team matters as much as the team showing up for you.
+  </p>
+
+  <h2>Communication between sessions</h2>
+
+  <p>
+    Your facilitator is your primary point of contact between sessions. You can reach them by email for anything time-sensitive. Response time is 24 to 48 hours on weekdays.
+  </p>
+
+  <p>
+    If you need to miss a session, you notify your facilitator in advance and watch the recording within 48 hours. The program allows one structured re-entry during the 8 weeks.
+  </p>
+
+  <h2>What this program does not promise</h2>
+
+  <div class="callout callout--warning">
+    <div class="callout__body">
+      <div class="callout__header"><span class="callout__mark" aria-hidden="true">!</span><p class="callout__title">Be clear about this</p></div><div class="callout__body"><p class="callout__text">
+        This program does not promise you will pass your A&amp;P course. It does not promise a specific grade. It does not promise you will qualify for your degree program. Your A&amp;P grade is determined by your instructor, your institution, and your own execution, not by participation in STAT Success Cohort.
+      </p></div></div>
+  </div>
+
+  <p>
+    What the program commits to: structure, methodology, team, facilitation, and the best possible conditions for recovery work. What happens inside those conditions is in your hands.
+  </p>
+
+  <div class="next-step">
+    <div class="next-step__label">The next step</div>
+    <h3 class="next-step__title">Move on to your commitment contract.</h3>
+    <p class="next-step__body">
+      Read it carefully. Sign it only if you genuinely can commit to the four terms. Week 1 will open for you once your commitment is on file.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'mmcc_what_to_expect';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Failure Mode Diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-hover: #0D2950;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #CBD5E1;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #166534;
+  --cc-warning: #92400E;
+  --cc-alert: #991B1B;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+  --cc-space-9: 4rem;
+
+  --cc-shadow-sm: 0 1px 2px rgba(10, 31, 61, 0.04), 0 1px 3px rgba(10, 31, 61, 0.06);
+  --cc-shadow-md: 0 2px 4px rgba(10, 31, 61, 0.04), 0 4px 12px rgba(10, 31, 61, 0.08);
+  --cc-shadow-lg: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+  --cc-shadow-xl: 0 8px 16px rgba(10, 31, 61, 0.08), 0 20px 40px rgba(10, 31, 61, 0.12);
+
+  --cc-radius-sm: 4px;
+  --cc-radius: 8px;
+  --cc-radius-md: 12px;
+  --cc-radius-lg: 16px;
+  --cc-radius-xl: 24px;
+
+  --cc-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cc-duration-fast: 150ms;
+  --cc-duration: 250ms;
+  --cc-duration-slow: 400ms;
+
+  --cc-focus-ring: 0 0 0 3px var(--cc-white), 0 0 0 6px var(--cc-gold-deep);
+  --cc-focus-ring-inverse: 0 0 0 3px var(--cc-navy), 0 0 0 6px var(--cc-gold-bright);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-base);
+  line-height: var(--cc-leading-normal);
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute; top: -48px; left: 0;
+  background: var(--cc-navy); color: var(--cc-text-inverse);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-weight: var(--cc-weight-semi); text-decoration: none;
+  z-index: 1000; transition: top var(--cc-duration) var(--cc-ease);
+}
+.skip-link:focus { top: 0; outline: none; box-shadow: var(--cc-focus-ring-inverse); }
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--cc-space-6) var(--cc-space-5);
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 247, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: var(--cc-space-4) var(--cc-space-5);
+  border-bottom: 1px solid var(--cc-border);
+  margin: calc(var(--cc-space-6) * -1) calc(var(--cc-space-5) * -1) var(--cc-space-6);
+}
+
+.progress-bar__inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.progress-bar__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--cc-space-2);
+  gap: var(--cc-space-4);
+}
+
+.progress-bar__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+}
+
+.progress-bar__count {
+  font-size: var(--cc-size-xs);
+  color: var(--cc-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-track {
+  height: 6px;
+  background: var(--cc-border);
+  border-radius: var(--cc-radius-xl);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cc-navy) 0%, var(--cc-navy-soft) 100%);
+  border-radius: var(--cc-radius-xl);
+  transition: width var(--cc-duration-slow) var(--cc-ease);
+  width: 0%;
+}
+
+/* MASTHEAD */
+.masthead {
+  margin-bottom: var(--cc-space-7);
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--cc-space-2);
+  font-size: var(--cc-size-xs); font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cc-gold-deep); margin-bottom: var(--cc-space-3);
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 2px;
+  background: var(--cc-gold); display: inline-block;
+}
+
+.masthead h1 {
+  font-size: var(--cc-size-3xl);
+  font-weight: var(--cc-weight-extra);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-4);
+}
+
+.masthead__lead {
+  font-size: var(--cc-size-md);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+}
+
+/* STEP */
+.step {
+  display: none;
+  animation: fadeIn var(--cc-duration-slow) var(--cc-ease);
+}
+
+.step[data-active="true"] { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--cc-space-3);
+}
+
+.step__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-bold);
+  line-height: var(--cc-leading-tight);
+  letter-spacing: -0.015em;
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-4);
+}
+
+.step__intro {
+  font-size: var(--cc-size-md);
+  line-height: var(--cc-leading-relaxed);
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: var(--cc-space-7);
+}
+
+/* QUESTIONS */
+.question {
+  margin-bottom: var(--cc-space-6);
+}
+
+.question__label {
+  display: block;
+  font-size: var(--cc-size-md);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-text);
+  line-height: var(--cc-leading-snug);
+  margin-bottom: var(--cc-space-4);
+}
+
+.scale-group {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--cc-space-2);
+}
+
+@media (max-width: 560px) {
+  .scale-group { gap: var(--cc-space-1); }
+}
+
+.scale-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--cc-space-3) var(--cc-space-2);
+  border: 2px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  background: var(--cc-surface);
+  text-align: center;
+  min-height: 72px;
+  position: relative;
+}
+
+.scale-option:hover {
+  border-color: var(--cc-navy-soft);
+  background: var(--cc-tint-navy);
+}
+
+.scale-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.scale-option:has(input:checked) {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.scale-option:has(input:focus-visible) {
+  outline: 2px solid var(--cc-gold-deep);
+  outline-offset: 2px;
+}
+
+.scale-option__number {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  line-height: 1;
+}
+
+.scale-option__label {
+  font-size: 0.6875rem;
+  color: var(--cc-text-muted);
+  margin-top: var(--cc-space-1);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* CALLOUTS */
+/* Callout - tinted editorial block with letter mark */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover {
+  background: #FFFFFF;
+}
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout--warning,
+.callout--alert {
+  background: #FEF3C7;
+  border-left-color: #B45309;
+}
+.callout--warning:hover,
+.callout--alert:hover { background: #FFFFFF; }
+
+.callout--success {
+  background: #D1FAE5;
+  border-left-color: #047857;
+}
+.callout--success:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+.callout--warning .callout__mark,
+.callout--alert .callout__mark {
+  background: #B45309;
+  color: #FEF3C7;
+}
+.callout--success .callout__mark {
+  background: #047857;
+  color: #D1FAE5;
+}
+
+.callout__body {
+  padding: 0;
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+.callout--warning .callout__title,
+.callout--alert .callout__title { color: #7A3A06; }
+.callout--success .callout__title { color: #065F46; }
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* BUTTONS */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--cc-space-2);
+  padding: var(--cc-space-3) var(--cc-space-5);
+  font-family: var(--cc-font);
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: var(--cc-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--cc-duration-fast) var(--cc-ease);
+  min-height: 48px;
+}
+
+.button--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+  box-shadow: var(--cc-shadow-sm);
+}
+.button--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-navy);
+}
+.button--secondary:hover {
+  background: var(--cc-tint-navy);
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.button--tertiary {
+  background: transparent;
+  color: var(--cc-text-muted);
+  border-color: transparent;
+}
+.button--tertiary:hover {
+  color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+}
+
+.button--gold-bright {
+  background: var(--cc-gold-bright);
+  color: var(--cc-navy);
+  border-color: var(--cc-gold-bright);
+  box-shadow: var(--cc-shadow-sm);
+  font-weight: var(--cc-weight-bold);
+}
+.button--gold-bright:hover {
+  background: #C49A52;
+  border-color: #C49A52;
+  transform: translateY(-1px);
+  box-shadow: var(--cc-shadow-md);
+}
+
+.button--lg {
+  padding: var(--cc-space-4) var(--cc-space-6);
+  font-size: var(--cc-size-base);
+  min-height: 56px;
+}
+
+.button:focus-visible { outline: none; box-shadow: var(--cc-focus-ring); }
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--cc-space-3);
+  margin-top: var(--cc-space-7);
+  padding-top: var(--cc-space-5);
+  border-top: 1px solid var(--cc-border);
+  flex-wrap: wrap;
+}
+
+.button-row__spacer { flex: 1; }
+
+/* REPORT */
+.report { animation: fadeIn var(--cc-duration-slow) var(--cc-ease); }
+
+.report__hero {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: var(--cc-radius-lg);
+  padding: var(--cc-space-7) var(--cc-space-6);
+  margin-bottom: var(--cc-space-6);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+}
+
+.report__hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.report__eyebrow {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: var(--cc-space-3);
+}
+
+.report__title {
+  font-size: var(--cc-size-2xl);
+  font-weight: var(--cc-weight-extra);
+  color: var(--cc-text-inverse);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-tight);
+}
+
+.report__subtitle {
+  font-size: var(--cc-size-md);
+  color: rgba(250, 250, 247, 0.9);
+  line-height: var(--cc-leading-relaxed);
+  max-width: 54ch;
+}
+
+.report-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius-md);
+  padding: var(--cc-space-6);
+  margin-bottom: var(--cc-space-5);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+.report-card--navy { border-left: 4px solid var(--cc-navy); }
+.report-card--gold { border-left: 4px solid var(--cc-gold); }
+
+.report-card__label {
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: var(--cc-space-2);
+}
+
+.report-card__title {
+  font-size: var(--cc-size-lg);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  margin-bottom: var(--cc-space-3);
+  line-height: var(--cc-leading-snug);
+}
+
+.report-card__body {
+  font-size: var(--cc-size-base);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+}
+
+.report-card__body p + p { margin-top: var(--cc-space-3); }
+
+/* BAR CHART */
+.profile-chart {
+  margin: var(--cc-space-5) 0;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 60px;
+  gap: var(--cc-space-4);
+  align-items: center;
+  padding: var(--cc-space-3) 0;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.profile-row:last-child { border-bottom: none; }
+
+@media (max-width: 560px) {
+  .profile-row {
+    grid-template-columns: 1fr 50px;
+    grid-template-rows: auto auto;
+    gap: var(--cc-space-1) var(--cc-space-3);
+  }
+  .profile-row__label { grid-column: 1 / 3; font-size: var(--cc-size-sm); }
+  .profile-row__bar { grid-column: 1 / 2; }
+  .profile-row__value { grid-column: 2 / 3; }
+}
+
+.profile-row__label {
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-semi);
+  color: var(--cc-navy);
+}
+
+.profile-row__bar-wrap {
+  height: 16px;
+  background: var(--cc-border);
+  border-radius: var(--cc-radius-xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-row__bar {
+  height: 100%;
+  border-radius: var(--cc-radius-xl);
+  transition: width var(--cc-duration-slow) var(--cc-ease);
+}
+
+.profile-row--primary .profile-row__bar {
+  background: linear-gradient(90deg, var(--cc-navy) 0%, var(--cc-navy-soft) 100%);
+}
+
+.profile-row--secondary .profile-row__bar {
+  background: var(--cc-gold);
+}
+
+.profile-row--muted .profile-row__bar {
+  background: var(--cc-border-strong);
+}
+
+.profile-row__value {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--cc-size-sm);
+  text-align: right;
+}
+
+.profile-row--muted .profile-row__value { color: var(--cc-text-muted); }
+
+/* PILLS */
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cc-space-2);
+  margin-top: var(--cc-space-3);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--cc-radius-xl);
+  font-size: var(--cc-size-xs);
+  font-weight: var(--cc-weight-semi);
+  letter-spacing: 0.02em;
+}
+
+.pill--navy { background: var(--cc-navy); color: var(--cc-text-inverse); }
+.pill--gold { background: var(--cc-tint-gold); color: var(--cc-gold-deep); border: 1px solid #E8D9B5; }
+.pill--outline { background: var(--cc-surface); color: var(--cc-navy); border: 1.5px solid var(--cc-navy); }
+
+/* Priority list */
+.priority-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.priority-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--cc-space-4);
+  padding: var(--cc-space-4) 0;
+  border-bottom: 1px solid var(--cc-border);
+  align-items: start;
+}
+
+.priority-item:first-child { padding-top: 0; }
+.priority-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.priority-number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: var(--cc-size-sm);
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-gold-deep);
+  line-height: 1.5;
+  text-align: center;
+  background: var(--cc-tint-gold);
+  border-radius: var(--cc-radius);
+  padding: 4px 0;
+}
+
+.priority-text {
+  font-size: var(--cc-size-base);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* Red flag section */
+.red-flag {
+  background: #FEF3C7;
+  border-left: 4px solid var(--cc-warning);
+  border-radius: var(--cc-radius);
+  padding: var(--cc-space-5);
+  margin-bottom: var(--cc-space-5);
+}
+
+.red-flag__title {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-warning);
+  margin-bottom: var(--cc-space-2);
+  font-size: var(--cc-size-sm);
+  letter-spacing: 0.02em;
+}
+
+.red-flag__text {
+  font-size: var(--cc-size-sm);
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+  margin: 0;
+}
+
+/* Subpatterns */
+.subpatterns {
+  margin-top: var(--cc-space-4);
+}
+
+.subpattern {
+  padding: var(--cc-space-3) var(--cc-space-4);
+  background: var(--cc-tint-navy);
+  border-radius: var(--cc-radius);
+  margin-bottom: var(--cc-space-3);
+  font-size: var(--cc-size-sm);
+}
+
+.subpattern:last-child { margin-bottom: 0; }
+
+.subpattern__label {
+  font-weight: var(--cc-weight-bold);
+  color: var(--cc-navy);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.subpattern__detail {
+  color: var(--cc-text-secondary);
+  line-height: var(--cc-leading-relaxed);
+}
+
+/* PRINT */
+@media print {
+  body { background: white; color: black; font-size: 10.5pt; }
+  .progress-bar, .button-row, .button { display: none !important; }
+  .step { display: block !important; page-break-after: always; }
+  .step:last-child { page-break-after: auto; }
+  .report__hero {
+    background: white !important;
+    color: black !important;
+    border: 2px solid var(--cc-navy) !important;
+  }
+  .report__title, .report__subtitle, .report__eyebrow { color: black !important; }
+  .report-card, .profile-row, .priority-item, .red-flag { box-shadow: none; page-break-inside: avoid; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="shell" id="main">
+
+  <div class="progress-bar" id="progressBar" role="region" aria-label="Diagnostic progress">
+    <div class="progress-bar__inner">
+      <div class="progress-bar__meta">
+        <span class="progress-bar__label" id="stepLabel">Welcome</span>
+        <span class="progress-bar__count" id="stepCount">Step 1 of 6</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" aria-label="Diagnostic progress">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 0: WELCOME -->
+  <section class="step" data-step="0" data-active="true" aria-labelledby="welcomeTitle">
+    <header class="masthead">
+      <div class="eyebrow">STAT Success Cohort</div>
+      <h1 id="welcomeTitle">Why you're failing, more specifically.</h1>
+      <p class="masthead__lead">
+        Most students who fail A&amp;P don't fail for one reason. They fail for a specific
+        combination of reasons, and the recovery path depends on which reasons dominate.
+        This diagnostic looks at four dimensions of academic failure and produces a profile
+        specific to you.
+      </p>
+    </header>
+
+    <div class="callout callout--info">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">i</span><p class="callout__title">What this diagnostic does</p></div><div class="callout__body"><p class="callout__text">
+          24 questions across 4 dimensions: how you spend time, how you study, what content
+          you understand, and what's happening emotionally. Takes about 8 to 10 minutes.
+          At the end, you'll get a profile showing your primary and secondary failure patterns,
+          specific sub-patterns within them, and the first actions most likely to matter.
+        </p></div></div>
+    </div>
+
+    <div class="callout callout--accent">
+      <div class="callout__body">
+        <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">How to answer</p></div><div class="callout__body"><p class="callout__text">
+          Be truthful, not aspirational. Rate how true each statement is right now, in your
+          current A&amp;P experience, not how you wish it was or how you plan to change.
+          The profile is only useful if the input is honest.
+        </p></div></div>
+    </div>
+
+    <div class="button-row">
+      <div class="button-row__spacer"></div>
+      <button class="button button--primary button--lg" data-action="next">
+        Begin diagnostic
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- STEPS 1-4: four dimensions, each with 6 questions -->
+  <!-- Steps are created dynamically by JS to keep this file manageable -->
+  <div id="questionSteps"></div>
+
+  <!-- STEP 5: REPORT -->
+  <section class="step" data-step="5" aria-labelledby="reportTitle">
+    <div class="report">
+      <div class="report__hero">
+        <div class="report__eyebrow">Your failure mode profile</div>
+        <h2 class="report__title" id="reportTitle">This is where the work lives.</h2>
+        <p class="report__subtitle">
+          The profile below reflects your current failure patterns. It will shift as you
+          address the dominant patterns. Most students find that fixing the top one or two
+          reveals a different pattern underneath, and that's expected.
+        </p>
+      </div>
+
+      <div class="report-card report-card--navy">
+        <div class="report-card__label">Your profile across four dimensions</div>
+        <h3 class="report-card__title">Failure mode breakdown</h3>
+        <div class="profile-chart" id="profileChart"></div>
+        <p class="report-card__body" style="margin-top: var(--cc-space-4);">
+          Each dimension shows what percent of the maximum possible score you reported on
+          statements in that category. Higher means more of a factor. The primary pattern
+          has the highest score; the secondary pattern is the next. Patterns with low scores
+          are not currently contributing much to your situation.
+        </p>
+      </div>
+
+      <div class="report-card report-card--gold">
+        <div class="report-card__label">Primary pattern</div>
+        <h3 class="report-card__title" id="primaryTitle">Primary</h3>
+        <div class="report-card__body" id="primaryBody"></div>
+        <div class="subpatterns" id="primarySubpatterns"></div>
+      </div>
+
+      <div class="report-card report-card--navy" id="secondaryCard" style="display: none;">
+        <div class="report-card__label">Secondary pattern</div>
+        <h3 class="report-card__title" id="secondaryTitle">Secondary</h3>
+        <div class="report-card__body" id="secondaryBody"></div>
+      </div>
+
+      <div id="redFlagsContainer"></div>
+
+      <div class="report-card report-card--gold">
+        <div class="report-card__label">Where to start</div>
+        <h3 class="report-card__title">Your first priorities</h3>
+        <ol class="priority-list" id="prioritiesList"></ol>
+      </div>
+
+      <div class="report-card report-card--navy">
+        <div class="report-card__label">What this means in recovery</div>
+        <h3 class="report-card__title">The bigger picture</h3>
+        <div class="report-card__body" id="bigPictureBody"></div>
+      </div>
+
+      <div class="callout callout--accent">
+        <div class="callout__body">
+          <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">Next step</p></div><div class="callout__body"><p class="callout__text">
+            This profile is diagnostic. The recovery is structural. STAT Success Cohort
+            runs an 8-week program built around addressing exactly these patterns through a
+            weekly cycle of status audits, team case discussions, and personal action plans.
+          </p></div></div>
+      </div>
+
+      <div class="button-row">
+        <button class="button button--secondary" onclick="window.print()">Print my profile</button>
+        <button class="button button--tertiary" id="retakeBtn" type="button">Retake diagnostic</button>
+        <button class="button button--gold-bright" id="downloadBtn" type="button">Download my profile</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// ==========================================================================
+// QUESTION BANK
+// ==========================================================================
+
+const DIMENSIONS = {
+  time: {
+    name: 'Time scarcity',
+    shortName: 'Time',
+    questions: [
+      { id: 'time_1', text: 'I run out of time to study A&P before every major assessment.' },
+      { id: 'time_2', text: 'Work, family, or health obligations take priority in ways I cannot control.', subpattern: 'external' },
+      { id: 'time_3', text: 'I know I need to study more, but I can\'t find the hours in my schedule.', subpattern: 'external' },
+      { id: 'time_4', text: 'I waste time on non-essential things when I could be studying.', subpattern: 'internal' },
+      { id: 'time_5', text: 'I start assignments late and run out of time to do them well.', subpattern: 'internal' },
+      { id: 'time_6', text: 'My week rarely goes how I plan it to go.' }
+    ]
+  },
+  method: {
+    name: 'Study method failure',
+    shortName: 'Method',
+    questions: [
+      { id: 'method_1', text: 'When I study, I mostly re-read notes or textbook sections.', subpattern: 'passive' },
+      { id: 'method_2', text: 'I highlight key terms and passages as I read.', subpattern: 'passive' },
+      { id: 'method_3', text: 'I make or use flashcards for vocabulary and definitions.', subpattern: 'passive' },
+      { id: 'method_4', text: 'I feel like I\'m studying, but the material doesn\'t stick.', subpattern: 'ineffective' },
+      { id: 'method_5', text: 'I wait until close to an exam to seriously study.', subpattern: 'procrastination' },
+      { id: 'method_6', text: 'I spend hours on one topic but can\'t explain it afterward.', subpattern: 'ineffective' }
+    ]
+  },
+  content: {
+    name: 'Content gaps',
+    shortName: 'Content',
+    questions: [
+      { id: 'content_1', text: 'I feel like I\'m missing foundation concepts from earlier units.', subpattern: 'foundation' },
+      { id: 'content_2', text: 'There are chapters or topics I skimmed that I\'m now paying for.', subpattern: 'foundation' },
+      { id: 'content_3', text: 'Even when I study, I don\'t understand the "why" of what I\'m learning.', subpattern: 'comprehension' },
+      { id: 'content_4', text: 'Terms blur together and I can\'t keep them straight.', subpattern: 'comprehension' },
+      { id: 'content_5', text: 'In lectures or exams, I feel like other students understand something I don\'t.' },
+      { id: 'content_6', text: 'I struggle to connect concepts across body systems or units.', subpattern: 'integration' }
+    ]
+  },
+  affect: {
+    name: 'Affective overload',
+    shortName: 'Affect',
+    questions: [
+      { id: 'affect_1', text: 'I feel panic or dread when I think about studying A&P.', subpattern: 'anxiety' },
+      { id: 'affect_2', text: 'I avoid studying even when I have time because it feels overwhelming.', subpattern: 'avoidance' },
+      { id: 'affect_3', text: 'When I get a bad grade, I struggle to open the gradebook for days.', subpattern: 'avoidance' },
+      { id: 'affect_4', text: 'I believe I\'m not smart enough for this material.', subpattern: 'shame' },
+      { id: 'affect_5', text: 'If I can\'t study perfectly, I often don\'t study at all.', subpattern: 'perfectionism' },
+      { id: 'affect_6', text: 'I feel ashamed about how far behind I am, and that shame makes it harder to catch up.', subpattern: 'shame' }
+    ]
+  }
+};
+
+const DIMENSION_ORDER = ['time', 'method', 'content', 'affect'];
+
+// ==========================================================================
+// PATTERN DESCRIPTIONS
+// ==========================================================================
+
+const PATTERN_DESCRIPTIONS = {
+  time: {
+    primary: `<p>Your dominant pattern is <strong>time scarcity</strong>. The bottleneck is not your effort or your intelligence; it's that the time available for A&P is not matching what A&P actually requires. This is one of the most common recovery patterns, and it has clear solutions.</p><p>Importantly, time scarcity comes in two flavors: <em>external</em>, where genuine obligations like work, family, or health genuinely limit your available time, and <em>internal</em>, where time exists but gets spent on other things. The solutions are different for each, which is why the diagnostic distinguished them.</p>`,
+    secondary: `<p>Time pressure is a meaningful factor. Even if it's not your primary pattern, addressing it will make the other recovery work easier. Look for ways to protect dedicated A&P hours in your week before trying to change how you use those hours.</p>`,
+    priorities: {
+      external: [
+        'Audit your actual time in a week. Write down what you do hour by hour for 3 days. The data usually surprises you.',
+        'Identify one activity you can cut or reduce, even temporarily. A semester is finite.',
+        'Protect A&P study time as non-negotiable appointments in your calendar, not aspirational goals.',
+        'Have honest conversations with work or family about what support you need for the next few weeks.'
+      ],
+      internal: [
+        'Schedule A&P study in specific blocks tied to your day\'s anchor events (after dinner, before class, etc.).',
+        'Use the 2-minute rule: commit to just starting, for 2 minutes. Momentum follows.',
+        'Track what you actually do during "study time" for 3 days. Distinguish studying from studying-adjacent activities.',
+        'Remove one attention drain from your study environment this week. Phone in another room, notifications off, one tab only.'
+      ],
+      mixed: [
+        'Audit your actual time in a week. Identify both structural constraints and discretionary drains.',
+        'Protect dedicated A&P hours in your calendar, then work to use them well.',
+        'Schedule in specific blocks tied to existing routines rather than treating studying as something that happens when you have time.',
+        'Track what you actually do during study time for 3 days. The data usually reveals both problems.'
+      ]
+    }
+  },
+  method: {
+    primary: `<p>Your dominant pattern is <strong>study method failure</strong>. You are working, but the methods you're using aren't the ones that produce learning for high-volume science material. This is actually good news. It means your effort is real. We just need to redirect it to methods that work.</p><p>Re-reading, highlighting, and passive flashcard memorization are the methods most correlated with poor A&P performance, yet they're what struggling students reach for because they feel like studying. Effective methods include retrieval practice, spaced repetition, structure-function linking, and teaching back.</p>`,
+    secondary: `<p>Your methods are a meaningful contributor. Even small shifts (from re-reading to retrieval practice, for example) can produce outsized results because you're replacing ineffective effort with effective effort.</p>`,
+    priorities: {
+      passive: [
+        'Stop re-reading and highlighting immediately. Close the book and try to explain what you just read from memory.',
+        'Convert every study session to retrieval practice: read a little, then cover and recite. If you can\'t recite it, you didn\'t learn it yet.',
+        'Replace flashcard memorization with application: for every term, write what it does, not just what it is.',
+        'Build concept maps that show structure-function relationships. A&P rewards connections more than facts.'
+      ],
+      procrastination: [
+        'Stop studying in marathon sessions. Short daily sessions (30-45 minutes) beat weekend cramming.',
+        'Schedule study in your calendar for the day topics are covered in class, not the week before exams.',
+        'Commit to a 2-minute rule: just start. The rest becomes easier once you\'re moving.',
+        'Use the cost of procrastination: list what you get by waiting (temporary relief) vs. what you lose (mastery, grade, time).'
+      ],
+      ineffective: [
+        'Test yourself regularly. If you can\'t explain it out loud without notes, you don\'t know it yet.',
+        'Teach concepts to someone (or to a camera, or to the wall). Teaching surfaces gaps fast.',
+        'Use spaced repetition: review day 1, day 3, day 7, day 14. Revisit old content even when new content is piling up.',
+        'Connect every new concept to two things you already know. Isolated facts don\'t stick; linked concepts do.'
+      ]
+    }
+  },
+  content: {
+    primary: `<p>Your dominant pattern is <strong>content gaps</strong>. You're trying to learn current material on top of missing foundation from earlier units or missing comprehension of core concepts. This is the most frustrating pattern because it feels like working harder should fix it, and it doesn't.</p><p>The fix is selective foundation repair: identifying which prerequisite concepts are load-bearing for what you're learning now, and going back for those. Not everything, just what the current material depends on.</p>`,
+    secondary: `<p>Content gaps are contributing to your situation. As you address your primary pattern, expect content gaps to become more visible. Repair them as they surface, one concept at a time, rather than trying to re-learn everything.</p>`,
+    priorities: {
+      foundation: [
+        'Name the concept you most avoided earlier in the semester. That\'s your first foundation gap.',
+        'Spend one focused hour with that concept before returning to current material.',
+        'Ask your instructor or check the textbook for the concepts current material depends on. The answer is usually shorter than you fear.',
+        'Accept that some earlier content genuinely doesn\'t matter anymore. Stop trying to re-learn everything.'
+      ],
+      comprehension: [
+        'For every concept, ask "why does this matter?" and "what goes wrong without this?" A&P is a system, not a list.',
+        'When terms blur, draw them out. Visual connections stick better than memorized definitions.',
+        'Find one video or explanation per difficult concept that makes it click. Good educators exist online; generic lecture recordings are not your only option.',
+        'Explain the concept to someone who doesn\'t know A&P. If you can\'t, you don\'t yet understand it.'
+      ],
+      integration: [
+        'Build system-to-system diagrams: how does the cardiovascular system connect to the respiratory system? Where do they hand off?',
+        'For every concept, name one body system it affects and one system that affects it.',
+        'Practice clinical scenarios. They force integration because real patients don\'t have isolated problems.',
+        'Review earlier units through the lens of current material. What you couldn\'t see before becomes visible with new context.'
+      ]
+    }
+  },
+  affect: {
+    primary: `<p>Your dominant pattern is <strong>affective overload</strong>. The biggest obstacle to your studying is not the content or the time, it's the weight of panic, avoidance, shame, or perfectionism that surrounds studying. This is real, it is not weakness, and the program is built to address it.</p><p>The work here is as much about reducing the emotional charge around studying as it is about building study skills. Both happen in parallel, and you will find that as one improves, the other becomes easier.</p>`,
+    secondary: `<p>Affective patterns are contributing meaningfully to your situation. Even while you work on your primary pattern, pay attention to the emotional weight you bring to studying. Small adjustments in how you approach a study session can reduce the friction significantly.</p>`,
+    priorities: {
+      anxiety: [
+        'Start with the smallest possible study session: 10 minutes, one concept, no pressure.',
+        'When panic rises, name it out loud: "I am panicking about studying." Naming reduces grip.',
+        'Study with someone present if you can, even virtually. Co-presence eases anxiety without requiring conversation.',
+        'If anxiety interferes with daily life, please let someone know. A therapist can help where study skills cannot.'
+      ],
+      avoidance: [
+        'Commit to showing up, not to performing. 10 minutes of imperfect study beats 0 minutes of perfect.',
+        'Notice what you do instead of studying. That pattern is data, not failure.',
+        'Remove one avoidance mechanism (phone, specific app, favorite distraction) for a 2-week experiment.',
+        'When you find yourself avoiding, sit with the feeling for 60 seconds before deciding what to do. The urge usually passes.'
+      ],
+      shame: [
+        'Stop calling yourself stupid, silently or out loud. The story you tell yourself about your intelligence matters.',
+        'Remember that being in recovery is not the same as being broken. Thousands of students have been here before you and recovered.',
+        'Talk to someone. Shame grows in silence and shrinks in conversation.',
+        'Separate "I got a bad grade" from "I am bad at this." The first is a fact. The second is a story that interferes with recovery.'
+      ],
+      perfectionism: [
+        'Aim for a B-minus on your first assessment after today. Perfection is the enemy of consistent effort.',
+        'Set a timer for 30 minutes. When it rings, stop, even if you\'re mid-sentence. Practice incompletion.',
+        'Submit assignments before they\'re ready. The skill of "good enough" is what passes A&P. Mastery comes later.',
+        'Notice when perfectionism keeps you from starting. Ask: what\'s the smallest imperfect thing I could do right now?'
+      ]
+    }
+  }
+};
+
+// ==========================================================================
+// STATE
+// ==========================================================================
+
+const STORAGE_KEY = 'mmcc_failure_diagnostic_v1';
+
+const state = {
+  currentStep: 0,
+  answers: {}
+};
+
+const STEP_LABELS = [
+  'Welcome',
+  'Time and schedule',
+  'Study methods',
+  'Content understanding',
+  'Emotional patterns',
+  'Your profile'
+];
+
+const TOTAL_STEPS = 6;
+
+// ==========================================================================
+// BUILD QUESTION STEPS
+// ==========================================================================
+
+function buildQuestionSteps() {
+  const container = document.getElementById('questionSteps');
+  const phases = [
+    { dimKey: 'time', stepNum: 1, title: 'How you spend time', intro: 'Statements about how your time and schedule relate to your A&P studying.' },
+    { dimKey: 'method', stepNum: 2, title: 'How you study', intro: 'Statements about the methods you use when you\'re studying.' },
+    { dimKey: 'content', stepNum: 3, title: 'What you understand', intro: 'Statements about your grasp of the A&P content itself.' },
+    { dimKey: 'affect', stepNum: 4, title: 'How you feel', intro: 'Statements about the emotional experience of studying A&P.' }
+  ];
+
+  phases.forEach(phase => {
+    const section = document.createElement('section');
+    section.className = 'step';
+    section.dataset.step = phase.stepNum;
+    section.setAttribute('aria-labelledby', `phase${phase.stepNum}Title`);
+
+    const dim = DIMENSIONS[phase.dimKey];
+
+    let questionsHtml = dim.questions.map((q, i) => `
+      <div class="question">
+        <label class="question__label" id="${q.id}_label">${escapeHtml(q.text)}</label>
+        <div class="scale-group" role="radiogroup" aria-labelledby="${q.id}_label">
+          ${[1,2,3,4,5].map(n => `
+            <label class="scale-option">
+              <input type="radio" name="${q.id}" value="${n}">
+              <span class="scale-option__number">${n}</span>
+              ${n === 1 ? '<span class="scale-option__label">Not true</span>' : ''}
+              ${n === 5 ? '<span class="scale-option__label">Very true</span>' : ''}
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    section.innerHTML = `
+      <div class="step__number">Section ${String(phase.stepNum).padStart(2, '0')} of 04</div>
+      <h2 class="step__title" id="phase${phase.stepNum}Title">${escapeHtml(phase.title)}</h2>
+      <p class="step__intro">${escapeHtml(phase.intro)}</p>
+
+      <div class="callout callout--info" style="margin-bottom: var(--cc-space-7);">
+        <div class="callout__body">
+          <p class="callout__text">
+            <strong>Rate each statement:</strong> how true is it for you right now? 1 means not true at all, 5 means very true.
+          </p></div></div>
+      </div>
+
+      ${questionsHtml}
+
+      <div class="button-row">
+        <button class="button button--tertiary" data-action="prev">← Back</button>
+        <div class="button-row__spacer"></div>
+        <button class="button button--primary" data-action="next">Continue →</button>
+      </div>
+    `;
+
+    container.appendChild(section);
+  });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ==========================================================================
+// STATE PERSISTENCE
+// ==========================================================================
+
+function saveState() {
+  try {
+    const formData = collectFormData();
+    const payload = {
+      currentStep: state.currentStep,
+      answers: formData
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  } catch (e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const payload = JSON.parse(raw);
+    state.answers = payload.answers || {};
+
+    // Restore form values
+    Object.entries(state.answers).forEach(([name, value]) => {
+      const elements = document.querySelectorAll(`[name="${name}"]`);
+      elements.forEach(el => {
+        if (el.type === 'radio' && el.value === value) el.checked = true;
+      });
+    });
+
+    // Auto-resume if they were in the middle
+    if (payload.currentStep && payload.currentStep > 0 && payload.currentStep < TOTAL_STEPS - 1) {
+      goToStep(payload.currentStep);
+    }
+  } catch (e) {}
+}
+
+function clearSaved() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+}
+
+function collectFormData() {
+  const data = {};
+  const radios = document.querySelectorAll('input[type="radio"]');
+  radios.forEach(el => {
+    if (el.checked) data[el.name] = el.value;
+  });
+  return data;
+}
+
+// ==========================================================================
+// NAVIGATION
+// ==========================================================================
+
+function goToStep(stepIndex) {
+  if (stepIndex < 0 || stepIndex >= TOTAL_STEPS) return;
+
+  document.querySelectorAll('.step').forEach(s => s.setAttribute('data-active', 'false'));
+  const targetStep = document.querySelector(`.step[data-step="${stepIndex}"]`);
+
+  if (targetStep) {
+    targetStep.setAttribute('data-active', 'true');
+    state.currentStep = stepIndex;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const heading = targetStep.querySelector('h1, h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      setTimeout(() => heading.focus(), 100);
+    }
+
+    saveState();
+  }
+}
+
+function updateProgress() {
+  const percent = ((state.currentStep) / (TOTAL_STEPS - 1)) * 100;
+  document.getElementById('progressFill').style.width = percent + '%';
+  document.getElementById('stepCount').textContent = `Step ${state.currentStep + 1} of ${TOTAL_STEPS}`;
+  document.getElementById('stepLabel').textContent = STEP_LABELS[state.currentStep] || '';
+  document.querySelector('.progress-track').setAttribute('aria-valuenow', Math.round(percent));
+}
+
+// ==========================================================================
+// SCORING
+// ==========================================================================
+
+function computeScores(answers) {
+  const scores = { time: 0, method: 0, content: 0, affect: 0 };
+  const subScores = {
+    time: { external: 0, internal: 0 },
+    method: { passive: 0, procrastination: 0, ineffective: 0 },
+    content: { foundation: 0, comprehension: 0, integration: 0 },
+    affect: { anxiety: 0, avoidance: 0, shame: 0, perfectionism: 0 }
+  };
+  const maxPossible = { time: 0, method: 0, content: 0, affect: 0 };
+  const subMax = {
+    time: { external: 0, internal: 0 },
+    method: { passive: 0, procrastination: 0, ineffective: 0 },
+    content: { foundation: 0, comprehension: 0, integration: 0 },
+    affect: { anxiety: 0, avoidance: 0, shame: 0, perfectionism: 0 }
+  };
+
+  Object.keys(DIMENSIONS).forEach(dimKey => {
+    const questions = DIMENSIONS[dimKey].questions;
+    questions.forEach(q => {
+      maxPossible[dimKey] += 5;
+      if (q.subpattern) subMax[dimKey][q.subpattern] += 5;
+      const val = parseInt(answers[q.id]);
+      if (!isNaN(val)) {
+        scores[dimKey] += val;
+        if (q.subpattern) subScores[dimKey][q.subpattern] += val;
+      }
+    });
+  });
+
+  // Normalize to percentages
+  const percents = {};
+  Object.keys(scores).forEach(k => {
+    percents[k] = maxPossible[k] > 0 ? (scores[k] / maxPossible[k]) * 100 : 0;
+  });
+
+  const subPercents = {};
+  Object.keys(subScores).forEach(dim => {
+    subPercents[dim] = {};
+    Object.keys(subScores[dim]).forEach(sub => {
+      subPercents[dim][sub] = subMax[dim][sub] > 0 ? (subScores[dim][sub] / subMax[dim][sub]) * 100 : 0;
+    });
+  });
+
+  // Sort to find primary and secondary
+  const sorted = Object.entries(percents).sort((a, b) => b[1] - a[1]);
+
+  return {
+    scores,
+    percents,
+    subPercents,
+    primary: sorted[0][0],
+    primaryScore: sorted[0][1],
+    secondary: sorted[1][0],
+    secondaryScore: sorted[1][1]
+  };
+}
+
+// ==========================================================================
+// REPORT GENERATION
+// ==========================================================================
+
+function generateReport() {
+  const answers = collectFormData();
+  const result = computeScores(answers);
+
+  // Chart
+  const chartContainer = document.getElementById('profileChart');
+  chartContainer.innerHTML = DIMENSION_ORDER.map(dim => {
+    const pct = result.percents[dim];
+    let cls = 'profile-row--muted';
+    if (dim === result.primary) cls = 'profile-row--primary';
+    else if (dim === result.secondary) cls = 'profile-row--secondary';
+
+    return `
+      <div class="profile-row ${cls}">
+        <span class="profile-row__label">${escapeHtml(DIMENSIONS[dim].name)}</span>
+        <div class="profile-row__bar-wrap">
+          <div class="profile-row__bar" style="width: ${pct}%"></div>
+        </div>
+        <span class="profile-row__value">${Math.round(pct)}%</span>
+      </div>
+    `;
+  }).join('');
+
+  // Primary pattern
+  document.getElementById('primaryTitle').textContent = DIMENSIONS[result.primary].name;
+  document.getElementById('primaryBody').innerHTML = PATTERN_DESCRIPTIONS[result.primary].primary;
+
+  // Sub-patterns within primary
+  renderSubpatterns(result.primary, result.subPercents[result.primary]);
+
+  // Secondary pattern (only if meaningfully present)
+  if (result.secondaryScore >= 40) {
+    document.getElementById('secondaryCard').style.display = 'block';
+    document.getElementById('secondaryTitle').textContent = DIMENSIONS[result.secondary].name;
+    document.getElementById('secondaryBody').innerHTML = PATTERN_DESCRIPTIONS[result.secondary].secondary;
+  } else {
+    document.getElementById('secondaryCard').style.display = 'none';
+  }
+
+  // Red flags
+  renderRedFlags(answers, result);
+
+  // Priorities
+  renderPriorities(result);
+
+  // Big picture
+  renderBigPicture(result);
+}
+
+function renderSubpatterns(dimKey, subPcts) {
+  const container = document.getElementById('primarySubpatterns');
+  const subLabels = {
+    time: {
+      external: 'External constraints',
+      internal: 'Internal disorganization'
+    },
+    method: {
+      passive: 'Passive learning methods',
+      procrastination: 'Procrastination and cramming',
+      ineffective: 'Ineffective study strategies'
+    },
+    content: {
+      foundation: 'Foundation gaps from earlier units',
+      comprehension: 'Comprehension gaps',
+      integration: 'Cross-system integration'
+    },
+    affect: {
+      anxiety: 'Performance anxiety',
+      avoidance: 'Avoidance and withdrawal',
+      shame: 'Shame and self-judgment',
+      perfectionism: 'Perfectionism paralysis'
+    }
+  };
+
+  const subDetails = {
+    time: {
+      external: 'Your time is constrained by real obligations outside A&P. This is not a motivation issue; it\'s a structural one.',
+      internal: 'Time exists in your week, but it gets spent on things other than A&P. The work is on how you allocate time, not on finding more of it.'
+    },
+    method: {
+      passive: 'You rely on re-reading, highlighting, and passive flashcards. These feel like studying but produce weak learning.',
+      procrastination: 'You put off studying until close to deadlines, then cram. Cramming doesn\'t build the foundation A&P requires.',
+      ineffective: 'You put in time but the material doesn\'t stick. You need different methods, not more hours.'
+    },
+    content: {
+      foundation: 'You have meaningful gaps in earlier A&P content that are making current material harder than it should be.',
+      comprehension: 'You can memorize terms but don\'t understand the underlying system. A&P rewards understanding over memorization.',
+      integration: 'You struggle to connect concepts across body systems. This limits you on anything beyond single-concept questions.'
+    },
+    affect: {
+      anxiety: 'Panic and dread surround your studying. These symptoms are real and can be addressed directly.',
+      avoidance: 'You avoid A&P work even when you have time. This is a protective behavior that also prevents progress.',
+      shame: 'You carry a story about not being smart enough. That story interferes with the recovery work.',
+      perfectionism: 'You struggle to start or finish work because of how it has to be. Perfect is the enemy of done and good.'
+    }
+  };
+
+  const items = Object.entries(subPcts)
+    .filter(([_, pct]) => pct >= 40)
+    .sort((a, b) => b[1] - a[1]);
+
+  if (items.length === 0) {
+    container.innerHTML = `<p style="font-size: var(--cc-size-sm); color: var(--cc-text-muted); margin-top: var(--cc-space-3);">No specific sub-patterns stand out. The primary pattern is broad rather than focused.</p>`;
+    return;
+  }
+
+  container.innerHTML = `
+    <div style="font-size: var(--cc-size-xs); font-weight: var(--cc-weight-bold); letter-spacing: 0.1em; text-transform: uppercase; color: var(--cc-gold-deep); margin-bottom: var(--cc-space-3);">Specific sub-patterns</div>
+    ${items.map(([sub, pct]) => `
+      <div class="subpattern">
+        <span class="subpattern__label">${escapeHtml(subLabels[dimKey][sub])} (${Math.round(pct)}%)</span>
+        <span class="subpattern__detail">${escapeHtml(subDetails[dimKey][sub])}</span>
+      </div>
+    `).join('')}
+  `;
+}
+
+function renderRedFlags(answers, result) {
+  const container = document.getElementById('redFlagsContainer');
+  const flags = [];
+
+  // High affect even when not primary
+  if (result.primary !== 'affect' && result.percents.affect >= 60) {
+    flags.push({
+      title: 'Significant emotional load',
+      text: 'Even though emotional factors aren\'t your primary pattern, they\'re meaningfully present. Don\'t underestimate how much cleaner your other work becomes when the emotional weight is lighter.'
+    });
+  }
+
+  // Specific high-concern item: panic or dread
+  if (parseInt(answers.affect_1) >= 4) {
+    flags.push({
+      title: 'Panic or dread specifically',
+      text: 'You reported strong panic or dread around A&P. This is common in recovery, and it\'s addressable. But if this feeling extends beyond A&P to other areas of life, or if it\'s interfering with daily functioning, please reach out to a mental health professional in addition to this program.'
+    });
+  }
+
+  // Shame at high level
+  if (parseInt(answers.affect_6) >= 4 || parseInt(answers.affect_4) >= 4) {
+    flags.push({
+      title: 'High shame or self-judgment',
+      text: 'You reported significant shame or "not smart enough" thoughts. Recovery is very difficult when these stories run in the background. The work of addressing them is as important as any study skill.'
+    });
+  }
+
+  // Severe foundation gaps plus current struggles
+  if (result.percents.content >= 60 && parseInt(answers.content_5) >= 4) {
+    flags.push({
+      title: 'Compounding content gaps',
+      text: 'Your content gaps are significant and you\'re aware of falling behind other students. This combination is recoverable but requires careful selective repair, not just "more studying." Identify what\'s load-bearing, address that, skip the rest.'
+    });
+  }
+
+  if (flags.length === 0) return;
+
+  container.innerHTML = flags.map(f => `
+    <div class="red-flag">
+      <div class="red-flag__title">⚠ ${escapeHtml(f.title)}</div>
+      <p class="red-flag__text">${escapeHtml(f.text)}</p>
+    </div>
+  `).join('');
+}
+
+function renderPriorities(result) {
+  const container = document.getElementById('prioritiesList');
+  const primaryPattern = PATTERN_DESCRIPTIONS[result.primary];
+  const subs = result.subPercents[result.primary];
+
+  // Find the strongest sub-pattern
+  const sortedSubs = Object.entries(subs).sort((a, b) => b[1] - a[1]);
+  const topSub = sortedSubs[0];
+
+  let priorities;
+  if (result.primary === 'time') {
+    // Decide external vs internal vs mixed based on relative scores
+    const ext = subs.external || 0;
+    const int = subs.internal || 0;
+    if (Math.abs(ext - int) < 15) priorities = primaryPattern.priorities.mixed;
+    else if (ext > int) priorities = primaryPattern.priorities.external;
+    else priorities = primaryPattern.priorities.internal;
+  } else if (primaryPattern.priorities[topSub[0]]) {
+    priorities = primaryPattern.priorities[topSub[0]];
+  } else {
+    // Fallback: just take any priority set
+    priorities = Object.values(primaryPattern.priorities)[0];
+  }
+
+  container.innerHTML = priorities.map((p, i) => `
+    <li class="priority-item">
+      <span class="priority-number">${String(i + 1).padStart(2, '0')}</span>
+      <span class="priority-text">${escapeHtml(p)}</span>
+    </li>
+  `).join('');
+}
+
+function renderBigPicture(result) {
+  const body = document.getElementById('bigPictureBody');
+  const primary = DIMENSIONS[result.primary].name;
+
+  let text = `<p>Your profile shows that <strong>${primary.toLowerCase()}</strong> is currently the biggest factor in your A&P struggle. `;
+
+  if (result.primaryScore >= 75) {
+    text += `And it's dominant: your score in this dimension is high enough that addressing it will likely produce noticeable results within a few weeks.</p>`;
+  } else if (result.primaryScore >= 55) {
+    text += `It's a meaningful factor, though not overwhelming. Addressing it will make other recovery work easier even if it doesn't solve everything alone.</p>`;
+  } else {
+    text += `But no single dimension is dominant. This is actually common in students whose situation is more about accumulated small issues than one big problem. The fix is structural: the weekly CODE cycle of STAT Success Cohort addresses all four dimensions in parallel.</p>`;
+  }
+
+  if (result.secondaryScore >= 50) {
+    text += `<p>Your secondary pattern is <strong>${DIMENSIONS[result.secondary].name.toLowerCase()}</strong>. Don't try to fix everything at once, but keep this pattern in mind as you work on the primary one. Sometimes what looks like a primary pattern fading is actually the secondary pattern becoming more visible.</p>`;
+  }
+
+  text += `<p>Failure mode profiles shift as students work on them. If you retake this diagnostic in 3 weeks, expect the picture to change. The goal isn't to "solve" your primary pattern once; it's to learn how your patterns move as you apply recovery strategies. That awareness is what recovery actually is.</p>`;
+
+  body.innerHTML = text;
+}
+
+// ==========================================================================
+// EVENTS
+// ==========================================================================
+
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+
+  const action = target.dataset.action;
+
+  if (action === 'next') {
+    if (state.currentStep === TOTAL_STEPS - 2) {
+      // Last question step, generate report
+      generateReport();
+      goToStep(TOTAL_STEPS - 1);
+      clearSaved();
+    } else {
+      goToStep(state.currentStep + 1);
+    }
+  } else if (action === 'prev') {
+    goToStep(state.currentStep - 1);
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.matches('input[type="radio"]')) {
+    saveState();
+  }
+});
+
+// Keyboard nav for scale groups
+document.addEventListener('keydown', (e) => {
+  if (!e.target.matches('.scale-option input[type="radio"]')) return;
+  const group = e.target.closest('.scale-group');
+  if (!group) return;
+  const options = group.querySelectorAll('input[type="radio"]');
+  const idx = Array.from(options).indexOf(e.target);
+
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    const next = options[(idx + 1) % options.length];
+    next.checked = true;
+    next.focus();
+    saveState();
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const prev = options[(idx - 1 + options.length) % options.length];
+    prev.checked = true;
+    prev.focus();
+    saveState();
+  }
+});
+
+// Retake
+document.getElementById('retakeBtn').addEventListener('click', () => {
+  if (confirm('Clear your answers and start over?')) {
+    clearSaved();
+    // Uncheck all radios
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    state.answers = {};
+    goToStep(0);
+  }
+});
+
+// Download
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const answers = collectFormData();
+  const result = computeScores(answers);
+  const payload = {
+    completedAt: new Date().toISOString(),
+    answers,
+    profile: {
+      percentsByDimension: result.percents,
+      subPatternPercents: result.subPercents,
+      primary: result.primary,
+      primaryScore: result.primaryScore,
+      secondary: result.secondary,
+      secondaryScore: result.secondaryScore
+    }
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `failure_mode_diagnostic_${new Date().toISOString().slice(0,10)}.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+});
+
+// ==========================================================================
+// INIT
+// ==========================================================================
+
+buildQuestionSteps();
+loadState();
+updateProgress();
+
+// IFRAME HEIGHT SENDER
+(function() {
+  const frameId = window.name || 'mmcc_failure_diagnostic';
+  function sendHeight() {
+    const height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

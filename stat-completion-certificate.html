@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STAT Success Cohort | Program Completion Certificate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-deep: #061328;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8C6B33;
+  --cc-gold-bright: #D4A962;
+  --cc-text: #1A2B47;
+  --cc-text-secondary: #4A5870;
+  --cc-text-muted: #6B7B95;
+  --cc-text-inverse: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-bg: #F8F8F4;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background: var(--cc-bg);
+  color: var(--cc-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+/* Pre-print masthead lives outside the cert and tells the user what to do */
+.cert-masthead {
+  margin-bottom: 1.5rem;
+}
+.cert-masthead .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+.cert-masthead h1 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.cert-masthead p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--cc-text-secondary);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* Personalize controls */
+.cert-controls {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 600px) {
+  .cert-controls { grid-template-columns: 1fr; }
+}
+.cert-controls__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.375rem;
+}
+.cert-controls input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--cc-border);
+  border-radius: 8px;
+  background: var(--cc-surface);
+  color: var(--cc-text);
+}
+.cert-controls input:focus {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+  border-color: var(--cc-gold);
+}
+
+/* The certificate itself */
+.certificate {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 4px;
+  padding: 3.5rem 2.75rem;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(10, 31, 61, 0.06), 0 16px 40px rgba(10, 31, 61, 0.10);
+  margin-bottom: 2rem;
+}
+
+/* Gold double-line border, drawn with two box-shadow rings on a pseudo */
+.certificate::before {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  border: 2px solid var(--cc-gold);
+  pointer-events: none;
+}
+.certificate::after {
+  content: "";
+  position: absolute;
+  top: 1.625rem;
+  left: 1.625rem;
+  right: 1.625rem;
+  bottom: 1.625rem;
+  border: 1px solid var(--cc-gold);
+  pointer-events: none;
+}
+
+.cert-ornament {
+  font-size: 1.25rem;
+  color: var(--cc-gold);
+  letter-spacing: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.cert-program {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 2rem;
+}
+
+.cert-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--cc-navy);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+.cert-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  letter-spacing: 0.02em;
+  margin-bottom: 2.5rem;
+}
+
+.cert-presented-to {
+  font-size: 0.875rem;
+  color: var(--cc-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.cert-name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  min-height: 2.7rem;
+  word-break: break-word;
+}
+.cert-name--placeholder {
+  color: var(--cc-text-muted);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* gold rule between name and body */
+.cert-rule {
+  width: 5rem;
+  height: 2px;
+  background: var(--cc-gold);
+  margin: 0 auto 1.75rem;
+}
+
+.cert-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 52ch;
+  margin: 0 auto 2.5rem;
+}
+.cert-body strong {
+  color: var(--cc-navy);
+  font-weight: 600;
+}
+
+/* Bottom row */
+.cert-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--cc-border);
+}
+.cert-footer__col {
+  text-align: center;
+}
+.cert-footer__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.5rem;
+}
+.cert-footer__value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  border-top: 1px solid var(--cc-text);
+  padding-top: 0.625rem;
+  min-height: 2.5rem;
+}
+.cert-footer__signature {
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--cc-navy);
+}
+.cert-footer__sublabel {
+  font-size: 0.75rem;
+  color: var(--cc-text-muted);
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+/* Action buttons */
+.cert-actions {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.cert-btn {
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cert-btn--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+}
+.cert-btn--primary:hover {
+  background: var(--cc-navy-deep);
+  border-color: var(--cc-navy-deep);
+}
+.cert-btn--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-border);
+}
+.cert-btn--secondary:hover {
+  background: var(--cc-tint-navy);
+  border-color: var(--cc-navy);
+}
+.cert-btn:focus-visible {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+}
+
+/* Print */
+@media print {
+  @page {
+    size: letter landscape;
+    margin: 0.5in;
+  }
+  body { background: white !important; }
+  .shell { padding: 0 !important; max-width: none; }
+  .cert-masthead, .cert-controls, .cert-actions { display: none !important; }
+  .certificate {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 2.5rem 3rem !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="cert-masthead">
+    <div class="eyebrow">STAT Success Cohort · Completion</div>
+    <h1>Your program completion certificate.</h1>
+    <p>Enter your name and the date you completed the program below. The certificate updates as you type. Print to letter paper, landscape orientation, for the cleanest result.</p>
+  </div>
+
+  <div class="cert-controls">
+    <div>
+      <label class="cert-controls__label" for="studentName">Your name (as you want it on the certificate)</label>
+      <input type="text" id="studentName" placeholder="First Last" autocomplete="name">
+    </div>
+    <div>
+      <label class="cert-controls__label" for="completionDate">Date completed</label>
+      <input type="text" id="completionDate" placeholder="e.g., May 12, 2026">
+    </div>
+  </div>
+
+  <div class="certificate" role="document" aria-label="Program completion certificate">
+
+    <div class="cert-ornament" aria-hidden="true">&#9670;&#9670;&#9670;</div>
+
+    <div class="cert-program">STAT Success Cohort</div>
+
+    <div class="cert-title">Certificate</div>
+    <div class="cert-subtitle">of Completion</div>
+
+    <div class="cert-presented-to">Presented to</div>
+    <div class="cert-name cert-name--placeholder" id="certName">[ Your name ]</div>
+
+    <div class="cert-rule" aria-hidden="true"></div>
+
+    <p class="cert-body">
+      For successful completion of the eight-week <strong>STAT Success Cohort</strong>, an academic recovery program for health science students experiencing critical academic difficulty. The work of recovery has been done. The cycle is yours.
+    </p>
+
+    <div class="cert-footer">
+      <div class="cert-footer__col">
+        <div class="cert-footer__label">Date completed</div>
+        <div class="cert-footer__value" id="certDate">&nbsp;</div>
+      </div>
+      <div class="cert-footer__col">
+        <div class="cert-footer__label">Program facilitator</div>
+        <div class="cert-footer__value">
+          <span class="cert-footer__signature">Dr. Sharilyn Rennie</span>
+          <div class="cert-footer__sublabel">MedMasters Collaborative</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cert-actions">
+    <button type="button" class="cert-btn cert-btn--secondary" id="clearBtn">Clear</button>
+    <button type="button" class="cert-btn cert-btn--primary" id="printBtn">Print certificate</button>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var STORAGE_KEY = 'stat_certificate_v1';
+  var nameInput = document.getElementById('studentName');
+  var dateInput = document.getElementById('completionDate');
+  var certName = document.getElementById('certName');
+  var certDate = document.getElementById('certDate');
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var p = JSON.parse(raw);
+      if (typeof p.name === 'string') nameInput.value = p.name;
+      if (typeof p.date === 'string') dateInput.value = p.date;
+    } catch (e) {}
+  }
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        name: nameInput.value,
+        date: dateInput.value
+      }));
+    } catch (e) {}
+  }
+
+  function render() {
+    var n = nameInput.value.trim();
+    if (n) {
+      certName.textContent = n;
+      certName.classList.remove('cert-name--placeholder');
+    } else {
+      certName.textContent = '[ Your name ]';
+      certName.classList.add('cert-name--placeholder');
+    }
+    var d = dateInput.value.trim();
+    certDate.textContent = d || '\u00A0';
+  }
+
+  nameInput.addEventListener('input', function() { saveState(); render(); });
+  dateInput.addEventListener('input', function() { saveState(); render(); });
+
+  document.getElementById('printBtn').addEventListener('click', function() {
+    setTimeout(function() { window.print(); }, 100);
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', function() {
+    if (!confirm('Clear the name and date?')) return;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    nameInput.value = '';
+    dateInput.value = '';
+    render();
+  });
+
+  loadState();
+  render();
+
+  // Iframe height sender
+  var frameId = window.name || 'stat_certificate';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 200);
+})();
+</script>
+
+</body>
+</html>

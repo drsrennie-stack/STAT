@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 7 Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 7</div>
+  <h1>This week's CODE.</h1>
+  <p class="lead">
+    Week 7 is the runway. The final is in two to three weeks. The work shifts from building habits to deploying them under exam pressure, on cumulative material you cannot fully cover. Triage matters more than effort.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 7 theme</div>
+    <div class="theme-card__title">Final exam runway.</div>
+    <p class="theme-card__body">
+      In aviation, the runway is the last stretch where every prior decision either pays off or does not. The work has been done. The plane is what it is. The remaining job is execution under specific conditions. <strong>The same is true here.</strong> Six weeks of recovery work have built what they have built. Week 7 deploys it for a final exam where there will not be enough time to study everything. Triage matters more than effort, and you have been practicing triage for six weeks.
+    </p>
+  </div>
+
+  <h2>The shift this week</h2>
+
+  <p>For six weeks the cycle has been building general capacity: better methods, repaired foundations, more honest self-assessment, integrated practice. <strong>Week 7 narrows the focus.</strong> The remaining material is too much. The remaining time is too short. You will not study every chapter, and pretending otherwise will leave you studying everything badly.</p>
+
+  <p>The skill of Week 7 is the skill you have been practicing for six weeks: <strong>identifying what matters most and acting on it.</strong> Week 3 applied it to foundation gaps. Week 4 applied it to a midterm. Week 6 applied it to your own diagnosis. Week 7 applies it to the final.</p>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">C</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Current state</div>
+      <p class="phase-note__text">
+        Your Week 7 audit shifts toward exam readiness specifically. What concepts can you explain without notes. What can you nearly explain. What you cannot. The Objective section becomes a topic-by-topic confidence map.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">O</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Observe</div>
+      <p class="phase-note__text">
+        Your team works through Casey's case. Casey has two weeks until the final. They have improved over six weeks but are now behind on cumulative review. <strong>They cannot study everything.</strong> The team's job is to help Casey prioritize what to study, in what order, with the time they actually have.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">D</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Decide</div>
+      <p class="phase-note__text">
+        Your Week 7 decision plan is exam-specific. Three commitments oriented to the final. The 24-hour action is concrete and exam-related. <strong>Resist the urge to make this week's plan look like every other week's plan.</strong> The week is different. The plan should be different.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">E</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Evaluate</div>
+      <p class="phase-note__text">
+        Evaluate this week is fast. Did you do what you said you would do, in the time you had, on the topics you committed to? The detail matters less. The execution matters more.
+      </p>
+    </div>
+  </div>
+
+  <h2>What you will do this week</h2>
+
+  <ul class="checklist">
+    <li>
+      <strong>Read Casey's case (Lesson 8.2).</strong>
+      <span>15 to 20 minutes. Casey's situation will look like yours in some way. Read for the prioritization choices Casey faces and how they map to your final.</span>
+    </li>
+    <li>
+      <strong>Complete your Week 7 Current state audit (Lesson 8.3).</strong>
+      <span>About 25 minutes. Includes a topic-by-topic confidence map of your final exam content. Be honest. Pretending you understand things you do not is the most expensive mistake you can make this week.</span>
+    </li>
+    <li>
+      <strong>Use the Final Exam Triage tool (Lesson 8.4).</strong>
+      <span>20 to 30 minutes. Walks you through prioritizing topics by exam weight, your current confidence, and remaining time. Produces a study plan for the next two weeks. <strong>Required this week, not optional.</strong></span>
+    </li>
+    <li>
+      <strong>Show up to your live session on time (Lesson 8.5).</strong>
+      <span>90 minutes on Zoom with your team. Casey's case is the focus, but a portion of the session may also be used for individual triage discussion if your team and facilitator agree.</span>
+    </li>
+    <li>
+      <strong>Write your Week 7 decision plan (Lesson 8.6).</strong>
+      <span>10 to 15 minutes after the session. Three exam-focused commitments, one 24-hour action that gets you started on the highest-priority topic.</span>
+    </li>
+  </ul>
+
+  <h2>What to expect from your live session</h2>
+
+  <p>Same three-question structure, applied to Casey. What do we think Casey should prioritize. What should Casey stop spending time on. What should Casey start doing differently in the next 14 days.</p>
+
+  <p>This is the most consequential session in the program for many of you. <strong>The discussion you have about Casey is the discussion you need to have about yourself.</strong> Listen for it.</p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The work of Week 7 is choosing</p>
+    </div>
+    <p class="callout__text">You will not study everything. <strong>That is not optional, that is just true.</strong> The work is choosing what to study and what to let go of, with eyes open. Students who avoid this choice end up studying everything badly and learning nothing well. Students who make the choice studying fewer things, well, score higher on the same exam. Triage is not weakness. It is the central skill of recovery.</p>
+  </div>
+
+  <h2>Your focus for the week</h2>
+
+  <p>For Week 7, your focus is the Final Exam Triage tool and the plan that comes out of it. <strong>The plan is the assignment.</strong> Not understanding the material yet, not memorizing every term. Producing a realistic prioritized plan you can actually execute over the next two weeks.</p>
+
+  <p>Once the plan exists, execute it. One topic at a time. Active recall, not passive review. Spaced practice, not crammed sessions. The methods you have been practicing for six weeks are the methods that work in Week 7. <strong>Do not abandon them under pressure.</strong></p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">If your final is sooner than 2 weeks away</p>
+    </div>
+    <p class="callout__text">If your final is in 7 to 10 days rather than 14, the structure of Week 7 still applies, but the triage gets sharper. Tell your facilitator your exam date during the session. They can help you compress the plan into the time you have. <strong>Do not skip triage because time is short.</strong> Time being short is the reason triage is more important, not less.</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Start here</div>
+    <h3 class="next-step__title">Read Casey's case (Lesson 8.2).</h3>
+    <p class="next-step__body">
+      Then complete your Current state audit and the Final Exam Triage tool before the live session. The session will be sharper if your topic-by-topic map is already done when you arrive.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week7_overview';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

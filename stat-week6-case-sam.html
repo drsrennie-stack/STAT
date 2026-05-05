@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 6 Case: Sam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 0 0 2.5rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+/* Patient-chart-style data card */
+.chart-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+.chart-card__header {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chart-card__header-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+}
+
+.chart-card__header-id {
+  font-size: 0.75rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  color: rgba(250, 250, 247, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.chart-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.chart-card__field {
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+}
+
+.chart-card__field:nth-child(even) { border-right: none; }
+.chart-card__field:nth-last-child(-n+2) { border-bottom: none; }
+
+.chart-card__field-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.chart-card__field-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  line-height: 1.4;
+}
+
+.chart-card__field-value--alert {
+  color: #B91C1C;
+}
+
+@media (max-width: 560px) {
+  .chart-card__grid { grid-template-columns: 1fr; }
+  .chart-card__field { border-right: none; }
+  .chart-card__field:nth-last-child(2) { border-bottom: 1px solid var(--cc-border); }
+}
+
+/* Quote block */
+.quote {
+  background: var(--cc-tint-gold);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  position: relative;
+  border-left: 3px solid var(--cc-gold);
+}
+
+.quote__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+
+.quote__text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-navy);
+  font-style: italic;
+  margin: 0;
+}
+
+.quote__text p {
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+
+.quote__text p:last-child { margin-bottom: 0; }
+
+/* Habits / changes lists */
+.habits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .habits { grid-template-columns: 1fr; }
+}
+
+.habits__col {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.habits__col-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.habits__col--does .habits__col-label { color: var(--cc-gold-deep); }
+.habits__col--doesnt .habits__col-label { color: #B91C1C; }
+
+.habits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.habits__list li {
+  font-size: 0.875rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  padding: 0.375rem 0;
+  padding-left: 1.125rem;
+  position: relative;
+}
+
+.habits__list li::before {
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-weight: 700;
+}
+
+.habits__col--does .habits__list li::before {
+  content: "+";
+  color: var(--cc-gold);
+}
+
+.habits__col--doesnt .habits__list li::before {
+  content: "−";
+  color: #B91C1C;
+}
+
+/* Gaps list (specific foundation concepts) */
+.gaps-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+}
+
+.gaps-list li {
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.gaps-list li strong {
+  display: block;
+  color: var(--cc-navy);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+/* Callouts */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Prep checklist */
+.prep-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.prep-list li {
+  position: relative;
+  padding: 0.875rem 1.125rem 0.875rem 2.75rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.prep-list li::before {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  top: 1rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 3px;
+  background: white;
+}
+
+.prep-list li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Next step */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 6 Pre-read</div>
+  <h1>Sam's case.</h1>
+  <p class="lead">
+    Sam thought the problem was method. They switched methods, and method is better. The grade is not. Sam's case is about what to do when the original diagnosis turns out to be incomplete.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 6 theme</div>
+    <div class="theme-card__title">Consolidation and integration.</div>
+    <p class="theme-card__body">
+      Sam illustrates differential diagnosis. The original Week 1 read was correct as far as it went, but it missed something. Now in Week 6, the data is telling Sam to look again. The work for your team is figuring out what the original diagnosis missed.
+    </p>
+  </div>
+
+  <h2>Meet Sam</h2>
+
+  <p>Sam is a pre-pharmacy student in their first attempt at A&P 2. They came into STAT in Week 1 with a 52% in the course. Their Week 1 failure mode diagnostic flagged <strong>method failure</strong> as the dominant pattern: passive review, no retrieval practice, late-night cramming the day before exams.</p>
+
+  <p>Sam took the diagnosis seriously. They restructured their study time, switched to active recall and spaced practice, joined a study group with two teammates from STAT, and stopped pulling all-nighters. By Week 4, Sam reported that their study sessions felt completely different. The work was lighter. The recall was better. They felt prepared for the midterm in a way they had not felt all semester.</p>
+
+  <p>Sam took the midterm. Scored a 58%. Their overall course grade moved from 52% to 55%. Three points in five weeks of intensive work.</p>
+
+  <h2>Sam in their own words</h2>
+
+  <p>"I do not know what is happening. I am studying better than I have studied in my entire college career. I can recall things. I can explain things to my study group. I went into the midterm feeling actually prepared. And I got a 58%."</p>
+
+  <p>"My method is better. I know my method is better. So why are my exam scores still terrible? I keep thinking maybe I am just not smart enough for this material."</p>
+
+  <h2>What Sam's audits have shown across five weeks</h2>
+
+  <p>Looking back across Sam's five Current state audits, a pattern is visible that was not visible in Week 1:</p>
+
+  <p><strong>Sam's study time is much better. Sam's exam performance is not.</strong> The gap between how prepared Sam feels going into an exam and how Sam actually performs on the exam has been roughly constant for five weeks.</p>
+
+  <p>In their Week 4 audit, Sam wrote: "I knew the answer to question 12 on the midterm. I just blanked. I rewrote the question on my scratch paper and tried to work through it, but my mind went somewhere else and I could not get back. I left it blank and moved on. I came back at the end and got it. But that happened five times."</p>
+
+  <h2>The concepts Sam has flagged as unclear</h2>
+
+  <p>Sam has not flagged content gaps. They are flagging something else entirely:</p>
+
+  <p>Sam reports going blank on exams in ways they do not in study sessions. Sam reports physical anxiety symptoms during exams: shallow breathing, hands shaking, time disappearing. Sam has mentioned these symptoms in three of five audits. <strong>None of them appeared in Sam's Week 1 failure mode diagnostic, because Sam did not know to flag them.</strong></p>
+
+  <p>Sam's Week 1 diagnosis was method failure. That diagnosis was correct. It was also incomplete. The full picture appears to involve <strong>test anxiety</strong> as a co-occurring failure mode. Method improvement alone cannot solve test anxiety. Different intervention required.</p>
+
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">What this case is teaching</p>
+    </div>
+    <p class="callout__text">Sam's situation is common in Week 6 and rare to see this clearly. The Week 1 diagnosis was right, but it was not complete. <strong>One failure mode can mask another</strong> early in the program, because the obvious one absorbs all the diagnostic attention. By Week 6, with more data, the second failure mode becomes visible. The team's job is to spot it and help Sam revise the plan.</p>
+  </div>
+
+  <h2>Before the live session</h2>
+
+  <p>Read Sam's case twice. The first time, follow Sam's narrative as they tell it. The second time, look for what Sam is reporting that does not match a method-failure picture. <strong>The information has been there for five weeks. The question is whether anyone reads it.</strong></p>
+
+  <p>In session, your facilitator will guide three questions: what did Sam's original diagnosis miss, what should Sam stop assuming, and what should Sam start investigating. The team is also going to ask each other a harder question: <strong>is anyone in the team in a similar situation?</strong> If so, Week 6 is the time to revise.</p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">A note on differential diagnosis</p>
+    </div>
+    <p class="callout__text">In medicine, differential diagnosis is the process of considering all possible causes for a presentation, then ruling them out one at a time. <strong>Premature closure on a single diagnosis is the most common diagnostic error in clinical practice.</strong> The same error happens in academic recovery. Week 1 produces a working diagnosis based on limited information. Five weeks of additional data sometimes reveals what the working diagnosis missed. Reading that data honestly is the entire skill.</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Before the session</div>
+    <h3 class="next-step__title">Read Sam's case before your Current state audit.</h3>
+    <p class="next-step__body">
+      Then re-read your own Week 1 diagnostic. Then write your audit. The order matters. You are running differential diagnosis on yourself, with five weeks of additional data the Week 1 version did not have.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week6_case_sam';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

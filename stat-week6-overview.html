@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 6 Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 6</div>
+  <h1>This week's CODE.</h1>
+  <p class="lead">
+    Week 6 turns from sustainment to integration. You have worked on method, content, exam strategy, and execution. Now the question is whether they connect. And whether your original diagnosis was actually right.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 6 theme</div>
+    <div class="theme-card__title">Consolidation and integration.</div>
+    <p class="theme-card__body">
+      In critical care, consolidation is when a stabilizing patient begins responding as an integrated whole, not a list of independent symptoms. <strong>Method, content, exam strategy, time management, anxiety: these are not separate problems.</strong> They are facets of a broader pattern, and treating any one in isolation rarely produces lasting recovery. Week 6 is about seeing the integration. It is also about something harder: revisiting your Week 1 diagnosis if the work is not producing what it should.
+    </p>
+  </div>
+
+  <h2>The shift this week</h2>
+
+  <p>For five weeks you have been treating a primary failure mode you identified in Week 1. Method, content, exam strategy, or affective. Most students see real progress on that primary mode by Week 5.</p>
+
+  <p>Some do not. <strong>If you are one of them, the most likely explanation is not that you are working too little. It is that the original diagnosis was incomplete.</strong> Week 6 introduces differential diagnosis: when the plan stops producing results, that is information, not failure. The work this week is reading that information honestly and revising the plan if you need to.</p>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">C</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Current state</div>
+      <p class="phase-note__text">
+        Your Week 6 audit asks you to compare your current state to your Week 1 baseline. Not last week. Week 1. What has changed at the level of how you operate? If the answer is "less than I expected," your team and your facilitator will help you investigate why before you push harder on the same plan.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">O</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Observe</div>
+      <p class="phase-note__text">
+        Your team works through Sam's case. Sam thought the problem was method. They have switched methods. Method is better. The grade is not. <strong>That is differential diagnosis territory.</strong> Sam needs to consider whether something else is also broken.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">D</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Decide</div>
+      <p class="phase-note__text">
+        Your Week 6 decision plan looks different from previous weeks. Some of you will continue your existing plan because it is working. Some of you will revise. Revising the plan in Week 6 is not failure. <strong>Refusing to revise when the data calls for it is failure.</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">E</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Evaluate</div>
+      <p class="phase-note__text">
+        Evaluate this week is comparative across all five previous weeks, not just last week. Patterns across weeks are visible by now in ways they were not in Week 2 or 3. Read the patterns.
+      </p>
+    </div>
+  </div>
+
+  <h2>What you will do this week</h2>
+
+  <ul class="checklist">
+    <li>
+      <strong>Read Sam's case (Lesson 7.2).</strong>
+      <span>15 to 20 minutes. Sam's situation tests differential diagnosis. Read for what the original diagnosis missed.</span>
+    </li>
+    <li>
+      <strong>Complete your Week 6 Current state audit (Lesson 7.3).</strong>
+      <span>About 25 minutes this week, slightly longer than usual. The audit asks you to compare to Week 1 baseline, not just last week.</span>
+    </li>
+    <li>
+      <strong>Re-read your Week 1 failure mode diagnostic (Lesson 2.3).</strong>
+      <span>5 to 10 minutes. Your diagnostic results from Week 1 are still in your tools. Open them. See what they said. See whether what they said still fits.</span>
+    </li>
+    <li>
+      <strong>Show up to your live session on time (Lesson 7.4).</strong>
+      <span>90 minutes on Zoom with your team. Sam's case is the focus. The discussion is about whether the original plan still fits the actual problem.</span>
+    </li>
+    <li>
+      <strong>Write your Week 6 decision plan (Lesson 7.5).</strong>
+      <span>10 to 15 minutes after the session. Either three sustainment commitments, or three revised commitments based on a new diagnosis. Either is correct, depending on the data.</span>
+    </li>
+  </ul>
+
+  <h2>What to expect from your live session</h2>
+
+  <p>The three-question structure shifts slightly this week. What did Sam's original diagnosis miss. What should Sam stop assuming. What should Sam start investigating.</p>
+
+  <p>This is a harder discussion than previous weeks. It asks you to consider that what you committed to in Week 1 may not be the whole story. <strong>The cycle is built to absorb that, not to break under it.</strong></p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The work of Week 6 is honest reassessment</p>
+    </div>
+    <p class="callout__text">Week 1 was a snapshot. Week 6 is a longer view. Sometimes the snapshot misses what the longer view reveals. <strong>If your plan is working, this week confirms it.</strong> If it is not, this week is the structured opportunity to figure out why before you spend three more weeks pushing the wrong intervention.</p>
+  </div>
+
+  <h2>Your focus for the week</h2>
+
+  <p>For most of you, Week 6 is consolidation. You are integrating the work of the previous five weeks into something coherent. Sustain the plan, deepen the practice, trust the rhythm.</p>
+
+  <p>For some of you, Week 6 is course correction. The original diagnosis was incomplete. The data has been telling you that for a few weeks. <strong>Use this week to listen to it.</strong> Your facilitator will help you sort it out, and your team's work on Sam will give you a model for how.</p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">When revision is the right call</p>
+    </div>
+    <p class="callout__text">Revising your plan in Week 6 is the correct response to genuine information that the original plan was missing something. It is not the right response to anxiety, frustration, or impatience. Your facilitator will help you tell the difference. <strong>If your team and your facilitator agree your current plan is working, do not revise it because it feels slow.</strong> Slow recovery is still recovery.</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Start here</div>
+    <h3 class="next-step__title">Read Sam's case (Lesson 7.2).</h3>
+    <p class="next-step__body">
+      Then re-read your Week 1 failure mode diagnostic before your Current state audit. The audit will be sharper if you have your original diagnosis fresh in mind when you write it.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week6_overview';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

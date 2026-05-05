@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 7 Case: Casey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 1.5rem 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 0 0 2.5rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+/* Patient-chart-style data card */
+.chart-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+.chart-card__header {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chart-card__header-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+}
+
+.chart-card__header-id {
+  font-size: 0.75rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  color: rgba(250, 250, 247, 0.7);
+  letter-spacing: 0.05em;
+}
+
+.chart-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.chart-card__field {
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+}
+
+.chart-card__field:nth-child(even) { border-right: none; }
+.chart-card__field:nth-last-child(-n+2) { border-bottom: none; }
+
+.chart-card__field-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.chart-card__field-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  line-height: 1.4;
+}
+
+.chart-card__field-value--alert {
+  color: #B91C1C;
+}
+
+@media (max-width: 560px) {
+  .chart-card__grid { grid-template-columns: 1fr; }
+  .chart-card__field { border-right: none; }
+  .chart-card__field:nth-last-child(2) { border-bottom: 1px solid var(--cc-border); }
+}
+
+/* Quote block */
+.quote {
+  background: var(--cc-tint-gold);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+  position: relative;
+  border-left: 3px solid var(--cc-gold);
+}
+
+.quote__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+
+.quote__text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-navy);
+  font-style: italic;
+  margin: 0;
+}
+
+.quote__text p {
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+}
+
+.quote__text p:last-child { margin-bottom: 0; }
+
+/* Habits / changes lists */
+.habits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .habits { grid-template-columns: 1fr; }
+}
+
+.habits__col {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.habits__col-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.habits__col--does .habits__col-label { color: var(--cc-gold-deep); }
+.habits__col--doesnt .habits__col-label { color: #B91C1C; }
+
+.habits__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.habits__list li {
+  font-size: 0.875rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  padding: 0.375rem 0;
+  padding-left: 1.125rem;
+  position: relative;
+}
+
+.habits__list li::before {
+  position: absolute;
+  left: 0;
+  top: 0.375rem;
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-weight: 700;
+}
+
+.habits__col--does .habits__list li::before {
+  content: "+";
+  color: var(--cc-gold);
+}
+
+.habits__col--doesnt .habits__list li::before {
+  content: "−";
+  color: #B91C1C;
+}
+
+/* Gaps list (specific foundation concepts) */
+.gaps-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+}
+
+.gaps-list li {
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.gaps-list li strong {
+  display: block;
+  color: var(--cc-navy);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+/* Callouts */
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Prep checklist */
+.prep-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.prep-list li {
+  position: relative;
+  padding: 0.875rem 1.125rem 0.875rem 2.75rem;
+  margin-bottom: 0.625rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.prep-list li::before {
+  content: "";
+  position: absolute;
+  left: 1.125rem;
+  top: 1rem;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 3px;
+  background: white;
+}
+
+.prep-list li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+/* Next step */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 7 Pre-read</div>
+  <h1>Casey's case.</h1>
+  <p class="lead">
+    Casey has 14 days until their A&P 2 final. They have improved over six weeks of STAT. They are also behind on cumulative review. They cannot study everything. The work is figuring out what to study, in what order, with the time they actually have.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 7 theme</div>
+    <div class="theme-card__title">Final exam runway.</div>
+    <p class="theme-card__body">
+      Casey illustrates triage under scarcity. There is not enough time. There is too much content. The skill is choosing what to study, with eyes open about what is being left undone. Students who refuse to choose end up choosing by default, and the default rarely produces recovery.
+    </p>
+  </div>
+
+  <h2>Meet Casey</h2>
+
+  <p>Casey is a junior pre-PA student. They came into STAT at 51% in A&P 2 with a Week 1 failure mode diagnostic flagging both <strong>method failure</strong> and <strong>content gaps</strong> from a weak A&P 1 foundation.</p>
+
+  <p>Six weeks in, Casey has done the work. Method is better, retrieval practice is now habitual, the study group has been productive. They closed two foundation gaps in Weeks 3 and 4. They scored a 67% on the midterm, up from a 50% on the previous exam. Their course grade is now 60%, up from 51%.</p>
+
+  <p>The final is worth 30% of the course grade. Casey needs roughly a 78% on the final to pass the course at 70%. The exam is 14 days away. There are 12 chapters of cumulative material from the entire semester. Casey reports having studied roughly 7 of those chapters at a level they would call "ready."</p>
+
+  <h2>Casey's trajectory over six weeks</h2>
+
+  <p><strong>Week 1:</strong> 51% course grade. 50% on most recent exam. Re-reading textbook, no retrieval, all-nighters before exams.</p>
+
+  <p><strong>Week 2:</strong> Switched to active recall. Joined study group. Reduced study time from 25 hours per week to 18, more focused.</p>
+
+  <p><strong>Week 3:</strong> Closed first foundation gap (membrane potentials). Reported feeling material "click" for the first time.</p>
+
+  <p><strong>Week 4:</strong> Closed second foundation gap (acid-base balance). Scored 67% on midterm, up 17 points.</p>
+
+  <p><strong>Week 5:</strong> Sustained the plan. Reported lower anxiety, better sleep.</p>
+
+  <p><strong>Week 6:</strong> Confirmed original diagnosis was correct, no revision needed. Continued steady work.</p>
+
+  <p><strong>Week 7 (now):</strong> 60% course grade. 5 of 12 final exam chapters insufficiently studied. Final in 14 days.</p>
+
+  <h2>Casey in their own words</h2>
+
+  <p>"I have actually done the work. I am proud of that, even if it sounds weird to say. But I look at the syllabus for the final and I see twelve chapters and I have basically not touched five of them. I have fourteen days. I cannot study five chapters from scratch in fourteen days while also reviewing the seven I do know."</p>
+
+  <p>"Part of me wants to just spread my time evenly across all twelve chapters and hope for the best. Another part of me wants to give up on the five new ones and triple down on the seven I know. I do not know which is right. Both feel wrong."</p>
+
+  <h2>What is on Casey's exam</h2>
+
+  <p>Casey's syllabus shows the final is weighted by topic, not equally distributed across chapters. <strong>The five chapters Casey has not deeply studied include three of the four highest-weighted topics on the exam.</strong> The seven chapters Casey knows well include three of the lowest-weighted topics.</p>
+
+  <p>Casey has not yet looked at the topic weights. They have been thinking of the final as 12 equal chapters. The topic weights change the math considerably.</p>
+
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">What this case is teaching</p>
+    </div>
+    <p class="callout__text">Casey's situation contains an answer Casey has not yet seen, because Casey has not yet looked at exam weighting. <strong>The triage answer is not "study evenly" or "abandon the five." It is "study the highest-weighted topics first, regardless of which list they came from."</strong> Three of the highest-weighted topics happen to be in the unstudied five. That makes them the highest priority, not the lowest. The team's job is to help Casey see that.</p>
+  </div>
+
+  <h2>Before the live session</h2>
+
+  <p>Read Casey's case twice. First time for facts, second time for the prioritization logic. The case includes information Casey has not yet used, specifically the topic weights. <strong>Notice what Casey is missing in their own analysis.</strong></p>
+
+  <p>Then look at your own final. Find the syllabus. Find the topic weights. Map them against your own confidence map. <strong>This is the work of Week 7.</strong> The Final Exam Triage tool will walk you through it. Casey's case is the example. Your final is the application.</p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">A note on triage as a skill</p>
+    </div>
+    <p class="callout__text">In emergency settings, triage is the practice of prioritizing care under conditions of insufficient resources. <strong>Triage is not about who deserves help most. It is about where intervention will produce the most benefit per unit of resource.</strong> Final exam triage works the same way. The questions are: where will an hour of study produce the most points on the exam, and where will it produce the fewest. The answer is rarely "study evenly across all topics."</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Before the session</div>
+    <h3 class="next-step__title">Read Casey's case before your Current state audit.</h3>
+    <p class="next-step__body">
+      Then pull up your own final exam syllabus and the Final Exam Triage tool. Do the work in that order: case, then audit, then triage. Each step sets up the next.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week7_case_casey';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

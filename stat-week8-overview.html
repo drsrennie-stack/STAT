@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 8 Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 8</div>
+  <h1>This week's CODE.</h1>
+  <p class="lead">
+    Week 8 is the capstone. The work of recovery has been done, or it has not. The final is imminent or just past. This week is about looking honestly at what you have changed at the level of how you operate, and deciding what carries forward when STAT ends.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 8 theme</div>
+    <div class="theme-card__title">Definitive care.</div>
+    <p class="theme-card__body">
+      In critical care, definitive care is the treatment that addresses the underlying problem rather than just managing symptoms. By Week 8, you have managed your symptoms for seven weeks. You have stabilized. <strong>The question now is what you have actually changed permanently, and what you will do when the external structure of STAT is no longer holding you up.</strong> This is the week the program becomes yours, or it does not.
+    </p>
+  </div>
+
+  <h2>The shift this week</h2>
+
+  <p>Every previous week was about a specific intervention: a method, a foundation, a midterm, a recovery signal, a diagnosis, a final exam. Week 8 has no specific intervention. The work has been done. The cycle is complete.</p>
+
+  <p>What Week 8 asks is structural: <strong>what habits will survive past the program?</strong> Which of the changes you made were because the structure of STAT held you to them, and which became genuinely yours? The honest answer is some of both, and the proportion is what determines whether the recovery sticks.</p>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">C</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Current state</div>
+      <p class="phase-note__text">
+        Your Week 8 audit is comparative across all eight weeks. Not what you did this week. What is true now that was not true in Week 1. <strong>This is the most important audit of the program.</strong> It produces the baseline against which you will measure next semester.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">O</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Observe</div>
+      <p class="phase-note__text">
+        Your team works through Taylor's case. Taylor finished the program. They are not "saved" in some triumphant sense. They are stabilized. Now they are facing what comes next: the transition from critical care back to preventative care, with no STAT to lean on. The team's job is to help Taylor plan the transition.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">D</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Decide</div>
+      <p class="phase-note__text">
+        Your Week 8 decision plan looks different from every previous one. It is not for the next week. It is for the next eight weeks, after STAT ends. Three commitments that are realistic without the cohort holding you to them. One 24-hour action to set the structure that replaces this one.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">E</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Evaluate</div>
+      <p class="phase-note__text">
+        Evaluate this week is the longest version. The whole eight weeks. What worked, what did not, what surprised you. Not for performance assessment. For self-knowledge that you carry forward.
+      </p>
+    </div>
+  </div>
+
+  <h2>What you will do this week</h2>
+
+  <ul class="checklist">
+    <li>
+      <strong>Read Taylor's case (Lesson 9.2).</strong>
+      <span>15 to 20 minutes. Taylor's case is the program in retrospect. Read for what Taylor learned that they did not know they were learning.</span>
+    </li>
+    <li>
+      <strong>Complete your Week 8 Current state audit (Lesson 9.3).</strong>
+      <span>About 30 minutes. Compares your current state to Week 1. The longest audit of the program. Take the time it deserves.</span>
+    </li>
+    <li>
+      <strong>Use the Discharge Planning tool (Lesson 9.4).</strong>
+      <span>20 to 30 minutes. Walks you through which habits to keep, which structures to replace, when you would consider returning to a recovery program, and what your preventative plan looks like.</span>
+    </li>
+    <li>
+      <strong>Show up to your final live session on time (Lesson 9.5).</strong>
+      <span>90 minutes on Zoom with your team. Taylor's case in the first half, your team's reflection and transition planning in the second half. <strong>This is your last session with this team.</strong> Show up for it.</span>
+    </li>
+    <li>
+      <strong>Write your Week 8 decision plan (Lesson 9.6).</strong>
+      <span>10 to 15 minutes after the session. Three commitments for the next 8 weeks without STAT. One 24-hour action to set up the structure that replaces this one.</span>
+    </li>
+  </ul>
+
+  <h2>What to expect from your live session</h2>
+
+  <p>The session structure changes this week. Your facilitator will guide your team through Taylor's case for the first 45 minutes, with a focus on what Taylor takes with them and what Taylor leaves behind.</p>
+
+  <p>The second 45 minutes is for your team. <strong>Each member shares one thing they are taking with them and one thing they are still working on.</strong> The team will not meet again. This is the structured closure your team has earned.</p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The work of Week 8 is honest discharge</p>
+    </div>
+    <p class="callout__text">In a hospital, the discharge plan is what determines whether the patient stays out of the hospital or returns within thirty days. <strong>The same is true here.</strong> A weak discharge plan, "I will keep doing what I have been doing," produces relapse. A strong discharge plan names which structures to replace, which habits to keep, and which signals would call you back to recovery work. Make a strong one.</p>
+  </div>
+
+  <h2>Your focus for the week</h2>
+
+  <p>Your focus for Week 8 is the Discharge Planning tool and the conversation it produces with yourself. <strong>What survives STAT is the program.</strong> What does not survive STAT was scaffolding, useful in the moment, gone when the moment is over.</p>
+
+  <p>The honest answer for most of you is that some habits will survive without effort, some will require deliberate maintenance, and some will fade unless you replace the structure. <strong>Naming which is which is the entire work of this week.</strong></p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">If your final has not happened yet</p>
+    </div>
+    <p class="callout__text">Week 8 happens whether or not your final exam has occurred. The discharge planning work matters either way. <strong>If your final is the day after Week 8 closes, do the discharge planning anyway.</strong> The plan you make this week is for the eight weeks after the final, not for the final itself. Treating them as the same thing is one way recovery work fails to stick.</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Start here</div>
+    <h3 class="next-step__title">Read Taylor's case (Lesson 9.2).</h3>
+    <p class="next-step__body">
+      Then complete your Week 8 audit and the Discharge Planning tool. The session will be your last with this team. Show up with your work done so the team can do its work too.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week8_overview';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

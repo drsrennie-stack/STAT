@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Week 5 Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 5</div>
+  <h1>This week's CODE.</h1>
+  <p class="lead">
+    Week 5 comes after the midterm hinge. Students who made it through Week 4 are now in active recovery. The work this week is learning to read the early signs of that recovery, even when the grade has not caught up yet.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Week 5 theme</div>
+    <div class="theme-card__title">Point recovery.</div>
+    <p class="theme-card__body">
+      In critical care, point recovery is the moment a patient begins responding to treatment. The intervention is working. The systems are stabilizing. But the readouts that matter most to the patient and their family, the visible signs of getting better, often lag behind the clinical reality. <strong>The same is true here.</strong> Your study sessions can already be sharper, your retention better, your anxiety lower, while your grade is still catching up. Week 5 is about learning to read the early signs.
+    </p>
+  </div>
+
+  <h2>The shift this week</h2>
+
+  <p>Week 4 was a milestone. The midterm either went well, or it did not. Either way, the work of recovery did not pause. It only became less visible.</p>
+
+  <p>Week 5 introduces a distinction that will determine whether you stay in the work for the next four weeks: <strong>leading indicators versus lagging indicators</strong>. Your grade is a lagging indicator. By the time it moves, the underlying change has been happening for weeks. The signs you can watch in real time, your focus during study, your recall during practice, the calm before an exam, are leading indicators. Recovery shows there first.</p>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">C</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Current state</div>
+      <p class="phase-note__text">
+        Your Week 5 Current state audit asks new questions. Not just hours studied or material covered, but how the sessions felt. How recall is going. Whether you noticed your anxiety doing something different. The Subjective and Assessment sections of your SOAP note matter more this week than they have so far.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">O</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Observe</div>
+      <p class="phase-note__text">
+        Your team works through Riley's case. Riley has been doing the work since Week 1. Their grade has moved a little, but not enough to feel saved. They are tempted to quit because it does not feel like it is working. Come prepared to identify Riley's leading indicators, the ones Riley themselves is not noticing yet.
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">D</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Decide</div>
+      <p class="phase-note__text">
+        Your Week 5 decision plan focuses on sustainment. Not new methods, not new commitments, just continuing what is already working. <strong>The temptation in Week 5 is to change the plan because the grade has not moved. The work is to trust the plan.</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="phase-note">
+    <span class="phase-note__letter">E</span>
+    <div class="phase-note__body">
+      <div class="phase-note__title">Evaluate</div>
+      <p class="phase-note__text">
+        Evaluate is now habitual. By Week 5, the cycle should feel automatic. If it does not, that itself is data, and your facilitator will want to know.
+      </p>
+    </div>
+  </div>
+
+  <h2>What you will do this week</h2>
+
+  <ul class="checklist">
+    <li>
+      <strong>Read Riley's case (Lesson 6.2).</strong>
+      <span>15 to 20 minutes. Riley's situation may feel familiar. Read for the gap between what Riley sees and what is actually happening.</span>
+    </li>
+    <li>
+      <strong>Complete your Week 5 Current state audit (Lesson 6.3).</strong>
+      <span>About 20 minutes. Pay extra attention to the Subjective and Assessment sections this week. Use them.</span>
+    </li>
+    <li>
+      <strong>Show up to your live session on time (Lesson 6.4).</strong>
+      <span>90 minutes on Zoom with your team. Riley's case is the focus. Bring your own observations about leading indicators.</span>
+    </li>
+    <li>
+      <strong>Write your Week 5 decision plan (Lesson 6.5).</strong>
+      <span>10 to 15 minutes after the session. Three sustainment commitments, one 24-hour action. Resist the urge to overhaul anything that is working.</span>
+    </li>
+  </ul>
+
+  <h2>What to expect from your live session</h2>
+
+  <p>Same three-question structure as previous weeks, applied to Riley. What do we think is happening for Riley. What should Riley stop doing. What should Riley start doing.</p>
+
+  <p>This week, listen for what Riley is missing in their own self-assessment. Riley is reading their grade as the only signal of recovery. Your team's job is to surface the signs Riley is not seeing in themselves. <strong>You will then need to do the same for yourself.</strong></p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">The work of Week 5 is recognition, again</p>
+    </div>
+    <p class="callout__text">Week 2 asked you to recognize patterns in someone else that resemble your own. Week 5 asks you to recognize <strong>recovery</strong> in yourself before the data confirms it. That is harder. The grade is concrete; the leading indicators are not. Trust the leading indicators anyway. They are arriving on schedule even when the grade is not.</p>
+  </div>
+
+  <h2>Your focus for the week</h2>
+
+  <p>Do not change what is working this week. The temptation will be strong. After four weeks of work, a grade that has barely moved feels like failure. <strong>It is not failure. It is the lag between the work and the readout.</strong></p>
+
+  <p>Your focus for Week 5: notice three leading indicators that have changed since Week 1. Write them down. Bring them to your team if you cannot find them yourself.</p>
+
+  <div class="callout callout--info">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">i</span>
+      <p class="callout__title">If you genuinely cannot find leading indicators</p>
+    </div>
+    <p class="callout__text">If you cannot find any leading indicators that have improved since Week 1, that is also data. It might mean your decision plans have been too vague to actually change behavior. It might mean the failure mode you identified in Week 1 was not the right diagnosis. Tell your facilitator. <strong>The plan is meant to be revisable.</strong> What is not revisable is the cycle itself.</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">Start here</div>
+    <h3 class="next-step__title">Read Riley's case (Lesson 6.2).</h3>
+    <p class="next-step__body">
+      Then complete your Current state audit before the live session. The audit will feel different this week if you do it after reading Riley's case, because you will have a clearer template for what to look for in yourself.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_week5_overview';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Evidence Base</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Reference</div>
+  <h1>The evidence behind CODE.</h1>
+  <p class="lead">
+    STAT looks like a study program. Underneath, it is a synthesis of decades of research on how people change behavior under stress. This page is the short version of what each part of the cycle rests on, and why the cycle is shaped the way it is.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Why this page exists</div>
+    <div class="theme-card__title">The work has a research backbone.</div>
+    <p class="theme-card__body">
+      You are not asked to do what you do in STAT because it is the latest trend. <strong>You are asked because every part of the cycle has a long, well-replicated body of evidence behind it.</strong> When the work feels strange, when it asks you to do things that conflict with how you have always studied, the strangeness is not a sign that the program is wrong. It is a sign that what you have always done is not what the research recommends.
+    </p>
+  </div>
+
+  <h2>The cycle itself: PDSA and self-regulated learning</h2>
+
+  <p>The shape of CODE, a weekly cycle of assess, work, revise, comes from two converging research traditions.</p>
+
+  <p>The first is <strong>PDSA</strong>, Plan-Do-Study-Act, a quality improvement cycle developed by Walter Shewhart and W. Edwards Deming in industrial settings, then adapted for healthcare in the 1990s. The core insight: continuous improvement requires structured iteration, not one-time planning. Plans are hypotheses. You test them, study what happened, and revise.</p>
+
+  <p>The second is <strong>self-regulated learning</strong> (Zimmerman, 2002), a cyclical model with three phases: forethought (planning), performance (executing), and self-reflection (evaluating). Decades of research show that students who self-regulate, who explicitly plan, monitor, and reflect, outperform students who simply work harder. <strong>Effort without monitoring is among the most reliable predictors of poor outcomes.</strong></p>
+
+  <p>CODE rhymes directly with both. Current state is the assessment that begins the cycle. Observe and Decide are where the planning happens, with team input. Evaluate is the structured reflection that closes the loop.</p>
+
+  <h2>Current state: self-monitoring and reflective practice</h2>
+
+  <p>The Current state audit asks you to write a structured self-assessment every week using SOAP note format (introduced explicitly in Week 3). The research underneath is dense.</p>
+
+  <p><strong>Metacognition research</strong> (Flavell, 1979; Brown, 1987) consistently shows that students chronically overestimate their own understanding. The gap between perceived knowledge and actual knowledge is largest exactly where the consequences are highest, on tested material in courses that matter for grades. Self-monitoring closes the gap, but only if it is structured. Casual reflection ("I think I know this") does not work. Written, specific, repeated reflection does.</p>
+
+  <p><strong>Schön's reflective practitioner</strong> (1983) framework, originally developed for clinicians, distinguishes reflection-on-action (reviewing what happened) from reflection-in-action (noticing what is happening as it happens). The weekly audit builds the first; the leading-indicators work in Week 5 builds the second.</p>
+
+  <p>The fact that the audit is <strong>written</strong>, not just thought about, also matters. Pennebaker's expressive writing research (since the 1980s) shows consistent benefits when people externalize internal experience in writing. The mechanism is partly cognitive (forces specificity) and partly affective (reduces rumination). Both apply here.</p>
+
+  <h2>Observe: team-based learning and case-based reasoning</h2>
+
+  <p>The 90-minute live session, the heart of the program, is structured as a team-based learning (TBL) discussion of a case. This is not by accident.</p>
+
+  <p><strong>Team-based learning</strong> (Michaelsen et al., 2002) is a specific instructional method developed in business education and adapted widely in health professions. Its core finding: teams of 5 to 7 students working on a structured task consistently outperform individual study and unstructured small groups, on every outcome measured. The mechanisms are well understood: forced articulation, peer feedback, accountability, and social pressure to engage.</p>
+
+  <p>The cases themselves draw on <strong>case-based reasoning</strong>, the dominant approach in medical and clinical education for nearly a century. The pedagogical insight: students learn to recognize patterns by working through specific cases that share underlying structure. <strong>Recognizing your own situation in someone else's case</strong> is the first step toward being able to intervene in it. Morgan's case in Week 2 is not just about Morgan. It is a template you carry forward into your own situation.</p>
+
+  <p>Bandura's <strong>social learning theory</strong> (1977) explains why this works: people learn behavior change more efficiently from observing others than from being told. Watching the team work through a case is a different cognitive activity than reading instructions about what to do.</p>
+
+  <h2>Decide: implementation intentions and the 24-hour action</h2>
+
+  <p>Your Decide phase asks for three commitments and one small action you will do in the next 24 hours. The structure is deliberate.</p>
+
+  <p><strong>Gollwitzer's implementation intentions</strong> research (1999, replicated extensively) shows that vague intentions fail at high rates while specific "if-then" plans succeed at much higher rates. "I will study more this week" is a vague intention. "I will spend 45 minutes on retrieval practice with chapter 7 every day after my morning class, before lunch" is an implementation intention. The difference in follow-through is enormous, and the effect holds across populations and behavior types.</p>
+
+  <p>The <strong>24-hour action</strong> derives from the same literature, plus research on small wins (Weick, 1984) and momentum effects in behavior change. The principle: a single concrete action completed within 24 hours produces meaningfully better follow-through on the larger commitments than the larger commitments alone. The action is small on purpose. <strong>Its job is not to solve the problem. Its job is to demonstrate the agency required to start.</strong></p>
+
+  <h2>Evaluate: retrieval, the testing effect, and weekly rhythm</h2>
+
+  <p>The weekly Evaluate phase asks you to assess what actually happened with last week's plan. This serves two purposes, both research-grounded.</p>
+
+  <p>The first is honest assessment of progress, which closes the PDSA loop and prevents the most common failure mode in self-improvement (continuing to do something that is not working because you never explicitly checked).</p>
+
+  <p>The second is <strong>retrieval practice</strong>. Karpicke and Roediger's research (2008 onward) on the testing effect shows that the act of recalling information strengthens memory more than the act of re-reading or re-studying. Self-assessment is a form of retrieval: you are recalling what you committed to and what actually happened. <strong>The audit itself functions as retrieval practice on your own behavior.</strong></p>
+
+  <p>The <strong>weekly cadence</strong> is also research-driven. Spaced practice research (Cepeda et al., 2006) shows that learning consolidates over days, not minutes. Weekly is short enough to maintain momentum and long enough to allow consolidation. Daily would be too tight; monthly would be too loose. Eight weekly cycles produces the dose of practice the recovery literature suggests is needed for habits to begin to stick.</p>
+
+  <h2>The hidden layer: identity-based motivation</h2>
+
+  <p>Underneath all of this is a layer of research most students never see directly, but that shapes how STAT is built.</p>
+
+  <p>Oyserman's <strong>identity-based motivation</strong> research (2007 onward) shows that behavior change is much more durable when it is tied to a shift in how the person sees themselves, not just to what they do. "I am a student in recovery, doing what students in recovery do" is a different frame than "I am a failing student trying not to fail." <strong>The first frame produces sustainable behavior change. The second produces compliance that ends when the pressure ends.</strong></p>
+
+  <p>Bandura's <strong>self-efficacy</strong> work (1977 onward) shows that belief in one's ability to execute specific behaviors predicts whether the behaviors actually happen. Self-efficacy is built primarily through performance accomplishments, completing things that were difficult, and through vicarious experience, watching others like you complete similar things. Both are baked into the cycle: the 24-hour action produces small accomplishments, and the case discussions produce vicarious experience.</p>
+
+  <p>You will notice none of this is named explicitly during the program. <strong>That is intentional.</strong> Calling out the research while you are working through it tends to disrupt the work. The research is the structure underneath. You experience the structure. You do not need to name it to benefit from it.</p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">Why this page is short</p>
+    </div>
+    <p class="callout__text">There is a longer version of every section above, with citations, methodological notes, and the disagreements within each literature. <strong>This page is not the long version.</strong> It is the short version, written for students in recovery who are working through the program right now and want to know whether the work has a foundation. It does. The references at the end of the page point toward where to read more if you are interested.</p>
+  </div>
+
+  <h2>If you want to read more</h2>
+
+  <p>Brief reading list, organized by part of the cycle:</p>
+
+  <p><strong>The cycle itself.</strong> Zimmerman, B. J. (2002). Becoming a self-regulated learner: An overview. Theory into Practice, 41(2), 64-70. Langley, G. J., et al. (2009). The Improvement Guide (chapter on PDSA cycles).</p>
+
+  <p><strong>Current state.</strong> Schön, D. A. (1983). The Reflective Practitioner. Brown, A. L. (1987). Metacognition, executive control, self-regulation, and other more mysterious mechanisms.</p>
+
+  <p><strong>Observe.</strong> Michaelsen, L. K., Knight, A. B., and Fink, L. D. (2002). Team-Based Learning. Bandura, A. (1977). Social Learning Theory.</p>
+
+  <p><strong>Decide.</strong> Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493-503.</p>
+
+  <p><strong>Evaluate.</strong> Roediger, H. L., and Karpicke, J. D. (2006). The power of testing memory: Basic research and implications for educational practice. Cepeda, N. J., et al. (2006). Distributed practice in verbal recall tasks.</p>
+
+  <p><strong>Identity and self-efficacy.</strong> Oyserman, D. (2007). Identity-based motivation. Bandura, A. (1997). Self-efficacy: The Exercise of Control.</p>
+
+  <div class="next-step">
+    <div class="next-step__label">Back to the work</div>
+    <h3 class="next-step__title">Read this once. Then return to the cycle.</h3>
+    <p class="next-step__body">
+      You do not need to remember any of the names or dates above. <strong>What you need is to trust that the cycle has been built carefully, on evidence, by people who studied this for decades.</strong> When the work feels uncomfortable, that is sometimes information that the cycle is doing what it is supposed to do, not that it is broken.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_evidence_base';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

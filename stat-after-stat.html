@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | After the Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Post-program</div>
+  <h1>After the program.</h1>
+  <p class="lead">
+    You finished. The cohort is over. The team has dispersed. This page is what you reach for in the weeks and semesters that follow, when you are no longer in active recovery but the work is not yet automatic. It is not a tool. It is a reference you return to.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">What this page is for</div>
+    <div class="theme-card__title">A quiet companion, not a continuation.</div>
+    <p class="theme-card__body">
+      STAT does not extend past Week 8. <strong>This page is not STAT.</strong> It is what you keep when the program ends, written for the version of you that is six weeks into next semester and trying to remember which signals matter, which habits need maintenance, and what to do if things start to slide. Bookmark it. Return to it when you need it. You will know when you need it.
+    </p>
+  </div>
+
+  <h2>The first month after STAT</h2>
+
+  <p>The most common pattern in the first 30 days after a recovery program: <strong>the structures fade faster than you expected, and the gains feel more fragile than they did during the program.</strong> This is normal. It does not mean the recovery did not stick.</p>
+
+  <p>What helps in the first month: keeping one piece of the cycle, even when nothing is wrong. A weekly Current state audit, even a five-minute version, written down somewhere you will see it. The audit is a tripwire. It catches problems before they become emergencies. <strong>The students who relapse are not usually the ones who lost the methods. They are the ones who lost the audit.</strong></p>
+
+  <h2>The signals worth watching</h2>
+
+  <p>In Week 8 you wrote your own warning signals. Those are the ones that matter most for you. The general signals that apply to most students:</p>
+
+  <p><strong>Two consecutive exam scores that surprise you negatively.</strong> Not one, two. One can be a bad day. Two is a pattern. If your second exam in any course comes in below where your audit predicted, that is a signal.</p>
+
+  <p><strong>Three weeks without a written audit.</strong> The audit is the early warning system. Skipping it once is normal. Skipping it for three weeks usually means something has shifted that you have not yet named.</p>
+
+  <p><strong>The return of an old failure mode.</strong> All-nighters. Re-reading without retrieval. Avoiding a course. Starting to skip. If you notice yourself doing the thing you did before, that is usually the failure mode coming back.</p>
+
+  <p><strong>Anxiety patterns you recognize.</strong> Sleep changes. Avoidance. Physical symptoms before exams. If the pattern that brought you to STAT shows up again, treat it as a signal to act, not as confirmation that recovery did not work.</p>
+
+  <h2>What to do when a signal fires</h2>
+
+  <p>The wrong response is to push harder using the same methods that brought you here in the first place. <strong>The right response is to run a full cycle on yourself, deliberately, the way you did in STAT.</strong></p>
+
+  <p>Open your old audit template. Write a current state. Be honest. Identify the failure mode. Make a decision plan with three commitments and a 24-hour action. Set a one-week check-in with yourself. <strong>You know how to do this. The cycle is yours now.</strong></p>
+
+  <p>If a single self-run cycle does not change the trajectory in two weeks, that is information. Most likely you need a team again, not because you forgot how to do the work but because some failure modes do not respond to solo work. <strong>That is what STAT is for. Re-enrolling is not failure. Re-enrolling is reading your data correctly.</strong></p>
+
+  <h2>If you are not in critical mode but want to maintain</h2>
+
+  <p>Most of the time, after STAT, you will not be in critical mode. You will be in the long stretch of preventative work, where the goal is not recovery but durable practice. The tools that help in this mode are different from STAT.</p>
+
+  <p>Things to consider keeping in your weekly rhythm in preventative mode:</p>
+
+  <p><strong>The 15-minute Friday audit.</strong> Not the full SOAP version. A short check-in: what worked this week, what did not, what one thing changes for next week. Five questions, fifteen minutes, every Friday afternoon before the weekend starts. This is the smallest version of CODE that still works.</p>
+
+  <p><strong>One implementation intention per week.</strong> One specific "if X, then Y" plan, written down somewhere you can see it. It does not have to be ambitious. The point is to keep the muscle.</p>
+
+  <p><strong>One peer accountability touchpoint.</strong> A single person you check in with weekly about how school is going. Not necessarily another STAT alum. Someone who will notice if you go quiet for two weeks and ask what is happening.</p>
+
+  <h2>When to come back to STAT</h2>
+
+  <p>Some students complete STAT once and never return. Others come back two or three semesters in, when a new course breaks them in a new way. Both are reasonable.</p>
+
+  <p>You should consider returning if:</p>
+
+  <p><strong>Two or more of your warning signals have fired in the same month.</strong> Not necessarily the same one twice. Two different ones means the pattern is broader than a single course or a bad week.</p>
+
+  <p><strong>You have run a self-cycle for two to three weeks and the trajectory has not changed.</strong> Self-cycles work for a lot of things. The ones they do not work for are often the ones that benefit most from a team and a facilitator.</p>
+
+  <p><strong>You are in a course that exceeds the difficulty of any course you took during STAT.</strong> Anatomy after A&P 2. Pathophysiology after anatomy. Pharmacology after pathophysiology. Each step up sometimes calls for a recovery cycle even if the previous one did not.</p>
+
+  <p><strong>An external stressor has shifted the picture.</strong> Loss, illness, family crisis, financial strain. STAT does not address these directly, but it gives you a structure that holds while you handle them. Coming back during a hard semester is not a weakness. It is using the right tool.</p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">A note on shame</p>
+    </div>
+    <p class="callout__text">If you finish STAT and find yourself needing to come back, the worst thing you can do is treat it as evidence that the program did not work for you. <strong>Most students who do well long-term return at least once.</strong> The first round teaches you the cycle. Subsequent rounds refine it for whatever new situation you are in. Coming back is not regression. It is appropriate clinical judgment about what you need.</p>
+  </div>
+
+  <h2>What to keep on your bookshelf</h2>
+
+  <p>Files from STAT that are worth keeping accessible long after Week 8:</p>
+
+  <p><strong>Your Week 1 failure mode diagnostic.</strong> Knowing your dominant failure mode under stress is the most useful single piece of self-knowledge from the program. Re-reading it before a hard semester begins is often enough to prevent a relapse.</p>
+
+  <p><strong>Your Week 8 discharge plan.</strong> The categorization of habits, the warning signals, the replacement structures. This is your operating manual for life after the program.</p>
+
+  <p><strong>One case that resembled you most.</strong> The case from the program that felt closest to your own situation. Re-reading it when a similar pattern shows up is faster than re-running the whole cycle.</p>
+
+  <div class="next-step">
+    <div class="next-step__label">If you are reading this for the first time</div>
+    <h3 class="next-step__title">Save this page somewhere you can find it.</h3>
+    <p class="next-step__body">
+      Bookmark it. Print it. Whatever method works for you. <strong>This page is most useful when you are not actively in crisis</strong>, because that is when you are calm enough to plan for the version of you that will be in crisis later. The students who do best after STAT are usually the ones who set up their post-program structures before they needed them.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_after_stat';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

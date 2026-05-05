@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Final Exam Triage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-navy-hover: #0D2950;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-border-strong: #D1D5DB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+  --cc-success: #047857;
+  --cc-warning: #B45309;
+  --cc-danger: #B91C1C;
+  --cc-tint-success: #ECFDF5;
+  --cc-tint-warning: #FEF3C7;
+  --cc-tint-danger: #FEE2E2;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ============================================
+   MASTHEAD
+   ============================================ */
+.masthead { margin-bottom: 2rem; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 1.5rem;
+}
+
+.how-to {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-gold);
+  margin: 1.5rem 0 2.5rem;
+  background: var(--cc-tint-gold);
+}
+
+.how-to__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.how-to__title::before {
+  content: "i";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.how-to__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+}
+.how-to__text strong { color: var(--cc-navy); font-weight: 700; }
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 2rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.section__number {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.section__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.section__intro {
+  font-size: 0.9375rem;
+  color: var(--cc-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.section__intro strong { color: var(--cc-navy); }
+
+/* ============================================
+   BLOCKERS (Step 1)
+   ============================================ */
+.blockers-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.blocker-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 32px;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.blocker-row__num {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cc-gold-deep);
+  text-align: center;
+}
+
+.blocker-row__input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-family: var(--cc-font);
+  font-size: 0.9375rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  transition: border-color 0.15s ease;
+}
+
+.blocker-row__input:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1.5px solid var(--cc-border);
+  color: var(--cc-text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover:not(:disabled) {
+  border-color: var(--cc-danger);
+  color: var(--cc-danger);
+}
+
+.remove-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.add-btn {
+  background: transparent;
+  border: 1.5px dashed var(--cc-border-strong);
+  color: var(--cc-navy);
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--cc-font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  margin-top: 0.5rem;
+}
+
+.add-btn:hover:not(:disabled) {
+  border-color: var(--cc-gold);
+  color: var(--cc-gold-deep);
+  background: var(--cc-tint-gold);
+}
+
+.add-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   PREREQUISITES LIBRARY (Step 2)
+   ============================================ */
+.empty-note {
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy-soft);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+}
+
+.blocker-group {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.blocker-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.blocker-group__topic {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+
+.blocker-group__topic::before {
+  content: "BLOCKER";
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.6875rem;
+  color: var(--cc-gold-deep);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.blocker-group__help {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+  margin-bottom: 1rem;
+}
+
+.prereq-category {
+  margin-bottom: 1rem;
+}
+
+.prereq-category__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.prereq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.prereq-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 0.8125rem;
+  color: var(--cc-text-secondary);
+  font-weight: 500;
+  user-select: none;
+}
+
+.prereq-chip:hover {
+  border-color: var(--cc-gold);
+  color: var(--cc-gold-deep);
+}
+
+.prereq-chip.checked {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+}
+
+.prereq-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-prereq {
+  margin-top: 1rem;
+}
+
+.custom-prereq__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.375rem;
+  display: block;
+}
+
+.custom-prereq__input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--cc-font);
+  font-size: 0.875rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+}
+
+.custom-prereq__input:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+/* ============================================
+   RATING CARDS (Step 3)
+   ============================================ */
+.rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.rating-card {
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.rating-card__label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+}
+
+.rating-card__options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .rating-card__options { grid-template-columns: 1fr 1fr; }
+}
+
+.rating-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.625rem 0.5rem;
+  background: var(--cc-tint-navy);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.rating-option:hover {
+  border-color: var(--cc-gold);
+}
+
+.rating-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rating-option__letter {
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--cc-gold-deep);
+  letter-spacing: 0.05em;
+}
+
+.rating-option__text {
+  font-size: 0.75rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.rating-option.selected--solid {
+  background: var(--cc-tint-success);
+  border-color: var(--cc-success);
+}
+.rating-option.selected--solid .rating-option__letter,
+.rating-option.selected--solid .rating-option__text { color: var(--cc-success); }
+
+.rating-option.selected--understand {
+  background: #F0FDFA;
+  border-color: #0E7490;
+}
+.rating-option.selected--understand .rating-option__letter,
+.rating-option.selected--understand .rating-option__text { color: #0E7490; }
+
+.rating-option.selected--fuzzy {
+  background: var(--cc-tint-warning);
+  border-color: var(--cc-warning);
+}
+.rating-option.selected--fuzzy .rating-option__letter,
+.rating-option.selected--fuzzy .rating-option__text { color: var(--cc-warning); }
+
+.rating-option.selected--missing {
+  background: var(--cc-tint-danger);
+  border-color: var(--cc-danger);
+}
+.rating-option.selected--missing .rating-option__letter,
+.rating-option.selected--missing .rating-option__text { color: var(--cc-danger); }
+
+/* ============================================
+   PRIORITIES (Step 4)
+   ============================================ */
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.priority-card {
+  background: var(--cc-surface);
+  border-left: 4px solid;
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--cc-border);
+  border-right: 1px solid var(--cc-border);
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.priority-card--missing { border-left-color: var(--cc-danger); background: var(--cc-tint-danger); }
+.priority-card--fuzzy { border-left-color: var(--cc-warning); background: var(--cc-tint-warning); }
+
+.priority-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.priority-card__label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+}
+
+.priority-card__severity {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.priority-card__severity--missing {
+  background: var(--cc-danger);
+  color: white;
+}
+
+.priority-card__severity--fuzzy {
+  background: var(--cc-warning);
+  color: white;
+}
+
+.priority-card__affects {
+  font-size: 0.8125rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.5;
+}
+
+.priority-card__affects strong { color: var(--cc-navy); font-weight: 700; }
+
+.no-priorities {
+  background: var(--cc-tint-success);
+  border-left: 3px solid var(--cc-success);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  font-size: 0.9375rem;
+  color: #065F46;
+  line-height: 1.6;
+}
+
+.no-priorities strong { font-weight: 700; }
+
+/* ============================================
+   REPAIR PLAN (Step 5)
+   ============================================ */
+.repair-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.repair-card {
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.repair-card__label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.repair-card__label::before {
+  content: attr(data-num);
+  font-family: 'SF Mono', Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--cc-gold-deep);
+  background: var(--cc-tint-gold);
+  padding: 0.1875rem 0.5rem;
+  border-radius: 4px;
+}
+
+.repair-fields {
+  display: grid;
+  grid-template-columns: 1fr 160px 120px;
+  gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .repair-fields { grid-template-columns: 1fr; }
+}
+
+.repair-fields input,
+.repair-fields select {
+  padding: 0.5rem 0.75rem;
+  font-family: var(--cc-font);
+  font-size: 0.875rem;
+  color: var(--cc-text);
+  background: var(--cc-surface);
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+}
+
+.repair-fields input:focus,
+.repair-fields select:focus {
+  outline: none;
+  border-color: var(--cc-gold);
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-family: var(--cc-font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1.5px solid;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn--primary {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-navy);
+}
+.btn--primary:hover {
+  background: var(--cc-navy-hover);
+  border-color: var(--cc-navy-hover);
+}
+
+.btn--secondary {
+  background: var(--cc-surface);
+  color: var(--cc-navy);
+  border-color: var(--cc-border-strong);
+}
+.btn--secondary:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+}
+
+.btn--danger {
+  background: var(--cc-surface);
+  color: var(--cc-danger);
+  border-color: var(--cc-border-strong);
+  margin-left: auto;
+}
+.btn--danger:hover {
+  border-color: var(--cc-danger);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SAVE INDICATOR
+   ============================================ */
+.save-indicator {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--cc-success);
+  color: white;
+  padding: 0.625rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.25);
+}
+
+.save-indicator.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  body { background: white; font-size: 10.5pt; }
+  .shell { max-width: 100%; padding: 0; }
+  .actions, .save-indicator, .how-to, .add-btn, .remove-btn { display: none !important; }
+  .section {
+    box-shadow: none;
+    border: 1px solid #999;
+    page-break-inside: avoid;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .masthead { margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #333; }
+  h1 { font-size: 18pt; margin-bottom: 0.5rem; }
+  .lead { font-size: 10pt; margin-bottom: 0.5rem; }
+  .section__title { font-size: 12pt; }
+  .blocker-row__input, .custom-prereq__input, .repair-fields input, .repair-fields select {
+    border: none;
+    border-bottom: 1px solid #666;
+    border-radius: 0;
+    padding: 0.25rem 0;
+    background: transparent;
+  }
+  .prereq-chip { border: 1px solid #999; }
+  .prereq-chip.checked { background: #333 !important; color: white !important; }
+  .rating-option { border: 1px solid #999; background: white !important; }
+  .rating-option.selected--solid,
+  .rating-option.selected--understand,
+  .rating-option.selected--fuzzy,
+  .rating-option.selected--missing {
+    background: white !important;
+    border: 2px solid #333 !important;
+  }
+  h2, h3, .section__header { page-break-after: avoid; }
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 0.9375rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .section { padding: 1.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="masthead">
+    <div class="eyebrow">STAT Success Cohort · Week 7 Tool</div>
+    <h1>Final Exam Triage.</h1>
+    <p class="lead">
+      You will not study everything. The work is choosing what to study, with eyes open. This tool calculates a priority order from your topic weights and your honest confidence, and produces a study allocation for the time you actually have. Takes 20 to 30 minutes. Auto-saves as you go.
+    </p>
+  </div>
+
+  <div class="how-to">
+    <div class="how-to__title">How to use this tool</div>
+    <p class="how-to__text">
+      <strong>Section 1</strong>, enter the days until your final and the hours per day you can realistically study. <strong>Section 2</strong>, list each topic on your final, its weight on the exam, and your honest confidence. <strong>Section 3</strong>, click Calculate to see your priority order and study hours per topic. <strong>Section 4</strong>, review your day-by-day plan. Print or download the result.
+    </p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">01</span>
+      <h2 class="section__title">How much time do you have?</h2>
+    </div>
+    <p class="section__intro">
+      Be honest about hours per day. Optimistic estimates produce plans you cannot actually execute, and that is one of the most expensive mistakes you can make this week.
+    </p>
+
+    <div class="time-grid">
+      <div class="form-row">
+        <label for="days">Days until your final</label>
+        <input type="number" id="days" min="1" max="60" value="14" inputmode="numeric">
+      </div>
+      <div class="form-row">
+        <label for="hoursPerDay">Hours per day you can realistically study</label>
+        <input type="number" id="hoursPerDay" min="0.5" max="12" step="0.5" value="3" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="total-display" role="status" aria-live="polite">
+      <span class="total-display__label">Total available study hours</span>
+      <span class="total-display__value" id="totalHoursDisplay">42</span>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">02</span>
+      <h2 class="section__title">What is on your final?</h2>
+    </div>
+    <p class="section__intro">
+      Add each topic that will appear on your final. Estimate its weight (the syllabus may show this; if not, estimate from past exams). Rate your honest confidence using the four-level scale your team has been using since Week 3.
+    </p>
+
+    <ul class="topics-list" id="topicsList" aria-label="Your final exam topics"></ul>
+
+    <button type="button" class="add-btn" id="addTopicBtn">+ Add another topic</button>
+
+    <div class="weight-status" role="status" aria-live="polite">
+      <span class="weight-status__label">Total weight assigned:</span>
+      <span class="weight-status__value" id="totalWeightDisplay">0%</span>
+      <span class="weight-status__hint" id="weightHint">Aim for roughly 100%.</span>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">03</span>
+      <h2 class="section__title">Your priority order</h2>
+    </div>
+    <p class="section__intro">
+      The calculation is simple: high-weight topics you do not yet know are highest priority. <strong>Low-weight topics you already know well are lowest priority, even if they feel safer to study.</strong> Click Calculate when your topics list is complete.
+    </p>
+
+    <button type="button" class="btn btn--primary" id="calculateBtn">Calculate priority and allocation</button>
+
+    <div id="prioritiesSection" class="empty-note">Add topics in Section 2 first, then click Calculate.</div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section">
+    <div class="section__header">
+      <span class="section__number">04</span>
+      <h2 class="section__title">Your day-by-day plan</h2>
+    </div>
+    <p class="section__intro">
+      A simple distribution of your highest-priority topics across the days you have remaining. <strong>Use this as a starting point, not a contract.</strong> Adjust based on your team's feedback in the live session.
+    </p>
+
+    <div id="planSection" class="empty-note">Calculate priority in Section 3 to see your day-by-day plan.</div>
+  </section>
+
+  <div class="actions">
+    <button type="button" class="btn btn--primary" id="printBtn">Print</button>
+    <button type="button" class="btn btn--secondary" id="downloadBtn">Download</button>
+    <button type="button" class="btn btn--danger" id="clearBtn">Clear all</button>
+  </div>
+
+</div>
+
+<style>
+/* Tool-specific layout additions, layered on top of the chassis CSS */
+.time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0 1.25rem;
+}
+@media (max-width: 560px) {
+  .time-grid { grid-template-columns: 1fr; }
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.form-row label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+}
+.form-row input[type="number"],
+.form-row input[type="text"] {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--cc-border);
+  border-radius: 8px;
+  background: var(--cc-surface);
+  color: var(--cc-text);
+}
+.form-row input[type="number"]:focus,
+.form-row input[type="text"]:focus {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+  border-color: var(--cc-gold);
+}
+.total-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 0 12px 12px 0;
+}
+.total-display__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+}
+.total-display__value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.topics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.topic-row {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  padding: 1rem 1.125rem;
+}
+.topic-row__header {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.topic-row__header input[type="text"] {
+  flex: 1;
+}
+.topic-row__remove {
+  background: transparent;
+  border: none;
+  color: var(--cc-text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  line-height: 1;
+}
+.topic-row__remove:hover { color: #B91C1C; background: #FEE; }
+.topic-row__remove:focus-visible { outline: 2px solid var(--cc-gold); outline-offset: 2px; }
+.topic-row__remove:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.topic-row__fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem 1rem;
+  align-items: center;
+}
+@media (max-width: 560px) {
+  .topic-row__fields { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+.topic-row__fields label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cc-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.topic-row__weight-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.topic-row__weight-input input {
+  width: 5.5rem;
+}
+.topic-row__weight-input span {
+  font-size: 0.875rem;
+  color: var(--cc-text-muted);
+}
+
+.confidence-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.375rem;
+}
+@media (max-width: 560px) {
+  .confidence-group { grid-template-columns: repeat(2, 1fr); }
+}
+.confidence-group label {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.confidence-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.confidence-group label span {
+  display: block;
+  padding: 0.5rem 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid var(--cc-border);
+  border-radius: 8px;
+  background: var(--cc-surface);
+  color: var(--cc-text-secondary);
+  transition: all 0.12s;
+}
+.confidence-group input[type="radio"]:checked + span {
+  background: var(--cc-navy);
+  border-color: var(--cc-navy);
+  color: var(--cc-text-inverse);
+}
+.confidence-group input[type="radio"]:focus-visible + span {
+  outline: 2px solid var(--cc-gold);
+  outline-offset: 2px;
+}
+
+.weight-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.875rem;
+  padding: 0.875rem 1.125rem;
+  background: var(--cc-tint-gold);
+  border-left: 3px solid var(--cc-gold);
+  border-radius: 0 12px 12px 0;
+  font-size: 0.875rem;
+}
+.weight-status__label { font-weight: 600; color: var(--cc-navy); }
+.weight-status__value {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--cc-navy);
+  font-size: 1.0625rem;
+}
+.weight-status__hint { color: var(--cc-text-muted); }
+.weight-status.is-high .weight-status__value,
+.weight-status.is-low .weight-status__value { color: #B45309; }
+
+/* Priority results */
+.priority-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+  counter-reset: priority;
+}
+.priority-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  border-left: 4px solid var(--cc-border);
+}
+.priority-row--top { border-left-color: var(--cc-navy); background: var(--cc-tint-navy); }
+.priority-row--mid { border-left-color: var(--cc-gold); }
+.priority-row__rank {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  font-variant-numeric: tabular-nums;
+  min-width: 2ch;
+}
+.priority-row__name {
+  font-weight: 700;
+  color: var(--cc-navy);
+  font-size: 1rem;
+  margin-bottom: 0.125rem;
+}
+.priority-row__meta {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+}
+.priority-row__hours {
+  text-align: right;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  font-variant-numeric: tabular-nums;
+}
+.priority-row__hours small {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--cc-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.125rem;
+}
+@media (max-width: 560px) {
+  .priority-row {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .priority-row__hours { grid-column: 1 / -1; text-align: left; padding-top: 0.5rem; border-top: 1px solid var(--cc-border); }
+}
+
+/* Day-by-day plan */
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0 0;
+  font-size: 0.9375rem;
+}
+.plan-table th, .plan-table td {
+  text-align: left;
+  padding: 0.75rem 0.875rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+.plan-table th {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cc-text-muted);
+  background: var(--cc-tint-navy);
+}
+.plan-table tr:last-child td { border-bottom: none; }
+.plan-table td:first-child { font-weight: 700; color: var(--cc-navy); white-space: nowrap; }
+.plan-table td:last-child { text-align: right; color: var(--cc-text-muted); font-variant-numeric: tabular-nums; }
+</style>
+
+
+<script>
+(function() {
+  'use strict';
+
+  var STORAGE_KEY = 'stat_triage_v1';
+  var CONFIDENCE_LEVELS = [
+    { id: 'missing',    label: 'Missing',    multiplier: 1.0  },
+    { id: 'fuzzy',      label: 'Fuzzy',      multiplier: 0.75 },
+    { id: 'understand', label: 'Understand', multiplier: 0.4  },
+    { id: 'can-teach',  label: 'Can teach',  multiplier: 0.1  }
+  ];
+
+  var state = {
+    days: 14,
+    hoursPerDay: 3,
+    topics: []
+  };
+
+  var nextTopicId = 1;
+
+  function newTopic() {
+    return { id: 'topic-' + (nextTopicId++), name: '', weight: '', confidence: 'fuzzy' };
+  }
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        if (typeof parsed.days === 'number') state.days = parsed.days;
+        if (typeof parsed.hoursPerDay === 'number') state.hoursPerDay = parsed.hoursPerDay;
+        if (Array.isArray(parsed.topics)) {
+          state.topics = parsed.topics.map(function(t) {
+            return {
+              id: t.id || ('topic-' + (nextTopicId++)),
+              name: typeof t.name === 'string' ? t.name : '',
+              weight: typeof t.weight === 'number' || typeof t.weight === 'string' ? t.weight : '',
+              confidence: ['missing','fuzzy','understand','can-teach'].indexOf(t.confidence) >= 0 ? t.confidence : 'fuzzy'
+            };
+          });
+        }
+        return true;
+      }
+    } catch (e) { /* ignore */ }
+    return false;
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if (window.flashSaved) window.flashSaved();
+    } catch (e) { /* ignore */ }
+  }
+
+  function el(tag, attrs, children) {
+    var e = document.createElement(tag);
+    if (attrs) {
+      for (var k in attrs) {
+        if (k === 'className') e.className = attrs[k];
+        else if (k === 'text') e.textContent = attrs[k];
+        else if (k === 'html') e.innerHTML = attrs[k];
+        else if (k.indexOf('on') === 0) e.addEventListener(k.slice(2), attrs[k]);
+        else e.setAttribute(k, attrs[k]);
+      }
+    }
+    if (children) children.forEach(function(c) { if (c) e.appendChild(c); });
+    return e;
+  }
+
+  // ============================================
+  // SECTION 1: Time setup
+  // ============================================
+  var daysInput = document.getElementById('days');
+  var hoursInput = document.getElementById('hoursPerDay');
+  var totalHoursDisplay = document.getElementById('totalHoursDisplay');
+
+  function updateTotalHours() {
+    var d = parseFloat(daysInput.value) || 0;
+    var h = parseFloat(hoursInput.value) || 0;
+    var total = Math.max(0, d * h);
+    totalHoursDisplay.textContent = total.toFixed(1).replace(/\.0$/, '');
+    state.days = d;
+    state.hoursPerDay = h;
+    saveState();
+  }
+  daysInput.addEventListener('input', updateTotalHours);
+  hoursInput.addEventListener('input', updateTotalHours);
+
+  // ============================================
+  // SECTION 2: Topics list
+  // ============================================
+  var topicsList = document.getElementById('topicsList');
+  var addTopicBtn = document.getElementById('addTopicBtn');
+  var totalWeightDisplay = document.getElementById('totalWeightDisplay');
+  var weightHint = document.getElementById('weightHint');
+
+  function renderTopicRow(topic) {
+    var li = el('li', { className: 'topic-row', 'data-id': topic.id });
+
+    var header = el('div', { className: 'topic-row__header' });
+    var nameInput = el('input', {
+      type: 'text',
+      placeholder: 'Topic name (e.g., Cardiac cycle)',
+      value: topic.name,
+      'aria-label': 'Topic name'
+    });
+    nameInput.addEventListener('input', function(e) {
+      topic.name = e.target.value;
+      saveState();
+    });
+    header.appendChild(nameInput);
+
+    var removeBtn = el('button', {
+      type: 'button',
+      className: 'topic-row__remove',
+      'aria-label': 'Remove topic',
+      title: 'Remove topic',
+      text: '\u2715'
+    });
+    removeBtn.addEventListener('click', function() {
+      state.topics = state.topics.filter(function(t) { return t.id !== topic.id; });
+      saveState();
+      render();
+    });
+    header.appendChild(removeBtn);
+    li.appendChild(header);
+
+    var fields = el('div', { className: 'topic-row__fields' });
+
+    fields.appendChild(el('label', { for: topic.id + '-weight', text: 'Weight' }));
+    var weightWrap = el('div', { className: 'topic-row__weight-input' });
+    var weightInput = el('input', {
+      type: 'number',
+      id: topic.id + '-weight',
+      min: '0', max: '100', step: '0.5',
+      placeholder: '0',
+      value: topic.weight,
+      inputmode: 'decimal',
+      'aria-label': 'Weight on exam'
+    });
+    weightInput.addEventListener('input', function(e) {
+      topic.weight = e.target.value;
+      updateWeightStatus();
+      saveState();
+    });
+    weightWrap.appendChild(weightInput);
+    weightWrap.appendChild(el('span', { text: '% of exam' }));
+    fields.appendChild(weightWrap);
+
+    fields.appendChild(el('label', { for: topic.id + '-conf-0', text: 'Confidence' }));
+    var confGroup = el('div', { className: 'confidence-group', role: 'radiogroup', 'aria-label': 'Confidence level' });
+    CONFIDENCE_LEVELS.forEach(function(c, i) {
+      var lbl = el('label');
+      var radio = el('input', {
+        type: 'radio',
+        name: topic.id + '-conf',
+        id: topic.id + '-conf-' + i,
+        value: c.id
+      });
+      if (topic.confidence === c.id) radio.checked = true;
+      radio.addEventListener('change', function() {
+        topic.confidence = c.id;
+        saveState();
+      });
+      lbl.appendChild(radio);
+      lbl.appendChild(el('span', { text: c.label }));
+      confGroup.appendChild(lbl);
+    });
+    fields.appendChild(confGroup);
+
+    li.appendChild(fields);
+    return li;
+  }
+
+  function updateWeightStatus() {
+    var total = state.topics.reduce(function(sum, t) {
+      var w = parseFloat(t.weight);
+      return sum + (isNaN(w) ? 0 : w);
+    }, 0);
+    totalWeightDisplay.textContent = total.toFixed(1).replace(/\.0$/, '') + '%';
+    var ws = totalWeightDisplay.parentElement;
+    ws.classList.remove('is-high', 'is-low');
+    if (total > 110) {
+      ws.classList.add('is-high');
+      weightHint.textContent = 'Over 100. Some weights may be too high.';
+    } else if (total > 0 && total < 90) {
+      ws.classList.add('is-low');
+      weightHint.textContent = 'Under 90. You may be missing topics, or weights may be too low.';
+    } else if (total === 0) {
+      weightHint.textContent = 'Aim for roughly 100%.';
+    } else {
+      weightHint.textContent = 'Looks reasonable.';
+    }
+  }
+
+  function render() {
+    topicsList.innerHTML = '';
+    state.topics.forEach(function(t) {
+      topicsList.appendChild(renderTopicRow(t));
+    });
+    updateWeightStatus();
+  }
+
+  addTopicBtn.addEventListener('click', function() {
+    state.topics.push(newTopic());
+    saveState();
+    render();
+    var rows = topicsList.querySelectorAll('.topic-row input[type="text"]');
+    if (rows.length) rows[rows.length - 1].focus();
+  });
+
+  // ============================================
+  // SECTION 3 & 4: Calculate priority + day plan
+  // ============================================
+  var calculateBtn = document.getElementById('calculateBtn');
+  var prioritiesSection = document.getElementById('prioritiesSection');
+  var planSection = document.getElementById('planSection');
+
+  function calculate() {
+    var topics = state.topics
+      .filter(function(t) { return t.name.trim() && parseFloat(t.weight) > 0; })
+      .map(function(t) {
+        var conf = CONFIDENCE_LEVELS.filter(function(c) { return c.id === t.confidence; })[0] || CONFIDENCE_LEVELS[1];
+        var weight = parseFloat(t.weight);
+        return {
+          name: t.name.trim(),
+          weight: weight,
+          confidence: conf.label,
+          confidenceId: conf.id,
+          priority: weight * conf.multiplier
+        };
+      });
+
+    if (topics.length === 0) {
+      prioritiesSection.className = 'empty-note';
+      prioritiesSection.textContent = 'Add at least one topic with a weight greater than 0 in Section 2 first.';
+      planSection.className = 'empty-note';
+      planSection.textContent = 'Calculate priority in Section 3 to see your day-by-day plan.';
+      return;
+    }
+
+    topics.sort(function(a, b) { return b.priority - a.priority; });
+
+    var totalHours = (state.days || 0) * (state.hoursPerDay || 0);
+    var totalPriority = topics.reduce(function(s, t) { return s + t.priority; }, 0);
+
+    if (totalHours <= 0 || totalPriority <= 0) {
+      prioritiesSection.className = 'empty-note';
+      prioritiesSection.textContent = 'Set days and hours per day in Section 1 above zero, then calculate.';
+      return;
+    }
+
+    // Allocate hours proportionally, with a 0.5h floor
+    var minHours = 0.5;
+    topics.forEach(function(t) {
+      t.rawHours = totalHours * (t.priority / totalPriority);
+      t.hours = Math.max(minHours, Math.round(t.rawHours * 2) / 2);
+    });
+    // Re-balance after floor
+    var allocated = topics.reduce(function(s, t) { return s + t.hours; }, 0);
+    if (allocated !== totalHours && topics.length > 0) {
+      var diff = totalHours - allocated;
+      var idx = 0;
+      while (Math.abs(diff) > 0.25 && idx < 100) {
+        var target = topics[0]; // adjust top priority topic
+        target.hours = Math.max(minHours, Math.round((target.hours + diff) * 2) / 2);
+        diff = totalHours - topics.reduce(function(s, t) { return s + t.hours; }, 0);
+        idx++;
+        if (Math.abs(diff) <= 0.25) break;
+        idx = 100;
+      }
+    }
+
+    renderPriorities(topics);
+    renderDayPlan(topics);
+  }
+
+  function renderPriorities(topics) {
+    prioritiesSection.className = '';
+    prioritiesSection.innerHTML = '';
+    var ul = el('ul', { className: 'priority-list' });
+    topics.forEach(function(t, i) {
+      var rank = i + 1;
+      var classes = 'priority-row';
+      if (rank <= 3) classes += ' priority-row--top';
+      else if (rank <= Math.ceil(topics.length / 2)) classes += ' priority-row--mid';
+      var li = el('li', { className: classes });
+      li.appendChild(el('div', { className: 'priority-row__rank', text: String(rank) }));
+      var info = el('div');
+      info.appendChild(el('div', { className: 'priority-row__name', text: t.name }));
+      info.appendChild(el('div', {
+        className: 'priority-row__meta',
+        text: t.weight + '% of exam · Confidence: ' + t.confidence
+      }));
+      li.appendChild(info);
+      var hrs = el('div', { className: 'priority-row__hours' });
+      hrs.appendChild(document.createTextNode(t.hours.toFixed(1).replace(/\.0$/, '') + ' h'));
+      hrs.appendChild(el('small', { text: 'allocated' }));
+      li.appendChild(hrs);
+      ul.appendChild(li);
+    });
+    prioritiesSection.appendChild(ul);
+  }
+
+  function renderDayPlan(topics) {
+    planSection.className = '';
+    planSection.innerHTML = '';
+
+    var days = state.days;
+    var hoursPerDay = state.hoursPerDay;
+    if (days <= 0 || hoursPerDay <= 0) {
+      planSection.className = 'empty-note';
+      planSection.textContent = 'Set days and hours per day above zero to see a day plan.';
+      return;
+    }
+
+    // Build a flat queue of (topic, hour-block) units of 0.5h each
+    var queue = [];
+    topics.forEach(function(t) {
+      var blocks = Math.round(t.hours / 0.5);
+      for (var i = 0; i < blocks; i++) queue.push(t.name);
+    });
+
+    // Distribute across days, interleaving so high-priority topics get earlier days
+    var blocksPerDay = Math.round(hoursPerDay / 0.5);
+    var schedule = [];
+    for (var d = 0; d < days; d++) {
+      var day = { day: d + 1, items: {} };
+      for (var b = 0; b < blocksPerDay; b++) {
+        if (queue.length === 0) break;
+        // Take from front; high-priority topics dominate front of queue when sorted
+        var idx = (d + b) % queue.length;
+        var name = queue.splice(idx, 1)[0];
+        day.items[name] = (day.items[name] || 0) + 0.5;
+      }
+      schedule.push(day);
+    }
+
+    var p = el('p', {
+      className: 'section__intro',
+      html: 'Total hours: <strong>' + (days * hoursPerDay).toFixed(1).replace(/\.0$/, '') + '</strong> across <strong>' + days + '</strong> days at <strong>' + hoursPerDay + '</strong> hours per day.'
+    });
+    planSection.appendChild(p);
+
+    var table = el('table', { className: 'plan-table' });
+    var thead = el('thead');
+    var headRow = el('tr');
+    headRow.appendChild(el('th', { text: 'Day' }));
+    headRow.appendChild(el('th', { text: 'Topic focus' }));
+    headRow.appendChild(el('th', { text: 'Hours' }));
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    var tbody = el('tbody');
+    schedule.forEach(function(d) {
+      var topicNames = Object.keys(d.items);
+      if (topicNames.length === 0) {
+        var tr = el('tr');
+        tr.appendChild(el('td', { text: 'Day ' + d.day }));
+        tr.appendChild(el('td', { text: '(buffer / catch-up / rest)' }));
+        tr.appendChild(el('td', { text: '0' }));
+        tbody.appendChild(tr);
+      } else {
+        topicNames.forEach(function(name, i) {
+          var tr = el('tr');
+          tr.appendChild(el('td', { text: i === 0 ? 'Day ' + d.day : '' }));
+          tr.appendChild(el('td', { text: name }));
+          tr.appendChild(el('td', { text: d.items[name].toFixed(1).replace(/\.0$/, '') + ' h' }));
+          tbody.appendChild(tr);
+        });
+      }
+    });
+    table.appendChild(tbody);
+    planSection.appendChild(table);
+  }
+
+  calculateBtn.addEventListener('click', calculate);
+
+  // ============================================
+  // ACTIONS
+  // ============================================
+  document.getElementById('printBtn').addEventListener('click', function() {
+    calculate();
+    setTimeout(function() { window.print(); }, 100);
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', function() {
+    var lines = [];
+    lines.push('FINAL EXAM TRIAGE PLAN');
+    lines.push('Generated: ' + new Date().toLocaleString());
+    lines.push('');
+    lines.push('Days until final: ' + state.days);
+    lines.push('Hours per day: ' + state.hoursPerDay);
+    lines.push('Total study hours: ' + (state.days * state.hoursPerDay));
+    lines.push('');
+    lines.push('TOPICS (priority order)');
+    lines.push('');
+    var topics = state.topics
+      .filter(function(t) { return t.name.trim() && parseFloat(t.weight) > 0; })
+      .map(function(t) {
+        var conf = CONFIDENCE_LEVELS.filter(function(c) { return c.id === t.confidence; })[0] || CONFIDENCE_LEVELS[1];
+        return {
+          name: t.name.trim(),
+          weight: parseFloat(t.weight),
+          confidence: conf.label,
+          priority: parseFloat(t.weight) * conf.multiplier
+        };
+      })
+      .sort(function(a, b) { return b.priority - a.priority; });
+
+    var totalP = topics.reduce(function(s, t) { return s + t.priority; }, 0);
+    var totalH = state.days * state.hoursPerDay;
+    topics.forEach(function(t, i) {
+      t.hours = totalP > 0 ? Math.max(0.5, Math.round(totalH * (t.priority / totalP) * 2) / 2) : 0;
+      lines.push((i + 1) + '. ' + t.name);
+      lines.push('   Weight: ' + t.weight + '%  |  Confidence: ' + t.confidence + '  |  Allocated: ' + t.hours + ' h');
+    });
+    lines.push('');
+    lines.push('Generated by the STAT Success Cohort Final Exam Triage tool.');
+
+    var blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'final-exam-triage-plan.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', function() {
+    if (!confirm('Clear all your work? This cannot be undone.')) return;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    state = { days: 14, hoursPerDay: 3, topics: [newTopic()] };
+    daysInput.value = state.days;
+    hoursInput.value = state.hoursPerDay;
+    updateTotalHours();
+    render();
+    prioritiesSection.className = 'empty-note';
+    prioritiesSection.textContent = 'Add topics in Section 2 first, then click Calculate.';
+    planSection.className = 'empty-note';
+    planSection.textContent = 'Calculate priority in Section 3 to see your day-by-day plan.';
+  });
+
+  // ============================================
+  // INIT
+  // ============================================
+  if (!loadState() || state.topics.length === 0) {
+    state.topics = [newTopic(), newTopic(), newTopic()];
+  }
+  daysInput.value = state.days;
+  hoursInput.value = state.hoursPerDay;
+  updateTotalHours();
+  render();
+
+})();
+</script>
+
+
+<div class="save-indicator" id="saveIndicator">Saved</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============================================
+  // SAVE INDICATOR
+  // ============================================
+  var saveIndicator = document.getElementById('saveIndicator');
+  var saveTimer = null;
+  function flashSaved() {
+    if (!saveIndicator) return;
+    saveIndicator.classList.add('save-indicator--visible');
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(function() {
+      saveIndicator.classList.remove('save-indicator--visible');
+    }, 1200);
+  }
+  window.flashSaved = flashSaved;
+
+  // ============================================
+  // IFRAME HEIGHT SENDER
+  // ============================================
+  var frameId = window.name || 'stat_final_exam_triage';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 200);
+})();
+</script>
+
+</body>
+</html>

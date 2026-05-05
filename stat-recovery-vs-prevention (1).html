@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Pre-enrollment Self-check</title>
+<meta name="description" content="A 5-question pre-enrollment self-check. STAT Success Cohort is built for students in critical mode, not preventative mode. Find out which mode you are in before you enroll.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 1000;
+}
+.skip-link:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 3px solid var(--cc-gold-bright);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+p strong { color: var(--cc-navy); font-weight: 700; }
+
+/* Mode comparison (mirrors welcome page critical/preventative cards) */
+.modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0 2.5rem;
+}
+@media (max-width: 640px) { .modes { grid-template-columns: 1fr; } }
+
+.mode {
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem 1.625rem;
+  border-top: 4px solid var(--cc-gold);
+  position: relative;
+}
+.mode--prevent {
+  background: var(--cc-tint-gold);
+}
+.mode--critical {
+  background: var(--cc-navy);
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.mode__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.mode--prevent .mode__label { color: var(--cc-gold-deep); }
+.mode--critical .mode__label { color: var(--cc-gold-bright); }
+
+.mode__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+.mode--prevent .mode__title { color: var(--cc-navy); }
+.mode--critical .mode__title { color: var(--cc-text-inverse); }
+
+.mode__body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0;
+}
+.mode--prevent .mode__body { color: var(--cc-text-secondary); }
+.mode--critical .mode__body { color: rgba(250, 250, 247, 0.92); }
+
+/* Self-check form */
+.selfcheck {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.selfcheck__intro {
+  font-size: 0.9375rem;
+  color: var(--cc-text-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+.q {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--cc-border);
+}
+.q:last-of-type { border-bottom: none; }
+.q__num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.375rem;
+}
+.q__text {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--cc-navy);
+  margin-bottom: 0.5rem;
+  line-height: 1.45;
+}
+.q__construct {
+  font-size: 0.8125rem;
+  color: var(--cc-text-muted);
+  margin-bottom: 0.875rem;
+  font-style: italic;
+}
+.q__options {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+.opt { flex: 1; min-width: 110px; position: relative; }
+.opt input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.opt label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1rem;
+  border: 1.5px solid var(--cc-border);
+  border-radius: 8px;
+  background: var(--cc-surface);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  min-height: 48px;
+  font-weight: 500;
+  color: var(--cc-text-secondary);
+  font-size: 0.9375rem;
+}
+.opt label:hover {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+}
+.opt input[type="radio"]:checked + label {
+  border-color: var(--cc-navy);
+  background: var(--cc-tint-navy);
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+.opt input[type="radio"]:focus-visible + label {
+  outline: 3px solid var(--cc-gold-bright);
+  outline-offset: 2px;
+}
+
+.selfcheck__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cc-border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s;
+  line-height: 1;
+}
+.btn--primary { background: var(--cc-gold-deep); color: var(--cc-text-inverse); }
+.btn--primary:hover { background: #7a5d2f; }
+.btn--bright { background: var(--cc-gold-bright); color: var(--cc-navy); }
+.btn--bright:hover { background: #c19754; }
+.btn--secondary { background: var(--cc-surface); color: var(--cc-navy); border-color: var(--cc-navy); }
+.btn--secondary:hover { background: var(--cc-tint-navy); }
+.btn--link {
+  background: transparent;
+  color: var(--cc-text-muted);
+  padding: 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.btn--link:hover { color: var(--cc-navy); }
+
+/* Result blocks */
+.result {
+  display: none;
+  margin: 1.5rem 0 0;
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+}
+.result.is-visible { display: block; }
+.result--critical {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+.result--critical::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+.result--critical h3 { color: var(--cc-text-inverse); }
+.result--critical p { color: rgba(250, 250, 247, 0.92); }
+.result--borderline {
+  background: var(--cc-tint-navy);
+  border-left: 3px solid var(--cc-navy);
+  border-radius: 0 16px 16px 0;
+}
+.result--prevent {
+  background: var(--cc-tint-gold);
+  border-left: 3px solid var(--cc-gold);
+  border-radius: 0 16px 16px 0;
+}
+.result__score {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 0.875rem;
+}
+.result--critical .result__score {
+  background: rgba(212, 169, 98, 0.18);
+  color: var(--cc-gold-bright);
+}
+.result--borderline .result__score {
+  background: rgba(10, 31, 61, 0.08);
+  color: var(--cc-navy);
+}
+.result--prevent .result__score {
+  background: rgba(184, 144, 77, 0.15);
+  color: var(--cc-gold-deep);
+}
+.result h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.625rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+.result p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--cc-text-secondary);
+  margin-bottom: 0.875rem;
+}
+.result p:last-of-type { margin-bottom: 0; }
+.result__actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Construct grid */
+.constructs {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.constructs li {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  padding: 0.875rem 1.125rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.9375rem;
+}
+.constructs li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 8rem;
+}
+.constructs li span {
+  color: var(--cc-text-secondary);
+  line-height: 1.55;
+}
+
+/* Two-doors next-step */
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0 0 1.25rem;
+}
+.next-step__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.next-step__actions .btn--secondary {
+  background: transparent;
+  color: var(--cc-text-inverse);
+  border-color: var(--cc-text-inverse);
+}
+.next-step__actions .btn--secondary:hover {
+  background: rgba(250, 250, 247, 0.1);
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .selfcheck { padding: 1.5rem 1.25rem; }
+  .opt { flex: 1 1 100%; }
+  .constructs li { flex-direction: column; gap: 0.25rem; }
+  .constructs li strong { min-width: 0; }
+}
+
+@media print {
+  body { background: white; color: black; }
+  .skip-link, .next-step, .selfcheck__actions, .result__actions { display: none; }
+  .selfcheck, .mode { box-shadow: none; border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<main id="main">
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Pre-enrollment</div>
+  <h1>Are you actually in critical mode?</h1>
+  <p class="lead">
+    Five questions before you enroll. STAT Success Cohort is built for one specific kind of student: a student in academic critical care. The questions below will tell you whether that is you, or whether a different kind of support will serve you better right now.
+  </p>
+
+  <h2>Two modes, briefly</h2>
+
+  <p>
+    A full explanation of the critical care framework lives in the welcome lesson. The short version is below, just enough to make the self-check make sense.
+  </p>
+
+  <div class="modes">
+    <div class="mode mode--prevent">
+      <div class="mode__label">Preventative mode</div>
+      <div class="mode__title">Stable patient.</div>
+      <p class="mode__body">
+        Grades are at or above passing. Methods are working. Time horizon is long. Small adjustments, slow compounding. Most academic support is built for this mode.
+      </p>
+    </div>
+    <div class="mode mode--critical">
+      <div class="mode__label">Critical mode</div>
+      <div class="mode__title">Unstable patient.</div>
+      <p class="mode__body">
+        Grades are below passing or actively sliding. Usual methods have stopped working. Time horizon is weeks, not semesters. Direct intervention, immediate action, coordinated team. STAT is built for this.
+      </p>
+    </div>
+  </div>
+
+  <h2>The self-check</h2>
+
+  <p>
+    Five questions. Each one targets a different validated dimension of academic crisis: where you are, how much time you have, whether your usual tools still work, whether you can act on what you already know, and what is at stake if recovery does not happen. <strong>Three or more "yes" answers indicates critical mode.</strong>
+  </p>
+
+  <form class="selfcheck" id="selfcheck" novalidate aria-describedby="sc-intro">
+    <p class="selfcheck__intro" id="sc-intro">
+      Your responses stay in your browser. Nothing is submitted, stored, or sent.
+    </p>
+
+    <div class="q" role="group" aria-labelledby="q1-text">
+      <div class="q__num">Question 01</div>
+      <div class="q__text" id="q1-text">Are you currently below passing in at least one science or health science course, with not enough remaining points to recover passively?</div>
+      <div class="q__construct">Screening for: current academic standing</div>
+      <div class="q__options">
+        <div class="opt"><input type="radio" id="q1y" name="q1" value="1"><label for="q1y">Yes</label></div>
+        <div class="opt"><input type="radio" id="q1n" name="q1" value="0"><label for="q1n">No</label></div>
+      </div>
+    </div>
+
+    <div class="q" role="group" aria-labelledby="q2-text">
+      <div class="q__num">Question 02</div>
+      <div class="q__text" id="q2-text">Is there a critical assessment in the next 4 to 8 weeks that you must pass to recover the course?</div>
+      <div class="q__construct">Screening for: time pressure</div>
+      <div class="q__options">
+        <div class="opt"><input type="radio" id="q2y" name="q2" value="1"><label for="q2y">Yes</label></div>
+        <div class="opt"><input type="radio" id="q2n" name="q2" value="0"><label for="q2n">No</label></div>
+      </div>
+    </div>
+
+    <div class="q" role="group" aria-labelledby="q3-text">
+      <div class="q__num">Question 03</div>
+      <div class="q__text" id="q3-text">Have your usual study methods stopped working this semester despite real effort?</div>
+      <div class="q__construct">Screening for: method exhaustion (self-regulated learning failure)</div>
+      <div class="q__options">
+        <div class="opt"><input type="radio" id="q3y" name="q3" value="1"><label for="q3y">Yes</label></div>
+        <div class="opt"><input type="radio" id="q3n" name="q3" value="0"><label for="q3n">No</label></div>
+      </div>
+    </div>
+
+    <div class="q" role="group" aria-labelledby="q4-text">
+      <div class="q__num">Question 04</div>
+      <div class="q__text" id="q4-text">Do you find yourself unable to start studying, even when you have time and you know what you should be doing?</div>
+      <div class="q__construct">Screening for: initiation deficit (academic procrastination, executive dysfunction)</div>
+      <div class="q__options">
+        <div class="opt"><input type="radio" id="q4y" name="q4" value="1"><label for="q4y">Yes</label></div>
+        <div class="opt"><input type="radio" id="q4n" name="q4" value="0"><label for="q4n">No</label></div>
+      </div>
+    </div>
+
+    <div class="q" role="group" aria-labelledby="q5-text">
+      <div class="q__num">Question 05</div>
+      <div class="q__text" id="q5-text">Are the consequences of failing this course significant beyond the grade itself? (program admission, GPA cutoff, financial aid, graduation timeline, professional licensure)</div>
+      <div class="q__construct">Screening for: stakes and goal commitment</div>
+      <div class="q__options">
+        <div class="opt"><input type="radio" id="q5y" name="q5" value="1"><label for="q5y">Yes</label></div>
+        <div class="opt"><input type="radio" id="q5n" name="q5" value="0"><label for="q5n">No</label></div>
+      </div>
+    </div>
+
+    <div class="selfcheck__actions">
+      <button type="submit" class="btn btn--primary" id="sc-submit">See my result</button>
+      <button type="button" class="btn btn--link" id="sc-reset">Reset</button>
+    </div>
+
+    <div class="result" id="sc-result" role="status" aria-live="polite" tabindex="-1"></div>
+  </form>
+
+  <h2>What this self-check is screening for</h2>
+
+  <p>
+    Each question targets a clinically validated construct that predicts who actually benefits from a structured, intensive recovery program versus a lighter intervention. STAT is intentionally calibrated for students who score positively on three or more.
+  </p>
+
+  <ul class="constructs">
+    <li><strong>Q1: Standing</strong><span>Where you are right now, mathematically. Below passing with insufficient remaining points is a different problem than feeling behind.</span></li>
+    <li><strong>Q2: Time pressure</strong><span>Recovery windows determine intervention intensity. A 4 to 8 week window calls for structure that a slower program cannot deliver.</span></li>
+    <li><strong>Q3: Method failure</strong><span>If your usual study methods are still working, you do not need structural intervention. You need refinement. STAT is built for students whose methods have stopped working.</span></li>
+    <li><strong>Q4: Initiation deficit</strong><span>The gap between knowing what to do and doing it is one of the most validated predictors of academic failure. External structure closes that gap. Information alone does not.</span></li>
+    <li><strong>Q5: Stakes</strong><span>Goal commitment scales with consequence weight. Students with significant stakes engage with intensive programs differently than students for whom the grade is incidental.</span></li>
+  </ul>
+
+  <p>
+    This is not a diagnostic instrument. It is a self-check, intended to help you decide whether STAT is the right fit before you commit time and money. If your situation does not show three or more positive responses, STAT will be the wrong tool, and a different kind of support will serve you better.
+  </p>
+
+  <div class="next-step">
+    <div class="next-step__label">Two doors</div>
+    <h3 class="next-step__title">Pick the one that fits where you actually are.</h3>
+    <p class="next-step__body">
+      If your self-check pointed to critical mode, the welcome lesson is the next step. If it pointed to preventative mode, your time and energy are better spent on a different program. Honest self-routing now saves wasted effort later.
+    </p>
+    <div class="next-step__actions">
+      <a href="stat-welcome.html" target="_top" class="btn btn--bright">Begin STAT enrollment</a>
+      <a href="https://medmasterscollaborative.com" target="_blank" rel="noopener" class="btn btn--secondary">Explore preventative resources</a>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script>
+(function() {
+  var form = document.getElementById('selfcheck');
+  var resultEl = document.getElementById('sc-result');
+  var resetBtn = document.getElementById('sc-reset');
+
+  function score() {
+    var total = 0;
+    var answered = 0;
+    for (var i = 1; i <= 5; i++) {
+      var checked = form.querySelector('input[name="q' + i + '"]:checked');
+      if (checked) {
+        answered++;
+        total += parseInt(checked.value, 10);
+      }
+    }
+    return { total: total, answered: answered };
+  }
+
+  function render(s) {
+    resultEl.classList.remove('is-visible', 'result--critical', 'result--borderline', 'result--prevent');
+    if (s.answered < 5) {
+      resultEl.classList.add('is-visible', 'result--borderline');
+      resultEl.innerHTML =
+        '<h3>Please answer all five questions</h3>' +
+        '<p>You answered ' + s.answered + ' of 5. Complete the self-check to see your routing.</p>';
+    } else if (s.total >= 3) {
+      resultEl.classList.add('is-visible', 'result--critical');
+      resultEl.innerHTML =
+        '<span class="result__score">Score ' + s.total + ' of 5 · Critical mode</span>' +
+        '<h3>STAT is built for the situation you described.</h3>' +
+        '<p>Three or more positive screens indicate critical mode. The structured 8-week protocol is calibrated for exactly this. The recovery window narrows every week you wait.</p>' +
+        '<div class="result__actions">' +
+        '<a href="stat-welcome.html" target="_top" class="btn btn--bright">Begin enrollment</a>' +
+        '<a href="stat-what-to-expect.html" target="_top" class="btn btn--secondary" style="background:transparent;color:#FAFAF7;border-color:#FAFAF7;">See what to expect</a>' +
+        '</div>';
+    } else if (s.total === 2) {
+      resultEl.classList.add('is-visible', 'result--borderline');
+      resultEl.innerHTML =
+        '<span class="result__score">Score 2 of 5 · Borderline</span>' +
+        '<h3>Schedule a consult before enrolling.</h3>' +
+        '<p>Two positive screens suggests you are in transition between modes. STAT might be the right tool, or a less intensive intervention might serve you better. A 15-minute consult will sort it before you commit.</p>' +
+        '<div class="result__actions">' +
+        '<a href="stat-intake-survey.html" target="_top" class="btn btn--primary">Start the intake survey</a>' +
+        '</div>';
+    } else {
+      resultEl.classList.add('is-visible', 'result--prevent');
+      resultEl.innerHTML =
+        '<span class="result__score">Score ' + s.total + ' of 5 · Preventative mode</span>' +
+        '<h3>You are looking for prevention, not recovery.</h3>' +
+        '<p>Your situation does not match the clinical profile STAT is built for. That is good news. Prevention is the right path: build stronger habits and foundations now, while you have the runway. STAT would be the wrong tool, and the intensity would be a poor fit for the work you actually need to do.</p>' +
+        '<div class="result__actions">' +
+        '<a href="https://medmasterscollaborative.com" target="_blank" rel="noopener" class="btn btn--primary">Explore preventative resources</a>' +
+        '</div>';
+    }
+    if (s.answered === 5) {
+      resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try { resultEl.focus({ preventScroll: true }); } catch (e) {}
+    }
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    render(score());
+  });
+
+  resetBtn.addEventListener('click', function() {
+    form.reset();
+    resultEl.classList.remove('is-visible', 'result--critical', 'result--borderline', 'result--prevent');
+    resultEl.innerHTML = '';
+  });
+})();
+
+(function() {
+  var frameId = window.name || 'stat_recovery_vs_prevention';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  if (typeof MutationObserver !== 'undefined') {
+    new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Success Cohort | Continuing Your Study Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cc-navy: #0A1F3D;
+  --cc-navy-soft: #1A3258;
+  --cc-gold: #B8904D;
+  --cc-gold-deep: #8F6E38;
+  --cc-gold-bright: #D4A962;
+  --cc-white: #FAFAF7;
+  --cc-surface: #FFFFFF;
+  --cc-tint-navy: #F4F6FA;
+  --cc-tint-gold: #FAF6ED;
+  --cc-border: #E5E7EB;
+  --cc-text: #1F2937;
+  --cc-text-secondary: #374151;
+  --cc-text-muted: #4B5563;
+  --cc-text-inverse: #FAFAF7;
+
+  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--cc-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-text);
+  background: var(--cc-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.75rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--cc-gold);
+  display: inline-block;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cc-navy);
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cc-border);
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin: 2.5rem 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  border-bottom: 2px solid var(--cc-navy);
+  padding-bottom: 0.75rem;
+}
+
+h2:first-of-type { margin-top: 0; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+}
+
+.theme-card {
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+}
+
+.theme-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-gold-deep);
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cc-navy);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cc-text-secondary);
+  margin: 0;
+}
+
+.theme-card__body strong { color: var(--cc-navy); font-weight: 700; }
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 3rem;
+  margin-bottom: 0.75rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cc-text-secondary);
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.125rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--cc-gold);
+  border-radius: 4px;
+  background: white;
+}
+
+.checklist li strong {
+  color: var(--cc-navy);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 0.9375rem;
+}
+
+.checklist li span {
+  color: var(--cc-text-muted);
+  font-size: 0.875rem;
+}
+
+.callout {
+  padding: 20px 26px;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid var(--cc-navy);
+  margin: 2rem 0;
+  background: var(--cc-tint-navy);
+  transition: background 0.25s ease, border-left-color 0.25s ease;
+}
+.callout:hover { background: #FFFFFF; }
+
+.callout--info {
+  background: var(--cc-tint-navy);
+  border-left-color: var(--cc-navy);
+}
+.callout--info:hover { background: #FFFFFF; }
+
+.callout--accent {
+  background: var(--cc-tint-gold);
+  border-left-color: var(--cc-gold);
+}
+.callout--accent:hover { background: #FFFFFF; }
+
+.callout__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.callout__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+}
+.callout--info .callout__mark {
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+}
+.callout--accent .callout__mark {
+  background: var(--cc-gold);
+  color: var(--cc-navy);
+}
+
+.callout__title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-navy);
+  margin: 0;
+}
+
+.callout__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.callout__text strong { color: var(--cc-navy); font-weight: 700; }
+
+.phase-note {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cc-surface);
+  border: 1px solid var(--cc-border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  align-items: flex-start;
+}
+
+.phase-note__letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cc-navy);
+  color: var(--cc-gold);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.phase-note__body {
+  flex: 1;
+}
+
+.phase-note__title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cc-navy);
+  margin-bottom: 0.25rem;
+}
+
+.phase-note__text {
+  font-size: 0.9375rem;
+  color: var(--cc-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.next-step {
+  background: var(--cc-navy);
+  color: var(--cc-text-inverse);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+}
+
+.next-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cc-gold) 0%, var(--cc-gold-bright) 50%, var(--cc-gold) 100%);
+}
+
+.next-step__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cc-gold-bright);
+  margin-bottom: 0.5rem;
+}
+
+.next-step__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--cc-text-inverse);
+  margin: 0 0 0.75rem 0;
+  border: none;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.next-step__body {
+  font-size: 0.9375rem;
+  color: rgba(250, 250, 247, 0.9);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  h1 { font-size: 1.75rem; }
+  .lead { font-size: 1rem; }
+  .shell { padding: 1.5rem 1rem; }
+  .theme-card { padding: 1.25rem 1.5rem; }
+  .theme-card__title { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="eyebrow">STAT Success Cohort · Week 8 Reference</div>
+  <h1>Continuing your study group.</h1>
+  <p class="lead">
+    Some teams keep meeting after STAT ends. Some do not. Both are reasonable. This page is for teams that want to keep meeting and want to know how to do it well, written in the same voice as the rest of the program because the principles are the same.
+  </p>
+
+  <div class="theme-card">
+    <div class="theme-card__label">Why this matters</div>
+    <div class="theme-card__title">The team is one of the few things STAT cannot rebuild for you next semester.</div>
+    <p class="theme-card__body">
+      Most of what you took from STAT will travel with you. Method, audit habits, the language of CODE, the cases as templates. <strong>The thing that will not travel with you is the structure of meeting weekly with five other people who have read the same case and are working on the same recovery.</strong> That structure was held by the program. If you want a version of it next semester, you have to build it yourself, deliberately, before the cohort finishes dispersing.
+    </p>
+  </div>
+
+  <h2>What study groups are good for, and what they are not</h2>
+
+  <p>Study groups built around homework or exam cramming rarely produce durable benefit. <strong>Study groups built around the rhythm of audit, observation, decision, and evaluation often do.</strong> The difference is structure. A group that meets to "study together" defaults to side-by-side individual work, with brief conversational interruptions. A group that meets to run a structured cycle on each member produces real intellectual exchange.</p>
+
+  <p>If you want your post-STAT group to work, do not try to recreate the live session experience. The live session worked because there was a facilitator, a pre-read case, and 90 minutes blocked off. <strong>You will not have those things.</strong> Build something simpler that fits the constraints you actually have.</p>
+
+  <h2>A 30-minute weekly check-in template</h2>
+
+  <p>The smallest version of the cycle that still works as a group practice is a 30-minute weekly check-in with three rounds. Each member gets 10 minutes. The structure is:</p>
+
+  <p><strong>Round one (10 minutes total, two minutes per person).</strong> Each person reports one specific thing they did this week (a study session, an exam, a conversation with an instructor) and one thing they did not do that they had committed to. Just facts. No discussion yet.</p>
+
+  <p><strong>Round two (10 minutes total).</strong> Pick one person to focus on for the round. The group asks them three questions: what is your read on what is happening, what should you stop doing, what should you start doing. Same three questions you asked about Morgan, Riley, and Casey. Apply them to one of your own.</p>
+
+  <p><strong>Round three (10 minutes total, two minutes per person).</strong> Each person names their commitment for the next week, plus one 24-hour action. Same structure as the action plans you wrote during the program.</p>
+
+  <p>Rotate the focus person in round two. Over five weeks, every person gets attention once. <strong>This is the smallest version of the program that still works as a group practice.</strong> It also does not require a facilitator.</p>
+
+  <h2>Cadence</h2>
+
+  <p>The honest answer is that <strong>weekly is the best cadence for academic work and the hardest to sustain.</strong> Most groups that aim for weekly drift to biweekly within two months, and then to monthly, and then quietly stop. This is not failure; it is what happens when external structure is no longer holding the cadence in place.</p>
+
+  <p>If your group genuinely commits to weekly and uses the 30-minute structure above, weekly is achievable. If weekly feels heavy, biweekly is a reasonable compromise. <strong>Monthly does not work for academic recovery.</strong> The cycle relies on a short enough loop that you can still remember what you committed to. Monthly is a check-in with friends, which is also valuable, but is a different practice.</p>
+
+  <h2>Communication channels</h2>
+
+  <p>Pick one channel and stick with it. Group texts are accessible but do not carry async discussion well. Discord servers work for groups that already use Discord. Slack workspaces are overkill for six people. <strong>The channel matters less than the discipline of using one channel for everything.</strong> Three different channels for three different purposes will dissipate the group within a month.</p>
+
+  <p>What the channel is for: scheduling the weekly check-in, posting the focus person's pre-read (a short paragraph from their audit), and quick between-meeting accountability ("did the thing I said I would do today"). It is not for sharing study materials or debating course content. Those conversations happen in your individual courses, not here.</p>
+
+  <h2>When the group is working</h2>
+
+  <p>Signals that the structure is functioning: people show up on time most weeks, the focus rotation happens without anyone tracking it, members reference each other's patterns in their own audits ("I noticed I was doing what Morgan does"), and the group occasionally asks each other harder questions than your facilitator did because you know each other better.</p>
+
+  <p>If the group is doing those things, leave it alone. <strong>Do not try to make it more ambitious than it is.</strong> The 30-minute cycle scales remarkably well across whole semesters because it does not ask for much. Over-engineering it is the most common way these groups die.</p>
+
+  <h2>When it is not working</h2>
+
+  <p>Signals worth attention: meetings are getting canceled or shortened, the same person dominates every round, the focus rotation is being skipped, the conversation is consistently about course content rather than process, attendance has dropped below half. Any one of these alone is normal. <strong>Two or more together usually means the group has lost the structure and become a casual study group, which is fine but is no longer doing what you came for.</strong></p>
+
+  <p>The repair is to name it explicitly at the next meeting and either restore the 30-minute structure or formally end the group. <strong>Letting it dissolve quietly is worse than ending it deliberately</strong>, because it leaves everyone uncertain whether they should still be reaching out to the others.</p>
+
+  <h2>When to disband</h2>
+
+  <p>Disbanding is fine. Some groups are right for eight weeks and not right for the rest of the semester. The honest reasons to disband: the membership has scattered geographically and the time zones are no longer compatible, members are in courses that no longer overlap and the conversation has nothing to ground itself in, the original cohesion came from the program itself and does not survive its absence.</p>
+
+  <p>If you disband, do it explicitly. Send a message that says the group ran its course and you appreciate what came out of it. <strong>Leave the door open for individual check-ins between members who want them.</strong> Some of the most useful relationships from STAT continue as one-on-one accountability rather than group structures.</p>
+
+  <div class="callout callout--accent">
+    <div class="callout__header">
+      <span class="callout__mark" aria-hidden="true">P</span>
+      <p class="callout__title">A quieter version of this</p>
+    </div>
+    <p class="callout__text">If five other people willing to commit to a structured weekly check-in is more than you can assemble, the smaller version is one accountability partner. <strong>One person you check in with weekly.</strong> Same structure compressed: each person gets five minutes for what worked, what did not, what is next. Ten minutes total. This is a real practice, not a consolation prize. Many of the most durable post-program structures are just two people.</p>
+  </div>
+
+  <div class="next-step">
+    <div class="next-step__label">If you are setting this up now</div>
+    <h3 class="next-step__title">Have the conversation in Week 8.</h3>
+    <p class="next-step__body">
+      The window for setting up a post-program structure is the last two weeks of the cohort, while the team is still meeting weekly and the trust is fresh. <strong>If you wait until after Week 8 to propose continuing, the proposal usually does not land.</strong> Talk about it during your final live session, decide who is in, schedule the first post-program meeting before Week 8 ends. The first meeting is what determines whether the group lasts.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var frameId = window.name || 'stat_continuing_study_group';
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: height }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+})();
+</script>
+
+</body>
+</html>

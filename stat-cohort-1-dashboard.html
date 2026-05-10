@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="STAT Success Cohort 1 welcome dashboard. Your 8-week academic recovery cohort starts here.">
+<meta name="theme-color" content="#0A1322">
+<title>STAT Success Cohort 1 · Welcome Dashboard</title>
+
+<!--
+  ================================================================
+  STAT SUCCESS COHORT 1 · WELCOME DASHBOARD
+  Author: Dr. Sharilyn Rennie · MedMasters Collaborative
+  Built against canonical school/education design system.
+
+  REPLACE PLACEHOLDERS BEFORE PUSHING:
+    #LESSON_1_1 ... #LESSON_1_7   (Kajabi lesson URLs)
+    #LIVE_SESSION                  (live session URL)
+    #SUPPORT                       (support contact)
+  ================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #FFFFFF;
+  --bg-page: #F4F5F8;
+  --bg-tint: #F7F8FA;
+  --navy: #0A1322;
+  --navy-mid: #1F2D44;
+  --gold: #D4A24C;
+  --gold-text: #6E5018;
+  --gold-bright: #E5B45C;
+  --terra: #C25A3E;
+  --terra-text: #7A2F18;
+  --terra-bright: #E59575;
+  --teal-text: #2C5F66;
+  --plum-text: #5C2A66;
+  --ink: #0A1322;
+  --ink-soft: #14202F;
+  --ink-muted: #3D4860;
+  --rule: #B8BEC8;
+  --rule-soft: #DCE0E6;
+  --rule-faint: #E8EBEF;
+  --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --reading: 'Atkinson Hyperlegible', 'Plus Jakarta Sans', sans-serif;
+  --mono: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-card: 0 1px 3px rgba(10,19,34,0.08), 0 1px 2px rgba(10,19,34,0.05);
+  --shadow-lift: 0 6px 16px rgba(10,19,34,0.10), 0 3px 6px rgba(10,19,34,0.06);
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg-page); overflow-x: hidden; }
+body {
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  min-height: 100vh;
+}
+em { font-style: normal; font-weight: 700; color: var(--terra-text); }
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px solid var(--gold-text);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px; left: 8px; z-index: 9999;
+  background: var(--navy); color: white;
+  font-family: var(--sans); font-weight: 600; font-size: 14px;
+  padding: 12px 18px; text-decoration: none;
+  border: 3px solid var(--gold-text);
+}
+.skip-link:focus { top: 8px; outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 40px 96px;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule-soft);
+  margin-bottom: 36px;
+  flex-wrap: wrap; gap: 16px;
+}
+.brand { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.brand-mark {
+  font-family: var(--sans); font-weight: 500; font-size: 28px;
+  letter-spacing: -0.025em; line-height: 1; color: var(--navy);
+}
+.brand-tag {
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--ink-muted);
+}
+.cohort-pill {
+  font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+  background: var(--navy); color: white;
+  padding: 5px 12px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.cohort-pill::before {
+  content: ''; width: 7px; height: 7px;
+  border-radius: 999px; background: var(--gold-bright);
+}
+
+.hero {
+  padding: 24px 0 36px;
+  border-bottom: 1px solid var(--rule-soft);
+  margin-bottom: 36px;
+}
+.hero-pills {
+  display: flex; gap: 10px; margin-bottom: 18px;
+  flex-wrap: wrap; align-items: center;
+}
+.hero-type-pill {
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  color: white; background: var(--terra-text);
+  padding: 5px 14px; border-radius: 999px;
+}
+.hero-meta {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  color: var(--ink-muted);
+}
+.hero-title {
+  font-family: var(--sans); font-weight: 700;
+  font-size: clamp(36px, 5.6vw, 60px);
+  letter-spacing: -0.022em; line-height: 1.05;
+  color: var(--navy); margin-bottom: 18px;
+}
+.hero-subtitle {
+  font-family: var(--reading);
+  font-size: clamp(17px, 1.6vw, 19px);
+  color: var(--ink-soft); max-width: 64ch; line-height: 1.55;
+}
+.hero-meta-row {
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid var(--rule-faint);
+}
+.hero-meta-item {
+  font-family: var(--sans); font-size: 13.5px;
+  color: var(--ink-muted);
+}
+.hero-meta-item strong {
+  font-weight: 600; color: var(--navy); margin-right: 6px;
+}
+
+.start-card {
+  display: block;
+  background: var(--navy);
+  color: white;
+  padding: 32px 36px;
+  margin-bottom: 48px;
+  text-decoration: none;
+  border: 1px solid var(--navy);
+  transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.start-card:hover {
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+}
+.start-eyebrow {
+  font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--gold-bright); margin-bottom: 12px;
+}
+.start-title {
+  font-family: var(--sans); font-weight: 700;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: -0.015em; line-height: 1.15;
+  color: white; margin-bottom: 10px;
+}
+.start-desc {
+  font-family: var(--reading); font-size: 16px;
+  color: rgba(255,255,255,0.82); line-height: 1.55;
+  max-width: 56ch; margin-bottom: 22px;
+}
+.start-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.start-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(229, 180, 92, 0.16);
+  color: var(--gold-bright);
+  padding: 6px 14px; border-radius: 999px;
+  font-family: var(--mono); font-size: 12.5px; font-weight: 500;
+}
+.start-arrow {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--gold-bright);
+  font-family: var(--sans); font-weight: 700; font-size: 15px;
+}
+
+.section { margin-bottom: 48px; }
+.section-head {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 22px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-soft);
+  flex-wrap: wrap;
+}
+.section-num {
+  font-family: var(--mono); font-weight: 700; font-size: 13px;
+  color: var(--terra-text); letter-spacing: 0.06em;
+  font-feature-settings: 'tnum';
+}
+.section-head-title {
+  font-family: var(--sans); font-weight: 700;
+  font-size: 22px; color: var(--navy);
+  letter-spacing: -0.005em;
+}
+.section-head-sub {
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.tracker-note {
+  background: var(--bg-tint);
+  border-left: 3px solid var(--gold-text);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  font-family: var(--sans); font-size: 13.5px;
+  color: var(--ink-soft);
+}
+.tracker-note strong { color: var(--navy); font-weight: 600; }
+.tracker-row {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 12px; flex-wrap: wrap;
+}
+.progress-text {
+  font-family: var(--mono); font-size: 13px;
+  color: var(--ink-muted); font-feature-settings: 'tnum';
+}
+.progress-text strong { color: var(--navy); font-weight: 600; }
+.reset-btn {
+  background: white;
+  border: 1px solid var(--rule-soft);
+  color: var(--ink-muted);
+  font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+  padding: 6px 12px; cursor: pointer;
+  transition: border-color 0.16s var(--ease), color 0.16s var(--ease);
+}
+.reset-btn:hover { border-color: var(--terra-text); color: var(--terra-text); }
+
+.checklist { display: flex; flex-direction: column; gap: 10px; }
+.check-item {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 16px; align-items: center;
+  background: white;
+  border: 1px solid var(--rule-soft);
+  border-left: 4px solid var(--rule-soft);
+  padding: 16px 22px;
+  transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.check-item:hover { border-color: var(--rule); box-shadow: var(--shadow-card); }
+.check-item.tier-required    { border-left-color: var(--terra-text); }
+.check-item.tier-recommended { border-left-color: var(--gold-text); }
+.check-item.tier-optional    { border-left-color: var(--navy-mid); }
+.check-item.tier-live        { border-left-color: var(--teal-text); }
+.check-item.is-complete { background: var(--bg-tint); }
+.check-item.is-complete .check-title { color: var(--ink-muted); }
+
+.check-toggle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--rule);
+  background: white;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0; color: white;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+  flex-shrink: 0;
+}
+.check-toggle:hover { border-color: var(--navy); }
+.check-toggle[aria-pressed="true"] {
+  background: var(--navy); border-color: var(--navy);
+}
+.check-icon {
+  width: 16px; height: 16px; opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+.check-toggle[aria-pressed="true"] .check-icon { opacity: 1; }
+
+.check-body { min-width: 0; }
+.check-tag-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.check-num {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-muted); font-feature-settings: 'tnum';
+}
+.tier-tag {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  color: white; padding: 2px 8px; border-radius: 999px;
+}
+.tier-tag.t-required    { background: var(--terra-text); }
+.tier-tag.t-recommended { background: var(--gold-text); }
+.tier-tag.t-optional    { background: var(--navy-mid); }
+.tier-tag.t-live        { background: var(--teal-text); }
+
+.check-title {
+  font-family: var(--sans); font-weight: 700;
+  font-size: 16px; line-height: 1.3;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: -0.005em;
+}
+.check-title:hover { color: var(--terra-text); text-decoration: underline; }
+.check-desc {
+  font-family: var(--reading); font-size: 14px;
+  color: var(--ink-muted); line-height: 1.45;
+  margin-top: 3px;
+}
+.check-meta {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--ink-muted); font-feature-settings: 'tnum';
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .check-item { grid-template-columns: 32px 1fr; padding: 14px 16px; }
+  .check-meta { grid-column: 1 / -1; padding-left: 48px; }
+}
+
+.code-intro {
+  font-family: var(--reading);
+  font-size: 16px; line-height: 1.55;
+  color: var(--ink-soft); max-width: 64ch;
+  margin-bottom: 22px;
+}
+.code-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.code-phase {
+  background: white;
+  border: 1px solid var(--rule-soft);
+  border-top: 4px solid var(--gold);
+  padding: 22px 22px 20px;
+  transition: box-shadow 0.18s var(--ease);
+}
+.code-phase:hover { box-shadow: var(--shadow-card); }
+.phase-num {
+  font-family: var(--mono); font-weight: 700;
+  font-size: 28px; color: var(--gold-text);
+  font-feature-settings: 'tnum'; line-height: 1;
+  margin-bottom: 12px;
+}
+.phase-name {
+  font-family: var(--sans); font-weight: 700;
+  font-size: 17px; color: var(--navy);
+  letter-spacing: -0.005em; margin-bottom: 6px;
+}
+.phase-desc {
+  font-family: var(--reading); font-size: 13.5px;
+  color: var(--ink-muted); line-height: 1.5;
+}
+
+.roadmap {
+  background: white;
+  border: 1px solid var(--rule-soft);
+  padding: 28px 32px;
+}
+.roadmap-list { list-style: none; position: relative; }
+.roadmap-list::before {
+  content: ''; position: absolute;
+  left: 11px; top: 14px; bottom: 14px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--terra-text) 0%, var(--gold-text) 35%, var(--rule) 70%);
+}
+.roadmap-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  padding: 12px 0;
+  align-items: start;
+}
+.roadmap-dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--gold-text);
+  position: relative; z-index: 1;
+  flex-shrink: 0; margin-top: 2px;
+}
+.roadmap-item.is-current .roadmap-dot {
+  background: var(--terra-text);
+  border-color: var(--terra-text);
+  box-shadow: 0 0 0 4px rgba(122, 47, 24, 0.12);
+}
+.roadmap-item.is-future .roadmap-dot {
+  border-color: var(--rule); border-style: dashed;
+}
+.roadmap-week {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--terra-text); margin-bottom: 2px;
+}
+.roadmap-item.is-future .roadmap-week { color: var(--ink-muted); }
+.roadmap-title {
+  font-family: var(--sans); font-weight: 600;
+  font-size: 16px; color: var(--navy);
+  letter-spacing: -0.005em;
+}
+.roadmap-item.is-future .roadmap-title { color: var(--ink-muted); }
+
+.live-callout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px; align-items: center;
+  background: white;
+  border: 1px solid var(--rule-soft);
+  border-left: 4px solid var(--teal-text);
+  padding: 22px 26px;
+}
+.live-eyebrow {
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--teal-text); margin-bottom: 6px;
+}
+.live-title {
+  font-family: var(--sans); font-weight: 700;
+  font-size: 19px; color: var(--navy);
+  letter-spacing: -0.005em; margin-bottom: 6px;
+}
+.live-when {
+  font-family: var(--reading); font-style: italic;
+  font-size: 14.5px; color: var(--ink-muted);
+}
+.live-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-weight: 600; font-size: 14px;
+  color: var(--navy); text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid var(--navy);
+  white-space: nowrap;
+  transition: background 0.16s var(--ease), color 0.16s var(--ease);
+}
+.live-cta:hover { background: var(--navy); color: white; }
+@media (max-width: 560px) {
+  .live-callout { grid-template-columns: 1fr; }
+}
+
+.signoff {
+  margin-top: 24px;
+  padding: 24px 28px;
+  background: white;
+  border: 1px solid var(--rule-soft);
+  border-left: 4px solid var(--terra-text);
+}
+.signoff p {
+  font-family: var(--reading); font-style: italic;
+  font-size: 16px; line-height: 1.6;
+  color: var(--ink-soft); margin-bottom: 14px;
+}
+.signature {
+  font-family: var(--sans); font-style: normal;
+  font-weight: 700; color: var(--navy);
+  font-size: 15px; margin-bottom: 2px;
+}
+.signature-role {
+  font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+
+.footer-note {
+  margin-top: 56px; padding: 22px;
+  background: var(--navy); color: white;
+  font-family: var(--reading); font-size: 14px; line-height: 1.65;
+}
+.footer-note h3 {
+  font-family: var(--sans); font-weight: 700; color: var(--gold-bright);
+  font-size: 14px; margin-bottom: 10px;
+}
+.footer-note .ftn-row { margin-bottom: 6px; }
+.footer-note .ftn-row:last-child { margin-bottom: 0; }
+.footer-note strong { font-family: var(--sans); font-weight: 700; }
+.footer-note a {
+  color: var(--gold-bright); text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-note a:hover { color: white; }
+
+@media (max-width: 720px) {
+  .app { padding: 22px 22px 64px; }
+  .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .start-card { padding: 26px 22px; }
+  .start-arrow { margin-left: 0; }
+  .roadmap { padding: 22px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">STAT <em>Success</em></span>
+      <span class="brand-tag">Dr. Sharilyn Rennie</span>
+    </div>
+    <span class="cohort-pill" aria-label="Cohort 1, starts July 6, 2026">Cohort 1 · Jul 6, 2026</span>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-pills">
+        <span class="hero-type-pill">Welcome &amp; Orientation</span>
+        <span class="hero-meta">Module 1 of 9</span>
+      </div>
+      <h1 class="hero-title" id="hero-title">You are in the <em>right place</em>.</h1>
+      <p class="hero-subtitle">
+        STAT Success is an 8-week academic recovery cohort for students who need a
+        system, a team, and a plan. It starts with stabilization and builds toward
+        sustained wins. Your work begins this week.
+      </p>
+      <div class="hero-meta-row">
+        <span class="hero-meta-item"><strong>Cohort starts:</strong> July 6, 2026</span>
+        <span class="hero-meta-item"><strong>Length:</strong> 8 weeks</span>
+        <span class="hero-meta-item"><strong>Format:</strong> Self-paced + weekly live</span>
+      </div>
+    </section>
+
+    <a href="#LESSON_1_1" target="_top" class="start-card" aria-labelledby="start-title">
+      <div class="start-eyebrow">Start Here</div>
+      <h2 class="start-title" id="start-title">Lesson 1.1: Recovery vs. Prevention</h2>
+      <p class="start-desc">
+        Twelve minutes that frame everything else in this cohort. If you only do one
+        thing today, do this. The rest of Module 1 builds on it.
+      </p>
+      <div class="start-row">
+        <span class="start-pill" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          12 min lesson
+        </span>
+        <span class="start-pill" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          No prep needed
+        </span>
+        <span class="start-arrow" aria-hidden="true">
+          Begin lesson
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </div>
+    </a>
+
+    <section class="section" aria-labelledby="week-title">
+      <header class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-head-title" id="week-title">Your first week</h2>
+        <span class="section-head-sub">Eight items to complete by Sunday</span>
+      </header>
+
+      <div class="tracker-note" role="note">
+        <strong>This is your personal tracker.</strong> Toggle items as you finish them. Your progress
+        saves to this browser. Kajabi tracks completion separately at the top of the page.
+        <div class="tracker-row">
+          <span class="progress-text" id="progress-text" aria-live="polite"><strong>0 of 8</strong> items complete</span>
+          <button type="button" class="reset-btn" id="reset-btn" aria-label="Reset your personal tracker">Reset tracker</button>
+        </div>
+      </div>
+
+      <ul class="checklist" id="checklist">
+
+        <li class="check-item tier-required" data-id="l11">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l11">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.1</span>
+              <span class="tier-tag t-required">Required</span>
+            </div>
+            <a href="#LESSON_1_1" target="_top" class="check-title" id="t-l11">Recovery vs. Prevention</a>
+            <p class="check-desc">The mindset shift this whole cohort rests on.</p>
+          </div>
+          <span class="check-meta">12 min</span>
+        </li>
+
+        <li class="check-item tier-required" data-id="l12">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l12">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.2</span>
+              <span class="tier-tag t-required">Required</span>
+            </div>
+            <a href="#LESSON_1_2" target="_top" class="check-title" id="t-l12">What to expect</a>
+            <p class="check-desc">The rhythm of the cohort, week by week.</p>
+          </div>
+          <span class="check-meta">8 min</span>
+        </li>
+
+        <li class="check-item tier-required" data-id="l13">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l13">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.3</span>
+              <span class="tier-tag t-required">Action required</span>
+            </div>
+            <a href="#LESSON_1_3" target="_top" class="check-title" id="t-l13">Your commitment contract</a>
+            <p class="check-desc">Sign before the first live session. This one matters.</p>
+          </div>
+          <span class="check-meta">15 min</span>
+        </li>
+
+        <li class="check-item tier-required" data-id="l14">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l14">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.4</span>
+              <span class="tier-tag t-required">Action required</span>
+            </div>
+            <a href="#LESSON_1_4" target="_top" class="check-title" id="t-l14">Your intake survey</a>
+            <p class="check-desc">Tells me where you are right now so I can place you on the right team.</p>
+          </div>
+          <span class="check-meta">10 min</span>
+        </li>
+
+        <li class="check-item tier-recommended" data-id="l15">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l15">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.5</span>
+              <span class="tier-tag t-recommended">Highly recommended</span>
+            </div>
+            <a href="#LESSON_1_5" target="_top" class="check-title" id="t-l15">The CODE cycle explained</a>
+            <p class="check-desc">The 4-phase loop you will run every single week.</p>
+          </div>
+          <span class="check-meta">14 min</span>
+        </li>
+
+        <li class="check-item tier-recommended" data-id="l16">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l16">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.6</span>
+              <span class="tier-tag t-recommended">Highly recommended</span>
+            </div>
+            <a href="#LESSON_1_6" target="_top" class="check-title" id="t-l16">Technology and logistics</a>
+            <p class="check-desc">Notifications, calendar sync, and where to find everything.</p>
+          </div>
+          <span class="check-meta">9 min</span>
+        </li>
+
+        <li class="check-item tier-optional" data-id="l17">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-l17">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Lesson 1.7</span>
+              <span class="tier-tag t-optional">Optional</span>
+            </div>
+            <a href="#LESSON_1_7" target="_top" class="check-title" id="t-l17">The evidence behind the CODE</a>
+            <p class="check-desc">For the ones who need to know why before they trust the how.</p>
+          </div>
+          <span class="check-meta">18 min</span>
+        </li>
+
+        <li class="check-item tier-live" data-id="live1">
+          <button type="button" class="check-toggle" aria-pressed="false" aria-labelledby="t-live1">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+          <div class="check-body">
+            <div class="check-tag-row">
+              <span class="check-num">Live Session</span>
+              <span class="tier-tag t-live">Live</span>
+            </div>
+            <a href="#LIVE_SESSION" target="_top" class="check-title" id="t-live1">Welcome &amp; Orientation Live</a>
+            <p class="check-desc">Meet your cohort. Meet me. Bring your camera and your questions.</p>
+          </div>
+          <span class="check-meta">60 min</span>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="code-title">
+      <header class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-head-title" id="code-title">The CODE cycle, in one screen</h2>
+        <span class="section-head-sub">Lesson 1.5 walks you through it</span>
+      </header>
+      <p class="code-intro">
+        Every week of this cohort runs the same four-phase loop. You learn it this
+        week and run it in your own classes the rest of your career.
+      </p>
+      <div class="code-grid" role="list">
+        <article class="code-phase" role="listitem">
+          <div class="phase-num">01</div>
+          <h3 class="phase-name">Clarify</h3>
+          <p class="phase-desc">Pin down what is actually wrong before reaching for a fix. Most students skip this and pay for it later.</p>
+        </article>
+        <article class="code-phase" role="listitem">
+          <div class="phase-num">02</div>
+          <h3 class="phase-name">Organize</h3>
+          <p class="phase-desc">Rebuild the structure of what you know so retrieval is fast and confident under exam pressure.</p>
+        </article>
+        <article class="code-phase" role="listitem">
+          <div class="phase-num">03</div>
+          <h3 class="phase-name">Drill</h3>
+          <p class="phase-desc">Targeted retrieval practice on the exact gaps the first two phases surfaced. No wasted reps.</p>
+        </article>
+        <article class="code-phase" role="listitem">
+          <div class="phase-num">04</div>
+          <h3 class="phase-name">Evaluate</h3>
+          <p class="phase-desc">Honest weekly accounting. What worked, what did not, what changes next week.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="roadmap-title">
+      <header class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-head-title" id="roadmap-title">Your 8-week journey</h2>
+        <span class="section-head-sub">Modules unlock as you progress</span>
+      </header>
+      <div class="roadmap">
+        <ol class="roadmap-list">
+          <li class="roadmap-item is-current">
+            <span class="roadmap-dot" aria-hidden="true"></span>
+            <div>
+              <p class="roadmap-week">Module 1 · You are here</p>
+              <p class="roadmap-title">Welcome &amp; Orientation</p>
+            </div>
+          </li>
+          <li class="roadmap-item">
+            <span class="roadmap-dot" aria-hidden="true"></span>
+            <div>
+              <p class="roadmap-week">Module 2 · Week 1</p>
+              <p class="roadmap-title">Stabilization and team formation</p>
+            </div>
+          </li>
+          <li class="roadmap-item">
+            <span class="roadmap-dot" aria-hidden="true"></span>
+            <div>
+              <p class="roadmap-week">Module 3 · Week 2</p>
+              <p class="roadmap-title">Stop the bleeding</p>
+            </div>
+          </li>
+          <li class="roadmap-item is-future">
+            <span class="roadmap-dot" aria-hidden="true"></span>
+            <div>
+              <p class="roadmap-week">Module 4 · Week 3</p>
+              <p class="roadmap-title">Diagnose and rebuild</p>
+            </div>
+          </li>
+          <li class="roadmap-item is-future">
+            <span class="roadmap-dot" aria-hidden="true"></span>
+            <div>
+              <p class="roadmap-week">Module 5 · Week 4</p>
+              <p class="roadmap-title">Mid-cohort recalibration</p>
+            </div>
+          </li>
+          <li class="roadmap-item is-future">
+            <span class="roadmap-dot" aria-hidden="true"></span>
+            <div>
+              <p class="roadmap-week">Modules 6 through 9</p>
+              <p class="roadmap-title">Sustain, scale, finish strong</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="live-title">
+      <header class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-head-title" id="live-title">Your first live session</h2>
+      </header>
+      <div class="live-callout">
+        <div>
+          <p class="live-eyebrow">Welcome &amp; Orientation Live</p>
+          <p class="live-title">Meet your cohort. Meet your instructor.</p>
+          <p class="live-when">
+            <time datetime="2026-07-09T18:00:00-07:00">Thursday, July 9 · 6:00 PM PT</time> · 60 minutes
+          </p>
+        </div>
+        <a href="#LIVE_SESSION" target="_top" class="live-cta">
+          Add to calendar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="signoff">
+        <p>
+          You are not behind. You are starting. Those are not the same thing, even
+          when they feel identical. Show up to Lesson 1.1 today. Sign your contract
+          before the live session. The rest we build together.
+        </p>
+        <p class="signature">Dr. Sharilyn Rennie</p>
+        <p class="signature-role">Learning Architect · MedMasters Collaborative</p>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      <h3>Need help getting started?</h3>
+      <div class="ftn-row"><strong>Tech or logistics question?</strong> <a href="#SUPPORT" target="_top">Contact support</a> and I will route you.</div>
+      <div class="ftn-row"><strong>Cannot make the live session?</strong> Recordings post within 24 hours.</div>
+      <div class="ftn-row"><strong>Stuck on a lesson?</strong> Post in the cohort discussion. Your team can probably answer faster than I can.</div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'stat-cohort-1-tracker';
+  var toggles = document.querySelectorAll('.check-toggle');
+  var resetBtn = document.getElementById('reset-btn');
+  var progressText = document.getElementById('progress-text');
+  var state = {};
+
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) state = JSON.parse(saved);
+  } catch (e) { state = {}; }
+
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function updateProgress() {
+    var total = toggles.length;
+    var done = 0;
+    Object.keys(state).forEach(function (k) { if (state[k]) done++; });
+    progressText.innerHTML = '<strong>' + done + ' of ' + total + '</strong> items complete';
+  }
+  function applyState(toggle) {
+    var item = toggle.closest('.check-item');
+    var id = item.getAttribute('data-id');
+    var done = !!state[id];
+    toggle.setAttribute('aria-pressed', done ? 'true' : 'false');
+    item.classList.toggle('is-complete', done);
+  }
+  toggles.forEach(function (toggle) {
+    applyState(toggle);
+    toggle.addEventListener('click', function () {
+      var item = toggle.closest('.check-item');
+      var id = item.getAttribute('data-id');
+      state[id] = !state[id];
+      applyState(toggle);
+      save();
+      updateProgress();
+    });
+  });
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      if (!confirm('Reset your personal tracker? This will uncheck all items.')) return;
+      state = {};
+      save();
+      toggles.forEach(applyState);
+      updateProgress();
+    });
+  }
+  updateProgress();
+})();
+
+(function () {
+  var id = 'stat-cohort-1-dashboard';
+  function send() {
+    try {
+      var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      window.parent && window.parent.postMessage({ type: 'iframe-height', id: id, height: h }, '*');
+    } catch (e) {}
+  }
+  if ('ResizeObserver' in window) {
+    try { new ResizeObserver(send).observe(document.body); } catch (e) {}
+  }
+  window.addEventListener('load', send);
+  window.addEventListener('resize', send);
+  setTimeout(send, 100);
+  setTimeout(send, 500);
+  setInterval(send, 1500);
+})();
+</script>
+
+</body>
+</html>

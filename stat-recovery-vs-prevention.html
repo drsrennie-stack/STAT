@@ -361,9 +361,9 @@ p strong { color: var(--cc-navy); font-weight: 700; }
   line-height: 1;
 }
 .btn--primary { background: var(--cc-gold-deep); color: var(--cc-text-inverse); }
-.btn--primary:hover { background: #7a5d2f; }
+.btn--primary:hover { background: var(--gold-text); }
 .btn--bright { background: var(--cc-gold-bright); color: var(--cc-navy); }
-.btn--bright:hover { background: #c19754; }
+.btn--bright:hover { background: var(--gold); }
 .btn--secondary { background: var(--cc-surface); color: var(--cc-navy); border-color: var(--cc-navy); }
 .btn--secondary:hover { background: var(--cc-tint-navy); }
 .btn--link {
@@ -773,7 +773,7 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
         '<p>Three or more positive screens indicate critical mode. The structured 8-week protocol is calibrated for exactly this. The recovery window narrows every week you wait.</p>' +
         '<div class="result__actions">' +
         '<a href="stat-welcome.html" target="_top" class="btn btn--bright">Begin enrollment</a>' +
-        '<a href="stat-what-to-expect.html" target="_top" class="btn btn--secondary" style="background:transparent;color:#FAFAF7;border-color:#FAFAF7;">See what to expect</a>' +
+        '<a href="stat-what-to-expect.html" target="_top" class="btn btn--secondary" style="background:transparent;color:var(--white);border-color:var(--white);">See what to expect</a>' +
         '</div>';
     } else if (s.total === 2) {
       resultEl.classList.add('is-visible', 'result--borderline');

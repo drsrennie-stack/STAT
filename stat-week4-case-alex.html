@@ -283,7 +283,7 @@ p strong {
 }
 
 .chart-card__field-value--success {
-  color: #047857;
+  color: var(--teal-text);
 }
 
 @media (max-width: 560px) {
@@ -348,8 +348,8 @@ p strong {
   text-align: right;
 }
 
-.trajectory__score--up { color: #047857; }
-.trajectory__score--flat { color: var(--cc-warning, #B45309); }
+.trajectory__score--up { color: var(--teal-text); }
+.trajectory__score--flat { color: var(--cc-warning, var(--terra-text)); }
 
 @media (max-width: 560px) {
   .trajectory__row {
@@ -425,7 +425,7 @@ p strong {
   border-bottom: 1px solid var(--cc-border);
 }
 
-.habits__col--does .habits__col-label { color: #047857; }
+.habits__col--does .habits__col-label { color: var(--teal-text); }
 .habits__col--doesnt .habits__col-label { color: #B91C1C; }
 
 .habits__list {
@@ -453,7 +453,7 @@ p strong {
 
 .habits__col--does .habits__list li::before {
   content: "+";
-  color: #047857;
+  color: var(--teal-text);
 }
 
 .habits__col--doesnt .habits__list li::before {

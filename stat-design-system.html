@@ -412,16 +412,16 @@ code {
   letter-spacing: 0.05em;
 }
 .cc-badge--aaa {
-  background: #DCFCE7;
-  color: #166534;
+  background: var(--bg-tint);
+  color: var(--teal-text);
 }
 .cc-badge--aa {
-  background: #FEF3C7;
-  color: #92400E;
+  background: var(--bg-tint);
+  color: var(--gold-text);
 }
 .cc-badge--fail {
-  background: #FEE2E2;
-  color: #991B1B;
+  background: var(--bg-tint);
+  color: var(--terra-text);
 }
 
 /* =========================================================================
@@ -533,8 +533,8 @@ code {
   box-shadow: var(--cc-shadow-sm);
 }
 .cc-button--gold:hover {
-  background: #7A5E30;
-  border-color: #7A5E30;
+  background: var(--gold-text);
+  border-color: var(--gold-text);
   color: var(--cc-text-inverse);
   text-decoration: none;
   transform: translateY(-1px);
@@ -551,8 +551,8 @@ code {
   font-weight: var(--cc-weight-bold);
 }
 .cc-button--gold-bright:hover {
-  background: #C49A52;
-  border-color: #C49A52;
+  background: var(--gold);
+  border-color: var(--gold);
   color: var(--cc-navy);
   text-decoration: none;
   transform: translateY(-1px);
@@ -1008,17 +1008,17 @@ code {
 }
 
 .cc-pill--success {
-  background: #DCFCE7;
+  background: var(--bg-tint);
   color: var(--cc-success);
 }
 
 .cc-pill--warning {
-  background: #FEF3C7;
+  background: var(--bg-tint);
   color: var(--cc-warning);
 }
 
 .cc-pill--alert {
-  background: #FEE2E2;
+  background: var(--bg-tint);
   color: var(--cc-alert);
 }
 
@@ -1057,8 +1057,8 @@ code {
 .cc-callout--accent:hover { background: #FFFFFF; }
 
 .cc-callout--caution {
-  background: #FEF3C7;
-  border-left-color: #B45309;
+  background: var(--bg-tint);
+  border-left-color: var(--terra-text);
 }
 .cc-callout--caution:hover { background: #FFFFFF; }
 
@@ -1090,8 +1090,8 @@ code {
   color: var(--cc-navy);
 }
 .cc-callout--caution .cc-callout__mark {
-  background: #B45309;
-  color: #FEF3C7;
+  background: var(--terra-text);
+  color: var(--bg-tint);
 }
 
 .cc-callout__icon {
@@ -1285,7 +1285,7 @@ code {
   /* Ensure gold is visible when printed */
   .cc-eyebrow,
   .cc-text-gold {
-    color: #8F6E38 !important;
+    color: var(--gold-text) !important;
   }
 
   /* Keep section breaks clean */
@@ -1411,34 +1411,34 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
     <h3>Primary</h3>
     <div class="cc-swatch-grid">
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #0A1F3D;"></div>
+        <div class="cc-swatch__sample" style="background: var(--navy);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Deep Navy</div>
-          <div class="cc-swatch__hex">#0A1F3D</div>
+          <div class="cc-swatch__hex">var(--navy)</div>
           <p class="cc-swatch__usage">Primary authoritative color. Headings, buttons, feature blocks.</p>
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #B8904D;"></div>
+        <div class="cc-swatch__sample" style="background: var(--gold);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Brushed Gold</div>
-          <div class="cc-swatch__hex">#B8904D</div>
+          <div class="cc-swatch__hex">var(--gold)</div>
           <p class="cc-swatch__usage">Accent rules, borders, and decorative elements. AA on white.</p>
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #8F6E38;"></div>
+        <div class="cc-swatch__sample" style="background: var(--gold-text);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Deep Gold</div>
-          <div class="cc-swatch__hex">#8F6E38</div>
+          <div class="cc-swatch__hex">var(--gold-text)</div>
           <p class="cc-swatch__usage">Text-weight gold. AAA on white. Use for eyebrow labels and links.</p>
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #D4A962;"></div>
+        <div class="cc-swatch__sample" style="background: var(--gold-bright);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Bright Gold</div>
-          <div class="cc-swatch__hex">#D4A962</div>
+          <div class="cc-swatch__hex">var(--gold-bright)</div>
           <p class="cc-swatch__usage">Gold on navy surfaces. AAA on navy.</p>
         </div>
       </div>
@@ -1447,15 +1447,15 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
     <h3>Surface and background</h3>
     <div class="cc-swatch-grid">
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #FAFAF7; border-bottom: 1px solid #E5E7EB;"></div>
+        <div class="cc-swatch__sample" style="background: var(--white); border-bottom: 1px solid var(--rule-soft);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Warm White</div>
-          <div class="cc-swatch__hex">#FAFAF7</div>
+          <div class="cc-swatch__hex">var(--white)</div>
           <p class="cc-swatch__usage">Primary page background. Warmer than pure white.</p>
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #FFFFFF; border-bottom: 1px solid #E5E7EB;"></div>
+        <div class="cc-swatch__sample" style="background: #FFFFFF; border-bottom: 1px solid var(--rule-soft);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Pure White</div>
           <div class="cc-swatch__hex">#FFFFFF</div>
@@ -1471,10 +1471,10 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #FAF6ED;"></div>
+        <div class="cc-swatch__sample" style="background: var(--bg-tint);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Gold Tint</div>
-          <div class="cc-swatch__hex">#FAF6ED</div>
+          <div class="cc-swatch__hex">var(--bg-tint)</div>
           <p class="cc-swatch__usage">3% gold tint. Accent callouts and highlighted panels.</p>
         </div>
       </div>
@@ -1483,26 +1483,26 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
     <h3>Text</h3>
     <div class="cc-swatch-grid">
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #1F2937;"></div>
+        <div class="cc-swatch__sample" style="background: var(--ink-soft);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Slate Charcoal</div>
-          <div class="cc-swatch__hex">#1F2937</div>
+          <div class="cc-swatch__hex">var(--ink-soft)</div>
           <p class="cc-swatch__usage">Body text. AAA on white (13.15:1).</p>
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #374151;"></div>
+        <div class="cc-swatch__sample" style="background: var(--ink-muted);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Slate</div>
-          <div class="cc-swatch__hex">#374151</div>
+          <div class="cc-swatch__hex">var(--ink-muted)</div>
           <p class="cc-swatch__usage">Secondary text. AAA on white (10.31:1).</p>
         </div>
       </div>
       <div class="cc-swatch">
-        <div class="cc-swatch__sample" style="background: #4B5563;"></div>
+        <div class="cc-swatch__sample" style="background: var(--ink-muted);"></div>
         <div class="cc-swatch__body">
           <div class="cc-swatch__name">Muted Slate</div>
-          <div class="cc-swatch__hex">#4B5563</div>
+          <div class="cc-swatch__hex">var(--ink-muted)</div>
           <p class="cc-swatch__usage">Captions and de-emphasized text. AA on white (7.56:1).</p>
         </div>
       </div>
@@ -1535,63 +1535,63 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
         </thead>
         <tbody>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:#1F2937;">Body text</span></td>
+            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:var(--ink-soft);">Body text</span></td>
             <td>Charcoal on white</td>
             <td>13.15:1</td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:#374151;">Secondary</span></td>
+            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:var(--ink-muted);">Secondary</span></td>
             <td>Slate on white</td>
             <td>10.31:1</td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:#4B5563;">Muted</span></td>
+            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:var(--ink-muted);">Muted</span></td>
             <td>Muted slate on white</td>
             <td>7.56:1</td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:#0A1F3D;">Navy heading</span></td>
+            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:var(--navy);">Navy heading</span></td>
             <td>Navy on white</td>
             <td>15.30:1</td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:#8F6E38;">Deep gold</span></td>
+            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:var(--gold-text);">Deep gold</span></td>
             <td>Deep gold on white</td>
             <td>5.22:1</td>
             <td><span class="cc-badge cc-badge--aa">AA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:#B8904D;">Brushed gold</span></td>
+            <td><span class="cc-contrast-sample" style="background:#FFFFFF; color:var(--gold);">Brushed gold</span></td>
             <td>Brushed gold on white</td>
             <td>3.54:1</td>
             <td><span class="cc-badge cc-badge--fail">Fail</span></td>
             <td><span class="cc-badge cc-badge--aa">AA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#0A1F3D; color:#FAFAF7;">Navy surface</span></td>
+            <td><span class="cc-contrast-sample" style="background:var(--navy); color:var(--white);">Navy surface</span></td>
             <td>Warm white on navy</td>
             <td>17.80:1</td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#0A1F3D; color:#D4A962;">Gold on navy</span></td>
+            <td><span class="cc-contrast-sample" style="background:var(--navy); color:var(--gold-bright);">Gold on navy</span></td>
             <td>Bright gold on navy</td>
             <td>7.88:1</td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
             <td><span class="cc-badge cc-badge--aaa">AAA</span></td>
           </tr>
           <tr>
-            <td><span class="cc-contrast-sample" style="background:#D4A962; color:#0A1F3D;">Bright gold button</span></td>
+            <td><span class="cc-contrast-sample" style="background:var(--gold-bright); color:var(--navy);">Bright gold button</span></td>
             <td>Navy on bright gold</td>
             <td>6.83:1</td>
             <td><span class="cc-badge cc-badge--aa">AA</span></td>
@@ -1605,9 +1605,9 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
       <div class="cc-callout__body">
         <p class="cc-callout__title">Gold usage rule</p>
         <p class="cc-callout__text">
-          Brushed gold (#B8904D) is for large-text, icons, rules, and borders where AA is sufficient.
-          For any gold text at normal body size, use deep gold (#8F6E38) to maintain AAA compliance.
-          On navy surfaces, bright gold (#D4A962) is AAA-compliant at all sizes. Bright gold on white
+          Brushed gold (var(--gold)) is for large-text, icons, rules, and borders where AA is sufficient.
+          For any gold text at normal body size, use deep gold (var(--gold-text)) to maintain AAA compliance.
+          On navy surfaces, bright gold (var(--gold-bright)) is AAA-compliant at all sizes. Bright gold on white
           ONLY works with navy text (6.83:1), never with white text (fails contrast).
         </p>
       </div>
@@ -1617,12 +1617,12 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
       <div class="cc-callout__body">
         <p class="cc-callout__title">Quick reference: which gold where?</p>
         <p class="cc-callout__text">
-          <strong>Body text on white:</strong> Deep gold (#8F6E38) only.<br>
-          <strong>Headings and large text on white:</strong> Brushed gold (#B8904D) or deep gold.<br>
-          <strong>Rules, borders, icons, decorative elements:</strong> Brushed gold (#B8904D).<br>
-          <strong>Text on navy:</strong> Bright gold (#D4A962).<br>
-          <strong>Button with white text:</strong> Deep gold (#8F6E38) background.<br>
-          <strong>Button with navy text:</strong> Bright gold (#D4A962) background. This is the brightest, most eye-catching button in the system.
+          <strong>Body text on white:</strong> Deep gold (var(--gold-text)) only.<br>
+          <strong>Headings and large text on white:</strong> Brushed gold (var(--gold)) or deep gold.<br>
+          <strong>Rules, borders, icons, decorative elements:</strong> Brushed gold (var(--gold)).<br>
+          <strong>Text on navy:</strong> Bright gold (var(--gold-bright)).<br>
+          <strong>Button with white text:</strong> Deep gold (var(--gold-text)) background.<br>
+          <strong>Button with navy text:</strong> Bright gold (var(--gold-bright)) background. This is the brightest, most eye-catching button in the system.
         </p>
       </div>
     </div>

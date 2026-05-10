@@ -271,7 +271,7 @@ body {
 
 .dimension__checkbox:hover {
   border-color: var(--cc-navy-soft);
-  background: #EBF0F7;
+  background: var(--bg-tint);
 }
 
 .dimension__checkbox input[type="checkbox"] {
@@ -297,8 +297,8 @@ body {
 
 /* WHAT THIS DOES NOT PROMISE */
 .does-not-promise {
-  background: #FEF3C7;
-  border: 1px solid #FDE68A;
+  background: var(--bg-tint);
+  border: 1px solid var(--rule-soft);
   border-left: 4px solid var(--cc-warning);
   border-radius: var(--cc-radius);
   padding: var(--cc-space-5);
@@ -486,15 +486,15 @@ body {
 
 .callout--warning,
 .callout--alert {
-  background: #FEF3C7;
-  border-left-color: #B45309;
+  background: var(--bg-tint);
+  border-left-color: var(--terra-text);
 }
 .callout--warning:hover,
 .callout--alert:hover { background: #FFFFFF; }
 
 .callout--success {
-  background: #D1FAE5;
-  border-left-color: #047857;
+  background: var(--bg-tint);
+  border-left-color: var(--teal-text);
 }
 .callout--success:hover { background: #FFFFFF; }
 
@@ -527,12 +527,12 @@ body {
 }
 .callout--warning .callout__mark,
 .callout--alert .callout__mark {
-  background: #B45309;
-  color: #FEF3C7;
+  background: var(--terra-text);
+  color: var(--bg-tint);
 }
 .callout--success .callout__mark {
-  background: #047857;
-  color: #D1FAE5;
+  background: var(--teal-text);
+  color: var(--bg-tint);
 }
 
 .callout__body {
@@ -622,8 +622,8 @@ body {
   font-weight: var(--cc-weight-bold);
 }
 .button--gold-bright:hover:not(:disabled) {
-  background: #C49A52;
-  border-color: #C49A52;
+  background: var(--gold);
+  border-color: var(--gold);
   transform: translateY(-1px);
   box-shadow: var(--cc-shadow-md);
 }

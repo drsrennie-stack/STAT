@@ -486,15 +486,15 @@ strong { color: var(--cc-text); font-weight: 700; }
 
 .callout--warning,
 .callout--alert {
-  background: #FEF3C7;
-  border-left-color: #B45309;
+  background: var(--bg-tint);
+  border-left-color: var(--terra-text);
 }
 .callout--warning:hover,
 .callout--alert:hover { background: #FFFFFF; }
 
 .callout--success {
-  background: #D1FAE5;
-  border-left-color: #047857;
+  background: var(--bg-tint);
+  border-left-color: var(--teal-text);
 }
 .callout--success:hover { background: #FFFFFF; }
 
@@ -527,12 +527,12 @@ strong { color: var(--cc-text); font-weight: 700; }
 }
 .callout--warning .callout__mark,
 .callout--alert .callout__mark {
-  background: #B45309;
-  color: #FEF3C7;
+  background: var(--terra-text);
+  color: var(--bg-tint);
 }
 .callout--success .callout__mark {
-  background: #047857;
-  color: #D1FAE5;
+  background: var(--teal-text);
+  color: var(--bg-tint);
 }
 
 .callout__body {
@@ -617,9 +617,9 @@ code {
   .stat-feature h3, .stat-letter__word, .stat-letter__description {
     color: black !important;
   }
-  .stat-letter__char { color: #8F6E38 !important; }
+  .stat-letter__char { color: var(--gold-text) !important; }
   .stat-feature__subtitle, .cc-eyebrow, .spec-card__label {
-    color: #8F6E38 !important;
+    color: var(--gold-text) !important;
   }
   h2, h3 { page-break-after: avoid; }
   .spec-card, .callout { page-break-inside: avoid; }
@@ -1428,9 +1428,9 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
 
     <h3>Visual system</h3>
     <ul class="kv-list">
-      <li><span class="kv-list__key">Primary color</span><span class="kv-list__value">Deep navy (#0A1F3D)</span></li>
-      <li><span class="kv-list__key">Accent color</span><span class="kv-list__value">Brushed gold (#B8904D) / Deep gold (#8F6E38) / Bright gold (#D4A962)</span></li>
-      <li><span class="kv-list__key">Background</span><span class="kv-list__value">Warm white (#FAFAF7)</span></li>
+      <li><span class="kv-list__key">Primary color</span><span class="kv-list__value">Deep navy (var(--navy))</span></li>
+      <li><span class="kv-list__key">Accent color</span><span class="kv-list__value">Brushed gold (var(--gold)) / Deep gold (var(--gold-text)) / Bright gold (var(--gold-bright))</span></li>
+      <li><span class="kv-list__key">Background</span><span class="kv-list__value">Warm white (var(--white))</span></li>
       <li><span class="kv-list__key">Typography</span><span class="kv-list__value">Plus Jakarta Sans (all weights)</span></li>
       <li><span class="kv-list__key">Accessibility target</span><span class="kv-list__value">WCAG AAA where feasible, AA minimum</span></li>
       <li><span class="kv-list__key">Elevation system</span><span class="kv-list__value">Four levels: raised / accent-ruled / tinted / feature</span></li>

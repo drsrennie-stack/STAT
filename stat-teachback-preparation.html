@@ -1238,6 +1238,38 @@ h1, h2, h3, h4, h5, h6,
 button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase-num {
   font-family: var(--sans);
 }
+
+/* ============================================================
+   Canonical number-style fix (post-migration patch)
+   Forces big terra-cotta Plus Jakarta on legacy section numbers.
+   ============================================================ */
+.section__number, .cc-section__number, .step__number,
+.commitment__num, .commitment-number, .commitments-review__num,
+.portfolio-step__num, .method-step-num, .method-step,
+.priority-number, .scale-option__number,
+.cc-toc__num, .q__num,
+.blocker-row__num, .member-row__num, .signature-row__num,
+.indicator-pick__num, .progress__count, .progress-bar__count,
+.num {
+  font-family: var(--sans) !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  font-size: 2rem !important;
+  color: var(--terra-text) !important;
+  letter-spacing: -0.01em !important;
+  font-feature-settings: 'tnum' !important;
+  line-height: 1 !important;
+}
+/* Strip mono fallback on letter-circle and data-meta elements; keep their layout */
+.dimension__letter, .phase-card__letter, .phase-section__letter,
+.rating-option__letter, .soap-section__letter,
+.cc-swatch__hex, .chart-card__header-id,
+.likert__label, .likert__value, .cc-type-row__meta,
+.error-row__input, .signature-row__sig-input {
+  font-family: var(--sans) !important;
+  font-style: normal !important;
+  font-feature-settings: 'tnum' !important;
+}
 </style>
 
 <script>

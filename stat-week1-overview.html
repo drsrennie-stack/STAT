@@ -6,25 +6,91 @@
 <title>STAT Success Cohort | Week 1 Overview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400" rel="stylesheet">
 <style>
 :root {
-  --cc-navy: #0A1F3D;
-  --cc-navy-soft: #1A3258;
-  --cc-gold: #B8904D;
-  --cc-gold-deep: #8F6E38;
-  --cc-gold-bright: #D4A962;
-  --cc-white: #FAFAF7;
-  --cc-surface: #FFFFFF;
-  --cc-tint-navy: #F4F6FA;
-  --cc-tint-gold: #FAF6ED;
-  --cc-border: #E5E7EB;
-  --cc-text: #1F2937;
-  --cc-text-secondary: #374151;
-  --cc-text-muted: #4B5563;
-  --cc-text-inverse: #FAFAF7;
+  /* --- Canonical school/education tokens --- */
+  --bg: #FFFFFF;
+  --bg-page: #F4F5F8;
+  --bg-tint: #F7F8FA;
+  --navy: #0A1322;
+  --navy-mid: #1F2D44;
+  --gold: #D4A24C;
+  --gold-text: #6E5018;
+  --gold-bright: #E5B45C;
+  --gold-tint: #F7EDD9;
+  --terra: #C25A3E;
+  --terra-text: #7A2F18;
+  --terra-bright: #E59575;
+  --teal-text: #2C5F66;
+  --teal-bright: #5B9AA0;
+  --plum-text: #5C2A66;
+  --slate-text: #334155;
+  --admin-text: #2C3E50;
+  --ink: #0A1322;
+  --ink-soft: #14202F;
+  --ink-muted: #3D4860;
+  --rule: #B8BEC8;
+  --rule-soft: #DCE0E6;
+  --rule-faint: #E8EBEF;
+  --white: #FFFFFF;
+  --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --reading: 'Atkinson Hyperlegible', 'Plus Jakarta Sans', sans-serif;
+  --mono: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-card: 0 1px 3px rgba(10,19,34,0.08), 0 1px 2px rgba(10,19,34,0.05);
+  --shadow-lift: 0 6px 16px rgba(10,19,34,0.10), 0 3px 6px rgba(10,19,34,0.06);
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
 
-  --cc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* --- Backward-compat aliases for legacy --cc-* references --- */
+  --cc-navy: var(--navy);
+  --cc-navy-hover: var(--navy);
+  --cc-navy-soft: var(--navy-mid);
+  --cc-gold: var(--gold);
+  --cc-gold-deep: var(--gold-text);
+  --cc-gold-bright: var(--gold-bright);
+  --cc-white: var(--white);
+  --cc-surface: var(--white);
+  --cc-tint-navy: var(--bg-tint);
+  --cc-tint-gold: var(--gold-tint);
+  --cc-tint-teal: var(--bg-tint);
+  --cc-border: var(--rule-soft);
+  --cc-border-strong: var(--rule);
+  --cc-text: var(--ink-soft);
+  --cc-text-secondary: var(--ink-muted);
+  --cc-text-muted: var(--ink-muted);
+  --cc-text-inverse: var(--white);
+  --cc-teal: var(--teal-text);
+  --cc-teal-deep: var(--teal-text);
+  --cc-success: var(--teal-text);
+  --cc-warning: var(--gold-text);
+  --cc-alert: var(--terra-text);
+  --cc-font: var(--sans);
+  --cc-size-xs: 0.8125rem;
+  --cc-size-sm: 0.9375rem;
+  --cc-size-base: 1rem;
+  --cc-size-md: 1.125rem;
+  --cc-size-lg: 1.375rem;
+  --cc-size-xl: 1.75rem;
+  --cc-size-2xl: 2.25rem;
+  --cc-size-3xl: 3rem;
+  --cc-weight-regular: 400;
+  --cc-weight-medium: 500;
+  --cc-weight-semi: 600;
+  --cc-weight-bold: 700;
+  --cc-weight-extra: 800;
+  --cc-leading-tight: 1.2;
+  --cc-leading-snug: 1.4;
+  --cc-leading-normal: 1.6;
+  --cc-leading-relaxed: 1.75;
+  --cc-space-1: 0.25rem;
+  --cc-space-2: 0.5rem;
+  --cc-space-3: 0.75rem;
+  --cc-space-4: 1rem;
+  --cc-space-5: 1.5rem;
+  --cc-space-6: 2rem;
+  --cc-space-7: 2.5rem;
+  --cc-space-8: 3rem;
+  --cc-space-9: 4rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -305,7 +371,7 @@ p strong {
   margin: 3rem 0 0 0;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(10, 31, 61, 0.06), 0 12px 24px rgba(10, 31, 61, 0.10);
+  box-shadow: var(--shadow-lift);
 }
 
 .next-step::before {
@@ -348,6 +414,23 @@ p strong {
   .shell { padding: 1.5rem 1rem; }
   .theme-card { padding: 1.25rem 1.5rem; }
   .theme-card__title { font-size: 1.25rem; }
+}
+
+/* ============================================================
+   Canonical school/ed system overrides (appended by migration)
+   ============================================================ */
+body { background: var(--bg-page); }
+html, body { color: var(--ink); }
+em { font-style: normal; font-weight: 700; color: var(--terra-text); }
+strong { font-weight: 700; }
+/* Reading-intensive prose uses Atkinson Hyperlegible */
+p, li, blockquote, .prose, .lede, .subtitle, .description, .body, .desc {
+  font-family: var(--reading);
+}
+/* Restore Plus Jakarta Sans for headings, buttons, labels, nav, tags */
+h1, h2, h3, h4, h5, h6,
+button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase-num {
+  font-family: var(--sans);
 }
 </style>
 </head>

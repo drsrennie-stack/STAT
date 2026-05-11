@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Care for Failing A&amp;P Grades · The Diagnostic | MedMasters Collaborative</title>
+<meta name="description" content="Critical care for failing A&amp;P grades. A 2-minute diagnostic that finds the weak link in your study system.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   CONFIGURE before deploy. Search "CONFIGURE" in the script.
+   1. KAJABI_FORM_URL  : Kajabi opt-in form action URL
+   2. WAITLIST_URL     : Public STAT waitlist page URL
+   3. PDF_DOWNLOAD_URL : Public Week 1 Survival PDF URL
+   ========================================================= */
+
+:root {
+  --navy: #0A1322;
+  --navy-mid: #1F2D44;
+  --ink-soft: #14202F;
+  --ink-muted: #3D4860;
+  --slate: #334155;
+  --gold: #D4A24C;
+  --gold-bright: #E5B45C;
+  --gold-text: #6E5018;
+  --terra: #C25A3E;
+  --terra-bright: #E59575;
+  --terra-text: #7A2F18;
+  --teal-text: #2C5F66;
+  --teal-bright: #5B9AA0;
+  --rule: #B8BEC8;
+  --rule-soft: #DCE0E6;
+  --rule-faint: #E8EBEF;
+  --bg: #ffffff;
+  --bg-soft: #fafaf9;
+  --shadow-card: 0 1px 3px rgba(10,19,34,0.08), 0 1px 2px rgba(10,19,34,0.05);
+  --shadow-lift: 0 6px 16px rgba(10,19,34,0.10), 0 3px 6px rgba(10,19,34,0.06);
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: var(--navy); color: #fff;
+  padding: 8px 16px; z-index: 100;
+  text-decoration: none;
+  font-family: var(--font-display); font-weight: 600;
+}
+.skip-link:focus { top: 0; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Persistent stage indicator (top of page) ---------- */
+.stage {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.stage__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.stage__mark {
+  width: 6px; height: 22px;
+  background: var(--terra);
+  flex-shrink: 0;
+}
+.stage__brand { color: var(--navy); }
+.stage__sep { color: var(--rule); }
+.stage__sub { color: var(--ink-muted); }
+.stage__counter {
+  margin-left: auto;
+  color: var(--gold-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Stage steps (4 dots) ---------- */
+.stage__steps {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.stage__step {
+  width: 22px; height: 4px;
+  background: var(--rule-faint);
+  transition: background 0.3s ease;
+}
+.stage__step--active { background: var(--gold); }
+.stage__step--done { background: var(--navy); }
+
+@media (max-width: 520px) {
+  .stage__sub { display: none; }
+  .stage__sep { display: none; }
+  .stage__inner { padding: 12px 16px; gap: 10px; }
+}
+
+.shell {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.screen { display: none; }
+.screen--active { display: block; animation: fadeUp 0.4s cubic-bezier(0.2, 0.65, 0.3, 1); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen--active { animation: none; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* =========================================================
+   WELCOME SCREEN
+   ========================================================= */
+.hero {
+  padding: 24px 0 8px;
+  position: relative;
+}
+
+.hero__num {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  font-family: var(--font-display);
+  font-size: clamp(80px, 18vw, 160px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--rule-faint);
+  letter-spacing: -0.06em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.hero__inner { position: relative; z-index: 1; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terra-text);
+  margin: 0 0 28px;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--terra);
+}
+
+h1.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 8vw, 76px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--navy);
+  margin: 0 0 28px;
+}
+h1.hero__title em {
+  font-style: normal;
+  color: var(--terra-text);
+  display: block;
+}
+
+.hero__lede {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 560px;
+  margin: 0 0 36px;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold);
+}
+
+.hero__body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 600px;
+  margin: 0 0 36px;
+}
+.hero__body strong { color: var(--navy); font-weight: 700; }
+
+/* Card grid for "what you get" */
+.unlocks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 0 0 40px;
+  border-top: 1px solid var(--rule-soft);
+}
+@media (min-width: 640px) {
+  .unlocks { grid-template-columns: 1fr 1fr; border-top: none; }
+}
+.unlock {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+@media (min-width: 640px) {
+  .unlock {
+    padding: 20px 20px 20px 0;
+    border-right: 1px solid var(--rule-soft);
+    border-top: 1px solid var(--rule-soft);
+  }
+  .unlock:nth-child(2n) { border-right: none; padding-right: 0; padding-left: 20px; }
+}
+.unlock__num {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.unlock__text {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.unlock__text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+}
+
+/* Specs row */
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+  padding: 20px 0;
+  margin: 0 0 32px;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.spec__label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.spec__value {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 18px 28px;
+  border: 2px solid var(--navy);
+  background: var(--navy);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  min-height: 52px;
+  position: relative;
+}
+.btn:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
+.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.btn:active { transform: translateY(1px); }
+.btn--block { display: flex; width: 100%; }
+.btn--gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.btn--gold:hover { background: var(--gold-bright); border-color: var(--gold-bright); }
+.btn--ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--rule); }
+.btn--ghost:hover { border-color: var(--navy); background: var(--bg-soft); }
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+.btn__arrow {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+.btn__arrow::before,
+.btn__arrow::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.btn__arrow::before {
+  top: 50%; left: 0;
+  width: 100%; height: 2px;
+  transform: translateY(-50%);
+}
+.btn__arrow::after {
+  top: 50%; right: 0;
+  width: 8px; height: 8px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  background: none;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.byline {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.byline strong { font-family: var(--font-display); color: var(--navy); font-weight: 700; }
+
+/* =========================================================
+   QUIZ SCREEN
+   ========================================================= */
+.q-frame {
+  padding: 20px 0 0;
+}
+
+.q-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.q-meta__num {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 72px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+.q-meta__num span {
+  color: var(--rule);
+  font-weight: 500;
+}
+.q-meta__dim {
+  text-align: right;
+  font-family: var(--font-display);
+}
+.q-meta__dim-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+.q-meta__dim-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--terra-text);
+  letter-spacing: 0.02em;
+}
+.q-meta__dim-value::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: var(--terra);
+}
+
+.q-text {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.4vw, 30px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--navy);
+  margin: 0 0 28px;
+  letter-spacing: -0.018em;
+  max-width: 620px;
+}
+
+.scale {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.scale__option {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 1.5px solid var(--rule-soft);
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease, transform 0.06s ease;
+  min-height: 64px;
+}
+.scale__option:hover { border-color: var(--rule); background: var(--bg-soft); }
+.scale__option:focus-within { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: -2px; }
+.scale__option input { position: absolute; opacity: 0; pointer-events: none; }
+.scale__option--selected {
+  border-color: var(--navy);
+  background: #EDF1F3;
+}
+.scale__option--selected .scale__num {
+  background: var(--navy); color: #fff; border-color: var(--navy);
+}
+.scale__option--selected .scale__check { opacity: 1; }
+
+.scale__num {
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--rule);
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 16px;
+  color: var(--ink-muted);
+  transition: all 0.12s ease;
+}
+
+.scale__text { line-height: 1.3; }
+.scale__text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 15px;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+.scale__text span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+.scale__check {
+  width: 20px; height: 20px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.scale__check svg { display: block; width: 100%; height: 100%; }
+
+.nav-row {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.nav-row .btn { flex: 1; max-width: 220px; }
+.nav-row .btn--ghost { max-width: 130px; flex: 0 1 130px; }
+
+/* =========================================================
+   EMAIL GATE
+   ========================================================= */
+.gate-hero {
+  text-align: left;
+  margin-bottom: 40px;
+  padding-top: 8px;
+}
+.gate-hero h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+  color: var(--navy);
+  margin: 0 0 12px;
+}
+.gate-hero h2 em { font-style: normal; color: var(--terra-text); }
+.gate-hero p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-muted);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* Teaser scorecard (the magic) */
+.teaser-card {
+  margin-bottom: 36px;
+  border: 1px solid var(--rule-soft);
+  background: var(--bg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.teaser-card__head {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.teaser-card__head-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin: 0 0 6px;
+}
+.teaser-card__head-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0;
+}
+.teaser-card__icon {
+  width: 56px; height: 56px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.teaser-card__icon svg { width: 32px; height: 32px; color: var(--navy); }
+
+.teaser-card__body { padding: 22px 24px; }
+.teaser-card__label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+}
+.teaser-bars { display: flex; flex-direction: column; gap: 10px; }
+.teaser-bar {
+  display: grid;
+  grid-template-columns: 110px 1fr 56px;
+  gap: 12px;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+}
+.teaser-bar__label { font-weight: 700; color: var(--navy); }
+.teaser-bar__track {
+  height: 10px;
+  background: var(--rule-faint);
+  position: relative;
+}
+.teaser-bar__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--navy);
+  transition: width 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+  width: 0;
+}
+.teaser-bar--weakest .teaser-bar__fill { background: var(--terra); }
+.teaser-bar--weakest .teaser-bar__label { color: var(--terra-text); }
+.teaser-bar__num {
+  font-weight: 700;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.teaser-bar--weakest .teaser-bar__num { color: var(--terra-text); }
+
+.teaser-card__footer {
+  padding: 16px 24px;
+  border-top: 1px dashed var(--rule);
+  background: var(--bg-soft);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.teaser-card__footer strong { font-style: normal; color: var(--terra-text); font-family: var(--font-display); font-weight: 700; }
+
+.gate-form-head {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gate-form-head::before {
+  content: "→";
+  color: var(--terra);
+  font-size: 18px;
+}
+
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.form-group input {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--rule);
+  background: var(--bg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink-soft);
+  min-height: 52px;
+  transition: border-color 0.12s ease;
+}
+.form-group input:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: -1px;
+  border-color: var(--navy);
+}
+.form-group input[aria-invalid="true"] { border-color: var(--terra); }
+.form-error {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--terra-text);
+  margin: 6px 0 0;
+}
+.form-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin: 14px 0 0;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   RESULTS SCREEN
+   ========================================================= */
+.result-hero {
+  padding: 16px 0 0;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.result-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra-text);
+  margin-bottom: 18px;
+}
+.result-eyebrow::before {
+  content: "";
+  width: 28px; height: 2px;
+  background: var(--terra);
+}
+
+.result-name-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.result-icon {
+  flex-shrink: 0;
+  width: 72px; height: 72px;
+  border: 2px solid var(--navy);
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+}
+.result-icon svg { width: 42px; height: 42px; color: var(--navy); }
+@media (max-width: 520px) {
+  .result-icon { width: 56px; height: 56px; }
+  .result-icon svg { width: 32px; height: 32px; }
+}
+
+.result-name-wrap { flex: 1; min-width: 0; }
+.result-name-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 6px;
+}
+h2.result-name {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 6vw, 56px);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.032em;
+  color: var(--navy);
+  margin: 0;
+}
+h2.result-name em { font-style: normal; color: var(--terra-text); }
+
+.diagnosis {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(17px, 2.2vw, 21px);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding: 22px 24px;
+  border-left: 3px solid var(--gold);
+  background: var(--bg-soft);
+  margin: 0 0 8px;
+}
+
+/* Scorecard */
+.scorecard {
+  margin: 40px 0;
+  border: 1px solid var(--rule-soft);
+  background: var(--bg);
+  overflow: hidden;
+}
+.scorecard__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--rule-soft);
+  background: var(--bg-soft);
+}
+.scorecard__head h3 {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0;
+}
+.scorecard__head-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.scorecard__body { padding: 20px 24px; }
+.score-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 56px;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-family: var(--font-display);
+}
+.score-row:last-child { border-bottom: none; }
+.score-row__label {
+  font-size: 13.5px; font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+.score-row__label small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: 0;
+  margin-top: 2px;
+}
+.score-row__bar { height: 10px; background: var(--rule-faint); position: relative; }
+.score-row__fill {
+  position: absolute; inset: 0 auto 0 0;
+  background: var(--navy);
+  transition: width 0.9s cubic-bezier(0.2, 0.65, 0.3, 1);
+  width: 0;
+}
+.score-row__fill--weakest { background: var(--terra); }
+.score-row__num {
+  font-size: 14px; font-weight: 800;
+  color: var(--ink-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.score-row--weakest .score-row__label { color: var(--terra-text); }
+.score-row--weakest .score-row__num { color: var(--terra-text); }
+
+.scorecard__footer {
+  padding: 14px 24px;
+  border-top: 1px dashed var(--rule);
+  background: var(--bg-soft);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.scorecard__footer strong {
+  font-style: normal;
+  color: var(--terra-text);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Editorial sections */
+.section-block { margin: 44px 0; }
+.section-block__head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--navy);
+}
+.section-block__num {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gold-text);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.section-block h3 {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0;
+}
+.section-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: item;
+}
+.section-block li {
+  padding: 18px 0 18px 56px;
+  border-bottom: 1px solid var(--rule-faint);
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.section-block li:last-child { border-bottom: none; }
+.section-block li::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  width: 42px;
+}
+.section-block--symptoms li::before { color: var(--terra); }
+.section-block--moves li::before { color: var(--gold); }
+
+/* CTA block (ad-style) */
+.pitch {
+  margin: 56px 0 32px;
+  position: relative;
+  background: var(--navy);
+  color: #fff;
+  padding: 40px 28px;
+  overflow: hidden;
+}
+.pitch__num {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(80px, 16vw, 140px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: rgba(255,255,255,0.05);
+  pointer-events: none;
+  user-select: none;
+}
+.pitch__inner { position: relative; z-index: 1; }
+.pitch__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 18px;
+}
+.pitch__eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+}
+.pitch h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0 0 18px;
+  max-width: 460px;
+}
+.pitch p {
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: #D8DEE9;
+  margin: 0 0 24px;
+  max-width: 520px;
+}
+.pitch__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-bottom: 28px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.pitch__stat {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.pitch__stat-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.pitch__stat-value {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.pitch .btn { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.pitch .btn:hover { background: var(--gold-bright); border-color: var(--gold-bright); }
+.pitch .btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+.pitch .btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+
+.cta-row { display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 540px) {
+  .cta-row { flex-direction: row; }
+  .cta-row .btn { flex: 1; }
+}
+
+.share-row {
+  margin-top: 32px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.share-row__id { color: var(--terra-text); font-variant-numeric: tabular-nums; }
+
+/* Loading state */
+.loading-dots { display: inline-flex; gap: 4px; align-items: center; vertical-align: middle; margin-left: 6px; }
+.loading-dots span {
+  width: 6px; height: 6px;
+  background: currentColor;
+  opacity: 0.4;
+  animation: dot 1.2s infinite ease-in-out;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.15s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dot {
+  0%, 80%, 100% { opacity: 0.3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- Persistent stage indicator across screens -->
+<div class="stage" role="banner">
+  <div class="stage__inner">
+    <span class="stage__mark" aria-hidden="true"></span>
+    <span class="stage__brand">MedMasters</span>
+    <span class="stage__sep" aria-hidden="true">·</span>
+    <span class="stage__sub">A&amp;P Summer Survival Diagnostic</span>
+    <div class="stage__steps" id="stage-steps" aria-label="Quiz progress">
+      <span class="stage__step"></span>
+      <span class="stage__step"></span>
+      <span class="stage__step"></span>
+      <span class="stage__step"></span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <main id="main">
+
+    <!-- ===================================================
+         WELCOME SCREEN
+         =================================================== -->
+    <section id="screen-welcome" class="screen screen--active" aria-labelledby="welcome-title">
+      <div class="hero">
+        <div class="hero__num" aria-hidden="true">01</div>
+        <div class="hero__inner">
+          <p class="eyebrow">Recovery protocol · 2 minutes</p>
+          <h1 class="hero__title" id="welcome-title">
+            Critical care for
+            <em>failing grades.</em>
+          </h1>
+          <p class="hero__lede">Recovering a failing grade is not about studying harder. It needs a method that is intensive, targeted, and built for students who do not have weeks left to figure it out.</p>
+          <p class="hero__body">12 questions. 2 minutes. You walk away knowing exactly what is breaking down in your study system and what to repair this week.</p>
+        </div>
+      </div>
+
+      <ul class="unlocks" aria-label="What you receive">
+        <li class="unlock">
+          <span class="unlock__num">01</span>
+          <span class="unlock__text"><strong>Your profile</strong>One of four patterns we see in struggling A&amp;P students.</span>
+        </li>
+        <li class="unlock">
+          <span class="unlock__num">02</span>
+          <span class="unlock__text"><strong>Your symptoms</strong>The specific signs you probably already recognize.</span>
+        </li>
+        <li class="unlock">
+          <span class="unlock__num">03</span>
+          <span class="unlock__text"><strong>Your three moves</strong>What to change this week, not someday.</span>
+        </li>
+        <li class="unlock">
+          <span class="unlock__num">04</span>
+          <span class="unlock__text"><strong>Week 1 Survival PDF</strong>A field guide for the first week of an intensive.</span>
+        </li>
+      </ul>
+
+      <div class="specs" aria-label="Diagnostic details">
+        <div class="spec"><span class="spec__label">Length</span><span class="spec__value">12 questions</span></div>
+        <div class="spec"><span class="spec__label">Time</span><span class="spec__value">2 minutes</span></div>
+        <div class="spec"><span class="spec__label">Rules</span><span class="spec__value">Honest answers only</span></div>
+      </div>
+
+      <button type="button" class="btn btn--block" id="btn-start">
+        <span>Begin the diagnostic</span>
+        <span class="btn__arrow" aria-hidden="true"></span>
+      </button>
+
+      <p class="byline">Designed by <strong>Dr. Sharilyn Rennie</strong>, faculty in basic medical science courses, founder of MedMasters Collaborative.</p>
+    </section>
+
+    <!-- ===================================================
+         QUIZ SCREEN
+         =================================================== -->
+    <section id="screen-quiz" class="screen" aria-labelledby="quiz-title">
+      <h2 id="quiz-title" class="sr-only">Diagnostic questions</h2>
+
+      <div class="q-frame">
+        <div class="q-meta">
+          <div class="q-meta__num"><span id="q-current-display">Q.01</span><span> / 12</span></div>
+          <div class="q-meta__dim">
+            <span class="q-meta__dim-label">Phase</span>
+            <span class="q-meta__dim-value" id="q-dim">Current state</span>
+          </div>
+        </div>
+
+        <h3 class="q-text" id="q-text">Question text loads here.</h3>
+
+        <div class="scale" role="radiogroup" aria-labelledby="q-text" id="scale-options"></div>
+
+        <div class="nav-row">
+          <button type="button" class="btn btn--ghost" id="btn-back">Back</button>
+          <button type="button" class="btn" id="btn-next" disabled>
+            <span id="next-label">Next</span>
+            <span class="btn__arrow" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         EMAIL GATE
+         =================================================== -->
+    <section id="screen-gate" class="screen" aria-labelledby="gate-title">
+      <div class="gate-hero">
+        <p class="eyebrow">Diagnostic complete</p>
+        <h2 id="gate-title">Your CODE cycle <em>has a weak link.</em></h2>
+        <p>The data is below. The diagnosis, the symptoms, and the three moves you can make this week are one click away.</p>
+      </div>
+
+      <div class="teaser-card">
+        <div class="teaser-card__head">
+          <div>
+            <p class="teaser-card__head-label">Your profile</p>
+            <h3 class="teaser-card__head-title" id="gate-profile-name">The Profile Name</h3>
+          </div>
+          <div class="teaser-card__icon" id="gate-profile-icon" aria-hidden="true"></div>
+        </div>
+        <div class="teaser-card__body">
+          <p class="teaser-card__label">Your CODE cycle scorecard</p>
+          <div class="teaser-bars" id="teaser-bars"></div>
+        </div>
+        <div class="teaser-card__footer">
+          Your weakest phase is <strong id="teaser-weak-dim">Current state</strong>. The full breakdown explains what this means and what to do about it.
+        </div>
+      </div>
+
+      <p class="gate-form-head">Unlock the full breakdown</p>
+
+      <form id="gate-form" novalidate>
+        <div class="form-group">
+          <label for="first-name">First name</label>
+          <input type="text" id="first-name" name="first_name" autocomplete="given-name" required>
+          <p class="form-error" id="error-name" role="alert" style="display:none;">Please enter your first name.</p>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+          <p class="form-error" id="error-email" role="alert" style="display:none;">Please enter a valid email.</p>
+        </div>
+
+        <button type="submit" class="btn btn--block" id="btn-submit">
+          <span id="submit-label">Unlock my full results</span>
+          <span class="btn__arrow" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-note">You will also be added to the STAT Success Cohort waitlist with first-access pricing and dates. No spam, unsubscribe anytime.</p>
+      </form>
+    </section>
+
+    <!-- ===================================================
+         RESULTS
+         =================================================== -->
+    <section id="screen-results" class="screen" aria-labelledby="results-title">
+      <div class="result-hero">
+        <p class="result-eyebrow">Your CODE cycle diagnosis</p>
+        <div class="result-name-row">
+          <div class="result-icon" id="result-icon" aria-hidden="true"></div>
+          <div class="result-name-wrap">
+            <p class="result-name-label">You scored as</p>
+            <h2 class="result-name" id="results-title"><em id="results-profile-name">Profile Name</em></h2>
+          </div>
+        </div>
+        <p class="diagnosis" id="results-diagnosis">Diagnosis copy.</p>
+      </div>
+
+      <div class="scorecard">
+        <div class="scorecard__head">
+          <h3>Your CODE cycle scorecard</h3>
+          <span class="scorecard__head-num" id="scorecard-id">ID #00000</span>
+        </div>
+        <div class="scorecard__body" id="scorecard-rows"></div>
+        <div class="scorecard__footer" id="scorecard-footer">
+          Lowest dimension: <strong id="scorecard-weak">Current state</strong>. This is the link to repair first.
+        </div>
+      </div>
+
+      <div class="section-block section-block--symptoms">
+        <div class="section-block__head">
+          <span class="section-block__num">SYMPTOMS / 01</span>
+          <h3>What you probably recognize</h3>
+        </div>
+        <ul id="results-symptoms"></ul>
+      </div>
+
+      <div class="section-block section-block--moves">
+        <div class="section-block__head">
+          <span class="section-block__num">MOVES / 02</span>
+          <h3>Three moves you can make this week</h3>
+        </div>
+        <ul id="results-moves"></ul>
+      </div>
+
+      <div class="pitch">
+        <div class="pitch__num" aria-hidden="true">03</div>
+        <div class="pitch__inner">
+          <p class="pitch__eyebrow">Run the full cycle</p>
+          <h3>Diagnosis is the easy part. Repair is the work.</h3>
+          <p>STAT Success Cohort trains you on the full CODE cycle every week, with a small team, in a 4-week intensive built for the summer pace. Mid-July start, by Dr. Sharilyn Rennie.</p>
+          <div class="pitch__stats">
+            <div class="pitch__stat"><span class="pitch__stat-label">Length</span><span class="pitch__stat-value">4 weeks</span></div>
+            <div class="pitch__stat"><span class="pitch__stat-label">Live calls</span><span class="pitch__stat-value">2 per week</span></div>
+            <div class="pitch__stat"><span class="pitch__stat-label">Cohort cap</span><span class="pitch__stat-value">25 students</span></div>
+            <div class="pitch__stat"><span class="pitch__stat-label">Start</span><span class="pitch__stat-value">Mid-July 2026</span></div>
+          </div>
+          <div class="cta-row">
+            <a class="btn" id="cta-waitlist" href="#" target="_top">Join the STAT waitlist</a>
+            <a class="btn btn--ghost" id="cta-pdf" href="#" target="_blank" rel="noopener">Download Week 1 PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="share-row">
+        <span>MedMasters Collaborative · STAT Success</span>
+        <span class="share-row__id" id="share-id">DX #00000</span>
+      </div>
+
+      <p class="byline">Diagnostic and methodology by <strong>Dr. Sharilyn Rennie</strong>. STAT Success Cohort is a program of MedMasters Collaborative, LLC.</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- Inline SVG icons (one per profile, used in gate teaser and results) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Foggy Navigator: compass-like -->
+    <symbol id="icon-foggy" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <path d="M24 14 L29 24 L24 34 L19 24 Z" fill="currentColor"/>
+      <circle cx="24" cy="24" r="2" fill="#fff"/>
+    </symbol>
+    <!-- Pattern Misser: grid with one off -->
+    <symbol id="icon-pattern" viewBox="0 0 48 48">
+      <rect x="8" y="8" width="9" height="9" fill="currentColor"/>
+      <rect x="20" y="8" width="9" height="9" fill="currentColor"/>
+      <rect x="32" y="8" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <rect x="8" y="20" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <rect x="20" y="20" width="9" height="9" fill="currentColor"/>
+      <rect x="32" y="20" width="9" height="9" fill="currentColor"/>
+      <rect x="8" y="32" width="9" height="9" fill="currentColor"/>
+      <rect x="20" y="32" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <rect x="32" y="32" width="9" height="9" fill="currentColor"/>
+    </symbol>
+    <!-- Hard Worker: stacked layers -->
+    <symbol id="icon-hard" viewBox="0 0 48 48">
+      <rect x="6" y="32" width="36" height="8" fill="currentColor"/>
+      <rect x="9" y="22" width="30" height="8" fill="currentColor" opacity="0.8"/>
+      <rect x="12" y="12" width="24" height="8" fill="currentColor" opacity="0.55"/>
+      <rect x="15" y="2" width="18" height="8" fill="currentColor" opacity="0.3"/>
+    </symbol>
+    <!-- Method Hopper: circular arrows -->
+    <symbol id="icon-method" viewBox="0 0 48 48">
+      <path d="M40 24 a16 16 0 1 0 -5 11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+      <path d="M40 14 L40 24 L30 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+      <path d="M8 24 a16 16 0 0 0 5 11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" opacity="0.4"/>
+    </symbol>
+    <!-- Generic gold check for selected option -->
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M5 12 L10 17 L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============================================================
+  // CONFIGURE: Plug in your three URLs before deploying.
+  // ============================================================
+  var CONFIG = {
+    KAJABI_FORM_URL: 'https://YOUR-KAJABI-SITE.mykajabi.com/forms/YOUR-FORM-ID/submissions',
+    WAITLIST_URL: 'https://YOUR-KAJABI-SITE.mykajabi.com/stat-waitlist',
+    PDF_DOWNLOAD_URL: 'https://drsrennie-stack.github.io/STAT/week-1-survival.pdf'
+  };
+
+  // ============================================================
+  // Quiz data
+  // ============================================================
+  var QUESTIONS = [
+    { dim: 'C', text: 'I can name my three weakest topics in this course right now.' },
+    { dim: 'O', text: 'When I miss a question, I figure out why beyond "I did not know it."' },
+    { dim: 'D', text: 'When I am overwhelmed, I have a clear way to choose what to study first.' },
+    { dim: 'E', text: 'I test myself under conditions similar to the actual exam.' },
+    { dim: 'C', text: 'Before an exam, I can predict my score within 5 percent.' },
+    { dim: 'O', text: 'I can identify the types of questions or topics where I consistently lose points.' },
+    { dim: 'D', text: 'I match my study method to the type of material (drawing for anatomy, retrieval for facts).' },
+    { dim: 'E', text: 'After a study session, I know whether it actually worked, not just whether it felt productive.' },
+    { dim: 'C', text: 'I know how much time I am spending on each topic this week.' },
+    { dim: 'O', text: 'I notice when a study method has stopped being productive and I switch.' },
+    { dim: 'D', text: 'I cut study activities that are not moving the needle on my scores.' },
+    { dim: 'E', text: 'I revise my study plan based on what the evidence shows, not what feels right.' }
+  ];
+
+  var SCALE = [
+    { val: 1, label: 'Never', desc: 'This does not describe me' },
+    { val: 2, label: 'Rarely', desc: 'Once in a while at best' },
+    { val: 3, label: 'Sometimes', desc: 'About half the time' },
+    { val: 4, label: 'Often', desc: 'Most of the time' },
+    { val: 5, label: 'Always', desc: 'This is consistently true' }
+  ];
+
+  var DIM_NAMES = {
+    C: 'Current state',
+    O: 'Observe',
+    D: 'Decide',
+    E: 'Evaluate'
+  };
+  var DIM_FULL = {
+    C: 'How clearly you see where you stand',
+    O: 'How well you spot patterns',
+    D: 'How strategically you choose what to do',
+    E: 'How honestly you measure what worked'
+  };
+  var DIM_INDEX = { C: 0, O: 1, D: 2, E: 3 };
+
+  var PROFILES = {
+    C: {
+      name: 'The Foggy Navigator',
+      icon: 'icon-foggy',
+      diagnosis: 'You are working hard, but you do not have a clear read on where you actually stand. The exam keeps delivering surprises.',
+      symptoms: [
+        'You cannot predict your exam scores until you see them on the screen.',
+        'You are not sure which topics will hurt you most on the next test.',
+        'Your study time feels productive but does not reliably translate to scores.'
+      ],
+      moves: [
+        'Pull up your last quiz or exam. Write down the topics where you lost points. That list is your priority study list this week.',
+        'Before your next study session, predict your score on a 10-question retrieval quiz on that material. Compare your prediction to your actual.',
+        'End each study day with one sentence: "If the exam were tomorrow, my weakest topic would be ___."'
+      ]
+    },
+    O: {
+      name: 'The Pattern Misser',
+      icon: 'icon-pattern',
+      diagnosis: 'You are putting in real work, but you are not seeing the patterns in where you keep losing points. The same traps catch you twice.',
+      symptoms: [
+        'You miss similar question types across exams (matching, application, image-based).',
+        '"I knew that" is a frequent post-exam reaction.',
+        'Your study notes do not change based on what got you in trouble last time.'
+      ],
+      moves: [
+        'Categorize the last 20 missed questions by type. The top category is your next focus.',
+        'For every missed question this week, write one sentence: "I missed this because ___."',
+        'Start a running list of question types that keep getting you. Review it before every study session.'
+      ]
+    },
+    D: {
+      name: 'The Hard Worker',
+      icon: 'icon-hard',
+      diagnosis: 'You are putting in the hours. You are paying attention. But you are not making strategic choices about what to do with that effort. You are studying everything equally instead of triaging.',
+      symptoms: [
+        'You feel behind no matter how much you study.',
+        'You read your notes three times instead of choosing a different method.',
+        'You cannot tell me what your single most important topic is for this week.'
+      ],
+      moves: [
+        'Each Sunday, name your ONE most important topic for the week. Build the week around it.',
+        'Cut your study list in half. The bottom half does not get studied this week. Triage.',
+        'For each topic, pick ONE method that actually fits the material. Stop hedging with three methods at once.'
+      ]
+    },
+    E: {
+      name: 'The Method Hopper',
+      icon: 'icon-method',
+      diagnosis: 'You are trying lots of methods and paying attention to what is not working. But you are not measuring whether what you are doing is moving the score. You feel productive without proof.',
+      symptoms: [
+        'You have tried flashcards, mind maps, Anki, YouTube, and Quizlet, all in the same month.',
+        '"I studied so much" does not match your actual exam result.',
+        'You change methods because the old one "felt off," not because data said so.'
+      ],
+      moves: [
+        'Pick ONE method for the next 7 days. Do not switch. Measure.',
+        'Take a 10-question self-quiz at the end of each study session. Track the percentage.',
+        'Before changing a method, write: "I am changing because the data shows ___." If you cannot fill that in, do not change.'
+      ]
+    }
+  };
+
+  // ============================================================
+  // State
+  // ============================================================
+  var state = {
+    currentQ: 0,
+    answers: new Array(QUESTIONS.length).fill(null),
+    scores: { C: 0, O: 0, D: 0, E: 0 },
+    profile: null,
+    dxId: Math.floor(10000 + Math.random() * 89999)
+  };
+
+  var $ = function(id) { return document.getElementById(id); };
+
+  var screens = {
+    welcome: $('screen-welcome'),
+    quiz: $('screen-quiz'),
+    gate: $('screen-gate'),
+    results: $('screen-results')
+  };
+
+  // ============================================================
+  // Stage indicator (4 dots, fills as quiz progresses)
+  // ============================================================
+  function updateStage(stageIndex) {
+    // stageIndex: 0 = welcome, 1-12 = quiz q (1-indexed), 13 = gate, 14 = results
+    var steps = document.querySelectorAll('.stage__step');
+    steps.forEach(function(s) { s.classList.remove('stage__step--active', 'stage__step--done'); });
+    if (stageIndex === 0) return;
+
+    if (stageIndex >= 1 && stageIndex <= 12) {
+      // Map question index to a quartile (1-3 -> step 0, 4-6 -> step 1, 7-9 -> step 2, 10-12 -> step 3)
+      var phase = Math.floor((stageIndex - 1) / 3);
+      for (var i = 0; i < 4; i++) {
+        if (i < phase) steps[i].classList.add('stage__step--done');
+        else if (i === phase) steps[i].classList.add('stage__step--active');
+      }
+    } else if (stageIndex === 13 || stageIndex === 14) {
+      steps.forEach(function(s) { s.classList.add('stage__step--done'); });
+    }
+  }
+
+  // ============================================================
+  // Screen transitions
+  // ============================================================
+  function showScreen(name, stageIdx) {
+    Object.keys(screens).forEach(function(key) {
+      screens[key].classList.remove('screen--active');
+    });
+    screens[name].classList.add('screen--active');
+    if (typeof stageIdx === 'number') updateStage(stageIdx);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(sendHeight, 100);
+  }
+
+  // ============================================================
+  // SVG icon helper
+  // ============================================================
+  function iconSVG(id) {
+    return '<svg viewBox="0 0 48 48"><use href="#' + id + '"></use></svg>';
+  }
+  function checkSVG() {
+    return '<svg viewBox="0 0 24 24"><use href="#icon-check"></use></svg>';
+  }
+
+  // ============================================================
+  // Quiz rendering
+  // ============================================================
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function renderQuestion(index) {
+    var q = QUESTIONS[index];
+    $('q-current-display').textContent = 'Q.' + pad2(index + 1);
+    $('q-dim').textContent = DIM_NAMES[q.dim];
+    $('q-text').textContent = q.text;
+
+    var container = $('scale-options');
+    container.innerHTML = '';
+    SCALE.forEach(function(opt) {
+      var label = document.createElement('label');
+      label.className = 'scale__option';
+      if (state.answers[index] === opt.val) label.classList.add('scale__option--selected');
+
+      var input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'q-' + index;
+      input.value = opt.val;
+      input.id = 'q-' + index + '-opt-' + opt.val;
+      if (state.answers[index] === opt.val) input.checked = true;
+
+      var num = document.createElement('span');
+      num.className = 'scale__num';
+      num.textContent = opt.val;
+      num.setAttribute('aria-hidden', 'true');
+
+      var text = document.createElement('span');
+      text.className = 'scale__text';
+      var strong = document.createElement('strong');
+      strong.textContent = opt.label;
+      var sub = document.createElement('span');
+      sub.textContent = opt.desc;
+      text.appendChild(strong);
+      text.appendChild(sub);
+
+      var check = document.createElement('span');
+      check.className = 'scale__check';
+      check.style.color = 'var(--gold)';
+      check.innerHTML = checkSVG();
+
+      label.appendChild(input);
+      label.appendChild(num);
+      label.appendChild(text);
+      label.appendChild(check);
+
+      input.addEventListener('change', function() {
+        state.answers[index] = opt.val;
+        Array.prototype.forEach.call(container.querySelectorAll('.scale__option'), function(el) {
+          el.classList.remove('scale__option--selected');
+        });
+        label.classList.add('scale__option--selected');
+        $('btn-next').disabled = false;
+      });
+
+      container.appendChild(label);
+    });
+
+    $('btn-next').disabled = (state.answers[index] === null);
+    $('btn-back').style.visibility = (index === 0) ? 'hidden' : 'visible';
+    $('next-label').textContent = (index === QUESTIONS.length - 1) ? 'See my results' : 'Next';
+
+    updateStage(index + 1);
+  }
+
+  // ============================================================
+  // Scoring
+  // ============================================================
+  function computeScores() {
+    var sums = { C: 0, O: 0, D: 0, E: 0 };
+    QUESTIONS.forEach(function(q, i) {
+      sums[q.dim] += state.answers[i] || 0;
+    });
+    state.scores = sums;
+    var order = ['C', 'O', 'D', 'E'];
+    var weakest = order[0];
+    order.forEach(function(d) {
+      if (sums[d] < sums[weakest]) weakest = d;
+    });
+    state.profile = weakest;
+  }
+
+  // ============================================================
+  // Email gate render (with teaser scorecard)
+  // ============================================================
+  function renderGate() {
+    var p = PROFILES[state.profile];
+    $('gate-profile-name').textContent = p.name;
+    $('gate-profile-icon').innerHTML = iconSVG(p.icon);
+    $('teaser-weak-dim').textContent = DIM_NAMES[state.profile];
+
+    var bars = $('teaser-bars');
+    bars.innerHTML = '';
+    ['C', 'O', 'D', 'E'].forEach(function(d) {
+      var pct = (state.scores[d] / 15) * 100;
+      var isWeak = (d === state.profile);
+      var bar = document.createElement('div');
+      bar.className = 'teaser-bar' + (isWeak ? ' teaser-bar--weakest' : '');
+      bar.innerHTML =
+        '<div class="teaser-bar__label">' + DIM_NAMES[d] + '</div>' +
+        '<div class="teaser-bar__track"><div class="teaser-bar__fill" data-pct="' + pct + '"></div></div>' +
+        '<div class="teaser-bar__num">' + state.scores[d] + ' / 15</div>';
+      bars.appendChild(bar);
+    });
+
+    // Animate bars in after a tick
+    setTimeout(function() {
+      Array.prototype.forEach.call(bars.querySelectorAll('.teaser-bar__fill'), function(el) {
+        el.style.width = el.getAttribute('data-pct') + '%';
+      });
+    }, 100);
+  }
+
+  function validateEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    var name = $('first-name').value.trim();
+    var email = $('email').value.trim();
+    var nameErr = $('error-name');
+    var emailErr = $('error-email');
+    var valid = true;
+
+    if (!name) {
+      nameErr.style.display = 'block';
+      $('first-name').setAttribute('aria-invalid', 'true');
+      valid = false;
+    } else {
+      nameErr.style.display = 'none';
+      $('first-name').setAttribute('aria-invalid', 'false');
+    }
+    if (!validateEmail(email)) {
+      emailErr.style.display = 'block';
+      $('email').setAttribute('aria-invalid', 'true');
+      valid = false;
+    } else {
+      emailErr.style.display = 'none';
+      $('email').setAttribute('aria-invalid', 'false');
+    }
+    if (!valid) return;
+
+    var btn = $('btn-submit');
+    var lbl = $('submit-label');
+    btn.disabled = true;
+    lbl.innerHTML = 'Unlocking<span class="loading-dots"><span></span><span></span><span></span></span>';
+
+    var payload = new FormData();
+    payload.append('first_name', name);
+    payload.append('email', email);
+    payload.append('profile', PROFILES[state.profile].name);
+    payload.append('profile_code', state.profile);
+    payload.append('score_C', state.scores.C);
+    payload.append('score_O', state.scores.O);
+    payload.append('score_D', state.scores.D);
+    payload.append('score_E', state.scores.E);
+    payload.append('dx_id', state.dxId);
+    payload.append('source', 'AP Summer Survival Diagnostic');
+
+    var revealed = false;
+    var reveal = function() {
+      if (revealed) return;
+      revealed = true;
+      renderResults();
+      showScreen('results', 14);
+    };
+    setTimeout(reveal, 3000);
+
+    fetch(CONFIG.KAJABI_FORM_URL, {
+      method: 'POST',
+      body: payload,
+      mode: 'no-cors'
+    }).then(reveal).catch(reveal);
+  }
+
+  // ============================================================
+  // Results rendering
+  // ============================================================
+  function renderResults() {
+    var p = PROFILES[state.profile];
+    $('results-profile-name').textContent = p.name;
+    $('results-diagnosis').textContent = p.diagnosis;
+    $('result-icon').innerHTML = iconSVG(p.icon);
+
+    // Scorecard
+    var rows = $('scorecard-rows');
+    rows.innerHTML = '';
+    ['C', 'O', 'D', 'E'].forEach(function(d) {
+      var pct = (state.scores[d] / 15) * 100;
+      var isWeak = (d === state.profile);
+      var row = document.createElement('div');
+      row.className = 'score-row' + (isWeak ? ' score-row--weakest' : '');
+      row.innerHTML =
+        '<div class="score-row__label">' + DIM_NAMES[d] + '<small>' + DIM_FULL[d] + '</small></div>' +
+        '<div class="score-row__bar"><div class="score-row__fill ' + (isWeak ? 'score-row__fill--weakest' : '') + '" data-pct="' + pct + '"></div></div>' +
+        '<div class="score-row__num">' + state.scores[d] + ' / 15</div>';
+      rows.appendChild(row);
+    });
+    setTimeout(function() {
+      Array.prototype.forEach.call(rows.querySelectorAll('.score-row__fill'), function(el) {
+        el.style.width = el.getAttribute('data-pct') + '%';
+      });
+    }, 150);
+
+    $('scorecard-weak').textContent = DIM_NAMES[state.profile];
+    $('scorecard-id').textContent = 'ID #' + state.dxId;
+    $('share-id').textContent = 'DX #' + state.dxId;
+
+    var symList = $('results-symptoms');
+    symList.innerHTML = '';
+    p.symptoms.forEach(function(s) {
+      var li = document.createElement('li');
+      li.textContent = s;
+      symList.appendChild(li);
+    });
+
+    var moveList = $('results-moves');
+    moveList.innerHTML = '';
+    p.moves.forEach(function(m) {
+      var li = document.createElement('li');
+      li.textContent = m;
+      moveList.appendChild(li);
+    });
+
+    $('cta-waitlist').setAttribute('href', CONFIG.WAITLIST_URL);
+    $('cta-pdf').setAttribute('href', CONFIG.PDF_DOWNLOAD_URL);
+  }
+
+  // ============================================================
+  // Event wiring
+  // ============================================================
+  $('btn-start').addEventListener('click', function() {
+    state.currentQ = 0;
+    renderQuestion(0);
+    showScreen('quiz', 1);
+  });
+
+  $('btn-next').addEventListener('click', function() {
+    if (state.answers[state.currentQ] === null) return;
+    if (state.currentQ < QUESTIONS.length - 1) {
+      state.currentQ += 1;
+      renderQuestion(state.currentQ);
+    } else {
+      computeScores();
+      renderGate();
+      showScreen('gate', 13);
+    }
+  });
+
+  $('btn-back').addEventListener('click', function() {
+    if (state.currentQ > 0) {
+      state.currentQ -= 1;
+      renderQuestion(state.currentQ);
+    }
+  });
+
+  $('gate-form').addEventListener('submit', handleSubmit);
+
+  // ============================================================
+  // iframe height sender (Kajabi embed)
+  // ============================================================
+  var frameId = window.name || 'ap_summer_diagnostic';
+  function sendHeight() {
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'iframe-height', id: frameId, height: h }, '*');
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 200);
+
+})();
+</script>
+
+</body>
+</html>

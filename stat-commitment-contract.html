@@ -825,6 +825,82 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
   font-style: normal !important;
   font-feature-settings: 'tnum' !important;
 }
+
+/* ============================================================
+   Uppercase-class font fix (post-migration patch)
+   Forces Plus Jakarta Sans on every uppercase-transformed class
+   so capital letters never render in Atkinson Hyperlegible.
+   ============================================================ */
+.eyebrow,
+.callout__title,
+.next-step__label,
+.theme-card__label,
+.confirmation__eyebrow,
+.week-option__week,
+.section__subtitle,
+.feature-block__label,
+.commitments-review__label,
+.how-to__title,
+.prereq-category__label,
+.priority-card__severity,
+.chart-card__header-label,
+.chart-card__field-label,
+.quote__label,
+.habits__col-label,
+.soap-section__subtitle,
+.compare-cell__label,
+.teachback-level__audience,
+.progress-bar__label,
+.report__eyebrow,
+.report-card__label,
+.cc-eyebrow,
+.mode__label,
+.q__num,
+.result__score,
+.signature-block__label,
+.confirmation__signed-label,
+.cc-toc__title,
+.spec-card__label,
+.assessments-header,
+.current-display__label,
+.result-card__label,
+.scenario-output__label,
+.phase-section__subtitle,
+.closing__label,
+.doc-id,
+.doc-version,
+.hero-sub,
+.section-label,
+.insight-label,
+.acuity-tag,
+.arch-label,
+.start-eyebrow,
+.check-num,
+.roadmap-week,
+.live-eyebrow,
+.progress__label,
+.summary__label,
+.summary__metric-label,
+.insight__label,
+.trajectory__label,
+.trajectory__period,
+.cert-controls__label,
+.cert-program,
+.cert-presented-to,
+.cert-footer__label,
+.mode-card__label,
+.mode-card__row-label,
+.info-card__label,
+.before-program__label,
+.cc-callout__title,
+.cc-divider,
+[class*="__label"],
+[class*="__eyebrow"],
+[class*="__subtitle"],
+[class*="-eyebrow"],
+[class$="-label"] {
+  font-family: var(--sans) !important;
+}
 </style>
 </head>
 <body>

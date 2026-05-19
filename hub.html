@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STAT Success Tool Hub  ·  MedMasters Collaborative</title>
+<meta name="description" content="The companion tool hub for the STAT Success Workbook. Every interactive tool, organized by workbook section.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:        #142A40;
+  --navy-deep:   #0B1B2D;
+  --navy-tint:   #ECEFF4;
+  --gold:        #B8924A;
+  --gold-bright: #D4AC65;
+  --terra:       #C2734D;
+  --terra-dark:  #A0522D;
+  --white:       #FFFFFF;
+  --offwhite:    #FAFAF9;
+  --gray:        #6B7280;
+  --gray-light:  #D1D5DB;
+  --gray-vlight: #F3F4F6;
+  --radius:      8px;
+  --shadow-rest: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-hover:0 8px 16px rgba(0,0,0,0.10);
+  --t: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  --font-display:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-eyebrow:'DM Sans', -apple-system, sans-serif;
+  --font-serif:'Lora', Georgia, serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; padding:0;
+  font-family:var(--font-body);
+  color:var(--navy);
+  background:var(--offwhite);
+  line-height:1.55;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  position:static; width:auto; height:auto;
+  display:inline-block; padding:.5rem 1rem;
+  background:var(--gold); color:var(--navy); font-weight:700;
+}
+
+/* Hero */
+.hero{
+  background:var(--navy);
+  color:var(--white);
+  padding:3rem 1.5rem 2.5rem;
+  text-align:center;
+  border-bottom:6px solid var(--gold);
+}
+.hero .eyebrow{
+  font-family:var(--font-eyebrow);
+  font-size:.75rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1rem;
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:clamp(2rem, 5vw, 3.25rem);
+  margin:0 0 .25rem;
+  letter-spacing:-.02em;
+}
+.hero .tagline{
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--gold);
+  margin:.25rem 0 1.25rem;
+}
+.hero p.intro{
+  max-width:38rem; margin:0 auto;
+  color:var(--navy-tint);
+  font-size:.95rem;
+}
+
+/* Container */
+main{
+  max-width:64rem;
+  margin:0 auto;
+  padding:2.5rem 1.5rem 4rem;
+}
+
+/* Section group */
+.part{
+  margin-bottom:3.5rem;
+}
+.part-header{
+  display:flex; align-items:baseline; gap:1rem;
+  border-bottom:1px solid var(--navy-tint);
+  padding-bottom:.75rem;
+  margin-bottom:1.5rem;
+}
+.part-tag{
+  font-family:var(--font-eyebrow);
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--terra-dark);
+  background:var(--gold);
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  padding:.25rem .55rem; border-radius:4px;
+  flex-shrink:0;
+}
+.part-header h2{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:1.65rem;
+  color:var(--navy);
+  margin:0;
+  letter-spacing:-.01em;
+}
+
+/* Subheader (week / phase) */
+.subhead{
+  font-family:var(--font-eyebrow);
+  font-weight:700; font-size:.72rem;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--terra-dark);
+  margin:1.5rem 0 .5rem;
+}
+
+/* Tool grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
+  gap:.85rem;
+}
+
+/* Tool card */
+.tool{
+  display:flex; flex-direction:column;
+  background:var(--white);
+  border:1px solid var(--navy-tint);
+  border-radius:var(--radius);
+  padding:1.1rem 1.15rem 1rem;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:var(--shadow-rest);
+  transition:var(--t);
+  position:relative;
+}
+.tool:hover, .tool:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--gold);
+  outline:none;
+}
+.tool:focus-visible{
+  outline:3px solid var(--gold-bright);
+  outline-offset:2px;
+}
+.tool .tool-tag{
+  font-family:var(--font-eyebrow);
+  font-weight:700; font-size:.65rem;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:.4rem;
+}
+.tool h3{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:1.05rem;
+  color:var(--navy);
+  margin:0 0 .4rem;
+  letter-spacing:-.005em;
+  line-height:1.25;
+}
+.tool p{
+  font-size:.85rem;
+  color:var(--gray);
+  margin:0 0 .85rem;
+  line-height:1.45;
+}
+.tool .cta{
+  margin-top:auto;
+  font-family:var(--font-eyebrow);
+  font-weight:700; font-size:.72rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gold);
+}
+.tool .cta::after{
+  content:" \2192";
+  transition:transform 200ms ease;
+  display:inline-block;
+}
+.tool:hover .cta::after, .tool:focus-visible .cta::after{
+  transform:translateX(3px);
+}
+
+/* Highlight tag for "Required" tools */
+.tool.required::before{
+  content:"REQUIRED";
+  position:absolute; top:-.5rem; right:1rem;
+  background:var(--terra-dark); color:var(--white);
+  font-family:var(--font-eyebrow); font-size:.6rem;
+  font-weight:700; letter-spacing:.1em;
+  padding:.18rem .45rem; border-radius:3px;
+}
+
+/* Workbook callout */
+.workbook-note{
+  background:var(--white);
+  border:1px solid var(--navy-tint);
+  border-left:4px solid var(--gold);
+  border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+  margin-bottom:2.5rem;
+  font-size:.95rem;
+  color:var(--navy);
+}
+.workbook-note .label{
+  font-family:var(--font-eyebrow); font-weight:700;
+  font-size:.7rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--terra-dark);
+  margin-bottom:.4rem;
+}
+.workbook-note p{margin:0; line-height:1.55}
+
+/* Footer */
+footer{
+  background:var(--navy);
+  color:var(--navy-tint);
+  text-align:center;
+  padding:2.5rem 1.5rem 2rem;
+  margin-top:3rem;
+  border-top:6px solid var(--gold);
+}
+footer .brand{
+  font-family:var(--font-display); font-weight:700;
+  color:var(--gold); font-size:.95rem;
+  letter-spacing:.04em; text-transform:uppercase;
+  margin-bottom:.5rem;
+}
+footer .tagline{
+  font-family:var(--font-serif); font-style:italic;
+  color:var(--white); font-size:1.05rem;
+  margin:.25rem 0 1rem;
+}
+footer a{
+  color:var(--gold); text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color 200ms ease;
+}
+footer a:hover, footer a:focus-visible{
+  border-color:var(--gold);
+}
+footer small{
+  display:block; font-size:.75rem; color:var(--gray-light);
+  margin-top:1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to tool list</a>
+
+<header class="hero">
+  <div class="eyebrow">MedMasters Collaborative  ·  STAT Success</div>
+  <h1>The Tool Hub</h1>
+  <div class="tagline">When your grade can't wait.</div>
+  <p class="intro">
+    The companion tool hub for the STAT Success Workbook. Every interactive tool,
+    organized to mirror the workbook flow. Open one, do the work, the page does
+    the math for you.
+  </p>
+</header>
+
+<main id="main">
+
+  <div class="workbook-note" role="note">
+    <div class="label">If you bought the workbook</div>
+    <p>
+      Every workbook section that has a matching online tool is flagged in the
+      book. You can complete each worksheet with pencil and paper if you prefer,
+      and the workbook is designed to stand alone. But these tools do the
+      scoring and interpretation automatically, which most readers will find
+      easier and more honest than scoring themselves. We recommend you use them.
+    </p>
+  </div>
+
+  <!-- PART 1 -->
+  <section class="part" aria-labelledby="part1">
+    <div class="part-header">
+      <span class="part-tag">Part 1</span>
+      <h2 id="part1">Triage  ·  Where you are</h2>
+    </div>
+
+    <div class="grid">
+      <a class="tool required" href="stat-failure-diagnostic.html" target="_top">
+        <span class="tool-tag">Diagnostic</span>
+        <h3>Failure Mode Diagnostic</h3>
+        <p>24 questions across 4 dimensions. Generates your primary and secondary failure modes and tells you where to start.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool required" href="stat-grade-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Grade Audit</h3>
+        <p>The math of what's still left to earn. Builds your recovery target from the gradebook backwards.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-status-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Status Audit</h3>
+        <p>The honest snapshot of where you are right now. Pairs with the grade audit.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-intake-survey.html" target="_top">
+        <span class="tool-tag">Intake</span>
+        <h3>Intake Survey</h3>
+        <p>Goals, context, and history. Use this if you're joining the cohort program later.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PART 3: THE EIGHT WEEKS -->
+  <section class="part" aria-labelledby="part3">
+    <div class="part-header">
+      <span class="part-tag">Part 3</span>
+      <h2 id="part3">The eight weeks</h2>
+    </div>
+
+    <div class="subhead">Week 1  ·  Stabilization &amp; team formation</div>
+    <div class="grid">
+      <a class="tool" href="stat-week1-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 1 Overview</h3>
+        <p>What this week is and what you'll do in it.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week1-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 1 Decision Plan</h3>
+        <p>Three commitments and one 24-hour action.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-team-charter.html" target="_top">
+        <span class="tool-tag">Charter</span>
+        <h3>Team Charter</h3>
+        <p>For cohort students. Solo readers can adapt to a study partner or accountability pair.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 2  ·  Stop the bleeding  ·  Morgan</div>
+    <div class="grid">
+      <a class="tool" href="stat-week2-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 2 Overview</h3>
+        <p>The full CODE cycle starts here.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week2-case-morgan.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Morgan's Case</h3>
+        <p>The student studying 15+ hours a week and failing. Read first.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week2-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 2 Decision Plan</h3>
+        <p>One specific method change. That's the assignment.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 3  ·  Foundation repair, selective  ·  Jordan</div>
+    <div class="grid">
+      <a class="tool" href="stat-week3-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 3 Overview</h3>
+        <p>From method to content. Selective, not comprehensive.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week3-case-jordan.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Jordan's Case</h3>
+        <p>Method fixed, foundation missing. The week-3 archetype.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-foundation-gaps.html" target="_top">
+        <span class="tool-tag">Tool</span>
+        <h3>Foundation Gap Identifier</h3>
+        <p>Surfaces which earlier concepts are blocking current material.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week3-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 3 Decision Plan</h3>
+        <p>One or two foundation concepts to close this week.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 4  ·  The midterm hinge  ·  Alex</div>
+    <div class="grid">
+      <a class="tool" href="stat-week4-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 4 Overview</h3>
+        <p>The first time the work meets real data.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week4-case-alex.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Alex's Case</h3>
+        <p>Mixed midterm results. Read the data without performance.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week4-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Week 4 Audit</h3>
+        <p>Includes midterm data and the Evaluate check on Week 3.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-exam-wrapper.html" target="_top">
+        <span class="tool-tag">Tool</span>
+        <h3>Exam Wrapper</h3>
+        <p>Structured reflection on how you prepared and what the exam reveals.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-mid-program-reflection.html" target="_top">
+        <span class="tool-tag">Reflection</span>
+        <h3>Mid-Program Reflection</h3>
+        <p>A structured look at the first half and forward to the second.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week4-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 4 Decision Plan</h3>
+        <p>Protect, pivot, add.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 5  ·  Point recovery  ·  Riley</div>
+    <div class="grid">
+      <a class="tool" href="stat-week5-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 5 Overview</h3>
+        <p>Learning to read leading indicators.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week5-case-riley.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Riley's Case</h3>
+        <p>Intervention is working. Riley is about to quit anyway.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week5-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Week 5 Audit</h3>
+        <p>Heavier emphasis on Subjective and Assessment this week.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-point-recovery-inventory.html" target="_top">
+        <span class="tool-tag">Tool</span>
+        <h3>Point Recovery Inventory</h3>
+        <p>Catalogues the early signs of recovery hidden inside your audits.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week5-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 5 Decision Plan</h3>
+        <p>Sustainment commitments. Trust the plan.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 6  ·  Consolidation &amp; integration  ·  Sam</div>
+    <div class="grid">
+      <a class="tool" href="stat-week6-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 6 Overview</h3>
+        <p>Sustain or revise. Differential diagnosis.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week6-case-sam.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Sam's Case</h3>
+        <p>Method better, scores not. The original diagnosis was incomplete.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week6-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Week 6 Audit</h3>
+        <p>Compares against your Week 1 baseline, not just last week.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week6-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 6 Decision Plan</h3>
+        <p>Either three sustainment commitments or three revised ones.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 7  ·  Final exam runway  ·  Casey</div>
+    <div class="grid">
+      <a class="tool" href="stat-week7-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 7 Overview</h3>
+        <p>Triage matters more than effort. Choose what to study.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week7-case-casey.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Casey's Case</h3>
+        <p>Fourteen days. Twelve chapters. Seven mastered. The math.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week7-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Week 7 Audit</h3>
+        <p>Topic-by-topic confidence map of your final exam content.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool required" href="stat-final-exam-triage.html" target="_top">
+        <span class="tool-tag">Tool</span>
+        <h3>Final Exam Triage</h3>
+        <p>Walks you through topic weight, confidence, and time. Produces your two-week plan.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week7-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 7 Decision Plan</h3>
+        <p>Three exam-focused commitments and one 24-hour action.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+
+    <div class="subhead">Week 8  ·  Definitive care &amp; discharge  ·  Taylor</div>
+    <div class="grid">
+      <a class="tool" href="stat-week8-overview.html" target="_top">
+        <span class="tool-tag">Overview</span>
+        <h3>Week 8 Overview</h3>
+        <p>The capstone. What survives the program.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week8-case-taylor.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Taylor's Case</h3>
+        <p>The program worked. Discharge planning is what makes it stick.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week8-audit.html" target="_top">
+        <span class="tool-tag">Audit</span>
+        <h3>Week 8 Audit</h3>
+        <p>Comparative across all eight weeks. The longest audit.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool required" href="stat-discharge-planning.html" target="_top">
+        <span class="tool-tag">Tool</span>
+        <h3>Discharge Planning</h3>
+        <p>Which habits survive, which need maintenance, which need a replacement structure.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week8-decision-plan.html" target="_top">
+        <span class="tool-tag">Decision plan</span>
+        <h3>Week 8 Decision Plan</h3>
+        <p>Three commitments for the next eight weeks without this workbook.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PART 4 -->
+  <section class="part" aria-labelledby="part4">
+    <div class="part-header">
+      <span class="part-tag">Part 4</span>
+      <h2 id="part4">After STAT</h2>
+    </div>
+
+    <div class="grid">
+      <a class="tool" href="stat-action-plan.html" target="_top">
+        <span class="tool-tag">Plan</span>
+        <h3>Action Plan</h3>
+        <p>Your next-eight-weeks plan, formatted to outlast the workbook.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-recovery-portfolio.html" target="_top">
+        <span class="tool-tag">Portfolio</span>
+        <h3>Recovery Portfolio</h3>
+        <p>Documented evidence of what you changed. Keep for future you.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-recovery-vs-prevention.html" target="_top">
+        <span class="tool-tag">Framework</span>
+        <h3>Recovery vs Prevention</h3>
+        <p>How to shift from critical care back to preventative care.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-after-stat.html" target="_top">
+        <span class="tool-tag">Roadmap</span>
+        <h3>After STAT</h3>
+        <p>What the program does not address, and what to do about it.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Bonus -->
+  <section class="part" aria-labelledby="bonus">
+    <div class="part-header">
+      <span class="part-tag">Bonus</span>
+      <h2 id="bonus">Extra tools</h2>
+    </div>
+
+    <div class="grid">
+      <a class="tool" href="stat-teachback-preparation.html" target="_top">
+        <span class="tool-tag">Method</span>
+        <h3>Teach-Back Preparation</h3>
+        <p>Structures a teach-back session for the topic you're trying to lock in.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-continuing-study-group.html" target="_top">
+        <span class="tool-tag">Community</span>
+        <h3>Continuing Study Group</h3>
+        <p>Template for building the accountability structure that replaces the cohort.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-completion-certificate.html" target="_top">
+        <span class="tool-tag">Certificate</span>
+        <h3>Completion Certificate</h3>
+        <p>For students who finish the program. Print and keep.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="ap-summer-survival-diagnostic-v2.html" target="_top">
+        <span class="tool-tag">Specialty</span>
+        <h3>A&amp;P Summer Survival Diagnostic</h3>
+        <p>The discipline-specific variant for A&amp;P summer intensives.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="brand">MedMasters Collaborative</div>
+  <div class="tagline">When your grade can't wait.</div>
+  <a href="https://medmasterscollaborative.com" target="_blank" rel="noopener">medmasterscollaborative.com</a>
+  <small>STAT Success Workbook  ·  Tool Hub  ·  &copy; 2026 MedMasters Collaborative, LLC</small>
+</footer>
+
+<script>
+/* iframe height sender (per global rules) */
+(function(){
+  function sendHeight(){
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight
+    );
+    try {
+      parent.postMessage({id:'stat-hub', frameHeight:h}, '*');
+    } catch(e) { /* noop */ }
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(sendHeight).observe(document.body);
+  }
+})();
+</script>
+
+</body>
+</html>

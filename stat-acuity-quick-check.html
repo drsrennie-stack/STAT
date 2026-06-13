@@ -22,6 +22,9 @@
   --gray:        #6B7280;
   --gray-light:  #D1D5DB;
   --gray-vlight: #F3F4F6;
+  --acu-stable:  #3E7C52;
+  --acu-urgent:  #D49A2E;
+  --acu-critical:#BC3B2C;
   --radius:      8px;
   --shadow-rest: 0 1px 3px rgba(0,0,0,0.08);
   --shadow-hover:0 8px 16px rgba(0,0,0,0.10);
@@ -54,7 +57,7 @@ body{
 
 /* Hero */
 .hero{
-  background:var(--navy);
+  background:var(--navy-deep);
   color:var(--white);
   padding:2.75rem 1.5rem 2.25rem;
   text-align:center;
@@ -277,16 +280,16 @@ legend.qtext{
   padding:.5rem 1.1rem; border-radius:6px;
   margin-bottom:1.1rem;
 }
-.badge-stable  { background:var(--navy);       color:var(--white); }
-.badge-urgent  { background:var(--gold);       color:var(--navy);  }
-.badge-critical{ background:var(--terra-dark); color:var(--white); }
+.badge-stable  { background:var(--acu-stable);   color:var(--white); }
+.badge-urgent  { background:var(--acu-urgent);   color:var(--navy);  }
+.badge-critical{ background:var(--acu-critical); color:var(--white); }
 
 .result-card{
   border-left:5px solid var(--gray-light);
 }
-.result-card.lvl-stable  { border-left-color:var(--navy); }
-.result-card.lvl-urgent  { border-left-color:var(--gold); }
-.result-card.lvl-critical{ border-left-color:var(--terra-dark); }
+.result-card.lvl-stable  { border-left-color:var(--acu-stable); }
+.result-card.lvl-urgent  { border-left-color:var(--acu-urgent); }
+.result-card.lvl-critical{ border-left-color:var(--acu-critical); }
 
 .result-lead{
   font-family:var(--font-display);
@@ -326,7 +329,7 @@ legend.qtext{
 
 /* Footer */
 footer{
-  background:var(--navy);
+  background:var(--navy-deep);
   color:var(--navy-tint);
   text-align:center;
   padding:2.25rem 1.5rem 2rem;

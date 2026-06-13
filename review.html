@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAT Workbook v2, Review Proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lora:ital@0;1&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E3D4C; --navy-deep:#142a36; --navy-tint:#EDF1F3;
+    --gold:#B8924A; --terra:#C2734D; --terra-dark:#A0522D;
+    --white:#FFFFFF; --offwhite:#FAFAF9;
+    --shadow-rest:0 1px 3px rgba(0,0,0,0.08);
+    --shadow-hover:0 8px 16px rgba(0,0,0,0.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--offwhite);color:var(--navy);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.5;padding:32px 20px 80px}
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:50}
+  .skip-link:focus{left:12px;top:12px}
+  header{max-width:1080px;margin:0 auto 28px}
+  .eyebrow{font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra-dark);font-weight:500;margin-bottom:8px}
+  h1{font-weight:800;font-size:30px;color:var(--navy)}
+  .usage{font-family:'Lora',serif;font-style:italic;color:var(--terra-dark);margin-top:8px;max-width:62ch}
+  .toolbar{max-width:1080px;margin:0 auto 24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .toolbar .spacer{flex:1}
+  .count{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--navy)}
+  button{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer;padding:8px 14px;border:1px solid var(--navy);background:var(--white);color:var(--navy);transition:transform 200ms ease,box-shadow 200ms ease}
+  button:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+  button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .filter[aria-pressed="true"]{background:var(--navy);color:#fff}
+  .export{border-color:var(--gold);color:var(--terra-dark)}
+  main{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+  .card{background:var(--white);border:1px solid var(--navy);border-radius:8px;box-shadow:var(--shadow-rest);padding:14px;transition:transform 200ms ease,box-shadow 200ms ease;display:flex;flex-direction:column;gap:10px}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+  .card.flagged{border-color:var(--terra-dark);border-width:2px}
+  .card.approved{border-color:var(--navy);background:var(--navy-tint)}
+  .card h2{font-size:15px;font-weight:600;color:var(--terra-dark)}
+  .pageno{font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
+  .card img{width:100%;height:auto;border:1px solid var(--navy-tint);border-radius:4px;cursor:zoom-in}
+  .statusrow{display:flex;gap:8px}
+  .statusrow button{flex:1;padding:7px 4px;font-size:13px}
+  .approve[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .flag[aria-pressed="true"]{background:var(--terra-dark);color:#fff;border-color:var(--terra-dark)}
+  label{font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-dark)}
+  textarea{width:100%;min-height:52px;border:1px solid var(--navy-tint);border-radius:4px;padding:8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--navy);resize:vertical}
+  textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+  dialog{border:1px solid var(--navy);border-radius:8px;padding:12px;max-width:min(720px,92vw);box-shadow:var(--shadow-hover)}
+  dialog::backdrop{background:rgba(20,42,54,.55)}
+  dialog img{width:100%;height:auto}
+  dialog button{margin-top:10px}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#proof">Skip to pages</a>
+<header>
+  <p class="eyebrow">STAT Success &middot; MedMasters Collaborative</p>
+  <h1>Workbook v2 Review Proof</h1>
+  <p class="usage">All 55 pages of STAT_Success_Workbook_v2.pdf. Mark each page Approve or Flag, leave a note on anything that needs a change, then Export notes and hand the file back to Claude. Your marks save in this browser automatically.</p>
+</header>
+<div class="toolbar" role="group" aria-label="Filters and export">
+  <button class="filter" data-f="all" aria-pressed="true">All</button>
+  <button class="filter" data-f="unreviewed" aria-pressed="false">Unreviewed</button>
+  <button class="filter" data-f="flagged" aria-pressed="false">Flagged</button>
+  <button class="filter" data-f="approved" aria-pressed="false">Approved</button>
+  <span class="spacer"></span>
+  <span class="count" aria-live="polite" id="count"></span>
+  <button class="export" id="export">Export notes (.md)</button>
+</div>
+<main id="proof"></main>
+<dialog id="zoom" aria-label="Enlarged page view">
+  <img id="zoomimg" src="" alt="">
+  <button id="zoomclose">Close</button>
+</dialog>
+<script>
+const TITLES=["Front cover","Copyright","Welcome","A note on failure","How to use this workbook","Workbook contents","Part 1 divider, Triage","The three acuities","Grade audit","Failure mode diagnostic","Diagnostic, time scarcity","Diagnostic, study method failure","Diagnostic, content gaps","Diagnostic, affective overload","Scoring","Interpretation","Decision flowchart","Stabilize first","Part 2 divider, How to study","The Recall Toolbox","Drawing-based synthesis","Active recall","Teach-back (Feynman)","Concept maps, with recall","Error log + re-attempt","Spaced repetition schedule","Part 3 divider, The Stage","How a Stage works","Stage 1, Analyze","Stage 1, Decide","Stage 1, Reanalyze","Stage 2, Analyze","Stage 2, Decide","Stage 2, Reanalyze","Stage 3, Analyze","Stage 3, Decide","Stage 3, Reanalyze","Stage 4, Analyze","Stage 4, Decide","Stage 4, Reanalyze","Case Library divider","Case Library index","Case, Morgan","Case, Jordan","Case, Alex","Case, Riley","Case, Sam","Case, Casey","Case, Taylor","Part 4 divider, After STAT","Discharge planning","Rebound vs prevention","Warning signs","Quick reference","Back cover"];
+const KEY="stat-v2-review";
+let state={};
+try{state=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){state={}}
+const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+const main=document.getElementById("proof");
+let filter="all";
+
+function render(){
+  main.innerHTML="";
+  TITLES.forEach((t,i)=>{
+    const n=i+1,s=state[n]||{};
+    const st=s.status||"unreviewed";
+    if(filter!=="all"&&filter!==st)return;
+    const card=document.createElement("article");
+    card.className="card"+(st!=="unreviewed"?" "+st:"");
+    card.innerHTML=`
+      <p class="pageno">Page ${n} of 55</p>
+      <h2>${t}</h2>
+      <img src="pages/page-${String(n).padStart(2,"0")}.png" alt="Workbook page ${n}: ${t}" loading="lazy" tabindex="0" role="button" aria-label="Enlarge page ${n}">
+      <div class="statusrow">
+        <button class="approve" aria-pressed="${st==="approved"}" data-p="${n}">Approve</button>
+        <button class="flag" aria-pressed="${st==="flagged"}" data-p="${n}">Flag</button>
+      </div>
+      <label for="note-${n}">Note for page ${n}</label>
+      <textarea id="note-${n}" data-p="${n}">${s.note||""}</textarea>`;
+    main.appendChild(card);
+  });
+  updateCount();
+}
+function updateCount(){
+  const a=Object.values(state).filter(s=>s.status==="approved").length;
+  const f=Object.values(state).filter(s=>s.status==="flagged").length;
+  document.getElementById("count").textContent=`${a} approved, ${f} flagged, ${55-a-f} to go`;
+}
+main.addEventListener("click",e=>{
+  const b=e.target.closest("button");
+  if(b){
+    const n=b.dataset.p,want=b.classList.contains("approve")?"approved":"flagged";
+    state[n]=state[n]||{};
+    state[n].status=state[n].status===want?"unreviewed":want;
+    save();render();return;
+  }
+  const img=e.target.closest("img");
+  if(img){openZoom(img)}
+});
+main.addEventListener("keydown",e=>{
+  if((e.key==="Enter"||e.key===" ")&&e.target.tagName==="IMG"){e.preventDefault();openZoom(e.target)}
+});
+main.addEventListener("input",e=>{
+  if(e.target.tagName==="TEXTAREA"){
+    const n=e.target.dataset.p;
+    state[n]=state[n]||{};state[n].note=e.target.value;save();updateCount();
+  }
+});
+function openZoom(img){
+  const z=document.getElementById("zoom");
+  document.getElementById("zoomimg").src=img.src;
+  document.getElementById("zoomimg").alt=img.alt;
+  z.showModal();
+}
+document.getElementById("zoomclose").addEventListener("click",()=>document.getElementById("zoom").close());
+document.querySelectorAll(".filter").forEach(b=>b.addEventListener("click",()=>{
+  filter=b.dataset.f;
+  document.querySelectorAll(".filter").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  render();
+}));
+document.getElementById("export").addEventListener("click",()=>{
+  let md="# STAT Workbook v2, review notes\n\nDate: "+new Date().toISOString().slice(0,10)+"\n\n";
+  TITLES.forEach((t,i)=>{
+    const n=i+1,s=state[n]||{};
+    if(s.status==="flagged"||s.note){
+      md+=`## Page ${n}: ${t}\n- Status: ${s.status||"unreviewed"}\n${s.note?"- Note: "+s.note+"\n":""}\n`;
+    }
+  });
+  const a=Object.values(state).filter(s=>s.status==="approved").length;
+  md+=`\n---\n${a} of 55 pages approved.\n`;
+  const blob=new Blob([md],{type:"text/markdown"});
+  const link=document.createElement("a");
+  link.href=URL.createObjectURL(blob);
+  link.download="v2-review-notes.md";
+  link.click();
+});
+render();
+// iframe height-sender
+(function(){
+  function send(){parent.postMessage({id:"stat-v2-review",height:document.documentElement.scrollHeight},"*")}
+  new ResizeObserver(send).observe(document.documentElement);
+  window.addEventListener("load",send);window.addEventListener("resize",send);
+})();
+</script>
+</body>
+</html>

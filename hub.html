@@ -107,8 +107,6 @@ main{
   font-family:var(--font-eyebrow);
   font-size:.7rem; font-weight:700;
   letter-spacing:.14em; text-transform:uppercase;
-  color:var(--terra-dark);
-  background:var(--gold);
   background:transparent;
   border:1px solid var(--gold);
   color:var(--gold);
@@ -124,7 +122,7 @@ main{
   letter-spacing:-.01em;
 }
 
-/* Subheader (week / phase) */
+/* Subheader (stage step / archive week) */
 .subhead{
   font-family:var(--font-eyebrow);
   font-weight:700; font-size:.72rem;
@@ -230,6 +228,33 @@ main{
 }
 .workbook-note p{margin:0; line-height:1.55}
 
+/* Archive: compact link list for Edition 1 tools */
+.archive-list{
+  columns:2; column-gap:2rem;
+  padding:0; margin:0 0 .5rem;
+  list-style:none;
+}
+.archive-list li{
+  break-inside:avoid;
+  padding:.3rem 0;
+  border-bottom:1px solid var(--gray-vlight);
+}
+.archive-list a{
+  color:var(--navy); text-decoration:none;
+  font-size:.9rem;
+  border-bottom:1px solid transparent;
+  transition:border-color 200ms ease;
+}
+.archive-list a:hover, .archive-list a:focus-visible{
+  border-color:var(--gold);
+  outline:none;
+}
+.archive-list a:focus-visible{
+  outline:3px solid var(--gold-bright);
+  outline-offset:2px;
+}
+@media (max-width:600px){ .archive-list{columns:1} }
+
 /* Footer */
 footer{
   background:var(--navy);
@@ -292,7 +317,7 @@ footer small{
       book. You can complete each worksheet with pencil and paper if you prefer,
       and the workbook is designed to stand alone. But these tools do the
       scoring and interpretation automatically, which most readers will find
-      easier and more honest than scoring themselves. We recommend you use them.
+      easier and more honest than scoring yourself. We recommend you use them.
     </p>
   </div>
 
@@ -304,6 +329,12 @@ footer small{
     </div>
 
     <div class="grid">
+      <a class="tool" href="stat-acuity-quick-check.html" target="_top">
+        <span class="tool-tag">Quick check</span>
+        <h3>Acuity Quick Check</h3>
+        <p>Four questions, about a minute. Tells you whether your situation is Stable, Urgent, or Critical, and what to do first. Start here if you are not sure how bad it is.</p>
+        <span class="cta">Open tool</span>
+      </a>
       <a class="tool required" href="stat-failure-diagnostic.html" target="_top">
         <span class="tool-tag">Diagnostic</span>
         <h3>Failure Mode Diagnostic</h3>
@@ -313,7 +344,7 @@ footer small{
       <a class="tool required" href="stat-grade-audit.html" target="_top">
         <span class="tool-tag">Audit</span>
         <h3>Grade Audit</h3>
-        <p>The math of what's still left to earn. Builds your recovery target from the gradebook backwards.</p>
+        <p>The math of what's still left to earn. Builds your rebound target from the gradebook backwards.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-status-audit.html" target="_top">
@@ -331,165 +362,88 @@ footer small{
     </div>
   </section>
 
-  <!-- PART 3: THE EIGHT WEEKS -->
-  <section class="part" aria-labelledby="part3">
+  <!-- PART 2 -->
+  <section class="part" aria-labelledby="part2">
     <div class="part-header">
-      <span class="part-tag">Part 3</span>
-      <h2 id="part3">The eight weeks</h2>
+      <span class="part-tag">Part 2</span>
+      <h2 id="part2">How to study</h2>
     </div>
 
-    <div class="subhead">Week 1  ·  Stabilization &amp; team formation</div>
     <div class="grid">
-      <a class="tool" href="stat-week1-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 1 Overview</h3>
-        <p>What this week is and what you'll do in it.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week1-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 1 Decision Plan</h3>
-        <p>Three commitments and one 24-hour action.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-team-charter.html" target="_top">
-        <span class="tool-tag">Charter</span>
-        <h3>Team Charter</h3>
-        <p>For cohort students. Solo readers can adapt to a study partner or accountability pair.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-
-    <div class="subhead">Week 2  ·  Stop the bleeding  ·  Morgan</div>
-    <div class="grid">
-      <a class="tool" href="stat-week2-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 2 Overview</h3>
-        <p>The full CODE cycle starts here.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week2-case-morgan.html" target="_top">
-        <span class="tool-tag">Case</span>
-        <h3>Morgan's Case</h3>
-        <p>The student studying 15+ hours a week and failing. Read first.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week2-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 2 Decision Plan</h3>
-        <p>One specific method change. That's the assignment.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-
-    <div class="subhead">Week 3  ·  Foundation repair, selective  ·  Jordan</div>
-    <div class="grid">
-      <a class="tool" href="stat-week3-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 3 Overview</h3>
-        <p>From method to content. Selective, not comprehensive.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week3-case-jordan.html" target="_top">
-        <span class="tool-tag">Case</span>
-        <h3>Jordan's Case</h3>
-        <p>Method fixed, foundation missing. The week-3 archetype.</p>
+      <a class="tool" href="stat-teachback-preparation.html" target="_top">
+        <span class="tool-tag">Method</span>
+        <h3>Teach-Back Preparation</h3>
+        <p>Structures a teach-back session for the topic you're trying to lock in. Pairs with the Teach-Back page in the Recall Toolbox.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-foundation-gaps.html" target="_top">
         <span class="tool-tag">Tool</span>
         <h3>Foundation Gap Identifier</h3>
-        <p>Surfaces which earlier concepts are blocking current material.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week3-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 3 Decision Plan</h3>
-        <p>One or two foundation concepts to close this week.</p>
+        <p>Surfaces which earlier concepts are blocking current material. Use it when the diagnostic points at content gaps.</p>
         <span class="cta">Open tool</span>
       </a>
     </div>
+  </section>
 
-    <div class="subhead">Week 4  ·  The midterm hinge  ·  Alex</div>
+  <!-- PART 3: THE STAGE -->
+  <section class="part" aria-labelledby="part3">
+    <div class="part-header">
+      <span class="part-tag">Part 3</span>
+      <h2 id="part3">The Stage  ·  One cycle per exam</h2>
+    </div>
+
     <div class="grid">
-      <a class="tool" href="stat-week4-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 4 Overview</h3>
-        <p>The first time the work meets real data.</p>
+      <a class="tool required" href="stat-final-exam-triage.html" target="_top">
+        <span class="tool-tag">Before the exam</span>
+        <h3>Exam Triage</h3>
+        <p>Walks you through topic weight, confidence, and time. Produces your study plan for the runway to any exam, not just the final.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-exam-wrapper.html" target="_top">
+        <span class="tool-tag">Reanalyze</span>
+        <h3>Exam Wrapper</h3>
+        <p>Structured reflection on how you prepared and what the exam reveals. Feeds straight into your next Stage.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-point-recovery-inventory.html" target="_top">
+        <span class="tool-tag">Progress</span>
+        <h3>Point Rebound Inventory</h3>
+        <p>Catalogues the early signs of rebound hidden inside your Stage worksheets. Open it when the grade has not moved yet and you need evidence.</p>
+        <span class="cta">Open tool</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CASE LIBRARY -->
+  <section class="part" aria-labelledby="cases">
+    <div class="part-header">
+      <span class="part-tag">Case Library</span>
+      <h2 id="cases">Seven students, seven patterns</h2>
+    </div>
+
+    <div class="grid">
+      <a class="tool" href="stat-week2-case-morgan.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Morgan's Case</h3>
+        <p>Studying 15+ hours a week and failing anyway. The method problem.</p>
+        <span class="cta">Open tool</span>
+      </a>
+      <a class="tool" href="stat-week3-case-jordan.html" target="_top">
+        <span class="tool-tag">Case</span>
+        <h3>Jordan's Case</h3>
+        <p>Method fixed, foundation missing. The content gap problem.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-week4-case-alex.html" target="_top">
         <span class="tool-tag">Case</span>
         <h3>Alex's Case</h3>
-        <p>Mixed midterm results. Read the data without performance.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week4-audit.html" target="_top">
-        <span class="tool-tag">Audit</span>
-        <h3>Week 4 Audit</h3>
-        <p>Includes midterm data and the Evaluate check on Week 3.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-exam-wrapper.html" target="_top">
-        <span class="tool-tag">Tool</span>
-        <h3>Exam Wrapper</h3>
-        <p>Structured reflection on how you prepared and what the exam reveals.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-mid-program-reflection.html" target="_top">
-        <span class="tool-tag">Reflection</span>
-        <h3>Mid-Program Reflection</h3>
-        <p>A structured look at the first half and forward to the second.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week4-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 4 Decision Plan</h3>
-        <p>Protect, pivot, add.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-
-    <div class="subhead">Week 5  ·  Point recovery  ·  Riley</div>
-    <div class="grid">
-      <a class="tool" href="stat-week5-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 5 Overview</h3>
-        <p>Learning to read leading indicators.</p>
+        <p>Mixed midterm results. Reading the data without performance.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-week5-case-riley.html" target="_top">
         <span class="tool-tag">Case</span>
         <h3>Riley's Case</h3>
-        <p>Intervention is working. Riley is about to quit anyway.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week5-audit.html" target="_top">
-        <span class="tool-tag">Audit</span>
-        <h3>Week 5 Audit</h3>
-        <p>Heavier emphasis on Subjective and Assessment this week.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-point-recovery-inventory.html" target="_top">
-        <span class="tool-tag">Tool</span>
-        <h3>Point Recovery Inventory</h3>
-        <p>Catalogues the early signs of recovery hidden inside your audits.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week5-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 5 Decision Plan</h3>
-        <p>Sustainment commitments. Trust the plan.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-
-    <div class="subhead">Week 6  ·  Consolidation &amp; integration  ·  Sam</div>
-    <div class="grid">
-      <a class="tool" href="stat-week6-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 6 Overview</h3>
-        <p>Sustain or revise. Differential diagnosis.</p>
+        <p>The plan is working. Riley is about to quit anyway.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-week6-case-sam.html" target="_top">
@@ -498,84 +452,16 @@ footer small{
         <p>Method better, scores not. The original diagnosis was incomplete.</p>
         <span class="cta">Open tool</span>
       </a>
-      <a class="tool" href="stat-week6-audit.html" target="_top">
-        <span class="tool-tag">Audit</span>
-        <h3>Week 6 Audit</h3>
-        <p>Compares against your Week 1 baseline, not just last week.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week6-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 6 Decision Plan</h3>
-        <p>Either three sustainment commitments or three revised ones.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-
-    <div class="subhead">Week 7  ·  Final exam runway  ·  Casey</div>
-    <div class="grid">
-      <a class="tool" href="stat-week7-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 7 Overview</h3>
-        <p>Triage matters more than effort. Choose what to study.</p>
-        <span class="cta">Open tool</span>
-      </a>
       <a class="tool" href="stat-week7-case-casey.html" target="_top">
         <span class="tool-tag">Case</span>
         <h3>Casey's Case</h3>
         <p>Fourteen days. Twelve chapters. Seven mastered. The math.</p>
         <span class="cta">Open tool</span>
       </a>
-      <a class="tool" href="stat-week7-audit.html" target="_top">
-        <span class="tool-tag">Audit</span>
-        <h3>Week 7 Audit</h3>
-        <p>Topic-by-topic confidence map of your final exam content.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool required" href="stat-final-exam-triage.html" target="_top">
-        <span class="tool-tag">Tool</span>
-        <h3>Final Exam Triage</h3>
-        <p>Walks you through topic weight, confidence, and time. Produces your two-week plan.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week7-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 7 Decision Plan</h3>
-        <p>Three exam-focused commitments and one 24-hour action.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-
-    <div class="subhead">Week 8  ·  Definitive care &amp; discharge  ·  Taylor</div>
-    <div class="grid">
-      <a class="tool" href="stat-week8-overview.html" target="_top">
-        <span class="tool-tag">Overview</span>
-        <h3>Week 8 Overview</h3>
-        <p>The capstone. What survives the program.</p>
-        <span class="cta">Open tool</span>
-      </a>
       <a class="tool" href="stat-week8-case-taylor.html" target="_top">
         <span class="tool-tag">Case</span>
         <h3>Taylor's Case</h3>
-        <p>The program worked. Discharge planning is what makes it stick.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week8-audit.html" target="_top">
-        <span class="tool-tag">Audit</span>
-        <h3>Week 8 Audit</h3>
-        <p>Comparative across all eight weeks. The longest audit.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool required" href="stat-discharge-planning.html" target="_top">
-        <span class="tool-tag">Tool</span>
-        <h3>Discharge Planning</h3>
-        <p>Which habits survive, which need maintenance, which need a replacement structure.</p>
-        <span class="cta">Open tool</span>
-      </a>
-      <a class="tool" href="stat-week8-decision-plan.html" target="_top">
-        <span class="tool-tag">Decision plan</span>
-        <h3>Week 8 Decision Plan</h3>
-        <p>Three commitments for the next eight weeks without this workbook.</p>
+        <p>It worked. Discharge planning is what makes it stick.</p>
         <span class="cta">Open tool</span>
       </a>
     </div>
@@ -589,57 +475,46 @@ footer small{
     </div>
 
     <div class="grid">
+      <a class="tool required" href="stat-discharge-planning.html" target="_top">
+        <span class="tool-tag">Tool</span>
+        <h3>Discharge Planning</h3>
+        <p>Which habits survive, which need maintenance, which need a replacement structure.</p>
+        <span class="cta">Open tool</span>
+      </a>
       <a class="tool" href="stat-action-plan.html" target="_top">
         <span class="tool-tag">Plan</span>
         <h3>Action Plan</h3>
-        <p>Your next-eight-weeks plan, formatted to outlast the workbook.</p>
+        <p>Your plan for the next stretch, formatted to outlast the workbook.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-recovery-portfolio.html" target="_top">
         <span class="tool-tag">Portfolio</span>
-        <h3>Recovery Portfolio</h3>
+        <h3>Rebound Portfolio</h3>
         <p>Documented evidence of what you changed. Keep for future you.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-recovery-vs-prevention.html" target="_top">
         <span class="tool-tag">Framework</span>
-        <h3>Recovery vs Prevention</h3>
+        <h3>Rebound vs Prevention</h3>
         <p>How to shift from critical care back to preventative care.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-after-stat.html" target="_top">
         <span class="tool-tag">Roadmap</span>
         <h3>After STAT</h3>
-        <p>What the program does not address, and what to do about it.</p>
-        <span class="cta">Open tool</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Bonus -->
-  <section class="part" aria-labelledby="bonus">
-    <div class="part-header">
-      <span class="part-tag">Bonus</span>
-      <h2 id="bonus">Extra tools</h2>
-    </div>
-
-    <div class="grid">
-      <a class="tool" href="stat-teachback-preparation.html" target="_top">
-        <span class="tool-tag">Method</span>
-        <h3>Teach-Back Preparation</h3>
-        <p>Structures a teach-back session for the topic you're trying to lock in.</p>
+        <p>What the workbook does not address, and what to do about it.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-continuing-study-group.html" target="_top">
         <span class="tool-tag">Community</span>
         <h3>Continuing Study Group</h3>
-        <p>Template for building the accountability structure that replaces the cohort.</p>
+        <p>Template for building the accountability structure that keeps you going after the workbook.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="stat-completion-certificate.html" target="_top">
         <span class="tool-tag">Certificate</span>
         <h3>Completion Certificate</h3>
-        <p>For students who finish the program. Print and keep.</p>
+        <p>For when you finish. Print it and keep it.</p>
         <span class="cta">Open tool</span>
       </a>
       <a class="tool" href="ap-summer-survival-diagnostic-v2.html" target="_top">
@@ -649,6 +524,49 @@ footer small{
         <span class="cta">Open tool</span>
       </a>
     </div>
+  </section>
+
+  <!-- EDITION 1 ARCHIVE -->
+  <section class="part" aria-labelledby="archive">
+    <div class="part-header">
+      <span class="part-tag">Archive</span>
+      <h2 id="archive">Edition 1 tools  ·  The eight-week program</h2>
+    </div>
+
+    <div class="workbook-note" role="note">
+      <div class="label">If your workbook is the original eight-week edition</div>
+      <p>
+        These are the week-by-week tools your edition links to. They still work
+        and they are not going anywhere. The current edition runs exam by exam
+        instead of week by week, so new tools live in the sections above.
+      </p>
+    </div>
+
+    <ul class="archive-list">
+      <li><a href="stat-week1-overview.html" target="_top">Week 1 Overview</a></li>
+      <li><a href="stat-week1-decision-plan.html" target="_top">Week 1 Decision Plan</a></li>
+      <li><a href="stat-team-charter.html" target="_top">Team Charter</a></li>
+      <li><a href="stat-week2-overview.html" target="_top">Week 2 Overview</a></li>
+      <li><a href="stat-week2-decision-plan.html" target="_top">Week 2 Decision Plan</a></li>
+      <li><a href="stat-week3-overview.html" target="_top">Week 3 Overview</a></li>
+      <li><a href="stat-week3-decision-plan.html" target="_top">Week 3 Decision Plan</a></li>
+      <li><a href="stat-week4-overview.html" target="_top">Week 4 Overview</a></li>
+      <li><a href="stat-week4-audit.html" target="_top">Week 4 Audit</a></li>
+      <li><a href="stat-week4-decision-plan.html" target="_top">Week 4 Decision Plan</a></li>
+      <li><a href="stat-mid-program-reflection.html" target="_top">Mid-Program Reflection</a></li>
+      <li><a href="stat-week5-overview.html" target="_top">Week 5 Overview</a></li>
+      <li><a href="stat-week5-audit.html" target="_top">Week 5 Audit</a></li>
+      <li><a href="stat-week5-decision-plan.html" target="_top">Week 5 Decision Plan</a></li>
+      <li><a href="stat-week6-overview.html" target="_top">Week 6 Overview</a></li>
+      <li><a href="stat-week6-audit.html" target="_top">Week 6 Audit</a></li>
+      <li><a href="stat-week6-decision-plan.html" target="_top">Week 6 Decision Plan</a></li>
+      <li><a href="stat-week7-overview.html" target="_top">Week 7 Overview</a></li>
+      <li><a href="stat-week7-audit.html" target="_top">Week 7 Audit</a></li>
+      <li><a href="stat-week7-decision-plan.html" target="_top">Week 7 Decision Plan</a></li>
+      <li><a href="stat-week8-overview.html" target="_top">Week 8 Overview</a></li>
+      <li><a href="stat-week8-audit.html" target="_top">Week 8 Audit</a></li>
+      <li><a href="stat-week8-decision-plan.html" target="_top">Week 8 Decision Plan</a></li>
+    </ul>
   </section>
 
 </main>

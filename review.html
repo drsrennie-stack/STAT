@@ -75,7 +75,7 @@
   <button id="zoomclose">Close</button>
 </dialog>
 <script>
-const TITLES=["Front cover","Copyright","Welcome","A note on failure","How to use this workbook","Workbook contents","Part 1 divider, Triage","The three acuities","Grade audit","Failure mode diagnostic","Diagnostic, time scarcity","Diagnostic, study method failure","Diagnostic, content gaps","Diagnostic, affective overload","Scoring","Interpretation","Decision flowchart","Stabilize first","Part 2 divider, How to study","The Recall Toolbox","Drawing-based synthesis","Active recall","Teach-back (Feynman)","Concept maps, with recall","Error log + re-attempt","Spaced repetition schedule","Part 3 divider, The Stage","How a Stage works","Stage 1, Analyze","Stage 1, Decide","Stage 1, Reanalyze","Stage 2, Analyze","Stage 2, Decide","Stage 2, Reanalyze","Stage 3, Analyze","Stage 3, Decide","Stage 3, Reanalyze","Stage 4, Analyze","Stage 4, Decide","Stage 4, Reanalyze","Case Library divider","Case Library index","Case, Morgan","Case, Jordan","Case, Alex","Case, Riley","Case, Sam","Case, Casey","Case, Taylor","Part 4 divider, After STAT","Discharge planning","Rebound vs prevention","Warning signs","Quick reference","Back cover"];
+const TITLES=["Front cover","Copyright","Welcome","A note on failure","How to use this workbook","Workbook contents","Part 1 divider, Triage","The three acuities","Grade audit","Failure mode diagnostic","Diagnostic, time scarcity","Diagnostic, study method failure","Diagnostic, content gaps","Diagnostic, affective overload","Scoring","Interpretation","Decision flowchart","Stabilize first","Part 2 divider, How to study","The Recall Toolbox","Drawing-based synthesis","Active recall","Teach-back (Feynman)","Concept maps, with recall","Error log + re-attempt","Spaced recall schedule","Part 3 divider, The Stage","How a Stage works","Stage 1, Analyze","Stage 1, Decide","Stage 1, Reanalyze","Stage 2, Analyze","Stage 2, Decide","Stage 2, Reanalyze","Stage 3, Analyze","Stage 3, Decide","Stage 3, Reanalyze","Stage 4, Analyze","Stage 4, Decide","Stage 4, Reanalyze","Case Library divider","Case Library index","Case, Morgan","Case, Jordan","Case, Alex","Case, Riley","Case, Sam","Case, Casey","Case, Taylor","Part 4 divider, After STAT","Make it stick","Comeback vs prevention","Warning signs","Quick reference","Back cover"];
 const KEY="stat-v2-review";
 let state={};
 try{state=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){state={}}
@@ -94,7 +94,7 @@ function render(){
     card.innerHTML=`
       <p class="pageno">Page ${n} of 55</p>
       <h2>${t}</h2>
-      <img src="pages/page-${String(n).padStart(2,"0")}.png" alt="Workbook page ${n}: ${t}" loading="lazy" tabindex="0" role="button" aria-label="Enlarge page ${n}">
+      <img src="pages-r2/page-${String(n).padStart(2,"0")}.png" alt="Workbook page ${n}: ${t}" loading="lazy" tabindex="0" role="button" aria-label="Enlarge page ${n}">
       <div class="statusrow">
         <button class="approve" aria-pressed="${st==="approved"}" data-p="${n}">Approve</button>
         <button class="flag" aria-pressed="${st==="flagged"}" data-p="${n}">Flag</button>

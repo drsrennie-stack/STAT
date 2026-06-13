@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Error Log  ·  STAT Success  ·  MedMasters Collaborative</title>
+<meta name="description" content="Type in your error log, add as many rows as you need, then print it. Companion to the STAT Success Workbook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#142A40; --navy-deep:#0B1B2D; --navy-tint:#ECEFF4;
+  --gold:#B8924A; --gold-bright:#D4AC65; --terra:#C2734D; --terra-dark:#A0522D;
+  --white:#FFFFFF; --offwhite:#FAFAF9; --gray:#6B7280; --gray-light:#D1D5DB;
+  --radius:8px;
+  --shadow-rest:0 1px 3px rgba(0,0,0,0.08);
+  --shadow-hover:0 8px 16px rgba(0,0,0,0.10);
+  --t:transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  --font-display:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-body:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-eyebrow:'DM Sans',-apple-system,sans-serif;
+  --font-serif:'Lora',Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--navy);background:var(--offwhite);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;display:inline-block;padding:.5rem 1rem;background:var(--gold);color:var(--navy);font-weight:700}
+
+.hero{background:var(--navy);color:var(--white);padding:2.5rem 1.5rem 2rem;text-align:center;border-bottom:6px solid var(--gold)}
+.hero .eyebrow{font-family:var(--font-eyebrow);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,5vw,2.6rem);margin:0 0 .25rem;letter-spacing:-.02em}
+.hero .tagline{font-family:var(--font-serif);font-style:italic;font-size:1.05rem;color:var(--gold-bright);margin:.25rem 0 0}
+
+main{max-width:62rem;margin:0 auto;padding:2rem 1.25rem 4rem}
+
+.intro{background:var(--white);border:1px solid var(--navy-tint);border-left:4px solid var(--gold);border-radius:var(--radius);padding:1.1rem 1.4rem;margin-bottom:1.5rem;font-size:.95rem}
+.intro p{margin:0}
+.intro .how{font-family:var(--font-eyebrow);font-weight:700;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-dark);margin-bottom:.4rem}
+
+.meta{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem}
+.meta .field{flex:1 1 14rem}
+label{display:block;font-family:var(--font-eyebrow);font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-dark);margin-bottom:.3rem}
+input[type=text]{width:100%;font-family:var(--font-body);font-size:.95rem;color:var(--navy);padding:.5rem .6rem;border:1px solid var(--gray-light);border-radius:6px;background:var(--white)}
+input[type=text]:focus-visible,textarea:focus-visible{outline:3px solid var(--gold-bright);outline-offset:1px;border-color:var(--gold)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}
+.toolbar .spacer{flex:1}
+.count{font-family:var(--font-eyebrow);font-size:.8rem;color:var(--gray)}
+button{font-family:var(--font-body);font-size:.85rem;font-weight:700;border-radius:6px;cursor:pointer;padding:.55rem .9rem;border:1px solid var(--navy);background:var(--white);color:var(--navy);transition:var(--t)}
+button:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--gold)}
+button:focus-visible{outline:3px solid var(--gold-bright);outline-offset:2px}
+button.primary{background:var(--navy);color:var(--white);border-color:var(--navy)}
+button.primary:hover{background:var(--navy-deep)}
+button.ghost{border-color:var(--gray-light);color:var(--gray)}
+
+.log{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--navy-tint);border-radius:var(--radius);overflow:hidden}
+.log caption{text-align:left;font-family:var(--font-eyebrow);font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-dark);padding:.5rem .2rem}
+.log thead th{background:var(--navy);color:var(--white);font-family:var(--font-eyebrow);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:.6rem .55rem;vertical-align:top}
+.log thead th.rn{width:2.2rem;text-align:center}
+.log thead th.act{width:2.6rem}
+.log tbody td{border-bottom:1px solid var(--navy-tint);padding:.35rem .4rem;vertical-align:top}
+.log tbody tr:nth-child(even){background:var(--offwhite)}
+.log .rn{text-align:center;font-family:var(--font-eyebrow);font-weight:700;color:var(--gold);font-size:.85rem;padding-top:.7rem}
+textarea{width:100%;min-height:3.4rem;font-family:var(--font-body);font-size:.85rem;line-height:1.4;color:var(--navy);padding:.4rem .5rem;border:1px solid var(--gray-light);border-radius:5px;background:var(--white);resize:vertical}
+.del{border:1px solid var(--gray-light);color:var(--terra-dark);background:var(--white);border-radius:5px;padding:.3rem .5rem;font-size:.9rem;line-height:1;cursor:pointer}
+.del:hover{background:var(--terra-dark);color:var(--white);border-color:var(--terra-dark)}
+
+.addrow{margin:1rem 0 0}
+.note{font-family:var(--font-serif);font-style:italic;color:var(--gray);font-size:.9rem;margin:1.5rem 0 0}
+
+footer{background:var(--navy);color:var(--navy-tint);text-align:center;padding:2rem 1.5rem;margin-top:3rem;border-top:6px solid var(--gold)}
+footer .brand{font-family:var(--font-display);font-weight:700;color:var(--gold);font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.4rem}
+footer a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent}
+footer a:hover,footer a:focus-visible{border-color:var(--gold)}
+footer small{display:block;font-size:.72rem;color:var(--gray-light);margin-top:.8rem}
+
+.print-head{display:none}
+
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .hero,footer,.toolbar,.intro,.addrow,.skip-link{display:none !important}
+  main{max-width:none;padding:0}
+  .print-head{display:block;margin-bottom:.6rem}
+  .print-head h1{font-family:var(--font-display);font-size:18pt;margin:0 0 .1rem;color:#000}
+  .print-head .sub{font-size:9pt;color:#333}
+  .meta{margin-bottom:.6rem}
+  label{color:#000}
+  input[type=text]{border:none;border-bottom:1px solid #000;border-radius:0}
+  .log{border:1px solid #000}
+  .log thead th{background:#000 !important;color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .log .act,.log .del{display:none !important}
+  textarea{border:1px solid #999;min-height:3rem;color:#000;resize:none}
+  .note{display:none}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to the error log</a>
+
+<header class="hero">
+  <div class="eyebrow">MedMasters Collaborative  ·  STAT Success</div>
+  <h1>Error Log</h1>
+  <div class="tagline">Every wrong answer is a question you don't yet know how to ask.</div>
+</header>
+
+<main id="main">
+  <div class="print-head" aria-hidden="true">
+    <h1>STAT Success  ·  Error Log</h1>
+    <div class="sub">Dr. Sharilyn Rennie  ·  When your grade can't wait.</div>
+  </div>
+
+  <div class="intro" role="note">
+    <div class="how">How to use it</div>
+    <p>Log one row for every wrong answer: what you thought, what is correct, why you missed it, and what you will remember. Add as many rows as you need. A week later, try the same question again without looking. When you get it right, you can delete the row. When you are done, print the page (or save it as a PDF) and keep it with your workbook. Your rows are saved in this browser until you clear them.</p>
+  </div>
+
+  <div class="meta">
+    <div class="field">
+      <label for="topic">Course / topic</label>
+      <input type="text" id="topic" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="source">Source (quiz, practice set, exam)</label>
+      <input type="text" id="source" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="dated">Date</label>
+      <input type="text" id="dated" autocomplete="off" placeholder="e.g. Mar 14">
+    </div>
+  </div>
+
+  <div class="toolbar" role="group" aria-label="Error log actions">
+    <button type="button" class="primary" id="add">+ Add a row</button>
+    <button type="button" id="print">Print / Save as PDF</button>
+    <span class="spacer"></span>
+    <span class="count" id="count" aria-live="polite"></span>
+    <button type="button" class="ghost" id="clear">Clear all</button>
+  </div>
+
+  <table class="log">
+    <caption>Your errors</caption>
+    <thead>
+      <tr>
+        <th class="rn" scope="col">#</th>
+        <th scope="col">What I thought</th>
+        <th scope="col">What is correct</th>
+        <th scope="col">Why I was wrong</th>
+        <th scope="col">What I will remember</th>
+        <th scope="col">Re-attempt date &amp; result</th>
+        <th class="act" scope="col"><span aria-hidden="true">Del</span><span class="skip-link">Delete row</span></th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <p class="note">Tip: do not delete a row the first time you get it right by luck. Delete it when you can get its whole type right cold.</p>
+</main>
+
+<footer>
+  <div class="brand">MedMasters Collaborative</div>
+  <a href="hub.html" target="_top">Back to the tool hub</a>
+  <small>STAT Success Workbook  ·  Error Log  ·  &copy; 2026 MedMasters Collaborative, LLC</small>
+</footer>
+
+<script>
+(function(){
+  var KEY="stat-error-log";
+  var COLS=["thought","correct","why","remember","reattempt"];
+  var PH={
+    thought:"What you believed the answer was",
+    correct:"The actual correct answer",
+    why:"The reason you missed it (misread, gap, guessed...)",
+    remember:"The one thing to lock in",
+    reattempt:"Date you tried again, and how it went"
+  };
+  var state;
+  try{state=JSON.parse(localStorage.getItem(KEY))||null}catch(e){state=null}
+  if(!state){state={meta:{topic:"",source:"",dated:""},rows:[blank()]};}
+
+  function blank(){return {thought:"",correct:"",why:"",remember:"",reattempt:""};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+  var rowsEl=document.getElementById("rows");
+  var countEl=document.getElementById("count");
+
+  function render(){
+    rowsEl.innerHTML="";
+    state.rows.forEach(function(row,i){
+      var tr=document.createElement("tr");
+      var cells="<td class='rn'>"+(i+1)+"</td>";
+      COLS.forEach(function(c){
+        cells+="<td><textarea data-i='"+i+"' data-c='"+c+"' "+
+          "aria-label='Row "+(i+1)+", "+labelFor(c)+"' "+
+          "placeholder='"+PH[c]+"'>"+esc(row[c])+"</textarea></td>";
+      });
+      cells+="<td class='act'><button type='button' class='del' data-del='"+i+
+        "' aria-label='Delete row "+(i+1)+"'>&times;</button></td>";
+      tr.innerHTML=cells;
+      rowsEl.appendChild(tr);
+    });
+    countEl.textContent=state.rows.length+(state.rows.length===1?" row":" rows");
+  }
+  function labelFor(c){return {thought:"what I thought",correct:"what is correct",why:"why I was wrong",remember:"what I will remember",reattempt:"re-attempt date and result"}[c];}
+  function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+  // meta fields
+  ["topic","source","dated"].forEach(function(id){
+    var el=document.getElementById(id);
+    el.value=state.meta[id]||"";
+    el.addEventListener("input",function(){state.meta[id]=el.value;save();});
+  });
+
+  rowsEl.addEventListener("input",function(e){
+    var t=e.target;
+    if(t.tagName==="TEXTAREA"){
+      state.rows[+t.dataset.i][t.dataset.c]=t.value;save();
+    }
+  });
+  rowsEl.addEventListener("click",function(e){
+    var b=e.target.closest("[data-del]");
+    if(!b)return;
+    var i=+b.dataset.del;
+    state.rows.splice(i,1);
+    if(state.rows.length===0)state.rows.push(blank());
+    save();render();
+  });
+  document.getElementById("add").addEventListener("click",function(){
+    state.rows.push(blank());save();render();
+    var tas=rowsEl.querySelectorAll("textarea");
+    if(tas.length)tas[tas.length-COLS.length].focus();
+  });
+  document.getElementById("print").addEventListener("click",function(){window.print();});
+  document.getElementById("clear").addEventListener("click",function(){
+    if(confirm("Clear every row and the header fields? This cannot be undone.")){
+      state={meta:{topic:"",source:"",dated:""},rows:[blank()]};
+      save();
+      ["topic","source","dated"].forEach(function(id){document.getElementById(id).value="";});
+      render();
+    }
+  });
+
+  render();
+
+  // iframe height sender (per global rules)
+  function sendHeight(){
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
+    try{parent.postMessage({id:"stat-error-log",frameHeight:h},"*");}catch(e){}
+  }
+  window.addEventListener("load",sendHeight);
+  window.addEventListener("resize",sendHeight);
+  if(typeof ResizeObserver!=="undefined")new ResizeObserver(sendHeight).observe(document.body);
+})();
+</script>
+</body>
+</html>

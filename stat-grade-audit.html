@@ -1116,9 +1116,10 @@ button, .btn, label, nav, .tag, .pill, .label, .eyebrow, .num, .code-num, .phase
     <div class="callout callout--accent">
       <div class="callout__body">
         <div class="callout__header"><span class="callout__mark" aria-hidden="true">P</span><p class="callout__title">How to use this</p></div><div class="callout__body"><p class="callout__text">
-          In any category above, enter a score for a remaining assessment. It's automatically
-          treated as a prediction rather than a real score. Be realistic, not aspirational.
-          Unpredicted assessments are assumed to match the average of your predictions.
+          In any category above, enter your predicted score for an assessment you haven't taken
+          yet, then tick the "Predicted score" box next to it so it counts as a projection instead
+          of a real grade. Be realistic, not aspirational. Assessments you leave unpredicted are
+          assumed to match the average of your predictions.
         </p></div></div>
     </div>
 
@@ -1411,8 +1412,8 @@ function renderAssessmentHtml(a) {
              aria-label="Score as percent">
       <span class="assessment-row__status">
         ${scored ? `<label style="font-size: 0.8125rem; font-weight: 400; color: var(--cc-text-muted); display: inline-flex; align-items: center; gap: 6px;">
-          <input type="checkbox" data-field="predicted" ${a._predicted ? 'checked' : ''} aria-label="Mark as predicted rather than actual">
-          ${status}
+          <input type="checkbox" data-field="predicted" ${a._predicted ? 'checked' : ''} aria-label="Tick to count this as a predicted score rather than a real grade you have already earned">
+          ${a._predicted ? 'Predicted score' : 'Real grade (tick if predicted)'}
         </label>` : status}
       </span>
       <button class="remove-btn" type="button" data-action="remove-assessment" aria-label="Remove assessment">
